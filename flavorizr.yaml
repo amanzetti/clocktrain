@@ -1,0 +1,56 @@
+flavors:
+  dev:
+    app:
+      name: "AppName Dev"
+
+    android:
+      applicationId: "com.name.app.dev"
+      firebase:
+        config: ".firebase/dev/google-services.json"
+
+    ios:
+      bundleId: "com.name.app.dev"
+      firebase:
+        config: ".firebase/dev/GoogleService-Info.plist"
+
+  mock:
+    app:
+      name: "AppName Mock"
+
+    android:
+      applicationId: "com.name.app.mock"
+      firebase:
+        config: ".firebase/mock/google-services.json"
+
+    ios:
+      bundleId: "com.name.app.mock"
+      firebase:
+        config: ".firebase/mock/GoogleService-Info.plist"
+
+  prod:
+    app:
+      name: "AppName"
+
+    android:
+      applicationId: "com.name.app"
+      firebase:
+        config: ".firebase/prod/google-services.json"
+
+    ios:
+      bundleId: "com.name.app"
+      firebase:
+        config: ".firebase/prod/GoogleService-Info.plist"
+
+  qa:
+    app:
+      name: "AppName QA"
+
+    android:
+      applicationId: "com.name.app.qa"
+      firebase:
+        config: ".firebase/qa/google-services.json"
+
+    ios:
+      bundleId: "com.name.app.qa"
+      firebase:
+        config: ".firebase/qa/GoogleService-Info.plist"
