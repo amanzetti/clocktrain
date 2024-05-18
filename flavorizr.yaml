@@ -1,56 +1,56 @@
 flavors:
   dev:
     app:
-      name: "AppName Dev"
+      name: "cLockTrain Dev"
 
     android:
-      applicationId: "com.name.app.dev"
+      applicationId: "com.prk.clocktrain.dev"
       firebase:
         config: ".firebase/dev/google-services.json"
 
     ios:
-      bundleId: "com.name.app.dev"
+      bundleId: "com.prk.clocktrain.dev"
       firebase:
         config: ".firebase/dev/GoogleService-Info.plist"
 
   mock:
     app:
-      name: "AppName Mock"
+      name: "cLockTrain Mock"
 
     android:
-      applicationId: "com.name.app.mock"
+      applicationId: "com.prk.clocktrain.mock"
       firebase:
         config: ".firebase/mock/google-services.json"
 
     ios:
-      bundleId: "com.name.app.mock"
+      bundleId: "com.prk.clocktrain.mock"
       firebase:
         config: ".firebase/mock/GoogleService-Info.plist"
 
   prod:
     app:
-      name: "AppName"
+      name: "cLockTrain"
 
     android:
-      applicationId: "com.name.app"
+      applicationId: "com.prk.clocktrain"
       firebase:
         config: ".firebase/prod/google-services.json"
 
     ios:
-      bundleId: "com.name.app"
+      bundleId: "com.prk.clocktrain"
       firebase:
         config: ".firebase/prod/GoogleService-Info.plist"
 
   qa:
     app:
-      name: "AppName QA"
+      name: "cLockTrain QA"
 
     android:
-      applicationId: "com.name.app.qa"
+      applicationId: "com.prk.clocktrain.qa"
       firebase:
         config: ".firebase/qa/google-services.json"
 
     ios:
-      bundleId: "com.name.app.qa"
+      bundleId: "com.prk.clocktrain.qa"
       firebase:
         config: ".firebase/qa/GoogleService-Info.plist"
