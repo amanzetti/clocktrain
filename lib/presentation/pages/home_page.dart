@@ -1,3 +1,4 @@
+import 'package:clocktrain/utils/ext/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../config/flavors/flavors.dart';
@@ -11,9 +12,14 @@ class HomePage extends ConsumerWidget {
       appBar: AppBar(
         title: Text(F.title),
       ),
-      body: Center(
-        child: Text(
-          'Hello ${F.title}',
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Text(
+              // 'Hell ${F.title}',
+              context.loc.helloWorld,
+            ),
+          ],
         ),
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:clocktrain/config/flavors/flovors_banner.dart';
+import 'package:clocktrain/config/l10n/generated/app_localizations.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -16,6 +17,8 @@ class App extends ConsumerWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       home: flavorBanner(
         child: const HomePage(),
         show: kDebugMode,
