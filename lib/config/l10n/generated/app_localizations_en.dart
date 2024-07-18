@@ -6,4 +6,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get helloWorld => 'Hello World!';
+
+  @override
+  String get mockNameExercise => 'Name exercise';
+
+  @override
+  String get mockNumberRep => '4';
+
+  @override
+  String get mockNumberSet => '3';
+
+  @override
+  String get mockNumberWeight => '5';
 }

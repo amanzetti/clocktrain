@@ -98,6 +98,30 @@ abstract class AppLocalizations {
   /// In it, this message translates to:
   /// **'Ciao Mondo'**
   String get helloWorld;
+
+  /// No description provided for @mockNameExercise.
+  ///
+  /// In it, this message translates to:
+  /// **'Nome esercizio'**
+  String get mockNameExercise;
+
+  /// No description provided for @mockNumberRep.
+  ///
+  /// In it, this message translates to:
+  /// **'4'**
+  String get mockNumberRep;
+
+  /// No description provided for @mockNumberSet.
+  ///
+  /// In it, this message translates to:
+  /// **'3'**
+  String get mockNumberSet;
+
+  /// No description provided for @mockNumberWeight.
+  ///
+  /// In it, this message translates to:
+  /// **'5'**
+  String get mockNumberWeight;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

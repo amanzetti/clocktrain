@@ -1,6 +1,10 @@
 {
-    "helloWorld": "Hello World!",
-    "@helloWorld": {
-      "description": "The conventional newborn programmer greeting"
-    }
-  }
+  "helloWorld": "Hello World!",
+  "@helloWorld": {
+    "description": "The conventional newborn programmer greeting"
+  },
+  "mockNameExercise": "Name exercise",
+  "mockNumberRep": "4",
+  "mockNumberSet": "3",
+  "mockNumberWeight": "5"
+}
