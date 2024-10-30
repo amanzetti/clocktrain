@@ -10,7 +10,6 @@ class MainBottomNavBar extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    
     final indexBottomNavbar = ref.watch(indexBottomNavbarProvider);
 
     return BottomNavigationBar(
@@ -26,6 +25,10 @@ class MainBottomNavBar extends ConsumerWidget {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.library_books),
+            label: 'Sheet',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.fitness_center),

@@ -7,11 +7,10 @@ class WorkoutPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Container(
-        child: Column(
+    return const Column(
       children: [
         WorkTimeCountdown(),
       ],
-    ));
+    );
   }
 }

@@ -1,5 +1,5 @@
-import 'package:clocktrain/presentation/widgets/list_tile_exercise.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class HomePage extends ConsumerWidget {
@@ -7,13 +7,24 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return const SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          ListTileExercise(),
-        ],
-      ),
+    return const Column(
+      children: [
+        Text('Home Page'),
+      ],
     );
   }
+}
+
+class Exercise {
+  final String name;
+  final int rep;
+  final int set;
+  final String videoUrl;
+
+  Exercise({
+    required this.name,
+    required this.rep,
+    required this.set,
+    required this.videoUrl,
+  });
 }

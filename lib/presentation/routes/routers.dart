@@ -1,5 +1,6 @@
 import 'package:clocktrain/presentation/pages/home_page.dart';
 import 'package:clocktrain/presentation/pages/main_page.dart';
+import 'package:clocktrain/presentation/pages/sheet_page.dart';
 import 'package:clocktrain/presentation/pages/workout_page.dart';
 import 'package:clocktrain/presentation/routes/path.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +23,15 @@ final routers = GoRouter(
               GoRoute(
                 path: homePage,
                 builder: (context, state) => const HomePage(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            // navigatorKey: _sectionNavigatorKey,
+            routes: [
+              GoRoute(
+                path: sheetPage,
+                builder: (context, state) => SheetPage(),
               ),
             ],
           ),
