@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class HomePage extends ConsumerWidget {
@@ -7,9 +6,14 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return const Column(
+    return Column(
       children: [
-        Text('Home Page'),
+        const Text('Home Page'),
+        ElevatedButton(
+            onPressed: () => {
+                  FocusNode().unfocus(),
+                },
+            child: const Text('Go to Sheet Page')),
       ],
     );
   }

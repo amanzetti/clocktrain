@@ -1,3 +1,4 @@
+import 'package:clocktrain/presentation/themes/app_color.dart'; // Aggiunto import per AppColor
 import 'package:clocktrain/presentation/widgets/atoms/square_icon_button.dart';
 import 'package:flutter/material.dart';
 
@@ -68,6 +69,8 @@ class _SlidableItemState extends State<SlidableItem>
 
   @override
   Widget build(BuildContext context) {
+    final colors = AppColor.instance; // Accesso all'istanza di AppColor
+
     return GestureDetector(
       onHorizontalDragUpdate: _onDragUpdate,
       onHorizontalDragEnd: isOpened ? _onCloseSwipe : _onDragEnd,
@@ -85,14 +88,16 @@ class _SlidableItemState extends State<SlidableItem>
                     onPressed: widget.onEdit,
                     icon: Icons.edit,
                     iconColor: Colors.white,
-                    backgroundColor: Colors.blue,
+                    backgroundColor: colors
+                        .editButtonColor, // Colore del bottone di modifica
                   ),
                   SquareIconButton(
                     gKey: _childKey,
                     onPressed: widget.onDelete,
                     icon: Icons.delete,
                     iconColor: Colors.white,
-                    backgroundColor: Colors.red,
+                    backgroundColor: colors
+                        .deleteButtonColor, // Colore del bottone di cancellazione
                   ),
                 ],
               ),

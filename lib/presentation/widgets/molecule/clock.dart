@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:audioplayers/audioplayers.dart';
+import 'package:clocktrain/presentation/themes/app_typography.dart';
 import 'package:flutter/material.dart';
 
 class WorkTimeCountdown extends StatefulWidget {
@@ -11,7 +12,7 @@ class WorkTimeCountdown extends StatefulWidget {
 }
 
 class _WorkTimeCountdownState extends State<WorkTimeCountdown> {
-  static const maxSeconds = 5; // 1 hour countdown
+  static const maxSeconds = 5; // 5 seconds countdown for testing
   int _secondsRemaining = maxSeconds;
   Timer? _timer;
   AudioPlayer? _audioPlayer;
@@ -19,13 +20,11 @@ class _WorkTimeCountdownState extends State<WorkTimeCountdown> {
   @override
   void initState() {
     _audioPlayer = AudioPlayer();
-    // _audioPlayer.setReleaseMode(ReleaseMode.stop);
     super.initState();
   }
 
   void _startTimer() {
     _timer?.cancel();
-    _audioPlayer?.dispose();
     _secondsRemaining = maxSeconds;
 
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
@@ -37,16 +36,15 @@ class _WorkTimeCountdownState extends State<WorkTimeCountdown> {
         timer.cancel();
       }
       if (_secondsRemaining <= 3 && _secondsRemaining > 0) {
-        _audioPlayer?.play(AssetSource('sounds/beep1.mp3'), volume: 40);
+        _audioPlayer?.play(AssetSource('sounds/beep1.mp3'), volume: 0.4);
       } else if (_secondsRemaining == 0) {
-        _audioPlayer?.play(AssetSource('sounds/beep2.mp3'), volume: 70);
+        _audioPlayer?.play(AssetSource('sounds/beep2.mp3'), volume: 0.7);
       }
     });
   }
 
   void _resetTimer() {
     _timer?.cancel();
-    _audioPlayer?.dispose();
     setState(() {
       _secondsRemaining = maxSeconds;
     });
@@ -72,13 +70,16 @@ class _WorkTimeCountdownState extends State<WorkTimeCountdown> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          const Text(
+          Text(
             'Time Remaining:',
-            style: TextStyle(fontSize: 24),
+            style: AppTypography()
+                .titleM, // Utilizza la tipografia definita nel tema
           ),
           Text(
             _formatTime(_secondsRemaining),
-            style: const TextStyle(fontSize: 48),
+            style: AppTypography().titleXL.copyWith(
+                color:
+                    Theme.of(context).primaryColor), // Colore primario dell'app
           ),
           const SizedBox(height: 20),
           Row(

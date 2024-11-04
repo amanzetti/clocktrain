@@ -1,9 +1,11 @@
-import 'package:clocktrain/presentation/widgets/list_tile_exercise.dart';
+import 'package:clocktrain/presentation/widgets/molecule/list_tile_exercise.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class SheetPage extends ConsumerWidget {
-  SheetPage({super.key});
+  final String exerciseId;
+
+  SheetPage({required this.exerciseId, super.key});
 
   final List<Exercise> mockListExercise = List.generate(10, (index) {
     return Exercise(
@@ -20,22 +22,6 @@ class SheetPage extends ConsumerWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         children: [
-          SizedBox(
-              child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(
-                'Name workout',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              ),
-              IconButton(
-                  padding: EdgeInsets.zero,
-                  onPressed: () {
-                    debugPrint('EDIT');
-                  },
-                  icon: const Icon(Icons.edit))
-            ],
-          )),
           Expanded(
             child: ListView.separated(
               itemCount: mockListExercise.length,

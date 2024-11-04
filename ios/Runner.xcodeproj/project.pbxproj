@@ -1018,8 +1018,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8FC455B6E49C3D8D38646EC5 /* Pods-Runner.debug-dev.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XYGMKF5KUG;
 				PRODUCT_NAME = Runner;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = "Debug-dev";
 		};
@@ -1027,8 +1030,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AA7F5AABC7A2A1C007101527 /* Pods-Runner.profile-dev.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XYGMKF5KUG;
 				PRODUCT_NAME = Runner;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = "Profile-dev";
 		};
@@ -1036,8 +1042,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5A76E6696EDE70E11D6CE3AF /* Pods-Runner.release-dev.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XYGMKF5KUG;
 				PRODUCT_NAME = Runner;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = "Release-dev";
 		};

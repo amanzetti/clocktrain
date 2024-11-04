@@ -48,6 +48,8 @@ dependencies:
   audioplayers: ^1.1.1
   video_player: ^2.9.2
   youtube_player_flutter: ^9.1.1
+  keyboard_actions: ^4.2.0
+  shared_preferences: ^2.3.2
 
 dev_dependencies:
   flutter_test:

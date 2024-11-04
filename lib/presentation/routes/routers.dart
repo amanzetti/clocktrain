@@ -1,6 +1,8 @@
 import 'package:clocktrain/presentation/pages/home_page.dart';
 import 'package:clocktrain/presentation/pages/main_page.dart';
 import 'package:clocktrain/presentation/pages/sheet_page.dart';
+import 'package:clocktrain/presentation/pages/sheets_list_page.dart';
+import 'package:clocktrain/presentation/pages/user_page.dart';
 import 'package:clocktrain/presentation/pages/workout_page.dart';
 import 'package:clocktrain/presentation/routes/path.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +13,7 @@ final _sectionNavigatorKey = GlobalKey<NavigatorState>();
 
 final routers = GoRouter(
   navigatorKey: _rootNavigatorKey,
-  initialLocation: homePage,
+  initialLocation: AppPath.homePage,
   routes: [
     StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) =>
@@ -21,43 +23,45 @@ final routers = GoRouter(
             navigatorKey: _sectionNavigatorKey,
             routes: [
               GoRoute(
-                path: homePage,
-                builder: (context, state) => const HomePage(),
+                path: AppPath.homePage,
+                builder: (context, state) {
+                  return const HomePage();
+                },
               ),
             ],
           ),
           StatefulShellBranch(
-            // navigatorKey: _sectionNavigatorKey,
             routes: [
               GoRoute(
-                path: sheetPage,
-                builder: (context, state) => SheetPage(),
-              ),
+                  path: AppPath.sheetListPage,
+                  builder: (context, state) => const SheetListPage(),
+                  routes: [
+                    GoRoute(
+                      path: AppPath.sheetPageWithId(':exerciseId'),
+                      builder: (context, state) {
+                        final exerciseId = state.pathParameters['exerciseId']!;
+                        return SheetPage(exerciseId: exerciseId);
+                      },
+                    ),
+                  ]),
             ],
           ),
           StatefulShellBranch(
-            // navigatorKey: _sectionNavigatorKey,
             routes: [
               GoRoute(
-                path: workoutPage,
+                path: AppPath.workoutPage,
                 builder: (context, state) => const WorkoutPage(),
               ),
             ],
           ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: AppPath.userPage,
+                builder: (context, state) => const UserPage(),
+              ),
+            ],
+          ),
         ])
-    // GoRoute(
-    //   path: mainPage,
-    //   builder: (context, state) => const MainPage(),
-    //   routes: [
-    //     GoRoute(
-    //       path: homePage,
-    //       builder: (context, state) => const HomePage(),
-    //     ),
-    //     GoRoute(
-    //       path: workoutPage,
-    //       builder: (context, state) => const WorkoutPage(),
-    //     ),
-    //   ],
-    // ),
   ],
 );

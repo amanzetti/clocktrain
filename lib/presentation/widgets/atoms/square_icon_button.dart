@@ -1,3 +1,4 @@
+import 'package:clocktrain/presentation/themes/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:clocktrain/utils/ext/global_key_ext.dart';
@@ -23,12 +24,20 @@ class SquareIconButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final colors = AppColor
+        .instance; // Utilizzo della classe singleton AppColor per accedere ai colori del tema
+
     return Container(
       height: squareSideLength ?? gKey?.getHeight(),
       width: squareSideLength ?? gKey?.getHeight(),
-      color: backgroundColor,
+      color: backgroundColor ??
+          colors.primary, // Imposta il colore di sfondo predefinito a primary
       child: IconButton(
-        icon: Icon(icon, color: iconColor),
+        icon: Icon(
+          icon,
+          color: iconColor ??
+              colors.textOnPrimary, // Imposta il colore dell'icona predefinito
+        ),
         onPressed: onPressed,
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:clocktrain/presentation/themes/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -39,6 +40,8 @@ class _MiniYoutubePlayerState extends State<MiniYoutubePlayer> {
 
   @override
   Widget build(BuildContext context) {
+    final colors = AppColor.instance;
+
     return SizedBox(
       height: 100,
       width: 200,
@@ -48,12 +51,17 @@ class _MiniYoutubePlayerState extends State<MiniYoutubePlayer> {
           YoutubePlayer(
             controller: _controller,
             showVideoProgressIndicator: true,
+            progressColors: ProgressBarColors(
+              playedColor: colors.primary,
+              handleColor: colors.primaryLight,
+              bufferedColor: colors.primary.withOpacity(0.5),
+            ),
           ),
           Positioned(
             child: IconButton(
               icon: Icon(
                 _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
-                color: Colors.white,
+                color: colors.textOnPrimary,
               ),
               onPressed: () {
                 setState(() {
