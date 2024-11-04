@@ -84,7 +84,7 @@ class AppTheme {
         filled: true,
         fillColor: colors.surfaceDark,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.0),
+          borderRadius: BorderRadius.circular(2.0),
           borderSide: BorderSide(color: colors.primaryLight),
         ),
       ),

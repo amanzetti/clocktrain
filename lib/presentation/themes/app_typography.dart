@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppTypography {
   static final AppTypography _instance = AppTypography._internal();
@@ -30,7 +31,13 @@ class AppTypography {
     color: Colors.black,
   );
 
-  late TextStyle paragraph = const TextStyle(
+  late TextStyle titleS = GoogleFonts.lato(
+    fontSize: 20,
+    fontWeight: FontWeight.bold,
+    color: Colors.black,
+  );
+
+  late TextStyle paragraph = GoogleFonts.ubuntu(
     fontSize: 16,
     fontWeight: FontWeight.normal,
     color: Colors.black,

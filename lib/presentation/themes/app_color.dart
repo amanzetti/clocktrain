@@ -37,6 +37,18 @@ class AppColor {
       const Color(0xFF2196F3); // Colore del bottone di modifica
   final Color deleteButtonColor =
       const Color(0xFFF44336); // Colore del bottone di cancellazione
+  final Color saveButtonColor =
+      const Color(0xFF4CAF50); // Colore del bottone di salvataggio
+  final Color cancelButtonColor =
+      const Color(0xFF9E9E9E); // Colore del bottone di annullamento
+  final Color startButtonColor =
+      const Color(0xFF4CAF50); // Colore del bottone di avvio
+  final Color stopButtonColor =
+      const Color(0xFFF44336); // Colore del bottone di stop
+  final Color primaryButtonColor =
+      const Color(0xFF0073e6); // Colore del bottone principale
+  final Color secondaryButtonColor =
+      const Color(0xFF9E9E9E); // Colore del bottone secondario
 
   static AppColor get instance => _instance;
 }
