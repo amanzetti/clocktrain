@@ -1,3 +1,4 @@
+import 'package:clocktrain/utils/ext/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:keyboard_actions/keyboard_actions.dart';
@@ -9,19 +10,6 @@ class OptionKeybord extends ConsumerWidget {
   final FocusNode _nodeText = FocusNode();
   final bool readOnly;
 
-  KeyboardActionsConfig _buildConfig(BuildContext context) {
-    return KeyboardActionsConfig(
-      keyboardActionsPlatform: KeyboardActionsPlatform.ALL,
-      keyboardBarColor: Colors.grey[200],
-      nextFocus: true,
-      actions: [
-        KeyboardActionsItem(
-          focusNode: _nodeText,
-        ),
-      ],
-    );
-  }
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return SizedBox(
@@ -29,7 +17,7 @@ class OptionKeybord extends ConsumerWidget {
       child: readOnly
           ? funChild(FocusNode())
           : KeyboardActions(
-              config: _buildConfig(context),
+              config: context.buildKeyboardActionsConfig(_nodeText),
               child: funChild(_nodeText),
             ),
     );

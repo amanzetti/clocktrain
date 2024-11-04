@@ -30,6 +30,8 @@ class ListTileExercise extends ConsumerStatefulWidget {
 class _ListTileExerciseState extends ConsumerState<ListTileExercise> {
   late final TextEditingController repController;
   late final TextEditingController setController;
+  final colors = AppColor.instance;
+  final typography = AppTypography.instance;
 
   @override
   void initState() {
@@ -52,6 +54,7 @@ class _ListTileExerciseState extends ConsumerState<ListTileExercise> {
 
     void toggleVideo() {
       if (openExerciseId == widget.key) {
+        FocusScope.of(context).unfocus();
         ref.read(openExerciseProvider.notifier).state = null;
       } else {
         ref.read(openExerciseProvider.notifier).state = widget.key;
@@ -61,7 +64,7 @@ class _ListTileExerciseState extends ConsumerState<ListTileExercise> {
     return Container(
       width: context.mq.size.width,
       decoration: BoxDecoration(
-        color: AppColor.instance.surface,
+        color: colors.surface,
         borderRadius: BorderRadius.circular(10),
       ),
       child: Padding(
@@ -77,7 +80,7 @@ class _ListTileExerciseState extends ConsumerState<ListTileExercise> {
                     padding: const EdgeInsets.only(left: 16),
                     child: Text(
                       widget.exerciseName,
-                      style: AppTypography.instance.titleM,
+                      style: typography.paragraph,
                     ),
                   ),
                 ),
@@ -87,9 +90,9 @@ class _ListTileExerciseState extends ConsumerState<ListTileExercise> {
                     children: [
                       TextFiledExerciseTile(
                         controller: repController,
-                        readOnly: !edit,
+                        enabled: edit,
                       ),
-                      const Text("REP", style: TextStyle(fontSize: 10)),
+                      Text("REP", style: typography.caption),
                     ],
                   ),
                 ),
@@ -99,9 +102,9 @@ class _ListTileExerciseState extends ConsumerState<ListTileExercise> {
                     children: [
                       TextFiledExerciseTile(
                         controller: setController,
-                        readOnly: !edit,
+                        enabled: edit,
                       ),
-                      const Text("SET", style: TextStyle(fontSize: 10)),
+                      Text("SET", style: typography.caption),
                     ],
                   ),
                 ),

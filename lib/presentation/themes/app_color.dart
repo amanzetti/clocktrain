@@ -25,6 +25,13 @@ class AppColor {
   final Color error = const Color(0xFFF44336);
   final Color warning = const Color(0xFFFFA000);
 
+  // Colore TextFiled stati
+  final Color successTextField = const Color(0xFFC8E6C9);
+  final Color enabledTextField = const Color(0xFFE0E0E0);
+  final Color errorTextField = const Color(0xFFF8BBD0);
+  final Color disabledTextField = Colors.transparent;
+  // final Color disabledTextField = const Color(0xFFBDBDBD);
+
   // Bottoni
   final Color editButtonColor =
       const Color(0xFF2196F3); // Colore del bottone di modifica

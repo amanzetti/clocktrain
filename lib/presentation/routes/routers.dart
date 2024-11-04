@@ -2,7 +2,7 @@ import 'package:clocktrain/presentation/pages/home_page.dart';
 import 'package:clocktrain/presentation/pages/main_page.dart';
 import 'package:clocktrain/presentation/pages/sheet_page.dart';
 import 'package:clocktrain/presentation/pages/sheets_list_page.dart';
-import 'package:clocktrain/presentation/pages/user_page.dart';
+import 'package:clocktrain/presentation/pages/settings_page.dart';
 import 'package:clocktrain/presentation/pages/workout_page.dart';
 import 'package:clocktrain/presentation/routes/path.dart';
 import 'package:flutter/material.dart';
@@ -57,8 +57,8 @@ final routers = GoRouter(
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: AppPath.userPage,
-                builder: (context, state) => const UserPage(),
+                path: AppPath.settingsPage,
+                builder: (context, state) => const SettingsPage(),
               ),
             ],
           ),

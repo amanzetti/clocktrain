@@ -42,7 +42,7 @@ class MainBottomNavBar extends ConsumerWidget {
           label: 'Workout',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.person),
+          icon: Icon(Icons.settings),
           label: 'Account',
         ),
       ],

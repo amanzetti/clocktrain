@@ -1,5 +1,5 @@
 import 'package:clocktrain/presentation/widgets/organisms/main_app_bar.dart';
-import 'package:clocktrain/presentation/widgets/main_bottom_navigation_bar.dart';
+import 'package:clocktrain/presentation/widgets/organisms/main_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
