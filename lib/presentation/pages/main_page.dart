@@ -13,7 +13,6 @@ class MainPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-        backgroundColor: AppColor().surface,
         appBar: const MainAppBar(),
         body: navigationShell,
         bottomNavigationBar:

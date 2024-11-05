@@ -1,5 +1,5 @@
-import 'package:clocktrain/domain/providers/edit_provider.dart';
-import 'package:clocktrain/domain/providers/main_page_params_provider.dart';
+import 'package:clocktrain/domain/providers/ui/edit_provider.dart';
+import 'package:clocktrain/domain/providers/ui/main_page_params_provider.dart';
 import 'package:clocktrain/presentation/themes/app_asset.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -75,8 +75,8 @@ class _MainAppBarState extends ConsumerState<MainAppBar> {
       ),
       leading: _buildLeading(context),
       actions: _buildActions(context),
-      backgroundColor: AppColor.instance.primary,
-      foregroundColor: AppColor.instance.textOnPrimary,
+      backgroundColor: AppColor.instance.surface,
+      foregroundColor: AppColor.instance.textPrimary,
     );
   }
 }

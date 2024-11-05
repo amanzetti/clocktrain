@@ -1,5 +1,5 @@
 import 'package:clocktrain/config/l10n/generated/app_localizations.dart';
-import 'package:clocktrain/domain/providers/theme_provider.dart';
+import 'package:clocktrain/domain/providers/ui/theme_provider.dart';
 import 'package:clocktrain/presentation/routes/routers.dart';
 import 'package:clocktrain/presentation/themes/app_theme.dart';
 import 'package:flutter/material.dart';

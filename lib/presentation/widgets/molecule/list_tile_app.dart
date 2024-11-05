@@ -1,13 +1,17 @@
-import 'package:clocktrain/domain/providers/edit_provider.dart';
+import 'package:clocktrain/domain/providers/ui/edit_provider.dart';
+import 'package:clocktrain/domain/providers/ui/main_page_params_provider.dart';
+import 'package:clocktrain/presentation/routes/path.dart';
 import 'package:clocktrain/presentation/themes/app_color.dart';
 import 'package:clocktrain/presentation/themes/app_typography.dart';
 import 'package:clocktrain/presentation/widgets/atoms/media_screen.dart';
 import 'package:clocktrain/presentation/widgets/atoms/text_filed_exercise_tile.dart';
+import 'package:clocktrain/presentation/widgets/molecule/placeholder_img.dart';
 import 'package:clocktrain/utils/enum/standard_rateo_enum.dart';
 import 'package:clocktrain/utils/ext/build_context_ext.dart';
-import 'package:clocktrain/utils/ext/standard_rateo_ext.dart';
+import 'package:clocktrain/utils/ext/double_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class ObjectT {
   final String name;
@@ -21,8 +25,8 @@ class ObjectT {
   });
 }
 
-enum ListTyleAppType {
-  sheet,
+enum ListTileAppType {
+  workout,
   exercise,
 }
 
@@ -33,6 +37,7 @@ class ListTileApp<T extends ObjectT> extends ConsumerStatefulWidget {
     required this.rateo,
     required this.widthImage,
     required this.mediaUrl,
+    required this.listTileAppType,
     this.rep,
     this.set,
     this.padding,
@@ -45,7 +50,7 @@ class ListTileApp<T extends ObjectT> extends ConsumerStatefulWidget {
   final String mediaUrl;
   final int? rep;
   final int? set;
-  static const listTileAppType = ListTyleAppType.exercise;
+  final ListTileAppType listTileAppType;
 
   @override
   _ListTileAppState<T> createState() => _ListTileAppState<T>();
@@ -70,10 +75,6 @@ class _ListTileAppState<T extends ObjectT>
     super.dispose();
   }
 
-  double _heigthFromWidth() {
-    return widget.widthImage * widget.rateo.aspectRatio;
-  }
-
   Widget _buildTitle() {
     return Text(
       widget.object.name,
@@ -82,8 +83,8 @@ class _ListTileAppState<T extends ObjectT>
   }
 
   Widget _buildBody() {
-    switch (ListTileApp.listTileAppType) {
-      case ListTyleAppType.exercise:
+    switch (widget.listTileAppType) {
+      case ListTileAppType.exercise:
         final bool edit = ref.watch(editProvider);
         return Row(
           children: [
@@ -105,10 +106,35 @@ class _ListTileAppState<T extends ObjectT>
             ),
           ],
         );
-      case ListTyleAppType.sheet:
-        return Text(
-          widget.object.description ?? '',
-          style: AppTypography().caption,
+      case ListTileAppType.workout:
+        return Expanded(
+          child: Column(
+            children: [
+              Text(
+                widget.object.description ?? '',
+                style: AppTypography().caption,
+              ),
+              const Spacer(),
+              OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: AppColor().primaryButtonColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(4.0),
+                      side: BorderSide(color: AppColor().primaryButtonColor),
+                    ),
+                  ),
+                  onPressed: () {
+                    ref
+                        .read(mainPageParamsProvider.notifier)
+                        .update((state) => MainPageParams(
+                              title: widget.object.name,
+                            ));
+                    context.go(
+                        '/sheet_list_page${AppPath.sheetPageWithId(widget.object.name)}');
+                  },
+                  child: const Text('Start Workout')),
+            ],
+          ),
         );
       default:
         return Container(); // Handle default case
@@ -116,26 +142,16 @@ class _ListTileAppState<T extends ObjectT>
   }
 
   Widget _buildMedia() {
-    switch (ListTileApp.listTileAppType) {
-      case ListTyleAppType.exercise:
-        return GestureDetector(
+    switch (widget.listTileAppType) {
+      case ListTileAppType.exercise:
+        return PlaceholderImg(
           onTap: () => _toggleFullScreen(context),
-          child: Container(
-            height: _heigthFromWidth(),
-            width: widget.widthImage,
-            decoration: BoxDecoration(
-              color: AppColor().enabledTextField,
-              borderRadius: BorderRadius.circular(8.0),
-            ),
-            child: Center(
-                child: Text(
-              "IMG",
-              style: AppTypography().titleS,
-            )),
-          ),
+          widthImage: widget.widthImage,
+          rateo: widget.rateo,
         );
-      case ListTyleAppType.sheet:
-        return Text("Sheet");
+      case ListTileAppType.workout:
+        return PlaceholderImg(
+            rateo: widget.rateo, widthImage: widget.widthImage);
       default:
         return Container();
     }
@@ -196,7 +212,7 @@ class _ListTileAppState<T extends ObjectT>
     return Padding(
       padding: widget.padding ?? const EdgeInsets.all(0),
       child: SizedBox(
-        height: _heigthFromWidth(),
+        height: widget.widthImage.heightFromWidth(widget.rateo),
         width: context.mq.size.width,
         key: widget.key,
         child: Row(

@@ -1,5 +1,5 @@
-import 'package:clocktrain/domain/providers/bottom_nav_bar_provider.dart';
-import 'package:clocktrain/domain/providers/main_page_params_provider.dart';
+import 'package:clocktrain/domain/providers/ui/bottom_nav_bar_provider.dart';
+import 'package:clocktrain/domain/providers/ui/main_page_params_provider.dart';
 import 'package:clocktrain/presentation/routes/path.dart';
 import 'package:clocktrain/presentation/themes/app_color.dart'; // Aggiunto import per AppColor
 import 'package:flutter/material.dart';

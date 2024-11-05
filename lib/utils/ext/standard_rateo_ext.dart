@@ -9,6 +9,12 @@ extension StandardRateoDimensions on StandardRateo {
         return 4 / 5; // Restituisce il rapporto 4:5
       case StandardRateo.ratio_3_4:
         return 3 / 4; // Restituisce il rapporto 3:4
+      case StandardRateo.ratio_16_9:
+        return 16 / 9; // Restituisce il rapporto 16:9
+      case StandardRateo.ratio_5_4:
+        return 5 / 4; // Restituisce il rapporto 5:4
+      case StandardRateo.ratio_4_3:
+        return 4 / 3; // Restituisce il rapporto 4:3
     }
   }
 }

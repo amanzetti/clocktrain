@@ -1,7 +1,7 @@
 import 'package:clocktrain/presentation/pages/home_page.dart';
 import 'package:clocktrain/presentation/pages/main_page.dart';
 import 'package:clocktrain/presentation/pages/sheet_page.dart';
-import 'package:clocktrain/presentation/pages/sheets_list_page.dart';
+import 'package:clocktrain/presentation/pages/workout_list_page.dart';
 import 'package:clocktrain/presentation/pages/settings_page.dart';
 import 'package:clocktrain/presentation/pages/workout_page.dart';
 import 'package:clocktrain/presentation/routes/path.dart';
@@ -34,7 +34,7 @@ final routers = GoRouter(
             routes: [
               GoRoute(
                   path: AppPath.sheetListPage,
-                  builder: (context, state) => const SheetListPage(),
+                  builder: (context, state) => const WorkoutListPage(),
                   routes: [
                     GoRoute(
                       path: AppPath.sheetPageWithId(':exerciseId'),
