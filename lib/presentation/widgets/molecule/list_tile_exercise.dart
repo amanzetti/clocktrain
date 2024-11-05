@@ -69,11 +69,11 @@ class _ListTileExerciseState extends ConsumerState<ListTileExercise> {
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+        child: 
             Row(
               children: [
+                Expanded(flex:8, child:Column(),),
+
                 Expanded(
                   flex: 6,
                   child: Padding(
@@ -117,17 +117,16 @@ class _ListTileExerciseState extends ConsumerState<ListTileExercise> {
                 ),
               ],
             ),
-            if (openExerciseId == widget.key)
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  MiniYoutubePlayer(
-                    videoUrl: widget.videoUrl,
-                  ),
-                ],
-              ),
-          ],
-        ),
+          //   if (openExerciseId == widget.key)
+          //     Row(
+          //       mainAxisAlignment: MainAxisAlignment.center,
+          //       children: [
+          //         MiniYoutubePlayer(
+          //           videoUrl: widget.videoUrl,
+          //         ),
+          //       ],
+          //     ),
+          // ],
       ),
     );
   }
