@@ -67,7 +67,7 @@ class _MiniYoutubePlayerState extends State<MiniYoutubePlayer> {
             onPressed: () {
               _toggleFullScreen();
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.fullscreen,
               color: Colors.white,
             ))
