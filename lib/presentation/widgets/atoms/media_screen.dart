@@ -1,6 +1,4 @@
-import 'package:clocktrain/presentation/themes/app_color.dart';
 import 'package:clocktrain/utils/enum/standard_rateo_enum.dart';
-import 'package:clocktrain/utils/ext/standard_rateo_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
