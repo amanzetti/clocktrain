@@ -82,30 +82,6 @@ class _ListTileAppState<T extends ObjectT>
     );
   }
 
-  List<Widget> _generateReps() {
-    List<Widget> list = [];
-    if (widget.reps != null) {
-      for (var e in widget.reps!) {
-        list.add(Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Text(
-              'rep: ${e.repNumber}',
-              style: AppTypography.instance.caption,
-            ),
-            const SizedBox(width: 8.0),
-            Text(
-              'kg: ${e.weight}',
-              style: AppTypography.instance.caption,
-            ),
-          ],
-        ));
-      }
-      return list;
-    }
-    return list;
-  }
-
   Widget _buildBody() {
     switch (widget.listTileAppType) {
       case ListTileAppType.exercise:

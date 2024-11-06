@@ -14,7 +14,6 @@ class PlaceholderImg extends ConsumerWidget {
   final StandardRateo rateo;
 
   double _heigthFromWidth() {
-    var a = widthImage / rateo.aspectRatio;
     return widthImage / rateo.aspectRatio;
   }
 

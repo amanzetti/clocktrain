@@ -8,18 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class SheetPage extends ConsumerWidget {
   final String exerciseId;
 
-  SheetPage({required this.exerciseId, super.key});
-
-  // final List<Exercise> mockListExercise = List.generate(10, (index) {
-  //   return Exercise(
-  //     name: "Bench Press $index",
-  //     rep: 3,
-  //     set: 3,
-  //     mediaUrl: 'https://www.youtube.com/watch?v=xfyxEaUWo3M&pp=ygUFc3F1YXQ%3D',
-  //     description:
-  //         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.',
-  //   );
-  // });
+  const SheetPage({required this.exerciseId, super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
