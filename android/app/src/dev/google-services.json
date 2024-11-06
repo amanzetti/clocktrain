@@ -1,36 +1,64 @@
 {
   "project_info": {
-    "project_number": "",
-    "project_id": "",
-    "storage_bucket": ""
+    "project_number": "666227649808",
+    "project_id": "clocktrain-1b941",
+    "storage_bucket": "clocktrain-1b941.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "",
+        "mobilesdk_app_id": "1:666227649808:android:48259a0cc5259bdbde8995",
         "android_client_info": {
-          "package_name": ""
+          "package_name": "com.prk.clocktrain"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": ""
+          "current_key": "AIzaSyCycTZPF4MqAwE6S9UC8r5-VujV90Z4ytg"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:666227649808:android:710c90d00f7e8007de8995",
+        "android_client_info": {
+          "package_name": "com.prk.clocktrain.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCycTZPF4MqAwE6S9UC8r5-VujV90Z4ytg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:666227649808:android:a6d3c4032ebcbcaede8995",
+        "android_client_info": {
+          "package_name": "com.prk.clocktrain.qa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCycTZPF4MqAwE6S9UC8r5-VujV90Z4ytg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
         }
       }
     }

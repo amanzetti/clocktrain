@@ -286,6 +286,7 @@
 				9705A1C41CF9048500538489 /* Embed Frameworks */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
 				1A29AB03AFA538C4A2D895E2 /* [CP] Embed Pods Frameworks */,
+				65602D5C8F97AE638B0EF1FE /* FlutterFire: "flutterfire bundle-service-file" */,
 			);
 			buildRules = (
 			);
@@ -457,6 +458,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if [ \"$CONFIGURATION\" == \"Debug-dev\" ] || [ \"$CONFIGURATION\" == \"Release-dev\" ]; then\n  cp Runner/dev/GoogleService-Info.plist Runner/GoogleService-Info.plist\nelif [ \"$CONFIGURATION\" == \"Debug-mock\" ] || [ \"$CONFIGURATION\" == \"Release-mock\" ]; then\n  cp Runner/mock/GoogleService-Info.plist Runner/GoogleService-Info.plist\nelif [ \"$CONFIGURATION\" == \"Debug-prod\" ] || [ \"$CONFIGURATION\" == \"Release-prod\" ]; then\n  cp Runner/prod/GoogleService-Info.plist Runner/GoogleService-Info.plist\nelif [ \"$CONFIGURATION\" == \"Debug-qa\" ] || [ \"$CONFIGURATION\" == \"Release-qa\" ]; then\n  cp Runner/qa/GoogleService-Info.plist Runner/GoogleService-Info.plist\nfi\n\n";
+		};
+		65602D5C8F97AE638B0EF1FE /* FlutterFire: "flutterfire bundle-service-file" */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "FlutterFire: \"flutterfire bundle-service-file\"";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\n#!/bin/bash\nPATH=${PATH}:$FLUTTER_ROOT/bin:$HOME/.pub-cache/bin\nflutterfire bundle-service-file --plist-destination=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app --build-configuration=${CONFIGURATION} --platform=ios --apple-project-path=${SRCROOT}\n";
 		};
 		9740EEB61CF901F6004384FC /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -732,6 +751,7 @@
 				DEVELOPMENT_TEAM = XYGMKF5KUG;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1021,6 +1041,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XYGMKF5KUG;
+				IPHONEOS_DEPLOYMENT_TARGET = 13;
 				PRODUCT_NAME = Runner;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
@@ -1033,6 +1054,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XYGMKF5KUG;
+				IPHONEOS_DEPLOYMENT_TARGET = 13;
 				PRODUCT_NAME = Runner;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
@@ -1045,6 +1067,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XYGMKF5KUG;
+				IPHONEOS_DEPLOYMENT_TARGET = 13;
 				PRODUCT_NAME = Runner;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
@@ -1055,6 +1078,7 @@
 			baseConfigurationReference = 850E75F6B1BEA49F5CCF2F21 /* Pods-Runner.debug-mock.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = XYGMKF5KUG;
+				IPHONEOS_DEPLOYMENT_TARGET = 13;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Debug-mock";
@@ -1064,6 +1088,7 @@
 			baseConfigurationReference = CB4136CDBB183CB53201F986 /* Pods-Runner.profile-mock.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = XYGMKF5KUG;
+				IPHONEOS_DEPLOYMENT_TARGET = 13;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Profile-mock";
@@ -1073,6 +1098,7 @@
 			baseConfigurationReference = B823541C13F34AF66C707CD6 /* Pods-Runner.release-mock.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = XYGMKF5KUG;
+				IPHONEOS_DEPLOYMENT_TARGET = 13;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Release-mock";
@@ -1082,6 +1108,7 @@
 			baseConfigurationReference = B4F368B192F98FC26DB04A4F /* Pods-Runner.debug-prod.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = XYGMKF5KUG;
+				IPHONEOS_DEPLOYMENT_TARGET = 13;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Debug-prod";
@@ -1091,6 +1118,7 @@
 			baseConfigurationReference = 1D8312AB97B927600990F3A9 /* Pods-Runner.profile-prod.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = XYGMKF5KUG;
+				IPHONEOS_DEPLOYMENT_TARGET = 13;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Profile-prod";
@@ -1100,6 +1128,7 @@
 			baseConfigurationReference = 0D8C89E32D08953FFD9A9646 /* Pods-Runner.release-prod.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = XYGMKF5KUG;
+				IPHONEOS_DEPLOYMENT_TARGET = 13;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Release-prod";
@@ -1109,6 +1138,7 @@
 			baseConfigurationReference = 06EB6DC7A6117E8B84E35FC1 /* Pods-Runner.debug-qa.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = XYGMKF5KUG;
+				IPHONEOS_DEPLOYMENT_TARGET = 13;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Debug-qa";
@@ -1118,6 +1148,7 @@
 			baseConfigurationReference = 52B99533BE5A81CD92DD8E4B /* Pods-Runner.profile-qa.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = XYGMKF5KUG;
+				IPHONEOS_DEPLOYMENT_TARGET = 13;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Profile-qa";
@@ -1127,6 +1158,7 @@
 			baseConfigurationReference = 17EAD2A2C60DFD6C0FCAEBE2 /* Pods-Runner.release-qa.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = XYGMKF5KUG;
+				IPHONEOS_DEPLOYMENT_TARGET = 13;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Release-qa";
@@ -1348,6 +1380,7 @@
 				DEVELOPMENT_TEAM = XYGMKF5KUG;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1371,6 +1404,7 @@
 				DEVELOPMENT_TEAM = XYGMKF5KUG;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
