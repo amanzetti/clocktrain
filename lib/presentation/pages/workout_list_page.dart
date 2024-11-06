@@ -1,5 +1,6 @@
 import 'package:clocktrain/domain/models/workout_model.dart';
 import 'package:clocktrain/domain/providers/user_proivider.dart';
+import 'package:clocktrain/presentation/themes/app_color.dart';
 import 'package:clocktrain/presentation/widgets/molecule/list_tile_app.dart';
 import 'package:clocktrain/utils/enum/standard_rateo_enum.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,8 @@ class WorkoutListPage extends ConsumerWidget {
       error: (error, stackTrace) => Text('Error: $error'),
       data: (user) {
         // ref.read(listProvider.notifier).setList(user.workouts);
-        return Padding(
+        return Container(
+          color: AppColor.instance.surface,
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Column(
             children: [
