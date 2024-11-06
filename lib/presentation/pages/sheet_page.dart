@@ -18,8 +18,9 @@ class SheetPage extends ConsumerWidget {
       loading: () => const Center(child: CircularProgressIndicator()),
       error: (error, stackTrace) => Text('Error: $error'),
       data: (user) {
-        final exerciseList =
-            user.workouts.firstWhere((e) => e.name == exerciseId).exercises;
+        final exerciseList = (user != null)
+            ? user.workouts.firstWhere((e) => e.name == exerciseId).exercises
+            : [];
         return Container(
           color: AppColor.instance.surface,
           padding: const EdgeInsets.symmetric(horizontal: 16),

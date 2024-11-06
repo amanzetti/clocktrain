@@ -1,4 +1,4 @@
-import 'package:clocktrain/domain/models/workout_model.dart';
+import 'package:clocktrain/data/models/workout_model.dart';
 import 'package:clocktrain/domain/providers/user_proivider.dart';
 import 'package:clocktrain/presentation/themes/app_color.dart';
 import 'package:clocktrain/presentation/widgets/molecule/list_tile_app.dart';
@@ -19,6 +19,9 @@ class WorkoutListPage extends ConsumerWidget {
       error: (error, stackTrace) => Text('Error: $error'),
       data: (user) {
         // ref.read(listProvider.notifier).setList(user.workouts);
+        if (user == null) {
+          return const Center(child: Text('User not found'));
+        }
         return Container(
           color: AppColor.instance.surface,
           padding: const EdgeInsets.symmetric(horizontal: 16.0),

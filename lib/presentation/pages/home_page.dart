@@ -1,3 +1,4 @@
+import 'package:clocktrain/data/api/user_api.dart';
 import 'package:clocktrain/domain/providers/user_proivider.dart';
 import 'package:clocktrain/presentation/themes/app_color.dart';
 import 'package:clocktrain/presentation/themes/app_typography.dart';
@@ -15,11 +16,14 @@ class HomePage extends ConsumerWidget {
   static const widthImage = 100.0;
 
   Widget _buildUserSection(BuildContext context, WidgetRef ref) {
-    final userAsyncValue = ref.watch(userProvider('1'));
+    final userAsyncValue = ref.watch(userProvider('user123'));
     return userAsyncValue.when(
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (error, stackTrace) => Text('Error: $error'),
         data: (user) {
+          if (user == null) {
+            return const Center(child: Text('User not found'));
+          }
           return SizedBox(
             height: widthImage.heightFromWidth(StandardRateo.ratio_9_16),
             width: context.mq.size.width,
@@ -77,12 +81,23 @@ class HomePage extends ConsumerWidget {
   Widget _buildProgressionCard(BuildContext context) {
     return Card(
       child: SizedBox(
-        height: 100,
+        height: 200,
         width: context.mq.size.width,
-        child: const Column(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('PROGRESSION'),
+            const Text('PROGRESSION'),
+            ElevatedButton(
+                onPressed: () {
+                  UserApi().createMockUser();
+                },
+                child: const Text('create mock user')),
+            ElevatedButton(
+                onPressed: () async {
+                  var a = await UserApi().getUserById('user123');
+                  print(a);
+                },
+                child: const Text('get mock user'))
           ],
         ),
       ),

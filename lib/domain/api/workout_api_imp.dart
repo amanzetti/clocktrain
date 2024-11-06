@@ -2,7 +2,7 @@ import 'package:clocktrain/domain/api/interface/workout_api_interface.dart';
 import 'package:clocktrain/domain/models/exercise_model.dart';
 import 'package:clocktrain/domain/models/rep_model.dart';
 import 'package:clocktrain/domain/models/set_model.dart';
-import 'package:clocktrain/domain/models/workout_model.dart';
+import 'package:clocktrain/data/models/workout_model.dart';
 
 class WorkoutApiImp implements WorkoutApiInterface{
   @override

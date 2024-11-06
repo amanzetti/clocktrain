@@ -22,3 +22,9 @@ This is the library installed in project.
 ```console
 dart run flutter_flavorizr
 ```
+```console
+chmod +x flutterfire_config.sh
+```
+```console
+./flutterfire_config.sh
+```
