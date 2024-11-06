@@ -1,3 +1,4 @@
+import 'package:clocktrain/presentation/themes/app_color.dart';
 import 'package:clocktrain/presentation/widgets/organisms/main_app_bar.dart';
 import 'package:clocktrain/presentation/widgets/organisms/main_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';

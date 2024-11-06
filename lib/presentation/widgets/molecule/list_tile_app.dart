@@ -1,4 +1,3 @@
-import 'package:clocktrain/domain/models/rep_model.dart';
 import 'package:clocktrain/domain/providers/ui/edit_provider.dart';
 import 'package:clocktrain/domain/providers/ui/main_page_params_provider.dart';
 import 'package:clocktrain/presentation/routes/path.dart';
@@ -40,7 +39,6 @@ class ListTileApp<T extends ObjectT> extends ConsumerStatefulWidget {
     required this.mediaUrl,
     required this.listTileAppType,
     this.rep,
-    this.reps,
     this.set,
     this.padding,
   });
@@ -51,7 +49,6 @@ class ListTileApp<T extends ObjectT> extends ConsumerStatefulWidget {
   final StandardRateo rateo;
   final String mediaUrl;
   final int? rep;
-  final List<Rep>? reps;
   final int? set;
   final ListTileAppType listTileAppType;
 
@@ -113,40 +110,25 @@ class _ListTileAppState<T extends ObjectT>
     switch (widget.listTileAppType) {
       case ListTileAppType.exercise:
         final bool edit = ref.watch(editProvider);
-        return Expanded(
-          child: Row(
-            children: [
-              Expanded(
-                child: Column(
-                  children: [
-                    Flexible(
-                      child: TextFiledExerciseTile(
-                        controller: setController,
-                        enabled: edit,
-                        padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                      ),
-                    ),
-                    Text("SET", style: AppTypography().caption),
-                  ],
-                ),
+        return Row(
+          children: [
+            Text("REP", style: AppTypography().caption),
+            Flexible(
+              child: TextFiledExerciseTile(
+                controller: repController,
+                enabled: edit,
+                padding: const EdgeInsets.symmetric(horizontal: 4.0),
               ),
-              Expanded(
-                child: Column(
-                  children: _generateReps(),
-                  // [
-                  //   Text("REP", style: AppTypography().caption),
-                  //   Flexible(
-                  //     child: TextFiledExerciseTile(
-                  //       controller: repController,
-                  //       enabled: edit,
-                  //       padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                  //     ),
-                  //   ),
-                  // ],
-                ),
+            ),
+            Text("SET", style: AppTypography().caption),
+            Flexible(
+              child: TextFiledExerciseTile(
+                controller: setController,
+                enabled: edit,
+                padding: const EdgeInsets.symmetric(horizontal: 4.0),
               ),
-            ],
-          ),
+            ),
+          ],
         );
       case ListTileAppType.workout:
         return Expanded(
