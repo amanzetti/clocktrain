@@ -1,4 +1,6 @@
 import 'package:clocktrain/domain/providers/user_proivider.dart';
+import 'package:clocktrain/presentation/app.dart';
+import 'package:clocktrain/presentation/themes/app_color.dart';
 import 'package:clocktrain/presentation/themes/app_typography.dart';
 import 'package:clocktrain/presentation/widgets/molecule/placeholder_img.dart';
 import 'package:clocktrain/utils/enum/standard_rateo_enum.dart';
@@ -90,7 +92,8 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Padding(
+    return Container(
+      color: AppColor.instance.surface,
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Column(
         children: [

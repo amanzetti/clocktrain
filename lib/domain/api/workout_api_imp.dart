@@ -18,7 +18,7 @@ class WorkoutApiImp implements WorkoutApiInterface{
           id: '1',
           name: 'Exercise 1',
           description: 'Description of exercise 1',
-          duration: const Duration(minutes: 10), 
+          duration: Duration(minutes: 10), 
           targetMuscle: '', 
           videoUrl: 'https://www.youtube.com/watch?v=xfyxEaUWo3M&pp=ygUFc3F1YXQ%3D',
           sets: [
@@ -27,7 +27,7 @@ class WorkoutApiImp implements WorkoutApiInterface{
               reps: [
                 Rep(
                   repNumber: 1, 
-                  restTime: const Duration(seconds: 30), 
+                  restTime: Duration(seconds: 30), 
                   weight: 10
                 ),
               ]
