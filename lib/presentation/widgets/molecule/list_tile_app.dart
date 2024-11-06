@@ -93,12 +93,12 @@ class _ListTileAppState<T extends ObjectT>
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
-              'rep: ' + e.repNumber.toString(),
+              'rep: ${e.repNumber}',
               style: AppTypography.instance.caption,
             ),
             const SizedBox(width: 8.0),
             Text(
-              'kg: ' + e.weight.toString(),
+              'kg: ${e.weight}',
               style: AppTypography.instance.caption,
             ),
           ],

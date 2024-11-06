@@ -1,6 +1,4 @@
-import 'package:clocktrain/presentation/themes/app_color.dart';
 import 'package:clocktrain/utils/enum/standard_rateo_enum.dart';
-import 'package:clocktrain/utils/ext/standard_rateo_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -67,7 +65,7 @@ class _MiniYoutubePlayerState extends State<MiniYoutubePlayer> {
             onPressed: () {
               _toggleFullScreen();
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.fullscreen,
               color: Colors.white,
             ))
@@ -75,42 +73,3 @@ class _MiniYoutubePlayerState extends State<MiniYoutubePlayer> {
     );
   }
 }
-
-
- // SizedBox(
-    //   height: _heigthFromWidth(),
-    //   width: widget.widthVideo,
-    //   child: Stack(
-    //     alignment: Alignment.center,
-    //     children: [
-    //       YoutubePlayer(
-    //         controller: _controller,
-    //         showVideoProgressIndicator: false,
-    //         aspectRatio: widget.rateo.aspectRatio,
-    //         width: widget.widthVideo,
-    //         actionsPadding: const EdgeInsets.all(0),
-
-    //         // progressColors: ProgressBarColors(
-    //         //   playedColor: colors.primary,
-    //         //   handleColor: colors.primaryLight,
-    //         //   bufferedColor: colors.primary.withOpacity(0.5),
-    //         // ),
-    //       ),
-    //       // Positioned(
-    //       //   child: IconButton(
-    //       //     icon: Icon(
-    //       //       _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
-    //       //       color: colors.textOnPrimary,
-    //       //     ),
-    //       //     onPressed: () {
-    //       //       setState(() {
-    //       //         _controller.value.isPlaying
-    //       //             ? _controller.pause()
-    //       //             : _controller.play();
-    //       //       });
-    //       //     },
-    //       //   ),
-    //       // ),
-    //     ],
-    //   ),
-    // );
