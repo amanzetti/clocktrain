@@ -87,17 +87,6 @@ class HomePage extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text('PROGRESSION'),
-            ElevatedButton(
-                onPressed: () {
-                  UserApi().createMockUser();
-                },
-                child: const Text('create mock user')),
-            ElevatedButton(
-                onPressed: () async {
-                  var a = await UserApi().getUserById('user123');
-                  print(a);
-                },
-                child: const Text('get mock user'))
           ],
         ),
       ),

@@ -1,6 +1,8 @@
-import 'package:clocktrain/domain/providers/ui/edit_provider.dart';
 import 'package:clocktrain/domain/providers/ui/main_page_params_provider.dart';
+import 'package:clocktrain/presentation/routes/path.dart';
 import 'package:clocktrain/presentation/themes/app_asset.dart';
+import 'package:clocktrain/presentation/widgets/atoms/circle_button.dart';
+import 'package:clocktrain/utils/ext/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -24,14 +26,9 @@ class _MainAppBarState extends ConsumerState<MainAppBar> {
         icon: AppAsset.arrowBack,
         onPressed: () {
           context.pop();
-          switch (GoRouter.of(context)
-              .routerDelegate
-              .currentConfiguration
-              .fullPath) {
-            case '/sheet_list_page':
-              ref
-                  .read(mainPageParamsProvider.notifier)
-                  .update((state) => MainPageParams(title: 'Sheet'));
+          switch (context.currentRoute) {
+            case AppPath.sheetListPage:
+              ref.read(mainAppStateProvider.notifier).updateTitle('Sheet');
               break;
             case '/workout_page':
               break;
@@ -45,29 +42,17 @@ class _MainAppBarState extends ConsumerState<MainAppBar> {
   }
 
   List<Widget>? _buildActions(BuildContext context) {
-    final currentPath =
-        GoRouter.of(context).routerDelegate.currentConfiguration.fullPath;
-
-    switch (currentPath) {
-      case '/sheet_list_page/sheet/:exerciseId':
-        return [
-          IconButton(
-            icon: (!ref.watch(editProvider)) ? AppAsset.edit : AppAsset.disable,
-            onPressed: () {
-              print('before ${ref.watch(editProvider)}');
-              ref.read(editProvider.notifier).update((state) => !state);
-              print('after  ${ref.watch(editProvider)}');
-            },
-          ),
-        ];
-      default:
-        return null;
-    }
+    List<Widget> actions = [];
+    actions.add(CircleButton(
+        child: AppAsset.account,
+        onTap: () => context.goAndUpdateTitle(AppPath.profilePage,
+            ref: ref, newTitle: 'Account')));
+    return actions;
   }
 
   @override
   Widget build(BuildContext context) {
-    final params = ref.watch(mainPageParamsProvider);
+    final params = ref.watch(mainAppStateProvider);
     return AppBar(
       title: Text(
         params.title,

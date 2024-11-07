@@ -19,7 +19,7 @@ class App extends ConsumerWidget {
       themeMode: themeMode,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      routerConfig: routers,
+      routerConfig: AppRouter().routers,
     );
   }
 }

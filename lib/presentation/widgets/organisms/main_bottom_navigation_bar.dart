@@ -21,11 +21,9 @@ class MainBottomNavBar extends ConsumerWidget {
       unselectedItemColor: colors.textSecondary, // Colore non selezionato
       onTap: (value) => {
         ref.read(indexBottomNavbarProvider.notifier).update((state) => value),
-        ref
-            .read(mainPageParamsProvider.notifier)
-            .update((state) => MainPageParams(
-                  title: AppPath.titleMainPage[value],
-                )),
+        ref.read(mainAppStateProvider.notifier).updateTitle(
+              AppPath.titleMainPage[value],
+            ),
         navigationShell.goBranch(value),
       },
       items: const [

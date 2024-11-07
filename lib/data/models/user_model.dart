@@ -89,4 +89,33 @@ class User {
       'darkModeEnabled': darkModeEnabled,
     };
   }
+
+  User copyWith({
+    String? name,
+    String? surname,
+    String? username,
+    String? email,
+    int? height,
+    double? weight,
+    String? goal,
+    String? profileImageUrl,
+    bool? darkModeEnabled,
+  }) {
+    return User(
+      id: this.id,
+      name: name ?? this.name,
+      surname: surname ?? this.surname,
+      username: username ?? this.username,
+      email: email ?? this.email,
+      height: height ?? this.height,
+      weight: weight ?? this.weight,
+      birthDate: this.birthDate,
+      userRole: this.userRole,
+      goal: goal ?? this.goal,
+      profileImageUrl: profileImageUrl ?? this.profileImageUrl,
+      workouts: this.workouts,
+      darkModeEnabled: darkModeEnabled ?? this.darkModeEnabled,
+      createdAt: this.createdAt,
+    );
+  }
 }

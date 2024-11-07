@@ -11,4 +11,5 @@ class AppAsset {
   static const arrowNext = Icon(Icons.arrow_forward_ios);
   static const edit = Icon(Icons.edit);
   static const disable = Icon(Icons.disabled_by_default);
+  static const account = Icon(Icons.account_circle);
 }

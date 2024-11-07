@@ -166,11 +166,9 @@ class _ListTileAppState<T extends ObjectT>
                     ),
                   ),
                   onPressed: () {
-                    ref
-                        .read(mainPageParamsProvider.notifier)
-                        .update((state) => MainPageParams(
-                              title: widget.object.name,
-                            ));
+                    ref.read(mainAppStateProvider.notifier).updateTitle(
+                          widget.object.name,
+                        );
                     context.go(
                         '/sheet_list_page${AppPath.sheetPageWithId(widget.object.name)}');
                   },
