@@ -20,13 +20,14 @@ User _$UserFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$User {
-// required String id,
+  String? get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get surname => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   int get height => throw _privateConstructorUsedError;
   double get weight => throw _privateConstructorUsedError;
+  @TimestampSerializer()
   DateTime get birthDate => throw _privateConstructorUsedError;
   String get userRole => throw _privateConstructorUsedError;
   String get goal => throw _privateConstructorUsedError;
@@ -49,13 +50,14 @@ abstract class $UserCopyWith<$Res> {
       _$UserCopyWithImpl<$Res, User>;
   @useResult
   $Res call(
-      {String name,
+      {String? id,
+      String name,
       String surname,
       String username,
       String email,
       int height,
       double weight,
-      DateTime birthDate,
+      @TimestampSerializer() DateTime birthDate,
       String userRole,
       String goal,
       String? profileImageUrl,
@@ -77,6 +79,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = null,
     Object? surname = null,
     Object? username = null,
@@ -92,6 +95,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? createdAt = null,
   }) {
     return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -156,13 +163,14 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String name,
+      {String? id,
+      String name,
       String surname,
       String username,
       String email,
       int height,
       double weight,
-      DateTime birthDate,
+      @TimestampSerializer() DateTime birthDate,
       String userRole,
       String goal,
       String? profileImageUrl,
@@ -181,6 +189,7 @@ class __$$UserImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = null,
     Object? surname = null,
     Object? username = null,
@@ -196,6 +205,10 @@ class __$$UserImplCopyWithImpl<$Res>
     Object? createdAt = null,
   }) {
     return _then(_$UserImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -256,13 +269,14 @@ class __$$UserImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$UserImpl implements _User {
   const _$UserImpl(
-      {required this.name,
+      {this.id,
+      required this.name,
       required this.surname,
       required this.username,
       required this.email,
       required this.height,
       required this.weight,
-      required this.birthDate,
+      @TimestampSerializer() required this.birthDate,
       required this.userRole,
       required this.goal,
       this.profileImageUrl,
@@ -274,7 +288,8 @@ class _$UserImpl implements _User {
   factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserImplFromJson(json);
 
-// required String id,
+  @override
+  final String? id;
   @override
   final String name;
   @override
@@ -288,6 +303,7 @@ class _$UserImpl implements _User {
   @override
   final double weight;
   @override
+  @TimestampSerializer()
   final DateTime birthDate;
   @override
   final String userRole;
@@ -315,7 +331,7 @@ class _$UserImpl implements _User {
 
   @override
   String toString() {
-    return 'User(name: $name, surname: $surname, username: $username, email: $email, height: $height, weight: $weight, birthDate: $birthDate, userRole: $userRole, goal: $goal, profileImageUrl: $profileImageUrl, workouts: $workouts, darkModeEnabled: $darkModeEnabled, createdAt: $createdAt)';
+    return 'User(id: $id, name: $name, surname: $surname, username: $username, email: $email, height: $height, weight: $weight, birthDate: $birthDate, userRole: $userRole, goal: $goal, profileImageUrl: $profileImageUrl, workouts: $workouts, darkModeEnabled: $darkModeEnabled, createdAt: $createdAt)';
   }
 
   @override
@@ -323,6 +339,7 @@ class _$UserImpl implements _User {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UserImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.surname, surname) || other.surname == surname) &&
             (identical(other.username, username) ||
@@ -348,6 +365,7 @@ class _$UserImpl implements _User {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      id,
       name,
       surname,
       username,
@@ -378,13 +396,14 @@ class _$UserImpl implements _User {
 
 abstract class _User implements User {
   const factory _User(
-      {required final String name,
+      {final String? id,
+      required final String name,
       required final String surname,
       required final String username,
       required final String email,
       required final int height,
       required final double weight,
-      required final DateTime birthDate,
+      @TimestampSerializer() required final DateTime birthDate,
       required final String userRole,
       required final String goal,
       final String? profileImageUrl,
@@ -394,7 +413,9 @@ abstract class _User implements User {
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
 
-  @override // required String id,
+  @override
+  String? get id;
+  @override
   String get name;
   @override
   String get surname;
@@ -407,6 +428,7 @@ abstract class _User implements User {
   @override
   double get weight;
   @override
+  @TimestampSerializer()
   DateTime get birthDate;
   @override
   String get userRole;

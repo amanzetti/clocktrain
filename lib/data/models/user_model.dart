@@ -1,4 +1,4 @@
-import 'package:clocktrain/data/models/time.dart';
+import 'package:clocktrain/data/models/timestamp_serializer.dart';
 import 'package:clocktrain/data/models/workout_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -19,7 +19,7 @@ enum UserRole {
 @freezed
 class User with _$User {
   const factory User({
-    // required String id,
+    String? id,
     required String name,
     required String surname,
     required String username,

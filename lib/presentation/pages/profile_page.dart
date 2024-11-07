@@ -89,73 +89,74 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-    final userAsyncValue = ref.watch(userProvider(widget.userId));
+    // Otteniamo lo stato dell'utente
+    final userState = ref.watch(userProvider);
 
-    return userAsyncValue.when(
-      data: (user) {
-        if (user != null) {
-          _populateFields(user);
-          return Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Form(
-              key: _formKey,
-              child: ListView(
-                children: [
-                  TextFormField(
-                    controller: _nameController,
-                    decoration: const InputDecoration(labelText: 'Nome'),
-                    validator: (value) => value == null || value.isEmpty
-                        ? 'Campo obbligatorio'
-                        : null,
-                  ),
-                  TextFormField(
-                    controller: _surnameController,
-                    decoration: const InputDecoration(labelText: 'Cognome'),
-                    validator: (value) => value == null || value.isEmpty
-                        ? 'Campo obbligatorio'
-                        : null,
-                  ),
-                  TextFormField(
-                    controller: _usernameController,
-                    decoration: const InputDecoration(labelText: 'Username'),
-                  ),
-                  TextFormField(
-                    controller: _emailController,
-                    decoration: const InputDecoration(labelText: 'Email'),
-                    validator: (value) => value == null || value.isEmpty
-                        ? 'Campo obbligatorio'
-                        : null,
-                  ),
-                  TextFormField(
-                    controller: _heightController,
-                    decoration:
-                        const InputDecoration(labelText: 'Altezza (cm)'),
-                    keyboardType: TextInputType.number,
-                  ),
-                  TextFormField(
-                    controller: _weightController,
-                    decoration: const InputDecoration(labelText: 'Peso (kg)'),
-                    keyboardType: TextInputType.number,
-                  ),
-                  TextFormField(
-                    controller: _goalController,
-                    decoration: const InputDecoration(labelText: 'Obiettivo'),
-                  ),
-                  const SizedBox(height: 20),
-                  ElevatedButton(
-                    onPressed: () => _saveChanges(user),
-                    child: const Text('Salva modifiche'),
-                  ),
-                ],
-              ),
+    // // Verifica se la lista è vuota e, se sì, richiama getUserById
+    // if (userState.isEmpty) {
+    //   ref.read(userProvider.notifier).getUserById('user123');
+    // }
+
+    // // Mostra l'indicatore di caricamento finché non ci sono dati
+    // if (userState.isEmpty) {
+    //   return Scaffold(
+    //     body: Center(child: CircularProgressIndicator()),
+    //   );
+    // }
+
+    final user = userState.first;
+    _populateFields(user);
+
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Form(
+        key: _formKey,
+        child: ListView(
+          children: [
+            TextFormField(
+              controller: _nameController,
+              decoration: const InputDecoration(labelText: 'Nome'),
+              validator: (value) =>
+                  value == null || value.isEmpty ? 'Campo obbligatorio' : null,
             ),
-          );
-        } else {
-          return const Center(child: Text('Utente non trovato'));
-        }
-      },
-      loading: () => const Center(child: CircularProgressIndicator()),
-      error: (e, stack) => Center(child: Text('Errore: $e')),
+            TextFormField(
+              controller: _surnameController,
+              decoration: const InputDecoration(labelText: 'Cognome'),
+              validator: (value) =>
+                  value == null || value.isEmpty ? 'Campo obbligatorio' : null,
+            ),
+            TextFormField(
+              controller: _usernameController,
+              decoration: const InputDecoration(labelText: 'Username'),
+            ),
+            TextFormField(
+              controller: _emailController,
+              decoration: const InputDecoration(labelText: 'Email'),
+              validator: (value) =>
+                  value == null || value.isEmpty ? 'Campo obbligatorio' : null,
+            ),
+            TextFormField(
+              controller: _heightController,
+              decoration: const InputDecoration(labelText: 'Altezza (cm)'),
+              keyboardType: TextInputType.number,
+            ),
+            TextFormField(
+              controller: _weightController,
+              decoration: const InputDecoration(labelText: 'Peso (kg)'),
+              keyboardType: TextInputType.number,
+            ),
+            TextFormField(
+              controller: _goalController,
+              decoration: const InputDecoration(labelText: 'Obiettivo'),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () => _saveChanges(user),
+              child: const Text('Salva modifiche'),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

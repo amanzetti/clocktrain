@@ -9,6 +9,7 @@ part 'set_model.g.dart';
 @freezed
 class Set with _$Set {
   const factory Set({
+    String? id,
     required int setNumber, // Numero della serie
     @Default([]) List<Rep> reps, // Lista di ripetizioni (opzionale, default vuoto)
   }) = _Set;

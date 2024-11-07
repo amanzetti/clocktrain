@@ -20,6 +20,7 @@ Set _$SetFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Set {
+  String? get id => throw _privateConstructorUsedError;
   int get setNumber => throw _privateConstructorUsedError; // Numero della serie
   List<Rep> get reps => throw _privateConstructorUsedError;
 
@@ -33,7 +34,7 @@ abstract class $SetCopyWith<$Res> {
   factory $SetCopyWith(Set value, $Res Function(Set) then) =
       _$SetCopyWithImpl<$Res, Set>;
   @useResult
-  $Res call({int setNumber, List<Rep> reps});
+  $Res call({String? id, int setNumber, List<Rep> reps});
 }
 
 /// @nodoc
@@ -48,10 +49,15 @@ class _$SetCopyWithImpl<$Res, $Val extends Set> implements $SetCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? setNumber = null,
     Object? reps = null,
   }) {
     return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       setNumber: null == setNumber
           ? _value.setNumber
           : setNumber // ignore: cast_nullable_to_non_nullable
@@ -70,7 +76,7 @@ abstract class _$$SetImplCopyWith<$Res> implements $SetCopyWith<$Res> {
       __$$SetImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int setNumber, List<Rep> reps});
+  $Res call({String? id, int setNumber, List<Rep> reps});
 }
 
 /// @nodoc
@@ -82,10 +88,15 @@ class __$$SetImplCopyWithImpl<$Res> extends _$SetCopyWithImpl<$Res, _$SetImpl>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? setNumber = null,
     Object? reps = null,
   }) {
     return _then(_$SetImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       setNumber: null == setNumber
           ? _value.setNumber
           : setNumber // ignore: cast_nullable_to_non_nullable
@@ -101,12 +112,15 @@ class __$$SetImplCopyWithImpl<$Res> extends _$SetCopyWithImpl<$Res, _$SetImpl>
 /// @nodoc
 @JsonSerializable()
 class _$SetImpl implements _Set {
-  const _$SetImpl({required this.setNumber, final List<Rep> reps = const []})
+  const _$SetImpl(
+      {this.id, required this.setNumber, final List<Rep> reps = const []})
       : _reps = reps;
 
   factory _$SetImpl.fromJson(Map<String, dynamic> json) =>
       _$$SetImplFromJson(json);
 
+  @override
+  final String? id;
   @override
   final int setNumber;
 // Numero della serie
@@ -122,7 +136,7 @@ class _$SetImpl implements _Set {
 
   @override
   String toString() {
-    return 'Set(setNumber: $setNumber, reps: $reps)';
+    return 'Set(id: $id, setNumber: $setNumber, reps: $reps)';
   }
 
   @override
@@ -130,6 +144,7 @@ class _$SetImpl implements _Set {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SetImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.setNumber, setNumber) ||
                 other.setNumber == setNumber) &&
             const DeepCollectionEquality().equals(other._reps, _reps));
@@ -138,7 +153,7 @@ class _$SetImpl implements _Set {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, setNumber, const DeepCollectionEquality().hash(_reps));
+      runtimeType, id, setNumber, const DeepCollectionEquality().hash(_reps));
 
   @JsonKey(ignore: true)
   @override
@@ -155,11 +170,15 @@ class _$SetImpl implements _Set {
 }
 
 abstract class _Set implements Set {
-  const factory _Set({required final int setNumber, final List<Rep> reps}) =
-      _$SetImpl;
+  const factory _Set(
+      {final String? id,
+      required final int setNumber,
+      final List<Rep> reps}) = _$SetImpl;
 
   factory _Set.fromJson(Map<String, dynamic> json) = _$SetImpl.fromJson;
 
+  @override
+  String? get id;
   @override
   int get setNumber;
   @override // Numero della serie

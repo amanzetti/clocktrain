@@ -20,6 +20,7 @@ Rep _$RepFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Rep {
+  String? get id => throw _privateConstructorUsedError;
   int get repNumber =>
       throw _privateConstructorUsedError; // Numero di ripetizioni
   Duration get restTime =>
@@ -36,7 +37,7 @@ abstract class $RepCopyWith<$Res> {
   factory $RepCopyWith(Rep value, $Res Function(Rep) then) =
       _$RepCopyWithImpl<$Res, Rep>;
   @useResult
-  $Res call({int repNumber, Duration restTime, int? weight});
+  $Res call({String? id, int repNumber, Duration restTime, int? weight});
 }
 
 /// @nodoc
@@ -51,11 +52,16 @@ class _$RepCopyWithImpl<$Res, $Val extends Rep> implements $RepCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? repNumber = null,
     Object? restTime = null,
     Object? weight = freezed,
   }) {
     return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       repNumber: null == repNumber
           ? _value.repNumber
           : repNumber // ignore: cast_nullable_to_non_nullable
@@ -78,7 +84,7 @@ abstract class _$$RepImplCopyWith<$Res> implements $RepCopyWith<$Res> {
       __$$RepImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int repNumber, Duration restTime, int? weight});
+  $Res call({String? id, int repNumber, Duration restTime, int? weight});
 }
 
 /// @nodoc
@@ -90,11 +96,16 @@ class __$$RepImplCopyWithImpl<$Res> extends _$RepCopyWithImpl<$Res, _$RepImpl>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? repNumber = null,
     Object? restTime = null,
     Object? weight = freezed,
   }) {
     return _then(_$RepImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       repNumber: null == repNumber
           ? _value.repNumber
           : repNumber // ignore: cast_nullable_to_non_nullable
@@ -115,11 +126,13 @@ class __$$RepImplCopyWithImpl<$Res> extends _$RepCopyWithImpl<$Res, _$RepImpl>
 @JsonSerializable()
 class _$RepImpl implements _Rep {
   const _$RepImpl(
-      {required this.repNumber, required this.restTime, this.weight});
+      {this.id, required this.repNumber, required this.restTime, this.weight});
 
   factory _$RepImpl.fromJson(Map<String, dynamic> json) =>
       _$$RepImplFromJson(json);
 
+  @override
+  final String? id;
   @override
   final int repNumber;
 // Numero di ripetizioni
@@ -131,7 +144,7 @@ class _$RepImpl implements _Rep {
 
   @override
   String toString() {
-    return 'Rep(repNumber: $repNumber, restTime: $restTime, weight: $weight)';
+    return 'Rep(id: $id, repNumber: $repNumber, restTime: $restTime, weight: $weight)';
   }
 
   @override
@@ -139,6 +152,7 @@ class _$RepImpl implements _Rep {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RepImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.repNumber, repNumber) ||
                 other.repNumber == repNumber) &&
             (identical(other.restTime, restTime) ||
@@ -148,7 +162,7 @@ class _$RepImpl implements _Rep {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, repNumber, restTime, weight);
+  int get hashCode => Object.hash(runtimeType, id, repNumber, restTime, weight);
 
   @JsonKey(ignore: true)
   @override
@@ -166,12 +180,15 @@ class _$RepImpl implements _Rep {
 
 abstract class _Rep implements Rep {
   const factory _Rep(
-      {required final int repNumber,
+      {final String? id,
+      required final int repNumber,
       required final Duration restTime,
       final int? weight}) = _$RepImpl;
 
   factory _Rep.fromJson(Map<String, dynamic> json) = _$RepImpl.fromJson;
 
+  @override
+  String? get id;
   @override
   int get repNumber;
   @override // Numero di ripetizioni

@@ -7,6 +7,7 @@ part of 'user_model.dart';
 // **************************************************************************
 
 _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
+      id: json['id'] as String?,
       name: json['name'] as String,
       surname: json['surname'] as String,
       username: json['username'] as String,
@@ -14,7 +15,7 @@ _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
       height: (json['height'] as num).toInt(),
       weight: (json['weight'] as num).toDouble(),
       birthDate: const TimestampSerializer().fromJson(json['birthDate']),
-      userRole: "json['userRole'] as String",
+      userRole: json['userRole'] as String,
       goal: json['goal'] as String,
       profileImageUrl: json['profileImageUrl'] as String?,
       workouts: (json['workouts'] as List<dynamic>?)
@@ -27,13 +28,14 @@ _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
 
 Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'name': instance.name,
       'surname': instance.surname,
       'username': instance.username,
       'email': instance.email,
       'height': instance.height,
       'weight': instance.weight,
-      'birthDate': instance.birthDate.toIso8601String(),
+      'birthDate': const TimestampSerializer().toJson(instance.birthDate),
       'userRole': instance.userRole,
       'goal': instance.goal,
       'profileImageUrl': instance.profileImageUrl,

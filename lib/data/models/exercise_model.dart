@@ -9,7 +9,7 @@ part 'exercise_model.g.dart';
 @freezed
 class Exercise with _$Exercise implements ObjectT {
   const factory Exercise({
-    // required String id,
+    String? id,
     @override required String name,
     @override String? description, // Descrizione opzionale dell'esercizio
     @override String? mediaUrl, // URL immagine dell'esercizio

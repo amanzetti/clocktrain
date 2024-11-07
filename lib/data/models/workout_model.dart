@@ -1,5 +1,5 @@
 import 'package:clocktrain/data/models/exercise_model.dart';
-import 'package:clocktrain/data/models/time.dart';
+import 'package:clocktrain/data/models/timestamp_serializer.dart';
 import 'package:clocktrain/presentation/widgets/molecule/list_tile_app.dart';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -10,7 +10,7 @@ part 'workout_model.g.dart';
 @freezed
 class Workout with _$Workout implements ObjectT {
   const factory Workout({
-    // required String id,
+    String? id,
     @Default([]) List<Exercise> exercises, // Lista di esercizi associati
     @TimestampSerializer() required DateTime createdAt, // Data di creazione
     @override required String name,

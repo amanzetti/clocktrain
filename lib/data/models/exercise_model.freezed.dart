@@ -20,7 +20,7 @@ Exercise _$ExerciseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Exercise {
-// required String id,
+  String? get id => throw _privateConstructorUsedError;
   @override
   String get name => throw _privateConstructorUsedError;
   @override
@@ -48,7 +48,8 @@ abstract class $ExerciseCopyWith<$Res> {
       _$ExerciseCopyWithImpl<$Res, Exercise>;
   @useResult
   $Res call(
-      {@override String name,
+      {String? id,
+      @override String name,
       @override String? description,
       @override String? mediaUrl,
       String targetMuscle,
@@ -70,6 +71,7 @@ class _$ExerciseCopyWithImpl<$Res, $Val extends Exercise>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = null,
     Object? description = freezed,
     Object? mediaUrl = freezed,
@@ -79,6 +81,10 @@ class _$ExerciseCopyWithImpl<$Res, $Val extends Exercise>
     Object? sets = null,
   }) {
     return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -120,7 +126,8 @@ abstract class _$$ExerciseImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@override String name,
+      {String? id,
+      @override String name,
       @override String? description,
       @override String? mediaUrl,
       String targetMuscle,
@@ -140,6 +147,7 @@ class __$$ExerciseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = null,
     Object? description = freezed,
     Object? mediaUrl = freezed,
@@ -149,6 +157,10 @@ class __$$ExerciseImplCopyWithImpl<$Res>
     Object? sets = null,
   }) {
     return _then(_$ExerciseImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -185,7 +197,8 @@ class __$$ExerciseImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ExerciseImpl implements _Exercise {
   const _$ExerciseImpl(
-      {@override required this.name,
+      {this.id,
+      @override required this.name,
       @override this.description,
       @override this.mediaUrl,
       required this.targetMuscle,
@@ -197,7 +210,8 @@ class _$ExerciseImpl implements _Exercise {
   factory _$ExerciseImpl.fromJson(Map<String, dynamic> json) =>
       _$$ExerciseImplFromJson(json);
 
-// required String id,
+  @override
+  final String? id;
   @override
   @override
   final String name;
@@ -229,7 +243,7 @@ class _$ExerciseImpl implements _Exercise {
 
   @override
   String toString() {
-    return 'Exercise(name: $name, description: $description, mediaUrl: $mediaUrl, targetMuscle: $targetMuscle, duration: $duration, videoUrl: $videoUrl, sets: $sets)';
+    return 'Exercise(id: $id, name: $name, description: $description, mediaUrl: $mediaUrl, targetMuscle: $targetMuscle, duration: $duration, videoUrl: $videoUrl, sets: $sets)';
   }
 
   @override
@@ -237,6 +251,7 @@ class _$ExerciseImpl implements _Exercise {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ExerciseImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -255,6 +270,7 @@ class _$ExerciseImpl implements _Exercise {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      id,
       name,
       description,
       mediaUrl,
@@ -279,7 +295,8 @@ class _$ExerciseImpl implements _Exercise {
 
 abstract class _Exercise implements Exercise {
   const factory _Exercise(
-      {@override required final String name,
+      {final String? id,
+      @override required final String name,
       @override final String? description,
       @override final String? mediaUrl,
       required final String targetMuscle,
@@ -290,7 +307,9 @@ abstract class _Exercise implements Exercise {
   factory _Exercise.fromJson(Map<String, dynamic> json) =
       _$ExerciseImpl.fromJson;
 
-  @override // required String id,
+  @override
+  String? get id;
+  @override
   @override
   String get name;
   @override

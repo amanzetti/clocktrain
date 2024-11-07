@@ -6,6 +6,7 @@ part 'rep_model.g.dart';
 @freezed
 class Rep with _$Rep {
   const factory Rep({
+    String? id,
     required int repNumber, // Numero di ripetizioni
     required Duration restTime, // Tempo di riposo tra le ripetizioni
     int? weight, // Peso in kg (opzionale)

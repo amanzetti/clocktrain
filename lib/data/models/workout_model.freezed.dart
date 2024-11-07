@@ -20,7 +20,7 @@ Workout _$WorkoutFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Workout {
-// required String id,
+  String? get id => throw _privateConstructorUsedError;
   List<Exercise> get exercises =>
       throw _privateConstructorUsedError; // Lista di esercizi associati
   @TimestampSerializer()
@@ -44,7 +44,8 @@ abstract class $WorkoutCopyWith<$Res> {
       _$WorkoutCopyWithImpl<$Res, Workout>;
   @useResult
   $Res call(
-      {List<Exercise> exercises,
+      {String? id,
+      List<Exercise> exercises,
       @TimestampSerializer() DateTime createdAt,
       @override String name,
       @override String? description,
@@ -64,6 +65,7 @@ class _$WorkoutCopyWithImpl<$Res, $Val extends Workout>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? exercises = null,
     Object? createdAt = null,
     Object? name = null,
@@ -71,6 +73,10 @@ class _$WorkoutCopyWithImpl<$Res, $Val extends Workout>
     Object? mediaUrl = freezed,
   }) {
     return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       exercises: null == exercises
           ? _value.exercises
           : exercises // ignore: cast_nullable_to_non_nullable
@@ -103,7 +109,8 @@ abstract class _$$WorkoutImplCopyWith<$Res> implements $WorkoutCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {List<Exercise> exercises,
+      {String? id,
+      List<Exercise> exercises,
       @TimestampSerializer() DateTime createdAt,
       @override String name,
       @override String? description,
@@ -121,6 +128,7 @@ class __$$WorkoutImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? exercises = null,
     Object? createdAt = null,
     Object? name = null,
@@ -128,6 +136,10 @@ class __$$WorkoutImplCopyWithImpl<$Res>
     Object? mediaUrl = freezed,
   }) {
     return _then(_$WorkoutImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       exercises: null == exercises
           ? _value._exercises
           : exercises // ignore: cast_nullable_to_non_nullable
@@ -156,7 +168,8 @@ class __$$WorkoutImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$WorkoutImpl implements _Workout {
   const _$WorkoutImpl(
-      {final List<Exercise> exercises = const [],
+      {this.id,
+      final List<Exercise> exercises = const [],
       @TimestampSerializer() required this.createdAt,
       @override required this.name,
       @override this.description,
@@ -166,9 +179,9 @@ class _$WorkoutImpl implements _Workout {
   factory _$WorkoutImpl.fromJson(Map<String, dynamic> json) =>
       _$$WorkoutImplFromJson(json);
 
-// required String id,
+  @override
+  final String? id;
   final List<Exercise> _exercises;
-// required String id,
   @override
   @JsonKey()
   List<Exercise> get exercises {
@@ -194,7 +207,7 @@ class _$WorkoutImpl implements _Workout {
 
   @override
   String toString() {
-    return 'Workout(exercises: $exercises, createdAt: $createdAt, name: $name, description: $description, mediaUrl: $mediaUrl)';
+    return 'Workout(id: $id, exercises: $exercises, createdAt: $createdAt, name: $name, description: $description, mediaUrl: $mediaUrl)';
   }
 
   @override
@@ -202,6 +215,7 @@ class _$WorkoutImpl implements _Workout {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$WorkoutImpl &&
+            (identical(other.id, id) || other.id == id) &&
             const DeepCollectionEquality()
                 .equals(other._exercises, _exercises) &&
             (identical(other.createdAt, createdAt) ||
@@ -217,6 +231,7 @@ class _$WorkoutImpl implements _Workout {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      id,
       const DeepCollectionEquality().hash(_exercises),
       createdAt,
       name,
@@ -239,7 +254,8 @@ class _$WorkoutImpl implements _Workout {
 
 abstract class _Workout implements Workout {
   const factory _Workout(
-      {final List<Exercise> exercises,
+      {final String? id,
+      final List<Exercise> exercises,
       @TimestampSerializer() required final DateTime createdAt,
       @override required final String name,
       @override final String? description,
@@ -247,7 +263,9 @@ abstract class _Workout implements Workout {
 
   factory _Workout.fromJson(Map<String, dynamic> json) = _$WorkoutImpl.fromJson;
 
-  @override // required String id,
+  @override
+  String? get id;
+  @override
   List<Exercise> get exercises;
   @override // Lista di esercizi associati
   @TimestampSerializer()

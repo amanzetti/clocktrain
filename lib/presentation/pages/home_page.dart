@@ -1,3 +1,4 @@
+import 'package:clocktrain/data/models/user_model.dart';
 import 'package:clocktrain/domain/providers/user_proivider.dart';
 import 'package:clocktrain/presentation/themes/app_color.dart';
 import 'package:clocktrain/presentation/themes/app_typography.dart';
@@ -14,67 +15,89 @@ class HomePage extends ConsumerWidget {
 
   static const widthImage = 100.0;
 
-  Widget _buildUserSection(BuildContext context, WidgetRef ref) {
-    final userAsyncValue = ref.watch(userProvider('user123'));
-    return userAsyncValue.when(
-        loading: () => const Center(child: CircularProgressIndicator()),
-        error: (error, stackTrace) => Text('Error: $error'),
-        data: (user) {
-          if (user == null) {
-            return const Center(child: Text('User not found'));
-          }
-          return SizedBox(
-            height: widthImage.heightFromWidth(StandardRateo.ratio_9_16),
-            width: context.mq.size.width,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    // Otteniamo lo stato dell'utente
+    final userState = ref.watch(userProvider);
+    
+    // Verifica se la lista è vuota e, se sì, richiama getUserById
+    if (userState.isEmpty) {
+      ref.read(userProvider.notifier).getUserById('user123');
+    }
+
+    // Mostra l'indicatore di caricamento finché non ci sono dati
+    if (userState.isEmpty) {
+      return Scaffold(
+        body: Center(child: CircularProgressIndicator()),
+      );
+    }
+
+    final user = userState.first;
+
+    return Scaffold(
+      backgroundColor: AppColor.instance.surface,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: Column(
+          children: [
+            _buildUserSection(context, ref, user), // Passiamo l'utente qui
+            _buildProgressionCard(context),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildUserSection(BuildContext context, WidgetRef ref, User user) {
+    return SizedBox(
+      height: widthImage.heightFromWidth(StandardRateo.ratio_9_16),
+      width: context.mq.size.width,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Expanded(
+            flex: 3,
+            child: Row(
               children: [
-                Expanded(
-                  flex: 3,
-                  child: Row(
-                    children: [
-                      Text(
-                        'Profile Overview',
-                        style: AppTypography().titleS,
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  flex: 9,
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const Expanded(
-                          flex: 4,
-                          child: Center(
-                            child: PlaceholderImg(
-                              widthImage: widthImage,
-                              rateo: StandardRateo.ratio_9_16,
-                            ),
-                          )),
-                      Expanded(
-                          flex: 8,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text('${user.name} ${user.surname}'),
-                              Text(user.birthDate.toddMMMyyyyString()),
-                              Text('${user.height} cm'),
-                              Text('${user.weight} kg'),
-                              Text('Goals: ${user.goal}'),
-                              // Text('Recent: ${user.recentStatus}'),
-                              // Text('Recent: ${user.recentDescription}'),
-                            ],
-                          )),
-                    ],
-                  ),
+                Text(
+                  'Profile Overview',
+                  style: AppTypography().titleS,
                 ),
               ],
             ),
-          );
-        });
+          ),
+          Expanded(
+            flex: 9,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Expanded(
+                    flex: 4,
+                    child: Center(
+                      child: PlaceholderImg(
+                        widthImage: widthImage,
+                        rateo: StandardRateo.ratio_9_16,
+                      ),
+                    )),
+                Expanded(
+                    flex: 8,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('${user.name} ${user.surname}'),
+                        Text(user.birthDate.toddMMMyyyyString()),
+                        Text('${user.height} cm'),
+                        Text('${user.weight} kg'),
+                        Text('Goals: ${user.goal}'),
+                      ],
+                    )),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   Widget _buildProgressionCard(BuildContext context) {
@@ -88,20 +111,6 @@ class HomePage extends ConsumerWidget {
             Text('PROGRESSION'),
           ],
         ),
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return Container(
-      color: AppColor.instance.surface,
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Column(
-        children: [
-          _buildUserSection(context, ref),
-          _buildProgressionCard(context),
-        ],
       ),
     );
   }

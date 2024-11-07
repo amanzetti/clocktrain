@@ -29,7 +29,6 @@ class UserApi implements UserRepository {
       final userSnapshot =
           await _api.firestore.collection('users').doc(userId).get();
       if (userSnapshot.exists) {
-        var a = userSnapshot.data();
         return User.fromJson(
             userSnapshot.data()!); // `data()` è già un Map<String, dynamic>
       } else {

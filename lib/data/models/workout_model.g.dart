@@ -8,6 +8,7 @@ part of 'workout_model.dart';
 
 _$WorkoutImpl _$$WorkoutImplFromJson(Map<String, dynamic> json) =>
     _$WorkoutImpl(
+      id: json['id'] as String?,
       exercises: (json['exercises'] as List<dynamic>?)
               ?.map((e) => Exercise.fromJson(e as Map<String, dynamic>))
               .toList() ??
@@ -20,6 +21,7 @@ _$WorkoutImpl _$$WorkoutImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$WorkoutImplToJson(_$WorkoutImpl instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'exercises': instance.exercises,
       'createdAt': const TimestampSerializer().toJson(instance.createdAt),
       'name': instance.name,
