@@ -76,7 +76,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
         await FirebaseFirestore.instance
             .collection('users')
             .doc(widget.userId)
-            .update(updatedUser.toMap());
+            .update(updatedUser.toJson());
 
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Modifiche salvate con successo')),

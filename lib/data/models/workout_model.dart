@@ -1,24 +1,29 @@
-import 'package:clocktrain/domain/models/exercise_model.dart';
+import 'package:clocktrain/data/models/exercise_model.dart';
+import 'package:clocktrain/data/models/time.dart';
 import 'package:clocktrain/presentation/widgets/molecule/list_tile_app.dart';
 
-class Workout implements ObjectT {
-  final String id;
-  @override
-  final String name;
-  @override
-  final String description;
-  @override
-  final String mediaUrl;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  final List<Exercise> exercises; // Lista degli esercizi per il workout
-  final DateTime createdAt;
+part 'workout_model.freezed.dart';
+part 'workout_model.g.dart';
 
-  Workout({
-    required this.id,
-    required this.name,
-    required this.description,
-    required this.mediaUrl,
-    this.exercises = const [],
-    required this.createdAt,
-  });
+@freezed
+class Workout with _$Workout implements ObjectT {
+  const factory Workout({
+    // required String id,
+    @Default([]) List<Exercise> exercises, // Lista di esercizi associati
+    @TimestampSerializer() required DateTime createdAt, // Data di creazione
+    @override required String name,
+    @override String? description,
+    @override String? mediaUrl,
+  }) = _Workout;
+
+  // Metodo di serializzazione JSON
+  factory Workout.fromJson(Map<String, dynamic> json) =>
+      _$WorkoutFromJson(json);
+
+  // Metodo di serializzazione JSON
+  // Map<String, dynamic> toJson() => _$WorkoutToJson(this);
+
+  // Implementazione di metodi di ObjectT (se necessario)
 }

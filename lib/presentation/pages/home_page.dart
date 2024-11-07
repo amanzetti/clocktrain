@@ -1,4 +1,3 @@
-import 'package:clocktrain/data/api/user_api.dart';
 import 'package:clocktrain/domain/providers/user_proivider.dart';
 import 'package:clocktrain/presentation/themes/app_color.dart';
 import 'package:clocktrain/presentation/themes/app_typography.dart';
@@ -83,10 +82,10 @@ class HomePage extends ConsumerWidget {
       child: SizedBox(
         height: 200,
         width: context.mq.size.width,
-        child: Column(
+        child: const Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('PROGRESSION'),
+            Text('PROGRESSION'),
           ],
         ),
       ),

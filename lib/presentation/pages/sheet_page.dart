@@ -1,4 +1,4 @@
-import 'package:clocktrain/domain/models/exercise_model.dart';
+import 'package:clocktrain/data/models/exercise_model.dart';
 import 'package:clocktrain/domain/providers/user_proivider.dart';
 import 'package:clocktrain/presentation/themes/app_color.dart';
 import 'package:clocktrain/presentation/widgets/molecule/list_tile_app.dart';
@@ -13,7 +13,7 @@ class SheetPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final userAsynvValue = ref.watch(userProvider('1'));
+    final userAsynvValue = ref.watch(userProvider('user123'));
     return userAsynvValue.when(
       loading: () => const Center(child: CircularProgressIndicator()),
       error: (error, stackTrace) => Text('Error: $error'),

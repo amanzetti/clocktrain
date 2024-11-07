@@ -1,5 +1,13 @@
+import 'package:clocktrain/data/models/time.dart';
 import 'package:clocktrain/data/models/workout_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'workout_model.dart';
+
+part 'user_model.freezed.dart';
+part 'user_model.g.dart';
 
 enum UserRole {
   user,
@@ -8,114 +16,25 @@ enum UserRole {
   trainer,
 }
 
-class User {
-  final String id;
-  final String name;
-  final String surname;
-  final String username;
-  final String email;
-  final int height;
-  final double weight;
-  final DateTime birthDate;
-  final UserRole userRole;
-  final String goal;
-  final String? profileImageUrl;
-  final List<Workout> workouts; // Lista dei workout personalizzati dell'utente
-  final bool darkModeEnabled;
-  final DateTime createdAt;
-
-  User({
-    required this.id,
-    required this.name,
-    required this.email,
-    required this.surname,
-    required this.username,
-    required this.userRole,
-    required this.height,
-    required this.weight,
-    required this.birthDate,
-    required this.goal,
-    this.profileImageUrl,
-    this.workouts = const [],
-    this.darkModeEnabled = false,
-    required this.createdAt,
-  });
-
-// Metodo da utilizzare per mappare i dati da Firestore
-  factory User.fromMap(Map<String, dynamic> data) {
-    try {
-      return User(
-        id: data['id'] ?? '',
-        name: data['name'] ?? '',
-        surname: data['surname'] ?? '',
-        username: data['username'] ?? '',
-        email: data['email'] ?? '',
-        height: data['height'] ?? 0,
-        weight: data['weight'] ?? 0.0,
-        birthDate: (data['birthDate'] as Timestamp).toDate(),
-        userRole: UserRole.values.firstWhere(
-            (e) => e.toString() == 'UserRole.' + (data['userRole'] ?? ''),
-            orElse: () => UserRole.user),
-        goal: data['goal'] ?? '',
-        profileImageUrl: data['profileImageUrl'],
-        workouts:
-            // data['workouts'] != null
-            //     ? List<Workout>.from(data['workouts'].map((x) => Workout.fromMap(x)))
-            //     :
-            [],
-        darkModeEnabled: data['darkModeEnabled'] ?? false,
-        createdAt: (data['createdAt'] as Timestamp).toDate(),
-      );
-    } catch (e) {
-      print('Error in fromMap: $e');
-      rethrow; // Rilancia l'errore per permettere al chiamante di gestirlo
-    }
-  }
-
-  // Metodo per convertire l'oggetto User in un map per Firestore
-  Map<String, dynamic> toMap() {
-    return {
-      'username': username,
-      'email': email,
-      'role': userRole.toString(),
-      'createdAt': createdAt,
-      'name': name,
-      'surname': surname,
-      'height': height,
-      'weight': weight,
-      'birthDate': birthDate,
-      'goal': goal,
-      'profileImageUrl': profileImageUrl,
-      'darkModeEnabled': darkModeEnabled,
-    };
-  }
-
-  User copyWith({
-    String? name,
-    String? surname,
-    String? username,
-    String? email,
-    int? height,
-    double? weight,
-    String? goal,
+@freezed
+class User with _$User {
+  const factory User({
+    // required String id,
+    required String name,
+    required String surname,
+    required String username,
+    required String email,
+    required int height,
+    required double weight,
+    @TimestampSerializer() required DateTime birthDate,
+    required String userRole,
+    required String goal,
     String? profileImageUrl,
-    bool? darkModeEnabled,
-  }) {
-    return User(
-      id: this.id,
-      name: name ?? this.name,
-      surname: surname ?? this.surname,
-      username: username ?? this.username,
-      email: email ?? this.email,
-      height: height ?? this.height,
-      weight: weight ?? this.weight,
-      birthDate: this.birthDate,
-      userRole: this.userRole,
-      goal: goal ?? this.goal,
-      profileImageUrl: profileImageUrl ?? this.profileImageUrl,
-      workouts: this.workouts,
-      darkModeEnabled: darkModeEnabled ?? this.darkModeEnabled,
-      createdAt: this.createdAt,
-    );
-  }
+    @Default([]) List<Workout> workouts, // Lista dei workout personalizzati
+    @Default(false) bool darkModeEnabled, // Stato del tema scuro
+    @TimestampSerializer() required DateTime createdAt, // Data di creazione
+  }) = _User;
+
+  // Metodo di serializzazione JSON
+  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 }

@@ -1,75 +1,89 @@
+import 'package:clocktrain/config/logger_config.dart';
 import 'package:clocktrain/data/api/api.dart';
+import 'package:clocktrain/data/api/repositories/user_api_repository.dart';
 import 'package:clocktrain/data/models/user_model.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
-class UserApi {
+class UserApi implements UserRepository {
   static final UserApi _instance = UserApi._internal();
-
-  factory UserApi() {
-    return _instance;
-  }
-
+  factory UserApi() => _instance;
   UserApi._internal();
 
   final Api _api = Api();
 
-  // Crea un nuovo utente nel Firestore
+  @override
   Future<void> createUser(String userId, User user) async {
     try {
-      print("Creating user...");
-      await _api.firestore.collection('users').doc(userId).set(user.toMap());
-      print('User created successfully!');
+      await _api.firestore.collection('users').doc(userId).set(user.toJson());
+      LoggerConfig.logger.i(
+          'User created successfully!'); // Usa il logger per i messaggi informativi
     } catch (e) {
-      print('Error creating user: $e');
+      LoggerConfig.logger
+          .e('Error creating user: $e'); // Usa il logger per gli errori
+      rethrow; // Rilancia l'errore per gestione più in alto
     }
   }
 
-  // Ottieni un utente da Firestore per ID
+  @override
   Future<User?> getUserById(String userId) async {
     try {
-      DocumentSnapshot userSnapshot =
+      final userSnapshot =
           await _api.firestore.collection('users').doc(userId).get();
-
       if (userSnapshot.exists) {
-        final data = userSnapshot.data();
-
-        // Verifica che i dati siano una mappa di tipo Map<String, dynamic>
-        if (data is Map<String, dynamic>) {
-          return User.fromMap(data);
-        } else {
-          print('Invalid data format: Expected Map<String, dynamic>');
-          return null;
-        }
+        var a = userSnapshot.data();
+        return User.fromJson(
+            userSnapshot.data()!); // `data()` è già un Map<String, dynamic>
       } else {
-        print('User not found');
-        return null;
+        LoggerConfig.logger.w('User not found'); // Usa il logger per un avviso
       }
     } catch (e) {
-      print('Error fetching user: $e');
-      return null;
+      LoggerConfig.logger
+          .e('Error fetching user: $e'); // Usa il logger per gli errori
+      rethrow;
+    }
+    return null;
+  }
+
+  @override
+  Future<void> updateUser(String userId, User user) async {
+    try {
+      await _api.firestore
+          .collection('users')
+          .doc(userId)
+          .update(user.toJson());
+      LoggerConfig.logger.i(
+          'User updated successfully!'); // Usa il logger per i messaggi informativi
+    } catch (e) {
+      LoggerConfig.logger
+          .e('Error updating user: $e'); // Usa il logger per gli errori
+      rethrow;
     }
   }
 
-  ///MOCK
-  void createMockUser() {
-    User mockUser = User(
-      id: 'user123',
-      name: 'John',
-      surname: 'Doe',
-      username: 'johndoe',
-      email: 'johndoe@example.com',
-      userRole: UserRole.athlete,
-      height: 180,
-      weight: 75.5,
-      birthDate: DateTime(1990, 5, 10),
-      goal: 'Build muscle',
-      profileImageUrl: null,
-      workouts: [],
-      darkModeEnabled: true,
-      createdAt: DateTime.now(),
-    );
+  @override
+  Future<void> deleteUser(String userId) async {
+    try {
+      await _api.firestore.collection('users').doc(userId).delete();
+      LoggerConfig.logger.i(
+          'User deleted successfully!'); // Usa il logger per i messaggi informativi
+    } catch (e) {
+      LoggerConfig.logger
+          .e('Error deleting user: $e'); // Usa il logger per gli errori
+      rethrow;
+    }
+  }
 
-    // Creazione dell'utente con UserApi
-    UserApi().createUser(mockUser.id, mockUser);
+  @override
+  Future<List<User>> getAllUsers() async {
+    try {
+      final querySnapshot = await _api.firestore.collection('users').get();
+      return querySnapshot.docs
+          .map((doc) => User.fromJson(
+              doc.data())) // `data()` è già un Map<String, dynamic>
+          .toList();
+    } catch (e) {
+      LoggerConfig.logger
+          .e('Error fetching users: $e'); // Usa il logger per gli errori
+      return [];
+    }
   }
 }

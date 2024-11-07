@@ -1,4 +1,4 @@
-import 'package:clocktrain/domain/models/rep_model.dart';
+import 'package:clocktrain/data/models/rep_model.dart';
 import 'package:clocktrain/domain/providers/ui/edit_provider.dart';
 import 'package:clocktrain/domain/providers/ui/main_page_params_provider.dart';
 import 'package:clocktrain/presentation/routes/path.dart';
@@ -17,7 +17,7 @@ import 'package:go_router/go_router.dart';
 class ObjectT {
   final String name;
   final String? description;
-  final String mediaUrl;
+  final String? mediaUrl;
 
   const ObjectT({
     required this.name,
