@@ -2,6 +2,7 @@ import 'package:clocktrain/data/models/workout_model.dart';
 import 'package:clocktrain/domain/providers/ui/main_page_params_provider.dart';
 import 'package:clocktrain/domain/providers/user_proivider.dart';
 import 'package:clocktrain/domain/providers/workout_provider.dart';
+import 'package:clocktrain/presentation/routes/router_methods.dart';
 import 'package:clocktrain/presentation/themes/app_color.dart';
 import 'package:clocktrain/presentation/widgets/molecules/list_tile_app.dart';
 import 'package:clocktrain/utils/enum/standard_rateo_enum.dart';
@@ -13,6 +14,7 @@ class WorkoutListPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    
     final workoutState = ref.read(workoutProvider);
 
     final workouts = workoutState;

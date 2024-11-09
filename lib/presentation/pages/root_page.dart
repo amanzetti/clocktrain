@@ -7,7 +7,6 @@ class RootPage extends ConsumerWidget {
   const RootPage({super.key});
 
   void _onPressed(BuildContext context) {
-    print('RootPage onPressed');
     context.go(AppPath.homePage);
   }
 

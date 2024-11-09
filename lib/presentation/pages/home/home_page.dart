@@ -10,6 +10,7 @@ import 'package:clocktrain/utils/ext/date_time_ext.dart';
 import 'package:clocktrain/utils/ext/double_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
@@ -23,9 +24,10 @@ class HomePage extends ConsumerWidget {
     final userState = ref.watch(userProvider);
 
     // Verifica se la lista è vuota e, se sì, richiama getUserById
-    // if (userState.isEmpty) {
-    //   ref.read(userProvider.notifier).getUserById('user123');
-    // }
+    if (userState.isEmpty) {
+      // ref.read(userProvider.notifier).getUserById('user123');
+      ref.read(userProvider.notifier).getUserByIdMock('user123');
+    }
 
     // Mostra l'indicatore di caricamento finché non ci sono dati
     if (userState.isEmpty) {
@@ -36,16 +38,13 @@ class HomePage extends ConsumerWidget {
 
     final user = userState.first;
 
-    return Scaffold(
-      backgroundColor: AppColor.instance.surface,
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: Column(
-          children: [
-            _buildUserSection(context, ref, user), // Passiamo l'utente qui
-            _buildProgressionCard(context),
-          ],
-        ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: Column(
+        children: [
+          _buildUserSection(context, ref, user), // Passiamo l'utente qui
+          _buildProgressionCard(context),
+        ],
       ),
     );
   }

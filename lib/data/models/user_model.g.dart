@@ -18,9 +18,10 @@ _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
       userRole: json['userRole'] as String,
       goal: json['goal'] as String,
       profileImageUrl: json['profileImageUrl'] as String?,
-      workouts: (json['workouts'] as List<dynamic>?)
-              ?.map((e) => Workout.fromJson(e as Map<String, dynamic>))
-              .toList() ??
+      workouts: 
+      // (json['workouts'] as List<dynamic>?)
+      //         ?.map((e) => Workout.fromJson(e as Map<String, dynamic>))
+      //         .toList() ??
           const [],
       darkModeEnabled: json['darkModeEnabled'] as bool? ?? false,
       createdAt: const TimestampSerializer().fromJson(json['createdAt']),

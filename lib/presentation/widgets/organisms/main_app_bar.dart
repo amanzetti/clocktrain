@@ -52,15 +52,17 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: AppColor.instance.surface,
       foregroundColor: AppColor.instance.textPrimary,
       bottom: _buildBottom(context),
+      automaticallyImplyLeading: false,
     );
   }
 
   Widget? _buildLeading(BuildContext context) {
-    if (context.canPop()) {
-      return IconButton(icon: AppAsset.arrowBack, onPressed: onMainPressedBack);
-    } else {
-      return null;
-    }
+    // if (context.canPop()) {
+    //   return IconButton(icon: AppAsset.arrowBack, onPressed: onMainPressedBack);
+    // } else {
+    //   return null;
+    // }
+    return null;
   }
 
   List<Widget>? _buildActions(BuildContext context) {

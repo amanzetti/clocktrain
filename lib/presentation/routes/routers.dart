@@ -1,5 +1,3 @@
-import 'package:clocktrain/config/logger_config.dart';
-import 'package:clocktrain/domain/providers/ui/main_page_params_provider.dart';
 import 'package:clocktrain/presentation/pages/root_page.dart';
 import 'package:clocktrain/presentation/pages/sheet/flow_manage_workout/workout_editor_page.dart';
 import 'package:clocktrain/presentation/pages/home/home_page.dart';
@@ -11,10 +9,9 @@ import 'package:clocktrain/presentation/pages/settings/settings_page.dart';
 import 'package:clocktrain/presentation/pages/workout/workout_page.dart';
 import 'package:clocktrain/presentation/routes/path.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class RouteObserver extends NavigatorObserver {
+class AppRouteObserver extends NavigatorObserver {
   @override
   void didPush(Route route, Route? previousRoute) {
     print('didPush');
@@ -34,6 +31,26 @@ class RouteObserver extends NavigatorObserver {
     print('didReplace');
     super.didReplace(newRoute: newRoute, oldRoute: oldRoute);
     _handleRouteChange(newRoute);
+  }
+
+  @override
+  void didRemove(Route route, Route? previousRoute) {
+    print('didRemove');
+    super.didRemove(route, previousRoute);
+    _handleRouteChange(previousRoute);
+  }
+
+  @override
+  void didStartUserGesture(Route route, Route? previousRoute) {
+    print('didStartUserGesture');
+    super.didStartUserGesture(route, previousRoute);
+    _handleRouteChange(route);
+  }
+
+  @override
+  void didStopUserGesture() {
+    print('didStopUserGesture');
+    super.didStopUserGesture();
   }
 
   void _handleRouteChange(Route? route) {
@@ -60,34 +77,24 @@ class AppRouter {
 
   factory AppRouter() => _instance;
 
-  static final GlobalKey<NavigatorState> rootNavigatorKey =
-      GlobalKey<NavigatorState>();
-  static final GlobalKey<NavigatorState> sectionNavigatorKey =
-      GlobalKey<NavigatorState>();
+  // static final GlobalKey<NavigatorState> rootNavigatorKey =
+  //     GlobalKey<NavigatorState>();
+  // static final GlobalKey<NavigatorState> sectionNavigatorKey =
+  //     GlobalKey<NavigatorState>();
 
   final GoRouter routers = GoRouter(
-    navigatorKey: rootNavigatorKey,
-    observers: [RouteObserver()],
+    // navigatorKey: rootNavigatorKey,
+    // observers: [AppRouteObserver()],
     initialLocation: AppPath.rootPage,
     routes: [
       GoRoute(
+          name: AppPath.rootPage,
           path: AppPath.rootPage,
           builder: (context, state) => const RootPage(),
           routes: [_buildShellRoute()])
       // _buildShellRoute(),
     ],
   );
-
-  // static StatefulShellRoute _buildRootRoute(){
-  //   return StatefulShellBranch(
-  //     navigatorKey: rootNavigatorKey,
-  //     routes: [
-  //       GoRoute(
-  //         path: AppPath.rootPage,
-  //         builder: (context, state) => const RootPage(),
-  //       )],)
-
-  // }
 
   static StatefulShellRoute _buildShellRoute() {
     return StatefulShellRoute.indexedStack(
@@ -109,10 +116,11 @@ class AppRouter {
 
   static StatefulShellBranch _homeBranch() {
     return StatefulShellBranch(
-      navigatorKey: sectionNavigatorKey,
-      observers: [RouteObserver()],
+      // navigatorKey: sectionNavigatorKey,
+      // observers: [AppRouteObserver()],
       routes: [
         GoRoute(
+          name: AppPath.homePage,
           path: AppPath.homePage,
           builder: (context, state) => const HomePage(),
         ),
@@ -122,13 +130,15 @@ class AppRouter {
 
   static StatefulShellBranch _sheetBranch() {
     return StatefulShellBranch(
-      observers: [RouteObserver()],
+      // observers: [AppRouteObserver()],
       routes: [
         GoRoute(
+          name: AppPath.sheetListPage,
           path: AppPath.sheetListPage,
           builder: (context, state) => const WorkoutListPage(),
           routes: [
             GoRoute(
+              name: AppPath.sheetPageWithId(':exerciseId'),
               path: AppPath.sheetPageWithId(':exerciseId'),
               builder: (context, state) {
                 final exerciseId = state.pathParameters['exerciseId']!;
@@ -136,6 +146,7 @@ class AppRouter {
               },
             ),
             GoRoute(
+              name: AppPath.workoutEditorPage,
               path: AppPath.workoutEditorPage,
               builder: (context, state) => const WorkoutEditorPage(),
             ),
@@ -147,9 +158,10 @@ class AppRouter {
 
   static StatefulShellBranch _workoutBranch() {
     return StatefulShellBranch(
-      observers: [RouteObserver()],
+      // observers: [AppRouteObserver()],
       routes: [
         GoRoute(
+          name: AppPath.workoutPage,
           path: AppPath.workoutPage,
           builder: (context, state) => const WorkoutPage(),
         ),
@@ -159,9 +171,10 @@ class AppRouter {
 
   static StatefulShellBranch _settingsBranch() {
     return StatefulShellBranch(
-      observers: [RouteObserver()],
+      // observers: [AppRouteObserver()],
       routes: [
         GoRoute(
+          name: AppPath.settingsPage,
           path: AppPath.settingsPage,
           builder: (context, state) => const SettingsPage(),
         ),
@@ -171,9 +184,10 @@ class AppRouter {
 
   static StatefulShellBranch _profileBranch() {
     return StatefulShellBranch(
-      observers: [RouteObserver()],
+      // observers: [AppRouteObserver()],
       routes: [
         GoRoute(
+          name: AppPath.profilePage,
           path: AppPath.profilePage,
           builder: (context, state) => const ProfilePage(),
         ),

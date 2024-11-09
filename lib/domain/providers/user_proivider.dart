@@ -1,6 +1,7 @@
 import 'package:clocktrain/config/logger_config.dart';
 import 'package:clocktrain/data/api/user_api.dart';
 import 'package:clocktrain/data/models/user_model.dart';
+import 'package:clocktrain/utils/helpers/json_helper.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final userApiProvider = Provider<UserApi>((ref) {
@@ -42,6 +43,13 @@ class UserNotifier extends StateNotifier<List<User>> {
     } catch (e) {
       LoggerConfig.logger.e('Error fetching user: $e');
     }
+  }
+
+  Future<User?> getUserByIdMock(String userId) async {
+    var dataUser = await loadJsonData('user');
+    var user = User.fromJson(dataUser);
+    state = [user];
+    return user;
   }
 
   // Aggiorna un utente esistente
