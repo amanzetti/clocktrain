@@ -1,7 +1,5 @@
 import 'package:clocktrain/data/models/user_model.dart';
-import 'package:clocktrain/domain/providers/ui/main_page_params_provider.dart';
 import 'package:clocktrain/domain/providers/user_proivider.dart';
-import 'package:clocktrain/presentation/themes/app_color.dart';
 import 'package:clocktrain/presentation/themes/app_typography.dart';
 import 'package:clocktrain/presentation/widgets/molecules/placeholder_img.dart';
 import 'package:clocktrain/utils/enum/standard_rateo_enum.dart';
@@ -10,12 +8,11 @@ import 'package:clocktrain/utils/ext/date_time_ext.dart';
 import 'package:clocktrain/utils/ext/double_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
-  static const widthImage = 100.0;
+  static const widthImage = 150.0;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -31,7 +28,7 @@ class HomePage extends ConsumerWidget {
 
     // Mostra l'indicatore di caricamento finché non ci sono dati
     if (userState.isEmpty) {
-      return Scaffold(
+      return const Scaffold(
         body: Center(child: CircularProgressIndicator()),
       );
     }
@@ -43,6 +40,9 @@ class HomePage extends ConsumerWidget {
       child: Column(
         children: [
           _buildUserSection(context, ref, user), // Passiamo l'utente qui
+          const SizedBox(
+            height: 16,
+          ),
           _buildProgressionCard(context),
         ],
       ),
@@ -70,29 +70,26 @@ class HomePage extends ConsumerWidget {
           Expanded(
             flex: 9,
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Expanded(
-                    flex: 4,
-                    child: Center(
-                      child: PlaceholderImg(
-                        widthImage: widthImage,
-                        rateo: StandardRateo.ratio_9_16,
-                      ),
-                    )),
-                Expanded(
-                    flex: 8,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('${user.name} ${user.surname}'),
-                        Text(user.birthDate.toddMMMyyyyString()),
-                        Text('${user.height} cm'),
-                        Text('${user.weight} kg'),
-                        Text('Goals: ${user.goal}'),
-                      ],
-                    )),
+                const PlaceholderImg(
+                  widthImage: widthImage,
+                  rateo: StandardRateo.ratio_9_16,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('${user.name} ${user.surname}'),
+                      Text(user.birthDate.toddMMMyyyyString()),
+                      Text('${user.height} cm'),
+                      Text('${user.weight} kg'),
+                      Text('Goals: ${user.goal}'),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
