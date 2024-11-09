@@ -5,12 +5,21 @@ class AppPath {
 
   factory AppPath() => _instance;
 
-  static const String mainPage = '/main_page';
+  static const String rootPage = '/';
+
+  // static const String mainPage = 'main_page';
+
+  ///Main bottom navigation
   static const String homePage = '/home_page';
   static const String sheetListPage = '/sheet_list_page';
   static const String settingsPage = '/settings_page';
   static const String workoutPage = '/workout_page';
+
+  ///Main appbar navigation
   static const String profilePage = '/profile_page';
+
+  ///Sub appbar navigation
+  static const String workoutEditorPage = '/workout_editor_page';
 
   static String sheetPageWithId(String exerciseId) => '/sheet/$exerciseId';
 

@@ -19,16 +19,40 @@ extension RouteUtils on BuildContext {
         route;
   }
 
-  Future<void> goAndUpdateTitle(
-    String route, {
-    required WidgetRef ref,
-    String? newTitle,
-  }) async {
-    if (newTitle != null) {
-      final notifier = ref.read(mainAppStateProvider.notifier);
-      notifier.updateTitle(newTitle);
+  Future<void> pushAndUpdadeAppState(String route,
+      {required WidgetRef ref, AppState? state}) async {
+    if (state != null) {
+      final notifier = ref.read(appStateProvider.notifier);
+      notifier.copyWith(
+        mainAppBarTitle: state.mainAppBarTitle,
+        mainAppBarHeight: state.mainAppBarHeight,
+        mainAppBarOnBack: state.mainAppBarOnBack,
+        mainAppBarOnAction: state.mainAppBarOnAction,
+        subAppBarTitle: state.subAppBarTitle,
+        subAppBarHeight: state.subAppBarHeight,
+        showSubAppBar: state.showSubAppBar,
+        subAppBarOnAction: state.subAppBarOnAction,
+      );
     }
-    go(route);
+    push(route);
+  }
+
+  Future<void> goAndUpdadeAppState(String route,
+      {required WidgetRef ref, AppState? state}) async {
+    if (state != null) {
+      final notifier = ref.read(appStateProvider.notifier);
+      notifier.copyWith(
+        mainAppBarTitle: state.mainAppBarTitle,
+        mainAppBarHeight: state.mainAppBarHeight,
+        mainAppBarOnBack: state.mainAppBarOnBack,
+        mainAppBarOnAction: state.mainAppBarOnAction,
+        subAppBarTitle: state.subAppBarTitle,
+        subAppBarHeight: state.subAppBarHeight,
+        showSubAppBar: state.showSubAppBar,
+        subAppBarOnAction: state.subAppBarOnAction,
+      );
+      go(route);
+    }
   }
 
   String get currentRoute =>

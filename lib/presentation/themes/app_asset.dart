@@ -12,4 +12,5 @@ class AppAsset {
   static const edit = Icon(Icons.edit);
   static const disable = Icon(Icons.disabled_by_default);
   static const account = Icon(Icons.account_circle);
+  static const add = Icon(Icons.add);
 }

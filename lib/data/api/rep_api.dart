@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:clocktrain/config/logger_config.dart';
 import 'package:clocktrain/data/api/api.dart';
 import 'package:clocktrain/data/models/rep_model.dart';
@@ -24,7 +23,8 @@ class RepApi {
   // Recupera una ripetizione per ID
   Future<Rep?> getRepById(String repId) async {
     try {
-      final repSnapshot = await _api.firestore.collection('reps').doc(repId).get();
+      final repSnapshot =
+          await _api.firestore.collection('reps').doc(repId).get();
       if (repSnapshot.exists) {
         return Rep.fromJson(repSnapshot.data()!);
       } else {
@@ -63,9 +63,7 @@ class RepApi {
   Future<List<Rep>> getAllReps() async {
     try {
       final querySnapshot = await _api.firestore.collection('reps').get();
-      return querySnapshot.docs
-          .map((doc) => Rep.fromJson(doc.data()))
-          .toList();
+      return querySnapshot.docs.map((doc) => Rep.fromJson(doc.data())).toList();
     } catch (e) {
       LoggerConfig.logger.e('Error fetching reps: $e');
       return [];

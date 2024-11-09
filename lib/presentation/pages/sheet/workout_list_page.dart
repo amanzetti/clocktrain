@@ -1,8 +1,9 @@
 import 'package:clocktrain/data/models/workout_model.dart';
+import 'package:clocktrain/domain/providers/ui/main_page_params_provider.dart';
 import 'package:clocktrain/domain/providers/user_proivider.dart';
 import 'package:clocktrain/domain/providers/workout_provider.dart';
 import 'package:clocktrain/presentation/themes/app_color.dart';
-import 'package:clocktrain/presentation/widgets/molecule/list_tile_app.dart';
+import 'package:clocktrain/presentation/widgets/molecules/list_tile_app.dart';
 import 'package:clocktrain/utils/enum/standard_rateo_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -12,27 +13,20 @@ class WorkoutListPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // Otteniamo lo stato dell'utente
-    final workoutState = ref.watch(workoutProvider);
+    final workoutState = ref.read(workoutProvider);
 
-    // Verifica se la lista è vuota e, se sì, richiama getUserById
-    if (workoutState.isEmpty) {
-      ref.read(workoutProvider.notifier).getAllWorkouts();
-    }
+    final workouts = workoutState;
+
+    // if (workoutState.isEmpty) {
+    //   ref.read(workoutProvider.notifier).getAllWorkouts();
+    // }
 
     // Mostra l'indicatore di caricamento finché non ci sono dati
     if (workoutState.isEmpty) {
       return Scaffold(
-        body: Center(child: ElevatedButton(
-          onPressed: () {
-            ref.read(workoutProvider.notifier).getAllWorkouts();
-          },
-          child: Text('Create Workout'),
-        )),
+        body: Center(child: CircularProgressIndicator()),
       );
     }
-
-    final workouts = workoutState;
 
     return Container(
       color: AppColor.instance.surface,

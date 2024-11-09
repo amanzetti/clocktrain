@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:clocktrain/config/logger_config.dart';
 import 'package:clocktrain/data/api/api.dart';
 import 'package:clocktrain/data/models/exercise_model.dart';
@@ -13,7 +12,10 @@ class ExerciseApi {
   // Crea un nuovo esercizio
   Future<void> createExercise(String exerciseId, Exercise exercise) async {
     try {
-      await _api.firestore.collection('exercises').doc(exerciseId).set(exercise.toJson());
+      await _api.firestore
+          .collection('exercises')
+          .doc(exerciseId)
+          .set(exercise.toJson());
       LoggerConfig.logger.i('Exercise created successfully!');
     } catch (e) {
       LoggerConfig.logger.e('Error creating exercise: $e');
@@ -24,7 +26,8 @@ class ExerciseApi {
   // Recupera un esercizio per ID
   Future<Exercise?> getExerciseById(String exerciseId) async {
     try {
-      final exerciseSnapshot = await _api.firestore.collection('exercises').doc(exerciseId).get();
+      final exerciseSnapshot =
+          await _api.firestore.collection('exercises').doc(exerciseId).get();
       if (exerciseSnapshot.exists) {
         return Exercise.fromJson(exerciseSnapshot.data()!);
       } else {
@@ -40,7 +43,10 @@ class ExerciseApi {
   // Aggiorna un esercizio esistente
   Future<void> updateExercise(String exerciseId, Exercise exercise) async {
     try {
-      await _api.firestore.collection('exercises').doc(exerciseId).update(exercise.toJson());
+      await _api.firestore
+          .collection('exercises')
+          .doc(exerciseId)
+          .update(exercise.toJson());
       LoggerConfig.logger.i('Exercise updated successfully!');
     } catch (e) {
       LoggerConfig.logger.e('Error updating exercise: $e');

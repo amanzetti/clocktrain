@@ -1,8 +1,9 @@
 import 'package:clocktrain/data/models/user_model.dart';
+import 'package:clocktrain/domain/providers/ui/main_page_params_provider.dart';
 import 'package:clocktrain/domain/providers/user_proivider.dart';
 import 'package:clocktrain/presentation/themes/app_color.dart';
 import 'package:clocktrain/presentation/themes/app_typography.dart';
-import 'package:clocktrain/presentation/widgets/molecule/placeholder_img.dart';
+import 'package:clocktrain/presentation/widgets/molecules/placeholder_img.dart';
 import 'package:clocktrain/utils/enum/standard_rateo_enum.dart';
 import 'package:clocktrain/utils/ext/build_context_ext.dart';
 import 'package:clocktrain/utils/ext/date_time_ext.dart';
@@ -17,13 +18,14 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // testUpdateState(ref);
     // Otteniamo lo stato dell'utente
     final userState = ref.watch(userProvider);
-    
+
     // Verifica se la lista è vuota e, se sì, richiama getUserById
-    if (userState.isEmpty) {
-      ref.read(userProvider.notifier).getUserById('user123');
-    }
+    // if (userState.isEmpty) {
+    //   ref.read(userProvider.notifier).getUserById('user123');
+    // }
 
     // Mostra l'indicatore di caricamento finché non ci sono dati
     if (userState.isEmpty) {

@@ -22,13 +22,13 @@ class CircleButton extends ConsumerWidget {
 
   BoxDecoration get _decoration => BoxDecoration(
         shape: BoxShape.circle,
-        border: Border.all(color: borderColorOut ?? Colors.black, width: 1),
+        border: Border.all(color: borderColorOut ?? Colors.black, width: 2),
       );
 
   BoxDecoration get _innerDecoration => BoxDecoration(
         shape: BoxShape.circle,
         color: backgroundColor,
-        border: Border.all(color: borderColorIn ?? Colors.black12, width: 1),
+        border: Border.all(color: borderColorIn ?? Colors.black12, width: 2),
       );
 
   @override
@@ -39,13 +39,14 @@ class CircleButton extends ConsumerWidget {
         padding: padding ?? const EdgeInsets.all(8),
         child: Container(
             padding: const EdgeInsets.all(0),
-            height: size ?? 28,
-            width: size ?? 28,
+            height: size,
+            width: size,
             decoration: _decoration,
             child: Container(
                 padding: const EdgeInsets.all(0),
                 decoration: _innerDecoration,
-                child: Center(child: child))),
+                child: Center(
+                    child: FittedBox(fit: BoxFit.contain, child: child!)))),
       ),
     );
   }

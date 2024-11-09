@@ -59,32 +59,32 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
   }
 
   Future<void> _saveChanges(User user) async {
-    if (_formKey.currentState?.validate() ?? false) {
-      try {
-        // Aggiorna l'utente con i dati modificati
-        final updatedUser = user.copyWith(
-          name: _nameController.text,
-          surname: _surnameController.text,
-          username: _usernameController.text,
-          email: _emailController.text,
-          height: int.tryParse(_heightController.text) ?? user.height,
-          weight: double.tryParse(_weightController.text) ?? user.weight,
-          goal: _goalController.text,
-        );
+    // if (_formKey.currentState?.validate() ?? false) {
+    //   try {
+    //     // Aggiorna l'utente con i dati modificati
+    //     final updatedUser = user.copyWith(
+    //       name: _nameController.text,
+    //       surname: _surnameController.text,
+    //       username: _usernameController.text,
+    //       email: _emailController.text,
+    //       height: int.tryParse(_heightController.text) ?? user.height,
+    //       weight: double.tryParse(_weightController.text) ?? user.weight,
+    //       goal: _goalController.text,
+    //     );
 
-        // Salva i dati aggiornati su Firestore
-        await FirebaseFirestore.instance
-            .collection('users')
-            .doc(widget.userId)
-            .update(updatedUser.toJson());
+    //     // Salva i dati aggiornati su Firestore
+    //     await FirebaseFirestore.instance
+    //         .collection('users')
+    //         .doc(widget.userId)
+    //         .update(updatedUser.toJson());
 
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Modifiche salvate con successo')),
-        );
-      } catch (e) {
-        print('Errore nel salvataggio dei dati: $e');
-      }
-    }
+    //     ScaffoldMessenger.of(context).showSnackBar(
+    //       const SnackBar(content: Text('Modifiche salvate con successo')),
+    //     );
+    //   } catch (e) {
+    //     print('Errore nel salvataggio dei dati: $e');
+    //   }
+    // }
   }
 
   @override
@@ -104,8 +104,8 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
     //   );
     // }
 
-    final user = userState.first;
-    _populateFields(user);
+    // final user = userState.first;
+    // _populateFields(user);
 
     return Padding(
       padding: const EdgeInsets.all(16.0),
@@ -151,7 +151,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () => _saveChanges(user),
+              onPressed: () => {},///_saveChanges(user),
               child: const Text('Salva modifiche'),
             ),
           ],

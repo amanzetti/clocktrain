@@ -1,6 +1,6 @@
 import 'package:clocktrain/data/models/exercise_model.dart';
 import 'package:clocktrain/data/models/timestamp_serializer.dart';
-import 'package:clocktrain/presentation/widgets/molecule/list_tile_app.dart';
+import 'package:clocktrain/presentation/widgets/molecules/list_tile_app.dart';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 

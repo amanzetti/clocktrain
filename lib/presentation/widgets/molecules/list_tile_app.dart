@@ -6,7 +6,7 @@ import 'package:clocktrain/presentation/themes/app_color.dart';
 import 'package:clocktrain/presentation/themes/app_typography.dart';
 import 'package:clocktrain/presentation/widgets/atoms/media_screen.dart';
 import 'package:clocktrain/presentation/widgets/atoms/text_filed_exercise_tile.dart';
-import 'package:clocktrain/presentation/widgets/molecule/placeholder_img.dart';
+import 'package:clocktrain/presentation/widgets/molecules/placeholder_img.dart';
 import 'package:clocktrain/utils/enum/standard_rateo_enum.dart';
 import 'package:clocktrain/utils/ext/build_context_ext.dart';
 import 'package:clocktrain/utils/ext/double_ext.dart';
@@ -166,8 +166,8 @@ class _ListTileAppState<T extends ObjectT>
                     ),
                   ),
                   onPressed: () {
-                    ref.read(mainAppStateProvider.notifier).updateTitle(
-                          widget.object.name,
+                    ref.read(appStateProvider.notifier).copyWith(
+                          mainAppBarTitle: widget.object.name,
                         );
                     context.go(
                         '/sheet_list_page${AppPath.sheetPageWithId(widget.object.name)}');
