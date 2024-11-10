@@ -4,7 +4,10 @@ import 'package:clocktrain/domain/providers/user_proivider.dart';
 import 'package:clocktrain/domain/providers/workout_provider.dart';
 import 'package:clocktrain/presentation/routes/router_methods.dart';
 import 'package:clocktrain/presentation/themes/app_color.dart';
+import 'package:clocktrain/presentation/themes/app_typography.dart';
+import 'package:clocktrain/presentation/widgets/atoms/elevated_rounded_button.dart';
 import 'package:clocktrain/presentation/widgets/molecules/list_tile_app.dart';
+import 'package:clocktrain/presentation/widgets/organisms/sub_app_bar.dart';
 import 'package:clocktrain/utils/enum/standard_rateo_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -14,51 +17,50 @@ class WorkoutListPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    
-    final workoutState = ref.read(workoutProvider);
+    final userState = ref.watch(userProvider);
+    final workouts = userState.first.workouts;
 
-    final workouts = workoutState;
+    return Column(
+      children: [
+        _buildNavBar(),
+        Expanded(
+          child: _buildListWorkout(context, workouts),
+        ),
+      ],
+    );
+  }
 
-    // if (workoutState.isEmpty) {
-    //   ref.read(workoutProvider.notifier).getAllWorkouts();
-    // }
-
-    // Mostra l'indicatore di caricamento finché non ci sono dati
-    if (workoutState.isEmpty) {
-      return const Scaffold(
-        body: Center(child: CircularProgressIndicator()),
-      );
-    }
-
+  Widget _buildNavBar() {
     return Container(
-      color: AppColor.instance.surface,
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Column(
-        children: [
-          Expanded(
-            child: ReorderableListView(
-              onReorder: (oldIndex, newIndex) {
-                // ref
-                //     .read(listProvider.notifier)
-                //     .reorderList(oldIndex, newIndex);
-              },
-              children: [
-                for (int index = 0; index < workouts.length; index++)
-                  ListTileApp<Workout>(
-                      listTileAppType: ListTileAppType.workout,
-                      object: workouts[index],
-                      padding: const EdgeInsets.symmetric(vertical: 8.0),
-                      rateo: StandardRateo.ratio_4_5,
-                      widthImage: 100,
-                      mediaUrl: '',
-                      key: ValueKey(
-                        workouts[index],
-                      ))
-              ],
-            ),
-          ),
-        ],
-      ),
+        child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text('Workouts', style: AppTypography().titleS),
+        ElevatedNotchRoundedButton()
+      ],
+    ));
+  }
+
+  Widget _buildListWorkout(BuildContext context, List<Workout> workouts) {
+    return ReorderableListView(
+      onReorder: (oldIndex, newIndex) {
+        // ref
+        //     .read(listProvider.notifier)
+        //     .reorderList(oldIndex, newIndex);
+      },
+      children: [
+        for (int index = 0; index < workouts.length; index++)
+          ListTileApp<Workout>(
+              listTileAppType: ListTileAppType.workout,
+              object: workouts[index],
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              rateo: StandardRateo.ratio_4_5,
+              widthImage: 100,
+              mediaUrl: '',
+              key: ValueKey(
+                workouts[index],
+              ))
+      ],
     );
   }
 }

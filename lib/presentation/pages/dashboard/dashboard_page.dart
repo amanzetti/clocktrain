@@ -69,7 +69,7 @@ class DashboardPage extends ConsumerWidget {
     );
   }
 
-  _buildIcon(DatePartOfDay partOfDay) {
+  Widget _buildIcon(DatePartOfDay partOfDay) {
     switch (partOfDay) {
       case DatePartOfDay.morning:
         return AppAsset.morning;
