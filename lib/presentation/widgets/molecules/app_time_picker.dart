@@ -8,7 +8,11 @@ enum TimePickerType {
 
 class IOSMinuteSecondPickerField extends StatefulWidget {
   const IOSMinuteSecondPickerField(
-      {super.key, required this.controller, required this.timePickerType, required this.label, required this.hint});
+      {super.key,
+      required this.controller,
+      required this.timePickerType,
+      required this.label,
+      required this.hint});
 
   final TextEditingController controller;
   final TimePickerType timePickerType;
@@ -71,7 +75,6 @@ class _IOSMinuteSecondPickerFieldState
             ),
           ),
         );
-      default:
     }
   }
 
@@ -96,23 +99,22 @@ class _IOSMinuteSecondPickerFieldState
     await showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
-        return Container(height: 250, child: _getCupertinoPiker());
+        return SizedBox(height: 250, child: _getCupertinoPiker());
       },
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    // return _getCupertinoPiker();
-    return TextField(
-      controller: _controller,
-      readOnly: true,
-      onTap: _showCupertinoTimerPicker,
-      decoration:  InputDecoration(
-        labelText: widget.label,
-        hintText: widget.hint,
-        border: OutlineInputBorder(),
-      ),
-    );
+    return _getCupertinoPiker();
+    // return TextField(
+    //   controller: _controller,
+    //   readOnly: true,
+    //   onTap: _showCupertinoTimerPicker,
+    //   decoration: InputDecoration(
+    //     labelText: widget.label,
+    //     hintText: widget.hint,
+    //   ),
+    // );
   }
 }

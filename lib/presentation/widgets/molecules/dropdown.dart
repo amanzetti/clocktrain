@@ -33,8 +33,6 @@ class _MultiSelectDropdownState extends State<MultiSelectDropdown> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Select Muscle Groups"),
-        SizedBox(height: 8),
         GestureDetector(
           onTap: _showMultiSelectDialog,
           child: Container(

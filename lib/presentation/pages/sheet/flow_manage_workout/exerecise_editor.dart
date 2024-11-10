@@ -1,5 +1,7 @@
 import 'package:clocktrain/presentation/themes/app_asset.dart';
 import 'package:clocktrain/presentation/themes/app_color.dart';
+import 'package:clocktrain/presentation/themes/app_typography.dart';
+import 'package:clocktrain/presentation/widgets/atoms/elevated_rounded_button.dart';
 import 'package:clocktrain/presentation/widgets/atoms/spacer_sized_box.dart';
 import 'package:clocktrain/presentation/widgets/molecules/app_time_picker.dart';
 import 'package:clocktrain/presentation/widgets/molecules/dropdown.dart';
@@ -26,29 +28,37 @@ class ExereciseEditor extends StatelessWidget {
                   spacerType: SpacerType.vertical,
                   spacerSize: SpacerSize.medium),
               _buildTextField('Name Exercise'),
+              const SpacerSizedBox(
+                  spacerType: SpacerType.vertical,
+                  spacerSize: SpacerSize.medium),
               _buildDropdown(),
               const SpacerSizedBox(
                   spacerType: SpacerType.vertical,
                   spacerSize: SpacerSize.medium),
-              _buildIosTimePicker(_durationControler,
-                  TimePickerType.minuteSecond, 'Duration', 'Duration'),
+              Row(
+                children: [
+                  _buildTextFieldFunction(context, _durationControler,
+                      TimePickerType.minuteSecond, 'Duration', 'Duration'),
+                  const SpacerSizedBox(
+                      spacerType: SpacerType.horizontal,
+                      spacerSize: SpacerSize.medium),
+                  _buildTextFieldFunction(context, _setControler,
+                      TimePickerType.interval, 'Set', 'Set'),
+                ],
+              ),
               const SpacerSizedBox(
                   spacerType: SpacerType.vertical,
                   spacerSize: SpacerSize.medium),
-              _buildIosTimePicker(
-                  _setControler, TimePickerType.interval, 'Set', 'Set'),
-              const SpacerSizedBox(
-                  spacerType: SpacerType.vertical,
-                  spacerSize: SpacerSize.medium),
-              _buildTextField('Reps'),
-              const SpacerSizedBox(
-                  spacerType: SpacerType.vertical,
-                  spacerSize: SpacerSize.medium),
-              _buildTextField('Rest'),
-              const SpacerSizedBox(
-                  spacerType: SpacerType.vertical,
-                  spacerSize: SpacerSize.medium),
-              _buildTextField('Note'),
+              _buildNavBarAdd(context, 'Rep'),
+              // _buildTextField('Reps'),
+              // const SpacerSizedBox(
+              //     spacerType: SpacerType.vertical,
+              //     spacerSize: SpacerSize.medium),
+              // _buildTextField('Rest'),
+              // const SpacerSizedBox(
+              //     spacerType: SpacerType.vertical,
+              //     spacerSize: SpacerSize.medium),
+              // _buildTextField('Note'),
             ],
           ),
         ),
@@ -61,12 +71,33 @@ class ExereciseEditor extends StatelessWidget {
         child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(title),
+        Text(title, style: AppTypography().titleS),
         IconButton(
             onPressed: () {
               context.pop();
             },
             icon: AppAsset.close)
+      ],
+    ));
+  }
+
+  Widget _buildNavBarAdd(BuildContext context, String title) {
+    return Container(
+        child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(title, style: AppTypography().titleS),
+        ElevatedNotchRoundedButton(
+            // onTap: () {
+            //   context.push(AppPath.sheetListPage + AppPath.workoutEditorPage);
+            // },
+            // onTap: () {
+            //   showDialog(
+            //       useSafeArea: false,
+            //       context: context,
+            //       builder: (context) => ExereciseEditor());
+            // },
+            )
       ],
     ));
   }
@@ -91,5 +122,42 @@ class ExereciseEditor extends StatelessWidget {
         timePickerType: timePickerType,
         label: label,
         hint: hint);
+  }
+
+  Future<void> _showCupertinoTimerPicker(
+      BuildContext context,
+      TextEditingController controller,
+      TimePickerType timePickerType,
+      String label,
+      String hint) async {
+    await showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return SizedBox(
+            height: 250,
+            child:
+                _buildIosTimePicker(controller, timePickerType, label, hint));
+      },
+    );
+  }
+
+  Widget _buildTextFieldFunction(
+      BuildContext context,
+      TextEditingController controller,
+      TimePickerType timePickerType,
+      String label,
+      String hint) {
+    return Flexible(
+      child: TextField(
+        controller: controller,
+        readOnly: true,
+        onTap: () => _showCupertinoTimerPicker(
+            context, controller, timePickerType, label, hint),
+        decoration: InputDecoration(
+          labelText: label,
+          hintText: hint,
+        ),
+      ),
+    );
   }
 }
