@@ -1,8 +1,3 @@
-import 'package:clocktrain/data/models/exercise_model.dart';
-import 'package:clocktrain/domain/providers/user_proivider.dart';
-import 'package:clocktrain/presentation/themes/app_color.dart';
-import 'package:clocktrain/presentation/widgets/molecules/list_tile_app.dart';
-import 'package:clocktrain/utils/enum/standard_rateo_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

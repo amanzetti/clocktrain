@@ -1,5 +1,4 @@
 import 'package:clocktrain/domain/providers/ui/main_page_params_provider.dart';
-import 'package:clocktrain/presentation/pages/home/home_page.dart';
 import 'package:clocktrain/presentation/routes/path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -10,7 +9,7 @@ class RouterMethods {
   ///Main appbar navigation
   ///Sub appbar navigation
   ///Home Page
-  void setStateHomePage(BuildContext context, WidgetRef ref) {
+  void setStateDashboardPage(BuildContext context, WidgetRef ref) {
     ref
         .read(appStateProvider.notifier)
         .copyWith(mainAppBarTitle: 'Home', showSubAppBar: false);
@@ -60,7 +59,7 @@ class RouterMethods {
   setStateBottomNavigationPath(int index, BuildContext context, WidgetRef ref) {
     switch (index) {
       case 0:
-        setStateHomePage(context, ref);
+        setStateDashboardPage(context, ref);
         break;
       case 1:
         setStateSheetPage(context, ref);
@@ -72,13 +71,15 @@ class RouterMethods {
         setStateSettingsPage(context, ref);
         break;
       default:
-        setStateHomePage(context, ref);
+        setStateDashboardPage(context, ref);
     }
   }
 
   setStatePop(BuildContext context, WidgetRef ref) {
     final currentRoute = GoRouter.of(context);
-    ref.read(appStateProvider.notifier).copyWith(mainAppBarTitle: 'Sheet', showSubAppBar: true);
+    ref
+        .read(appStateProvider.notifier)
+        .copyWith(mainAppBarTitle: 'Sheet', showSubAppBar: true);
   }
 
   ///Title Main Page

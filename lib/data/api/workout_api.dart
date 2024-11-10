@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:clocktrain/config/logger_config.dart';
 import 'package:clocktrain/data/api/api.dart';
 import 'package:clocktrain/data/models/workout_model.dart';

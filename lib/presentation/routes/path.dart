@@ -10,7 +10,7 @@ class AppPath {
   // static const String mainPage = 'main_page';
 
   ///Main bottom navigation
-  static const String homePage = '/home_page';
+  static const String DashboardPage = '/home_page';
   static const String sheetListPage = '/sheet_list_page';
   static const String settingsPage = '/settings_page';
   static const String workoutPage = '/workout_page';
@@ -24,7 +24,7 @@ class AppPath {
   static String sheetPageWithId(String exerciseId) => '/sheet/$exerciseId';
 
   static const List<String> bottomNavigationPath = [
-    homePage,
+    DashboardPage,
     sheetListPage,
     workoutPage,
     settingsPage

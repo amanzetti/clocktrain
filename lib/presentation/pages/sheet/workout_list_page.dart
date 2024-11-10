@@ -25,7 +25,7 @@ class WorkoutListPage extends ConsumerWidget {
 
     // Mostra l'indicatore di caricamento finché non ci sono dati
     if (workoutState.isEmpty) {
-      return Scaffold(
+      return const Scaffold(
         body: Center(child: CircularProgressIndicator()),
       );
     }

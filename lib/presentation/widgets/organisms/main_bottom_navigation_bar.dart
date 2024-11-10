@@ -1,11 +1,6 @@
 import 'package:clocktrain/domain/providers/ui/bottom_nav_bar_provider.dart';
-import 'package:clocktrain/domain/providers/ui/main_page_params_provider.dart';
-import 'package:clocktrain/presentation/routes/path.dart';
 import 'package:clocktrain/presentation/routes/router_methods.dart';
-import 'package:clocktrain/presentation/routes/routers.dart';
 import 'package:clocktrain/presentation/themes/app_color.dart'; // Aggiunto import per AppColor
-import 'package:clocktrain/presentation/widgets/molecules/list_tile_app.dart';
-import 'package:clocktrain/utils/ext/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';

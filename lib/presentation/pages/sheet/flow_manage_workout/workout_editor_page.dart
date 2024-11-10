@@ -12,7 +12,7 @@ class _WorkoutEditorPageState extends ConsumerState<WorkoutEditorPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text('WorkoutEditorPage'),
+      child: const Text('WorkoutEditorPage'),
     );
   }
 }

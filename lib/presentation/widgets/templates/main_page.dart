@@ -1,7 +1,3 @@
-import 'package:clocktrain/domain/providers/ui/main_page_params_provider.dart';
-import 'package:clocktrain/presentation/routes/path.dart';
-import 'package:clocktrain/presentation/routes/router_methods.dart';
-import 'package:clocktrain/presentation/widgets/organisms/main_app_bar.dart';
 import 'package:clocktrain/presentation/widgets/organisms/main_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -16,7 +12,8 @@ class MainPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
         body: SafeArea(
-          child: navigationShell),
+            minimum: const EdgeInsets.symmetric(horizontal: 16),
+            child: navigationShell),
         bottomNavigationBar:
             MainBottomNavBar(navigationShell: navigationShell));
   }

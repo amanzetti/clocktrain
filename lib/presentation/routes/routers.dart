@@ -1,6 +1,6 @@
 import 'package:clocktrain/presentation/pages/root_page.dart';
 import 'package:clocktrain/presentation/pages/sheet/flow_manage_workout/workout_editor_page.dart';
-import 'package:clocktrain/presentation/pages/home/home_page.dart';
+import 'package:clocktrain/presentation/pages/dashboard/dashboard_page.dart';
 import 'package:clocktrain/presentation/widgets/templates/main_page.dart';
 import 'package:clocktrain/presentation/pages/profile/profile_page.dart';
 import 'package:clocktrain/presentation/pages/sheet/sheet_page.dart';
@@ -120,9 +120,9 @@ class AppRouter {
       // observers: [AppRouteObserver()],
       routes: [
         GoRoute(
-          name: AppPath.homePage,
-          path: AppPath.homePage,
-          builder: (context, state) => const HomePage(),
+          name: AppPath.DashboardPage,
+          path: AppPath.DashboardPage,
+          builder: (context, state) => const DashboardPage(),
         ),
       ],
     );

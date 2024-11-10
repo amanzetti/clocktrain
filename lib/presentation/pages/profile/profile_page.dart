@@ -1,7 +1,6 @@
 import 'package:clocktrain/domain/providers/user_proivider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:clocktrain/data/models/user_model.dart';
 
 class ProfilePage extends ConsumerStatefulWidget {
