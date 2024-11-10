@@ -2,6 +2,7 @@ import 'package:clocktrain/data/models/workout_model.dart';
 import 'package:clocktrain/domain/providers/ui/main_page_params_provider.dart';
 import 'package:clocktrain/domain/providers/user_proivider.dart';
 import 'package:clocktrain/domain/providers/workout_provider.dart';
+import 'package:clocktrain/presentation/routes/path.dart';
 import 'package:clocktrain/presentation/routes/router_methods.dart';
 import 'package:clocktrain/presentation/themes/app_color.dart';
 import 'package:clocktrain/presentation/themes/app_typography.dart';
@@ -11,6 +12,7 @@ import 'package:clocktrain/presentation/widgets/organisms/sub_app_bar.dart';
 import 'package:clocktrain/utils/enum/standard_rateo_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class WorkoutListPage extends ConsumerWidget {
   const WorkoutListPage({super.key});
@@ -22,7 +24,7 @@ class WorkoutListPage extends ConsumerWidget {
 
     return Column(
       children: [
-        _buildNavBar(),
+        _buildNavBar(context),
         Expanded(
           child: _buildListWorkout(context, workouts),
         ),
@@ -30,13 +32,17 @@ class WorkoutListPage extends ConsumerWidget {
     );
   }
 
-  Widget _buildNavBar() {
+  Widget _buildNavBar(BuildContext context) {
     return Container(
         child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text('Workouts', style: AppTypography().titleS),
-        ElevatedNotchRoundedButton()
+        ElevatedNotchRoundedButton(
+          onTap: () {
+            context.push(AppPath.sheetListPage + AppPath.workoutEditorPage);
+          },
+        )
       ],
     ));
   }

@@ -1,5 +1,6 @@
 import 'package:clocktrain/data/models/exercise_model.dart';
 import 'package:clocktrain/domain/providers/user_proivider.dart';
+import 'package:clocktrain/presentation/routes/path.dart';
 import 'package:clocktrain/presentation/themes/app_color.dart';
 import 'package:clocktrain/presentation/themes/app_typography.dart';
 import 'package:clocktrain/presentation/widgets/atoms/elevated_rounded_button.dart';
@@ -7,6 +8,7 @@ import 'package:clocktrain/presentation/widgets/molecules/list_tile_app.dart';
 import 'package:clocktrain/utils/enum/standard_rateo_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class SheetPage extends ConsumerWidget {
   final String exerciseId;
@@ -24,7 +26,7 @@ class SheetPage extends ConsumerWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         children: [
-          _buildNavBar(),
+          _buildNavBar(context),
           Expanded(
             child: _buildExerciseList(context, exercises),
           ),
@@ -33,13 +35,17 @@ class SheetPage extends ConsumerWidget {
     );
   }
 
-  Widget _buildNavBar() {
+  Widget _buildNavBar(BuildContext context) {
     return Container(
         child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text('Exercises', style: AppTypography().titleS),
-        ElevatedNotchRoundedButton()
+        ElevatedNotchRoundedButton(
+          onTap: () {
+            context.push(AppPath.workoutEditorPage);
+          },
+        )
       ],
     ));
   }

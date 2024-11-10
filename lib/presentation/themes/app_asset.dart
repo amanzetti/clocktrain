@@ -23,4 +23,5 @@ class AppAsset {
   static const account = Icon(Icons.account_circle);
   static const add = Icon(Icons.add);
   static const notification = Icon(Icons.notifications);
+  static const close = Icon(Icons.close);
 }
