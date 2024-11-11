@@ -212,8 +212,8 @@ class DashboardPage extends ConsumerWidget {
             ),
           ],
         ),
-        AppCard(
-          padding: const EdgeInsets.all(16),
+        const AppCard(
+          padding: EdgeInsets.all(16),
           height: 200,
           color: Colors.white,
         ),

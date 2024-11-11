@@ -1,16 +1,16 @@
-import 'package:clocktrain/presentation/themes/app_asset.dart';
 import 'package:clocktrain/presentation/themes/app_color.dart';
-import 'package:clocktrain/presentation/themes/app_typography.dart';
-import 'package:clocktrain/presentation/widgets/atoms/elevated_rounded_button.dart';
 import 'package:clocktrain/presentation/widgets/atoms/spacer_sized_box.dart';
+import 'package:clocktrain/presentation/widgets/atoms/text_filed_exercise_tile.dart';
 import 'package:clocktrain/presentation/widgets/molecules/app_time_picker.dart';
 import 'package:clocktrain/presentation/widgets/molecules/dropdown.dart';
+import 'package:clocktrain/presentation/widgets/organisms/header_with_action_button.dart';
+import 'package:clocktrain/presentation/widgets/organisms/header_with_close_button.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class ExereciseEditor extends StatelessWidget {
   ExereciseEditor({super.key});
 
+  final _nameControler = TextEditingController();
   final _durationControler = TextEditingController();
   final _setControler = TextEditingController();
 
@@ -19,15 +19,18 @@ class ExereciseEditor extends StatelessWidget {
     return Material(
       color: AppColor.instance.surface,
       child: SafeArea(
-        minimum: EdgeInsets.symmetric(horizontal: 16),
+        minimum: const EdgeInsets.symmetric(horizontal: 16),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              _buildNavBar(context, 'Exercise Editor'),
+              HeaderWithCloseButton(title: 'Exercise Editor'),
               const SpacerSizedBox(
                   spacerType: SpacerType.vertical,
                   spacerSize: SpacerSize.medium),
-              _buildTextField('Name Exercise'),
+              TextFiledExerciseTile(
+                controller: _nameControler,
+                enabled: true,
+              ),
               const SpacerSizedBox(
                   spacerType: SpacerType.vertical,
                   spacerSize: SpacerSize.medium),
@@ -37,19 +40,38 @@ class ExereciseEditor extends StatelessWidget {
                   spacerSize: SpacerSize.medium),
               Row(
                 children: [
-                  _buildTextFieldFunction(context, _durationControler,
-                      TimePickerType.minuteSecond, 'Duration', 'Duration'),
+                  Flexible(
+                    child: TextFiledExerciseTile(
+                      controller: _durationControler,
+                      enabled: true,
+                      readOnly: true,
+                      onTap: () => _showCupertinoTimerPicker(
+                          context,
+                          _durationControler,
+                          TimePickerType.minuteSecond,
+                          'Duration',
+                          'Duration'),
+                    ),
+                  ),
                   const SpacerSizedBox(
                       spacerType: SpacerType.horizontal,
                       spacerSize: SpacerSize.medium),
-                  _buildTextFieldFunction(context, _setControler,
-                      TimePickerType.interval, 'Set', 'Set'),
+                  Flexible(
+                    child: TextFiledExerciseTile(
+                      controller: _setControler,
+                      enabled: true,
+                      readOnly: true,
+                      onTap: () => _showCupertinoTimerPicker(context,
+                          _setControler, TimePickerType.interval, 'Set', 'Set'),
+                    ),
+                  ),
                 ],
               ),
               const SpacerSizedBox(
                   spacerType: SpacerType.vertical,
                   spacerSize: SpacerSize.medium),
-              _buildNavBarAdd(context, 'Rep'),
+              HeaderWithActionButton(title: 'Rep'),
+              _repList(),
               // _buildTextField('Reps'),
               // const SpacerSizedBox(
               //     spacerType: SpacerType.vertical,
@@ -62,51 +84,6 @@ class ExereciseEditor extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _buildNavBar(BuildContext context, String title) {
-    return Container(
-        child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(title, style: AppTypography().titleS),
-        IconButton(
-            onPressed: () {
-              context.pop();
-            },
-            icon: AppAsset.close)
-      ],
-    ));
-  }
-
-  Widget _buildNavBarAdd(BuildContext context, String title) {
-    return Container(
-        child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(title, style: AppTypography().titleS),
-        ElevatedNotchRoundedButton(
-            // onTap: () {
-            //   context.push(AppPath.sheetListPage + AppPath.workoutEditorPage);
-            // },
-            // onTap: () {
-            //   showDialog(
-            //       useSafeArea: false,
-            //       context: context,
-            //       builder: (context) => ExereciseEditor());
-            // },
-            )
-      ],
-    ));
-  }
-
-  Widget _buildTextField(String label) {
-    return TextField(
-      controller: TextEditingController(),
-      decoration: InputDecoration(
-        labelText: label,
       ),
     );
   }
@@ -141,23 +118,29 @@ class ExereciseEditor extends StatelessWidget {
     );
   }
 
-  Widget _buildTextFieldFunction(
-      BuildContext context,
-      TextEditingController controller,
-      TimePickerType timePickerType,
-      String label,
-      String hint) {
-    return Flexible(
-      child: TextField(
-        controller: controller,
-        readOnly: true,
-        onTap: () => _showCupertinoTimerPicker(
-            context, controller, timePickerType, label, hint),
-        decoration: InputDecoration(
-          labelText: label,
-          hintText: hint,
+  Widget _repList() {
+    return Wrap(
+      children: [
+        Row(
+          children: [
+            Flexible(
+              child: TextFiledExerciseTile(
+                controller: _nameControler,
+                enabled: true,
+              ),
+            ),
+            const SpacerSizedBox(
+                spacerType: SpacerType.horizontal,
+                spacerSize: SpacerSize.medium),
+            Flexible(
+              child: TextFiledExerciseTile(
+                controller: _nameControler,
+                enabled: true,
+              ),
+            ),
+          ],
         ),
-      ),
+      ],
     );
   }
 }

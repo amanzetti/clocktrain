@@ -2,6 +2,8 @@ import 'package:clocktrain/utils/enum/muscle_group_enum.dart';
 import 'package:flutter/material.dart';
 
 class MultiSelectDropdown extends StatefulWidget {
+  const MultiSelectDropdown({super.key});
+
   @override
   _MultiSelectDropdownState createState() => _MultiSelectDropdownState();
 }
@@ -36,7 +38,7 @@ class _MultiSelectDropdownState extends State<MultiSelectDropdown> {
         GestureDetector(
           onTap: _showMultiSelectDialog,
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey),
               borderRadius: BorderRadius.circular(8),
@@ -45,7 +47,7 @@ class _MultiSelectDropdownState extends State<MultiSelectDropdown> {
               selectedMuscleGroups.isNotEmpty
                   ? selectedMuscleGroups.map((e) => e.name).join(', ')
                   : "No muscle groups selected",
-              style: TextStyle(color: Colors.black),
+              style: const TextStyle(color: Colors.black),
             ),
           ),
         ),
@@ -57,7 +59,7 @@ class _MultiSelectDropdownState extends State<MultiSelectDropdown> {
 class MultiSelectDialog extends StatefulWidget {
   final List<MuscleGroup> initialSelectedValues;
 
-  MultiSelectDialog({required this.initialSelectedValues});
+  const MultiSelectDialog({super.key, required this.initialSelectedValues});
 
   @override
   _MultiSelectDialogState createState() => _MultiSelectDialogState();
@@ -75,7 +77,7 @@ class _MultiSelectDialogState extends State<MultiSelectDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text("Select Muscle Groups"),
+      title: const Text("Select Muscle Groups"),
       content: SingleChildScrollView(
         child: ListBody(
           children: MuscleGroup.values.map((group) {
@@ -97,13 +99,13 @@ class _MultiSelectDialogState extends State<MultiSelectDialog> {
       ),
       actions: [
         TextButton(
-          child: Text("Cancel"),
+          child: const Text("Cancel"),
           onPressed: () {
             Navigator.of(context).pop();
           },
         ),
         TextButton(
-          child: Text("OK"),
+          child: const Text("OK"),
           onPressed: () {
             Navigator.of(context).pop(selectedValues);
           },
