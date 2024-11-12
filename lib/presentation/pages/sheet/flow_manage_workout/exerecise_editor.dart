@@ -6,8 +6,9 @@ import 'package:clocktrain/presentation/widgets/molecules/dropdown.dart';
 import 'package:clocktrain/presentation/widgets/organisms/header_with_action_button.dart';
 import 'package:clocktrain/presentation/widgets/organisms/header_with_close_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ExereciseEditor extends StatelessWidget {
+class ExereciseEditor extends ConsumerWidget {
   ExereciseEditor({super.key});
 
   final _nameControler = TextEditingController();
@@ -15,7 +16,7 @@ class ExereciseEditor extends StatelessWidget {
   final _setControler = TextEditingController();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Material(
       color: AppColor.instance.surface,
       child: SafeArea(
@@ -70,8 +71,27 @@ class ExereciseEditor extends StatelessWidget {
               const SpacerSizedBox(
                   spacerType: SpacerType.vertical,
                   spacerSize: SpacerSize.medium),
-              HeaderWithActionButton(title: 'Rep'),
-              _repList(),
+              HeaderWithActionButton(
+                  title: 'Rep',
+                  onTap: () {
+                    // ref.read(providerReps.notifier).addRepRow();
+                    ref
+                        .read(repTextControllerPairProvider.notifier)
+                        .addControllerPair();
+                  }),
+              _repList(ref),
+              ElevatedButton(
+                onPressed: () {
+                  final rep = ref.read(repTextControllerPairProvider.notifier);
+                  final a = rep.controllerPairValues;
+                  print('SAVE');
+                  print(_nameControler.text);
+                  print(_durationControler.text);
+                  print(_setControler.text);
+                  print(a);
+                },
+                child: const Text('SAVE'),
+              ),
               // _buildTextField('Reps'),
               // const SpacerSizedBox(
               //     spacerType: SpacerType.vertical,
@@ -118,29 +138,70 @@ class ExereciseEditor extends StatelessWidget {
     );
   }
 
-  Widget _repList() {
+  Widget _repList(WidgetRef ref) {
+    // final List<Widget> repProvider = ref.watch(providerReps);
+    final List<List<TextEditingController>> exercisePairProvider =
+        ref.watch(repTextControllerPairProvider);
     return Wrap(
+      // children: repProvider,
       children: [
-        Row(
-          children: [
-            Flexible(
-              child: TextFiledExerciseTile(
-                controller: _nameControler,
-                enabled: true,
+        for (var pair in exercisePairProvider)
+          Row(
+            children: [
+              Flexible(
+                child: TextFiledExerciseTile(
+                  controller: pair[0],
+                  enabled: true,
+                ),
               ),
-            ),
-            const SpacerSizedBox(
+              const SpacerSizedBox(
                 spacerType: SpacerType.horizontal,
-                spacerSize: SpacerSize.medium),
-            Flexible(
-              child: TextFiledExerciseTile(
-                controller: _nameControler,
-                enabled: true,
+                spacerSize: SpacerSize.medium,
               ),
-            ),
-          ],
-        ),
+              Flexible(
+                child: TextFiledExerciseTile(
+                  controller: pair[1],
+                  enabled: true,
+                ),
+              ),
+            ],
+          ),
       ],
     );
+  }
+}
+
+final repTextControllerPairProvider = StateNotifierProvider<
+    RepTextControllerPairProvider, List<List<TextEditingController>>>((ref) {
+  return RepTextControllerPairProvider();
+});
+
+class RepTextControllerPairProvider
+    extends StateNotifier<List<List<TextEditingController>>> {
+  RepTextControllerPairProvider() : super([]);
+
+  // Aggiunge una coppia di controller per ogni nuova coppia di TextField
+  void addControllerPair() {
+    state = [
+      ...state,
+      [TextEditingController(), TextEditingController()]
+    ];
+  }
+
+  // Rimuove una coppia di controller
+  void removeControllerPair(int index) {
+    state[index]
+        .forEach((controller) => controller.dispose()); // Rilascia risorse
+    state = [
+      ...state.sublist(0, index),
+      ...state.sublist(index + 1),
+    ];
+  }
+
+  // Restituisce i valori dei controller in forma di coppie
+  List<List<String>> get controllerPairValues {
+    return state
+        .map((pair) => pair.map((controller) => controller.text).toList())
+        .toList();
   }
 }
