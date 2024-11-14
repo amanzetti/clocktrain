@@ -1,6 +1,7 @@
 import 'package:clocktrain/domain/providers/ui/bottom_nav_bar_provider.dart';
 import 'package:clocktrain/presentation/routes/router_methods.dart';
-import 'package:clocktrain/presentation/themes/app_color.dart'; // Aggiunto import per AppColor
+import 'package:clocktrain/presentation/themes/app_asset.dart';
+import 'package:clocktrain/utils/ext/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -12,7 +13,6 @@ class MainBottomNavBar extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final indexBottomNavbar = ref.watch(indexBottomNavbarProvider);
-    final colors = AppColor.instance;
 
     onItemTapped(int index) {
       ref.read(indexBottomNavbarProvider.notifier).update((state) => index);
@@ -26,25 +26,25 @@ class MainBottomNavBar extends ConsumerWidget {
 
     return BottomNavigationBar(
       currentIndex: indexBottomNavbar,
-      selectedItemColor: colors.primary,
-      unselectedItemColor: colors.textSecondary,
+      selectedItemColor: context.colorScheme.primary,
+      unselectedItemColor: context.colorScheme.secondary,
       onTap: onItemTapped,
-      items: const [
+      items: [
         BottomNavigationBarItem(
-          icon: Icon(Icons.home),
+          icon: AppAsset().homeSvg(context),
           label: 'Home',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.library_books),
+          icon: AppAsset().sheetSvg(context),
           label: 'Sheet',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.fitness_center),
-          label: 'Workout',
+          icon: AppAsset().toolsSvg(context),
+          label: 'Tools',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.settings),
-          label: 'Account',
+          icon: AppAsset().settingsSvg(context),
+          label: 'Settings',
         ),
       ],
     );

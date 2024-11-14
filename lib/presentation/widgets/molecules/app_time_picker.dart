@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
 enum TimePickerType {
   minuteSecond,
@@ -94,27 +93,8 @@ class _IOSMinuteSecondPickerFieldState
     });
   }
 
-  // Funzione per mostrare il CupertinoTimerPicker
-  Future<void> _showCupertinoTimerPicker() async {
-    await showModalBottomSheet(
-      context: context,
-      builder: (BuildContext context) {
-        return SizedBox(height: 250, child: _getCupertinoPiker());
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return _getCupertinoPiker();
-    // return TextField(
-    //   controller: _controller,
-    //   readOnly: true,
-    //   onTap: _showCupertinoTimerPicker,
-    //   decoration: InputDecoration(
-    //     labelText: widget.label,
-    //     hintText: widget.hint,
-    //   ),
-    // );
   }
 }

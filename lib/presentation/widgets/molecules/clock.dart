@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:audioplayers/audioplayers.dart';
-import 'package:clocktrain/presentation/themes/app_typography.dart';
+import 'package:clocktrain/utils/ext/build_context_ext.dart';
 import 'package:flutter/material.dart';
 
 class WorkTimeCountdown extends StatefulWidget {
@@ -70,16 +70,11 @@ class _WorkTimeCountdownState extends State<WorkTimeCountdown> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text(
-            'Time Remaining:',
-            style: AppTypography()
-                .titleM, // Utilizza la tipografia definita nel tema
-          ),
+          Text('Time Remaining:', style: context.textTheme.headlineLarge),
           Text(
             _formatTime(_secondsRemaining),
-            style: AppTypography().titleXL.copyWith(
-                color:
-                    Theme.of(context).primaryColor), // Colore primario dell'app
+            style: context.textTheme.headlineLarge?.copyWith(
+                color: context.colorScheme.primary), // Colore primario dell'app
           ),
           const SizedBox(height: 20),
           Row(

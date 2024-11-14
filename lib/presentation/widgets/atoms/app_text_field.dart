@@ -1,18 +1,16 @@
-import 'package:clocktrain/presentation/themes/app_color.dart';
-import 'package:clocktrain/presentation/themes/app_typography.dart';
+import 'package:clocktrain/utils/ext/build_context_ext.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class TextFiledExerciseTile extends ConsumerWidget {
+class AppTextFiled extends StatelessWidget {
   final TextEditingController controller;
   final bool enabled;
   final EdgeInsets? padding;
   final bool readOnly;
   final void Function()? onTap;
 
-  const TextFiledExerciseTile({
+  const AppTextFiled({
     required this.controller,
-    required this.enabled,
+    this.enabled = true,
     this.padding,
     this.readOnly = false,
     this.onTap,
@@ -20,7 +18,7 @@ class TextFiledExerciseTile extends ConsumerWidget {
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return Padding(
       padding: padding ?? const EdgeInsets.all(0),
       child: TextField(
@@ -30,8 +28,8 @@ class TextFiledExerciseTile extends ConsumerWidget {
         textAlign: TextAlign.center,
         decoration: InputDecoration(
           fillColor: enabled
-              ? AppColor().enabledTextField
-              : AppColor().disabledTextField,
+              ? context.colorScheme.primary
+              : context.colorScheme.surface,
           filled: true,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
@@ -48,10 +46,12 @@ class TextFiledExerciseTile extends ConsumerWidget {
           counterText: '',
           contentPadding: EdgeInsets.zero,
         ),
-        // maxLength: 3,
         controller: controller,
-        style: AppTypography().titleL,
-        // keyboardType: TextInputType.number,
+        style: context.textTheme.labelLarge?.copyWith(
+          color: enabled
+              ? context.colorScheme.onPrimary
+              : context.colorScheme.onSurface,
+        ),
       ),
     );
   }

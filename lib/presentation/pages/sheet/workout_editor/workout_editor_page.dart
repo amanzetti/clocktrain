@@ -1,7 +1,7 @@
-import 'package:clocktrain/presentation/pages/sheet/flow_manage_workout/exerecise_editor.dart';
-import 'package:clocktrain/presentation/themes/app_typography.dart';
-import 'package:clocktrain/presentation/widgets/atoms/elevated_rounded_button.dart';
+import 'package:clocktrain/presentation/pages/sheet/workout_editor/exerecise_editor.dart';
 import 'package:clocktrain/presentation/widgets/atoms/spacer_sized_box.dart';
+import 'package:clocktrain/presentation/widgets/organisms/header_with_action_button.dart';
+import 'package:clocktrain/utils/ext/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -20,7 +20,7 @@ class _WorkoutEditorPageState extends ConsumerState<WorkoutEditorPage> {
         children: [
           Row(
             children: [
-              Text('Workout Editor', style: AppTypography.instance.titleS),
+              Text('Workout Editor', style: context.textTheme.displaySmall),
             ],
           ),
           const SpacerSizedBox(
@@ -28,31 +28,18 @@ class _WorkoutEditorPageState extends ConsumerState<WorkoutEditorPage> {
           _buildTextField('Name Workout'),
           const SpacerSizedBox(
               spacerType: SpacerType.vertical, spacerSize: SpacerSize.medium),
-          _buildNavBar(context, 'Exercises'),
+          HeaderWithActionButton(
+            title: 'Exercises',
+            onTap: () {
+              showDialog(
+                  useSafeArea: false,
+                  context: context,
+                  builder: (context) => ExereciseEditor());
+            },
+          ),
         ],
       ),
     );
-  }
-
-  Widget _buildNavBar(BuildContext context, String title) {
-    return Container(
-        child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(title, style: AppTypography().titleS),
-        ElevatedNotchRoundedButton(
-          // onTap: () {
-          //   context.push(AppPath.sheetListPage + AppPath.workoutEditorPage);
-          // },
-          onTap: () {
-            showDialog(
-                useSafeArea: false,
-                context: context,
-                builder: (context) => ExereciseEditor());
-          },
-        )
-      ],
-    ));
   }
 
   Widget _buildTextField(String label) {

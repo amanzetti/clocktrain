@@ -1,5 +1,6 @@
-import 'package:clocktrain/presentation/themes/app_typography.dart';
-import 'package:clocktrain/presentation/widgets/atoms/elevated_rounded_button.dart';
+import 'package:clocktrain/presentation/themes/app_asset.dart';
+import 'package:clocktrain/presentation/widgets/atoms/notch_rounded_button.dart';
+import 'package:clocktrain/utils/ext/build_context_ext.dart';
 import 'package:flutter/material.dart';
 
 class HeaderWithActionButton extends StatelessWidget {
@@ -18,8 +19,10 @@ class HeaderWithActionButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(title ?? '', style: AppTypography().titleS),
-            ElevatedNotchRoundedButton(
+            Text(title ?? '', style: context.textTheme.displaySmall),
+            NotchRoundedButton(
+              text: 'Add',
+              leftIcon: AppAsset().addSvg(context),
               onTap: onTap,
             )
           ],

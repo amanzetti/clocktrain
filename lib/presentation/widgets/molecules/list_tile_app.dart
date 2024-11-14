@@ -2,10 +2,9 @@ import 'package:clocktrain/data/models/rep_model.dart';
 import 'package:clocktrain/domain/providers/ui/edit_provider.dart';
 import 'package:clocktrain/domain/providers/ui/main_page_params_provider.dart';
 import 'package:clocktrain/presentation/routes/path.dart';
-import 'package:clocktrain/presentation/themes/app_color.dart';
-import 'package:clocktrain/presentation/themes/app_typography.dart';
-import 'package:clocktrain/presentation/widgets/atoms/media_screen.dart';
-import 'package:clocktrain/presentation/widgets/atoms/text_filed_exercise_tile.dart';
+import 'package:clocktrain/presentation/themes/app_asset.dart';
+import 'package:clocktrain/presentation/widgets/organisms/media_screen.dart';
+import 'package:clocktrain/presentation/widgets/atoms/app_text_field.dart';
 import 'package:clocktrain/presentation/widgets/molecules/placeholder_img.dart';
 import 'package:clocktrain/utils/enum/standard_rateo_enum.dart';
 import 'package:clocktrain/utils/ext/build_context_ext.dart';
@@ -81,7 +80,7 @@ class _ListTileAppState<T extends ObjectT>
   Widget _buildTitle() {
     return Text(
       widget.object.name,
-      style: AppTypography().titleS,
+      style: context.textTheme.headlineLarge,
     );
   }
 
@@ -94,12 +93,12 @@ class _ListTileAppState<T extends ObjectT>
           children: [
             Text(
               'rep: ${e.repNumber}',
-              style: AppTypography.instance.caption,
+              style: context.textTheme.titleSmall,
             ),
             const SizedBox(width: 8.0),
             Text(
               'kg: ${e.weight}',
-              style: AppTypography.instance.caption,
+              style: context.textTheme.titleSmall,
             ),
           ],
         ));
@@ -120,13 +119,13 @@ class _ListTileAppState<T extends ObjectT>
                 child: Column(
                   children: [
                     Flexible(
-                      child: TextFiledExerciseTile(
+                      child: AppTextFiled(
                         controller: setController,
                         enabled: edit,
                         padding: const EdgeInsets.symmetric(horizontal: 4.0),
                       ),
                     ),
-                    Text("SET", style: AppTypography().caption),
+                    Text("SET", style: context.textTheme.titleSmall),
                   ],
                 ),
               ),
@@ -136,7 +135,7 @@ class _ListTileAppState<T extends ObjectT>
                   // [
                   //   Text("REP", style: AppTypography().caption),
                   //   Flexible(
-                  //     child: TextFiledExerciseTile(
+                  //     child: AppTextFiled(
                   //       controller: repController,
                   //       enabled: edit,
                   //       padding: const EdgeInsets.symmetric(horizontal: 4.0),
@@ -154,15 +153,15 @@ class _ListTileAppState<T extends ObjectT>
             children: [
               Text(
                 widget.object.description ?? '',
-                style: AppTypography().caption,
+                style: context.textTheme.titleSmall,
               ),
               const Spacer(),
               OutlinedButton(
                   style: OutlinedButton.styleFrom(
-                    foregroundColor: AppColor().primaryButtonColor,
+                    foregroundColor: context.colorScheme.primary,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(4.0),
-                      side: BorderSide(color: AppColor().primaryButtonColor),
+                      side: BorderSide(color: context.colorScheme.primary),
                     ),
                   ),
                   onPressed: () {
@@ -208,7 +207,7 @@ class _ListTileAppState<T extends ObjectT>
           left: false,
           bottom: false,
           child: Material(
-            color: Colors.black.withOpacity(0.9),
+            color: context.colorScheme.surface.withOpacity(0.9),
             child: Stack(
               children: [
                 Align(
@@ -224,11 +223,7 @@ class _ListTileAppState<T extends ObjectT>
                   child: Padding(
                     padding: const EdgeInsets.only(top: 8.0, right: 8.0),
                     child: IconButton(
-                      icon: const Icon(
-                        Icons.close,
-                        color: Colors.white,
-                        size: 30,
-                      ),
+                      icon: AppAsset().cancelSvg(context),
                       onPressed: _removeOverlay,
                     ),
                   ),

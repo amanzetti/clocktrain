@@ -1,5 +1,5 @@
 import 'package:clocktrain/presentation/pages/root_page.dart';
-import 'package:clocktrain/presentation/pages/sheet/flow_manage_workout/workout_editor_page.dart';
+import 'package:clocktrain/presentation/pages/sheet/workout_editor/workout_editor_page.dart';
 import 'package:clocktrain/presentation/pages/dashboard/dashboard_page.dart';
 import 'package:clocktrain/presentation/widgets/templates/main_page.dart';
 import 'package:clocktrain/presentation/pages/profile/profile_page.dart';

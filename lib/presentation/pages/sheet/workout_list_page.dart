@@ -1,10 +1,10 @@
 import 'package:clocktrain/data/models/workout_model.dart';
 import 'package:clocktrain/domain/providers/user_proivider.dart';
 import 'package:clocktrain/presentation/routes/path.dart';
-import 'package:clocktrain/presentation/themes/app_color.dart';
 import 'package:clocktrain/presentation/widgets/molecules/list_tile_app.dart';
 import 'package:clocktrain/presentation/widgets/organisms/header_with_action_button.dart';
 import 'package:clocktrain/utils/enum/standard_rateo_enum.dart';
+import 'package:clocktrain/utils/ext/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -21,7 +21,7 @@ class WorkoutListPage extends ConsumerWidget {
       children: [
         HeaderWithActionButton(
           title: 'Workouts',
-          color: AppColor.instance.surface,
+          color: context.colorScheme.surface,
           onTap: () =>
               context.push(AppPath.sheetListPage + AppPath.workoutEditorPage),
         ),

@@ -1,7 +1,6 @@
 import 'package:clocktrain/data/models/user_model.dart';
 import 'package:clocktrain/domain/providers/user_proivider.dart';
 import 'package:clocktrain/presentation/themes/app_asset.dart';
-import 'package:clocktrain/presentation/themes/app_typography.dart';
 import 'package:clocktrain/presentation/widgets/atoms/app_card.dart';
 import 'package:clocktrain/presentation/widgets/atoms/spacer_sized_box.dart';
 import 'package:clocktrain/utils/ext/build_context_ext.dart';
@@ -11,8 +10,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class DashboardPage extends ConsumerWidget {
   const DashboardPage({super.key});
-
-  static const widthImage = 150.0;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -34,7 +31,7 @@ class DashboardPage extends ConsumerWidget {
           _buildNextWorkoutCard(context),
           const SpacerSizedBox(
               spacerType: SpacerType.vertical, spacerSize: SpacerSize.medium),
-          _buildGoal(),
+          _buildGoal(context),
         ],
       ),
     );
@@ -48,18 +45,15 @@ class DashboardPage extends ConsumerWidget {
         children: [
           Column(
             children: [
-              _buildTextDate(),
-              Text(
-                'Hi, $nameUser!',
-                style: AppTypography().titleXL,
-              ),
+              _buildTextDate(context),
+              Text('Hi, $nameUser!', style: context.textTheme.displaySmall),
             ],
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               IconButton(
-                icon: AppAsset.notification,
+                icon: AppAsset().notificationSvg(context),
                 onPressed: () {},
               ),
             ],
@@ -69,28 +63,29 @@ class DashboardPage extends ConsumerWidget {
     );
   }
 
-  Widget _buildIcon(DatePartOfDay partOfDay) {
-    switch (partOfDay) {
-      case DatePartOfDay.morning:
-        return AppAsset.morning;
-      case DatePartOfDay.afternoon:
-        return AppAsset.afternoon;
-      case DatePartOfDay.evening:
-        return AppAsset.evening;
-      case DatePartOfDay.night:
-        return AppAsset.night;
-      default:
-        return AppAsset.error;
-    }
-  }
-
-  Widget _buildTextDate() {
+  Widget _buildTextDate(BuildContext context) {
     return Row(
       children: [
-        _buildIcon(DateTime.now().partOfDay),
-        Text(DateTime.now().toddMMMyyyyString()),
+        _buildIcon(context, DateTime.now().partOfDay),
+        Text(DateTime.now().toddMMMyyyyString(),
+            style: context.textTheme.titleSmall),
       ],
     );
+  }
+
+  Widget _buildIcon(BuildContext context, DatePartOfDay partOfDay) {
+    switch (partOfDay) {
+      case DatePartOfDay.morning:
+        return AppAsset().daySvg(context);
+      case DatePartOfDay.afternoon:
+        return AppAsset().noonSvg(context);
+      case DatePartOfDay.evening:
+        return AppAsset().eveningSvg(context);
+      case DatePartOfDay.night:
+        return AppAsset().nightSvg(context);
+      default:
+        return AppAsset().errorSvg(context);
+    }
   }
 
   ///USER PREVIEW
@@ -101,7 +96,7 @@ class DashboardPage extends ConsumerWidget {
           children: [
             Text(
               'Summary',
-              style: AppTypography().titleS,
+              style: context.textTheme.headlineSmall,
             ),
           ],
         ),
@@ -121,6 +116,22 @@ class DashboardPage extends ConsumerWidget {
     );
   }
 
+  Widget _buildCellUserPreview(
+      BuildContext context, String value, String label) {
+    return Column(
+      children: [
+        Text(
+          value,
+          style: context.textTheme.bodyLarge,
+        ),
+        Text(
+          label,
+          style: context.textTheme.labelMedium,
+        ),
+      ],
+    );
+  }
+
   ///CHART
   Widget _buildChart(BuildContext context) {
     return Column(
@@ -129,7 +140,7 @@ class DashboardPage extends ConsumerWidget {
           children: [
             Text(
               'Metrics',
-              style: AppTypography().titleS,
+              style: context.textTheme.headlineSmall,
             ),
           ],
         ),
@@ -137,22 +148,6 @@ class DashboardPage extends ConsumerWidget {
           color: Colors.white,
           height: 200,
           width: context.mq.size.width,
-        ),
-      ],
-    );
-  }
-
-  Widget _buildCellUserPreview(
-      BuildContext context, String value, String label) {
-    return Column(
-      children: [
-        Text(
-          value,
-          style: AppTypography().titleS,
-        ),
-        Text(
-          label,
-          style: AppTypography().caption,
         ),
       ],
     );
@@ -166,7 +161,7 @@ class DashboardPage extends ConsumerWidget {
           children: [
             Text(
               'Next Workout',
-              style: AppTypography().titleS,
+              style: context.textTheme.headlineSmall,
             ),
           ],
         ),
@@ -179,19 +174,19 @@ class DashboardPage extends ConsumerWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Workout Name', style: AppTypography().paragraph),
-                  Text('Workout Type', style: AppTypography().paragraph),
-                  Text('Workout Duration', style: AppTypography().paragraph),
+                  Text('Workout Name', style: context.textTheme.bodyLarge),
+                  Text('Workout Type', style: context.textTheme.bodyLarge),
+                  Text('Workout Duration', style: context.textTheme.bodyLarge),
                 ],
               ),
               Column(
                 children: [
-                  Text('SET: 3', style: AppTypography().paragraph),
-                  Text('REP: 3', style: AppTypography().paragraph),
+                  Text('SET: 3', style: context.textTheme.bodyLarge),
+                  Text('REP: 3', style: context.textTheme.bodyLarge),
                 ],
               ),
               IconButton(
-                icon: const Icon(Icons.play_arrow),
+                icon: AppAsset().playSvg(context),
                 onPressed: () {},
               )
             ],
@@ -201,14 +196,14 @@ class DashboardPage extends ConsumerWidget {
     );
   }
 
-  Widget _buildGoal() {
+  Widget _buildGoal(BuildContext context) {
     return Column(
       children: [
         Row(
           children: [
             Text(
               'Goal',
-              style: AppTypography().titleS,
+              style: context.textTheme.headlineSmall,
             ),
           ],
         ),
@@ -220,53 +215,4 @@ class DashboardPage extends ConsumerWidget {
       ],
     );
   }
-
-  // Widget _buildUserSection(BuildContext context, WidgetRef ref, User user) {
-  //   return SizedBox(
-  //     height: widthImage.heightFromWidth(StandardRateo.ratio_9_16),
-  //     width: context.mq.size.width,
-  //     child: Column(
-  //       mainAxisAlignment: MainAxisAlignment.center,
-  //       children: [
-  //         Expanded(
-  //           flex: 3,
-  //           child: Row(
-  //             children: [
-  //               Text(
-  //                 'Profile Overview',
-  //                 style: AppTypography().titleS,
-  //               ),
-  //             ],
-  //           ),
-  //         ),
-  //         Expanded(
-  //           flex: 9,
-  //           child: Row(
-  //             crossAxisAlignment: CrossAxisAlignment.start,
-  //             children: [
-  //               const PlaceholderImg(
-  //                 widthImage: widthImage,
-  //                 rateo: StandardRateo.ratio_9_16,
-  //               ),
-  //               Padding(
-  //                 padding: const EdgeInsets.only(left: 8.0),
-  //                 child: Column(
-  //                   crossAxisAlignment: CrossAxisAlignment.start,
-  //                   mainAxisAlignment: MainAxisAlignment.center,
-  //                   children: [
-  //                     Text('${user.name} ${user.surname}'),
-  //                     Text(user.birthDate.toddMMMyyyyString()),
-  //                     Text('${user.height} cm'),
-  //                     Text('${user.weight} kg'),
-  //                     Text('Goals: ${user.goal}'),
-  //                   ],
-  //                 ),
-  //               ),
-  //             ],
-  //           ),
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
 }

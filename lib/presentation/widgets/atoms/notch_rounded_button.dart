@@ -1,15 +1,23 @@
-import 'package:clocktrain/presentation/themes/app_asset.dart';
-import 'package:clocktrain/presentation/themes/app_typography.dart';
+import 'package:clocktrain/utils/ext/build_context_ext.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ElevatedNotchRoundedButton extends ConsumerWidget {
-  const ElevatedNotchRoundedButton({this.onTap, super.key});
+class NotchRoundedButton extends StatelessWidget {
+  const NotchRoundedButton(
+      {required this.text,
+      this.onTap,
+      this.leftIcon,
+      this.backgroundColor,
+      this.textColor,
+      super.key});
 
+  final String text;
+  final Widget? leftIcon;
   final void Function()? onTap;
+  final Color? backgroundColor;
+  final Color? textColor;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: SizedBox(
@@ -20,18 +28,18 @@ class ElevatedNotchRoundedButton extends ConsumerWidget {
               height: 34,
               width: 70,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: backgroundColor ?? context.colorScheme.primary,
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  AppAsset.add,
+                  leftIcon ?? const SizedBox(),
                   Text(
-                    'Add',
-                    style: AppTypography.instance.button.copyWith(
-                      color: Colors.black,
+                    text,
+                    style: context.textTheme.labelLarge?.copyWith(
+                      color: context.colorScheme.onPrimary,
                     ),
                   ),
                 ],

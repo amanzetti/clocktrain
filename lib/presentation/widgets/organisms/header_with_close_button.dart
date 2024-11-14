@@ -1,5 +1,5 @@
 import 'package:clocktrain/presentation/themes/app_asset.dart';
-import 'package:clocktrain/presentation/themes/app_typography.dart';
+import 'package:clocktrain/utils/ext/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -19,12 +19,12 @@ class HeaderWithCloseButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(title ?? '', style: AppTypography().titleS),
+            Text(title ?? '', style: context.textTheme.displaySmall),
             IconButton(
                 onPressed: () {
                   context.pop();
                 },
-                icon: AppAsset.close)
+                icon: AppAsset().cancelSvg(context))
           ],
         ));
   }
