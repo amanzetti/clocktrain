@@ -19,7 +19,7 @@ class HeaderWithCloseButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(title ?? '', style: context.textTheme.displaySmall),
+            Text(title ?? '', style: context.textTheme.headlineSmall),
             IconButton(
                 onPressed: () {
                   context.pop();

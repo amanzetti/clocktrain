@@ -1,5 +1,5 @@
-import 'package:clocktrain/data/models/set_model.dart';
-import 'package:clocktrain/presentation/widgets/molecules/list_tile_app.dart';
+import 'package:clocktrain/data/%20model-old/set_model.dart';
+import 'package:clocktrain/presentation/widgets/organisms/list_tile_app.dart';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 

@@ -1,19 +1,16 @@
+import 'package:clocktrain/utils/ext/build_context_ext.dart';
 import 'package:flutter/material.dart';
 
 class AppCard extends StatelessWidget {
   const AppCard(
       {super.key,
       this.child,
-      this.color,
       this.padding,
-      this.size,
       this.height,
       this.width});
 
   final Widget? child;
-  final Color? color;
   final EdgeInsets? padding;
-  final Size? size;
   final double? height;
   final double? width;
 
@@ -24,7 +21,7 @@ class AppCard extends StatelessWidget {
       width: width,
       padding: padding,
       decoration: BoxDecoration(
-        color: color,
+        color: context.colorScheme.primary,
         borderRadius: BorderRadius.circular(10),
       ),
       child: child,

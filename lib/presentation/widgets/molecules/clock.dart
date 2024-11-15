@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:audioplayers/audioplayers.dart';
+import 'package:clocktrain/presentation/widgets/atoms/buttons/app_elevated_button.dart';
 import 'package:clocktrain/utils/ext/build_context_ext.dart';
 import 'package:flutter/material.dart';
 
@@ -80,13 +81,13 @@ class _WorkTimeCountdownState extends State<WorkTimeCountdown> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              ElevatedButton(
+              AppElevatedButton(
                 onPressed: _startTimer,
-                child: const Text('Start Timer'),
+                text: 'Start Timer',
               ),
-              ElevatedButton(
+              AppElevatedButton(
                 onPressed: _resetTimer,
-                child: const Text('Reset Timer'),
+                text: 'Reset Timer',
               ),
             ],
           ),

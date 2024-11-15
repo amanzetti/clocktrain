@@ -1,9 +1,12 @@
-import 'package:clocktrain/presentation/pages/sheet/workout_editor/exerecise_editor.dart';
+import 'package:clocktrain/presentation/pages/sheet/workout_editor/exercise_editor_page/exerecise_editor_page.dart';
+import 'package:clocktrain/presentation/widgets/atoms/app_text_field.dart';
 import 'package:clocktrain/presentation/widgets/atoms/spacer_sized_box.dart';
 import 'package:clocktrain/presentation/widgets/organisms/header_with_action_button.dart';
+import 'package:clocktrain/presentation/widgets/organisms/header_with_close_button.dart';
 import 'package:clocktrain/utils/ext/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class WorkoutEditorPage extends ConsumerStatefulWidget {
   const WorkoutEditorPage({super.key});
@@ -18,14 +21,14 @@ class _WorkoutEditorPageState extends ConsumerState<WorkoutEditorPage> {
     return Container(
       child: Column(
         children: [
-          Row(
-            children: [
-              Text('Workout Editor', style: context.textTheme.displaySmall),
-            ],
-          ),
+          HeaderWithCloseButton(
+              title: 'Workout Editor',
+              onTap: () {
+                context.pop();
+              }),
           const SpacerSizedBox(
               spacerType: SpacerType.vertical, spacerSize: SpacerSize.medium),
-          _buildTextField('Name Workout'),
+          const AppTextFiled(labelText: 'Name Workout'),
           const SpacerSizedBox(
               spacerType: SpacerType.vertical, spacerSize: SpacerSize.medium),
           HeaderWithActionButton(
@@ -34,7 +37,7 @@ class _WorkoutEditorPageState extends ConsumerState<WorkoutEditorPage> {
               showDialog(
                   useSafeArea: false,
                   context: context,
-                  builder: (context) => ExereciseEditor());
+                  builder: (context) => ExereciseEditorPage());
             },
           ),
         ],

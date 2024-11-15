@@ -1,8 +1,8 @@
-import 'package:clocktrain/data/models/user_model.dart';
+import 'package:clocktrain/data/%20model-old/user_model.dart';
 import 'package:clocktrain/domain/providers/user_proivider.dart';
 import 'package:clocktrain/presentation/themes/app_asset.dart';
-import 'package:clocktrain/presentation/widgets/atoms/app_card.dart';
 import 'package:clocktrain/presentation/widgets/atoms/spacer_sized_box.dart';
+import 'package:clocktrain/presentation/widgets/molecules/title_and_card.dart';
 import 'package:clocktrain/utils/ext/build_context_ext.dart';
 import 'package:clocktrain/utils/ext/date_time_ext.dart';
 import 'package:flutter/material.dart';
@@ -90,29 +90,17 @@ class DashboardPage extends ConsumerWidget {
 
   ///USER PREVIEW
   Widget _buildUserPreviewBar(BuildContext context, User user) {
-    return Column(
-      children: [
-        Row(
-          children: [
-            Text(
-              'Summary',
-              style: context.textTheme.headlineSmall,
-            ),
-          ],
-        ),
-        AppCard(
-          color: Colors.white,
-          padding: const EdgeInsets.symmetric(vertical: 8),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              _buildCellUserPreview(context, user.height.toString(), 'cm'),
-              _buildCellUserPreview(context, user.weight.toString(), 'kg'),
-              _buildCellUserPreview(context, '32', 'years'),
-            ],
-          ),
-        ),
-      ],
+    return TitleAndCard(
+      title: 'Summary',
+      paddingCard: const EdgeInsets.symmetric(vertical: 8),
+      childCard: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          _buildCellUserPreview(context, user.height.toString(), 'cm'),
+          _buildCellUserPreview(context, user.weight.toString(), 'kg'),
+          _buildCellUserPreview(context, '32', 'years'),
+        ],
+      ),
     );
   }
 
@@ -134,85 +122,49 @@ class DashboardPage extends ConsumerWidget {
 
   ///CHART
   Widget _buildChart(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          children: [
-            Text(
-              'Metrics',
-              style: context.textTheme.headlineSmall,
-            ),
-          ],
-        ),
-        AppCard(
-          color: Colors.white,
-          height: 200,
-          width: context.mq.size.width,
-        ),
-      ],
+    return TitleAndCard(
+      title: 'Metrics',
+      heightCard: 200,
+      widthCard: context.mq.size.width,
     );
   }
 
   ///NEXT WORKOUT
   Widget _buildNextWorkoutCard(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          children: [
-            Text(
-              'Next Workout',
-              style: context.textTheme.headlineSmall,
-            ),
-          ],
-        ),
-        AppCard(
-          padding: const EdgeInsets.all(16),
-          color: Colors.white,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return TitleAndCard(
+      title: 'Next Workout',
+      paddingCard: const EdgeInsets.all(16),
+      childCard: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Workout Name', style: context.textTheme.bodyLarge),
-                  Text('Workout Type', style: context.textTheme.bodyLarge),
-                  Text('Workout Duration', style: context.textTheme.bodyLarge),
-                ],
-              ),
-              Column(
-                children: [
-                  Text('SET: 3', style: context.textTheme.bodyLarge),
-                  Text('REP: 3', style: context.textTheme.bodyLarge),
-                ],
-              ),
-              IconButton(
-                icon: AppAsset().playSvg(context),
-                onPressed: () {},
-              )
+              Text('Workout Name', style: context.textTheme.bodyLarge),
+              Text('Workout Type', style: context.textTheme.bodyLarge),
+              Text('Workout Duration', style: context.textTheme.bodyLarge),
             ],
           ),
-        ),
-      ],
+          Column(
+            children: [
+              Text('SET: 3', style: context.textTheme.bodyLarge),
+              Text('REP: 3', style: context.textTheme.bodyLarge),
+            ],
+          ),
+          IconButton(
+            icon: AppAsset().playSvg(context),
+            onPressed: () {},
+          )
+        ],
+      ),
     );
   }
 
   Widget _buildGoal(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          children: [
-            Text(
-              'Goal',
-              style: context.textTheme.headlineSmall,
-            ),
-          ],
-        ),
-        const AppCard(
-          padding: EdgeInsets.all(16),
-          height: 200,
-          color: Colors.white,
-        ),
-      ],
+    return const TitleAndCard(
+      title: 'Goal',
+      paddingCard: EdgeInsets.all(16),
+      heightCard: 200,
     );
   }
 }

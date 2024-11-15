@@ -1,8 +1,9 @@
-import 'package:clocktrain/data/models/rep_model.dart';
+import 'package:clocktrain/data/%20model-old/rep_model.dart';
 import 'package:clocktrain/domain/providers/ui/edit_provider.dart';
 import 'package:clocktrain/domain/providers/ui/main_page_params_provider.dart';
 import 'package:clocktrain/presentation/routes/path.dart';
 import 'package:clocktrain/presentation/themes/app_asset.dart';
+import 'package:clocktrain/presentation/widgets/atoms/buttons/app_outlined_button.dart';
 import 'package:clocktrain/presentation/widgets/organisms/media_screen.dart';
 import 'package:clocktrain/presentation/widgets/atoms/app_text_field.dart';
 import 'package:clocktrain/presentation/widgets/molecules/placeholder_img.dart';
@@ -77,10 +78,45 @@ class _ListTileAppState<T extends ObjectT>
     super.dispose();
   }
 
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: widget.padding ?? const EdgeInsets.all(0),
+      child: SizedBox(
+        height: widget.widthImage.heightFromWidth(widget.rateo),
+        width: context.mq.size.width,
+        key: widget.key,
+        child: Row(
+          children: [
+            Expanded(
+              flex: 7,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildTitle(),
+                  _buildBody(),
+                ],
+              ),
+            ),
+            const Expanded(flex: 1, child: SizedBox()),
+            Expanded(
+              flex: 4,
+              child: Column(
+                children: [
+                  _buildMedia(),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   Widget _buildTitle() {
     return Text(
       widget.object.name,
-      style: context.textTheme.headlineLarge,
+      style: context.textTheme.titleMedium,
     );
   }
 
@@ -93,12 +129,12 @@ class _ListTileAppState<T extends ObjectT>
           children: [
             Text(
               'rep: ${e.repNumber}',
-              style: context.textTheme.titleSmall,
+              style: context.textTheme.displaySmall,
             ),
             const SizedBox(width: 8.0),
             Text(
               'kg: ${e.weight}',
-              style: context.textTheme.titleSmall,
+              style: context.textTheme.displaySmall,
             ),
           ],
         ));
@@ -125,7 +161,7 @@ class _ListTileAppState<T extends ObjectT>
                         padding: const EdgeInsets.symmetric(horizontal: 4.0),
                       ),
                     ),
-                    Text("SET", style: context.textTheme.titleSmall),
+                    Text("SET", style: context.textTheme.displayMedium),
                   ],
                 ),
               ),
@@ -151,19 +187,8 @@ class _ListTileAppState<T extends ObjectT>
         return Expanded(
           child: Column(
             children: [
-              Text(
-                widget.object.description ?? '',
-                style: context.textTheme.titleSmall,
-              ),
               const Spacer(),
-              OutlinedButton(
-                  style: OutlinedButton.styleFrom(
-                    foregroundColor: context.colorScheme.primary,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(4.0),
-                      side: BorderSide(color: context.colorScheme.primary),
-                    ),
-                  ),
+              AppOutlinedButton(
                   onPressed: () {
                     ref.read(appStateProvider.notifier).copyWith(
                           mainAppBarTitle: widget.object.name,
@@ -171,7 +196,7 @@ class _ListTileAppState<T extends ObjectT>
                     context.go(
                         '/sheet_list_page${AppPath.sheetPageWithId(widget.object.name)}');
                   },
-                  child: const Text('Start Workout')),
+                  text: 'Start Workout'),
             ],
           ),
         );
@@ -240,40 +265,5 @@ class _ListTileAppState<T extends ObjectT>
   void _removeOverlay() {
     _overlayEntry?.remove();
     _overlayEntry = null;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: widget.padding ?? const EdgeInsets.all(0),
-      child: SizedBox(
-        height: widget.widthImage.heightFromWidth(widget.rateo),
-        width: context.mq.size.width,
-        key: widget.key,
-        child: Row(
-          children: [
-            Expanded(
-              flex: 7,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildTitle(),
-                  _buildBody(),
-                ],
-              ),
-            ),
-            const Expanded(flex: 1, child: SizedBox()),
-            Expanded(
-              flex: 4,
-              child: Column(
-                children: [
-                  _buildMedia(),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
   }
 }

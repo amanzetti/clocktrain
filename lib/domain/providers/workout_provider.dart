@@ -1,6 +1,6 @@
 import 'package:clocktrain/config/logger_config.dart';
 import 'package:clocktrain/data/api/workout_api.dart';
-import 'package:clocktrain/data/models/workout_model.dart';
+import 'package:clocktrain/data/%20model-old/workout_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final workoutApiProvider = Provider<WorkoutApi>((ref) {

@@ -1,6 +1,6 @@
 import 'package:clocktrain/config/logger_config.dart';
 import 'package:clocktrain/data/api/user_api.dart';
-import 'package:clocktrain/data/models/user_model.dart';
+import 'package:clocktrain/data/%20model-old/user_model.dart';
 import 'package:clocktrain/utils/helpers/json_helper.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

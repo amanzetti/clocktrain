@@ -1,4 +1,4 @@
-import 'package:clocktrain/data/models/rep_model.dart';
+import 'package:clocktrain/data/%20model-old/rep_model.dart';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 // Assicurati di importare la classe Rep

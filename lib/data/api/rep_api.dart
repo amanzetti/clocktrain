@@ -1,6 +1,6 @@
 import 'package:clocktrain/config/logger_config.dart';
 import 'package:clocktrain/data/api/api.dart';
-import 'package:clocktrain/data/models/rep_model.dart';
+import 'package:clocktrain/data/%20model-old/rep_model.dart';
 
 class RepApi {
   static final RepApi _instance = RepApi._internal();

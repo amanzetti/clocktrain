@@ -1,6 +1,6 @@
 import 'package:clocktrain/config/logger_config.dart';
 import 'package:clocktrain/data/api/api.dart';
-import 'package:clocktrain/data/models/workout_model.dart';
+import 'package:clocktrain/data/%20model-old/workout_model.dart';
 
 class WorkoutApi {
   static final WorkoutApi _instance = WorkoutApi._internal();

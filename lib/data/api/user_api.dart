@@ -1,7 +1,7 @@
 import 'package:clocktrain/config/logger_config.dart';
 import 'package:clocktrain/data/api/api.dart';
 import 'package:clocktrain/data/api/repositories/user_api_repository.dart';
-import 'package:clocktrain/data/models/user_model.dart';
+import 'package:clocktrain/data/%20model-old/user_model.dart';
 
 class UserApi implements UserRepository {
   static final UserApi _instance = UserApi._internal();

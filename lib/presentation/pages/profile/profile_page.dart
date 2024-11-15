@@ -1,7 +1,8 @@
 import 'package:clocktrain/domain/providers/user_proivider.dart';
+import 'package:clocktrain/presentation/widgets/atoms/buttons/app_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:clocktrain/data/models/user_model.dart';
+import 'package:clocktrain/data/%20model-old/user_model.dart';
 
 class ProfilePage extends ConsumerStatefulWidget {
   const ProfilePage({super.key});
@@ -149,9 +150,11 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
               decoration: const InputDecoration(labelText: 'Obiettivo'),
             ),
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () => {},///_saveChanges(user),
-              child: const Text('Salva modifiche'),
+            AppElevatedButton(
+              onPressed: () => {},
+
+              ///_saveChanges(user),
+              text: 'Salva modifiche',
             ),
           ],
         ),

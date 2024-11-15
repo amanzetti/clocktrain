@@ -1,5 +1,5 @@
-import 'package:clocktrain/data/models/timestamp_serializer.dart';
-import 'package:clocktrain/data/models/workout_model.dart';
+import 'package:clocktrain/data/%20model-old/timestamp_serializer.dart';
+import 'package:clocktrain/data/%20model-old/workout_model.dart';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 

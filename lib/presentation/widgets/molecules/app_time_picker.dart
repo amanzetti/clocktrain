@@ -1,22 +1,38 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 enum TimePickerType {
   minuteSecond,
   interval,
 }
 
+Future<void> showCupertinoTimerPicker(
+  BuildContext context,
+  TextEditingController controller,
+  TimePickerType timePickerType,
+) async {
+  await showModalBottomSheet(
+    context: context,
+    builder: (BuildContext context) {
+      return SizedBox(
+          height: 250,
+          child: IOSMinuteSecondPickerField(
+            controller: controller,
+            timePickerType: timePickerType,
+          ));
+    },
+  );
+}
+
 class IOSMinuteSecondPickerField extends StatefulWidget {
-  const IOSMinuteSecondPickerField(
-      {super.key,
-      required this.controller,
-      required this.timePickerType,
-      required this.label,
-      required this.hint});
+  const IOSMinuteSecondPickerField({
+    super.key,
+    required this.controller,
+    required this.timePickerType,
+  });
 
   final TextEditingController controller;
   final TimePickerType timePickerType;
-  final String label;
-  final String hint;
 
   @override
   _IOSMinuteSecondPickerFieldState createState() =>

@@ -1,65 +1,39 @@
 import 'package:clocktrain/utils/enum/muscle_group_enum.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-class MultiSelectDropdown extends StatefulWidget {
-  const MultiSelectDropdown({super.key});
-
-  @override
-  _MultiSelectDropdownState createState() => _MultiSelectDropdownState();
-}
-
-class _MultiSelectDropdownState extends State<MultiSelectDropdown> {
-  // Lista dei gruppi muscolari selezionati
-  List<MuscleGroup> selectedMuscleGroups = [];
-
-  // Funzione per mostrare il dialogo di selezione
-  void _showMultiSelectDialog() async {
-    final List<MuscleGroup>? selectedValues = await showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return MultiSelectDialog(
-          initialSelectedValues: selectedMuscleGroups,
-        );
-      },
-    );
-
-    if (selectedValues != null) {
-      setState(() {
-        selectedMuscleGroups = selectedValues;
-      });
-    }
+void showMultiSelectDialog(
+    BuildContext context, TextEditingController controller) async {
+  final List<MuscleGroup> selectedMuscleGroups;
+  if (controller.text.isNotEmpty) {
+    selectedMuscleGroups = controller.text
+        .split(', ')
+        .map((e) =>
+            MuscleGroup.values.firstWhere((element) => element.name == e))
+        .toList();
+  } else {
+    selectedMuscleGroups = [];
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        GestureDetector(
-          onTap: _showMultiSelectDialog,
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Text(
-              selectedMuscleGroups.isNotEmpty
-                  ? selectedMuscleGroups.map((e) => e.name).join(', ')
-                  : "No muscle groups selected",
-              style: const TextStyle(color: Colors.black),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
+  await showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return MultiSelectDialog(
+        initialSelectedValues: selectedMuscleGroups,
+        controller: controller,
+      );
+    },
+  );
 }
 
 class MultiSelectDialog extends StatefulWidget {
   final List<MuscleGroup> initialSelectedValues;
+  final TextEditingController controller;
 
-  const MultiSelectDialog({super.key, required this.initialSelectedValues});
+  const MultiSelectDialog(
+      {super.key,
+      required this.initialSelectedValues,
+      required this.controller});
 
   @override
   _MultiSelectDialogState createState() => _MultiSelectDialogState();
@@ -101,13 +75,16 @@ class _MultiSelectDialogState extends State<MultiSelectDialog> {
         TextButton(
           child: const Text("Cancel"),
           onPressed: () {
-            Navigator.of(context).pop();
+            context.pop();
           },
         ),
         TextButton(
           child: const Text("OK"),
           onPressed: () {
-            Navigator.of(context).pop(selectedValues);
+            setState(() {
+              widget.controller.text =
+                  selectedValues.map((e) => e.name).join(', ');
+            });
           },
         ),
       ],

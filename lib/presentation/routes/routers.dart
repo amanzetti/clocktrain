@@ -6,7 +6,7 @@ import 'package:clocktrain/presentation/pages/profile/profile_page.dart';
 import 'package:clocktrain/presentation/pages/sheet/sheet_page.dart';
 import 'package:clocktrain/presentation/pages/sheet/workout_list_page.dart';
 import 'package:clocktrain/presentation/pages/settings/settings_page.dart';
-import 'package:clocktrain/presentation/pages/workout/workout_page.dart';
+import 'package:clocktrain/presentation/pages/tools/tools_page.dart';
 import 'package:clocktrain/presentation/routes/path.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -163,7 +163,7 @@ class AppRouter {
         GoRoute(
           name: AppPath.workoutPage,
           path: AppPath.workoutPage,
-          builder: (context, state) => const WorkoutPage(),
+          builder: (context, state) => const ToolsPage(),
         ),
       ],
     );
