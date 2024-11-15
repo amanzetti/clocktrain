@@ -1,4 +1,4 @@
-import 'package:clocktrain/data/%20model-old/rep_model.dart';
+import 'package:clocktrain/domain/models/rep_model.dart';
 import 'package:clocktrain/domain/providers/ui/edit_provider.dart';
 import 'package:clocktrain/domain/providers/ui/main_page_params_provider.dart';
 import 'package:clocktrain/presentation/routes/path.dart';

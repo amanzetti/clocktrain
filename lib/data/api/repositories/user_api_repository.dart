@@ -1,4 +1,4 @@
-import 'package:clocktrain/data/%20model-old/user_model.dart';
+import 'package:clocktrain/domain/models/user_model.dart';
 
 abstract class UserRepository {
   Future<void> createUser(String userId, User user);

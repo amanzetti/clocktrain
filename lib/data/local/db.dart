@@ -7,7 +7,7 @@ import 'package:clocktrain/data/local/entity/user_type.dart';
 import 'package:clocktrain/data/local/entity/workout.dart';
 import 'package:clocktrain/data/local/entity/workout_exercise.dart';
 import 'package:clocktrain/data/local/entity/workout_set.dart';
-import 'package:clocktrain/data/model/progress.dart';
+import 'package:clocktrain/data/dto/progress_dto.dart';
 import 'package:drift/drift.dart';
 import 'package:drift/native.dart';
 
@@ -34,8 +34,8 @@ class AppDatabase extends _$AppDatabase {
   // Metodi per inserire i dati predefiniti
   Future<void> insertInitialData() async {
     // Inserimento dei tipi di utenti
-    await into(userTypes).insert(UserTypeTableCompanion.insert(typeName: 'Atleta'));
-    await into(userTypes).insert(UserTypeTableCompanion.insert(typeName: 'Trainer'));
+    await into(userTypes).insert(UserTypeCompanion.insert(typeName: 'Atleta'));
+    await into(userTypes).insert(UserTypeCompanion.insert(typeName: 'Trainer'));
 
     // Inserimento degli utenti (1 per tipo)
     await into(users).insert(
@@ -50,7 +50,7 @@ class AppDatabase extends _$AppDatabase {
       ),
     );
     await into(users).insert(
-      UserTableCompanion.insert(
+      UserCompanion.insert(
         name: 'Jane Doe',
         email: 'jane@example.com',
         password: 'password123',
@@ -62,23 +62,23 @@ class AppDatabase extends _$AppDatabase {
     );
 
     // Inserimento dei gruppi muscolari
-    await into(muscleGroups).insert(MuscleGroupTableCompanion.insert(groupName: 'Chest'));
-    await into(muscleGroups).insert(MuscleGroupTableCompanion.insert(groupName: 'Back'));
-    await into(muscleGroups).insert(MuscleGroupTableCompanion.insert(groupName: 'Legs'));
+    await into(muscleGroups).insert(MuscleGroupCompanion.insert(groupName: 'Chest'));
+    await into(muscleGroups).insert(MuscleGroupCompanion.insert(groupName: 'Back'));
+    await into(muscleGroups).insert(MuscleGroupCompanion.insert(groupName: 'Legs'));
 
     // Inserimento dei tag
-    await into(tags).insert(TagTableCompanion.insert(tagName: 'Cardio'));
-    await into(tags).insert(TagTableCompanion.insert(tagName: 'Strength'));
+    await into(tags).insert(TagCompanion.insert(tagName: 'Cardio'));
+    await into(tags).insert(TagCompanion.insert(tagName: 'Strength'));
     
     // Inserimento degli esercizi
-    await into(exercises).insert(ExerciseTableCompanion.insert(
+    await into(exercises).insert(ExerciseCompanion.insert(
       name: 'Push Up',
       description: 'A basic push up exercise',
       videoUrl: 'https://example.com/push_up',
       imageUrl: 'https://example.com/push_up.jpg',
       difficultyLevel: 'Easy',
     ));
-    await into(exercises).insert(ExerciseTableCompanion.insert(
+    await into(exercises).insert(ExerciseCompanion.insert(
       name: 'Squat',
       description: 'Basic bodyweight squat',
       videoUrl: 'https://example.com/squat',
@@ -87,7 +87,7 @@ class AppDatabase extends _$AppDatabase {
     ));
 
     // Inserimento di un workout (per esempio per un atleta)
-    final workoutId = await into(workouts).insert(WorkoutTableCompanion.insert(
+    final workoutId = await into(workouts).insert(WorkoutCompanion.insert(
       name: 'Full Body Workout',
       description: 'A complete workout plan for overall body strength.',
       userId: 1, // John Doe
@@ -95,25 +95,25 @@ class AppDatabase extends _$AppDatabase {
     ));
 
     // Inserimento degli esercizi nel workout
-    await into(workoutExercises).insert(WorkoutExerciseTableCompanion.insert(
+    await into(workoutExercises).insert(WorkoutExerciseCompanion.insert(
       workoutId: workoutId,
       exerciseId: 1, // Push Up
       order: 1,
     ));
-    await into(workoutExercises).insert(WorkoutExerciseTableCompanion.insert(
+    await into(workoutExercises).insert(WorkoutExerciseCompanion.insert(
       workoutId: workoutId,
       exerciseId: 2, // Squat
       order: 2,
     ));
 
     // Inserimento dei set di esercizi
-    final workoutExerciseId = await into(workoutExercises).insert(WorkoutExerciseTableCompanion.insert(
+    final workoutExerciseId = await into(workoutExercises).insert(WorkoutExerciseCompanion.insert(
       workoutId: workoutId,
       exerciseId: 1, // Push Up
       order: 1,
     ));
 
-    await into(workoutSets).insert(WorkoutSetTableCompanion.insert(
+    await into(workoutSets).insert(WorkoutSetCompanion.insert(
       workoutExerciseId: workoutExerciseId,
       setNumber: 1,
       reps: 15,
@@ -122,7 +122,7 @@ class AppDatabase extends _$AppDatabase {
     ));
 
     // Inserimento dei progressi per l'utente
-    await into(progress).insert(ProgressTableCompanion.insert(
+    await into(progress).insert(ProgressCompanion.insert(
       userId: 1, // John Doe
       exerciseId: 1, // Push Up
       progressDate: DateTime.now(),
@@ -132,11 +132,11 @@ class AppDatabase extends _$AppDatabase {
     ));
 
     // Inserimento delle impostazioni dell'app
-    await into(appSettings).insert(AppSettingTableCompanion.insert(
+    await into(appSettings).insert(AppSettingCompanion.insert(
       settingName: 'theme',
       settingValue: 'dark',
     ));
-    await into(appSettings).insert(AppSettingTableCompanion.insert(
+    await into(appSettings).insert(AppSettingCompanion.insert(
       settingName: 'language',
       settingValue: 'en',
     ));

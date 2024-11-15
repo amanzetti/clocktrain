@@ -1,6 +1,6 @@
 import 'package:clocktrain/config/logger_config.dart';
 import 'package:clocktrain/data/api/api.dart';
-import 'package:clocktrain/data/%20model-old/set_model.dart';
+import 'package:clocktrain/domain/models/set_model.dart';
 
 class SetApi {
   static final SetApi _instance = SetApi._internal();

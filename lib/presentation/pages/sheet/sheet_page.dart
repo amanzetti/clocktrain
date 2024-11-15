@@ -1,4 +1,4 @@
-import 'package:clocktrain/data/%20model-old/exercise_model.dart';
+import 'package:clocktrain/domain/models/exercise_model.dart';
 import 'package:clocktrain/domain/providers/user_proivider.dart';
 import 'package:clocktrain/presentation/routes/path.dart';
 import 'package:clocktrain/presentation/widgets/organisms/list_tile_app.dart';

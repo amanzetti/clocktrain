@@ -1,4 +1,4 @@
-import 'package:clocktrain/data/%20model-old/user_model.dart';
+import 'package:clocktrain/domain/models/user_model.dart';
 import 'package:clocktrain/domain/providers/user_proivider.dart';
 import 'package:clocktrain/presentation/themes/app_asset.dart';
 import 'package:clocktrain/presentation/widgets/atoms/spacer_sized_box.dart';

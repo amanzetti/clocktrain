@@ -1,4 +1,4 @@
-import 'package:clocktrain/data/%20model-old/rep_model.dart';
+import 'package:clocktrain/domain/models/rep_model.dart';
 import 'package:clocktrain/domain/providers/ui/pages/sheet/workout_editor/workout_editor_provider.dart';
 import 'package:clocktrain/presentation/themes/app_asset.dart';
 import 'package:clocktrain/presentation/widgets/atoms/buttons/app_elevated_button.dart';
