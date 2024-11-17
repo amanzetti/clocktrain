@@ -14,31 +14,32 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-Tag _$TagFromJson(Map<String, dynamic> json) {
-  return _Tag.fromJson(json);
+TagDto _$TagDtoFromJson(Map<String, dynamic> json) {
+  return _TagDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Tag {
+mixin _$TagDto {
   int get id => throw _privateConstructorUsedError;
   String get tagName => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $TagCopyWith<Tag> get copyWith => throw _privateConstructorUsedError;
+  $TagDtoCopyWith<TagDto> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TagCopyWith<$Res> {
-  factory $TagCopyWith(Tag value, $Res Function(Tag) then) =
-      _$TagCopyWithImpl<$Res, Tag>;
+abstract class $TagDtoCopyWith<$Res> {
+  factory $TagDtoCopyWith(TagDto value, $Res Function(TagDto) then) =
+      _$TagDtoCopyWithImpl<$Res, TagDto>;
   @useResult
   $Res call({int id, String tagName});
 }
 
 /// @nodoc
-class _$TagCopyWithImpl<$Res, $Val extends Tag> implements $TagCopyWith<$Res> {
-  _$TagCopyWithImpl(this._value, this._then);
+class _$TagDtoCopyWithImpl<$Res, $Val extends TagDto>
+    implements $TagDtoCopyWith<$Res> {
+  _$TagDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -65,18 +66,21 @@ class _$TagCopyWithImpl<$Res, $Val extends Tag> implements $TagCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$TagImplCopyWith<$Res> implements $TagCopyWith<$Res> {
-  factory _$$TagImplCopyWith(_$TagImpl value, $Res Function(_$TagImpl) then) =
-      __$$TagImplCopyWithImpl<$Res>;
+abstract class _$$TagDtoImplCopyWith<$Res> implements $TagDtoCopyWith<$Res> {
+  factory _$$TagDtoImplCopyWith(
+          _$TagDtoImpl value, $Res Function(_$TagDtoImpl) then) =
+      __$$TagDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id, String tagName});
 }
 
 /// @nodoc
-class __$$TagImplCopyWithImpl<$Res> extends _$TagCopyWithImpl<$Res, _$TagImpl>
-    implements _$$TagImplCopyWith<$Res> {
-  __$$TagImplCopyWithImpl(_$TagImpl _value, $Res Function(_$TagImpl) _then)
+class __$$TagDtoImplCopyWithImpl<$Res>
+    extends _$TagDtoCopyWithImpl<$Res, _$TagDtoImpl>
+    implements _$$TagDtoImplCopyWith<$Res> {
+  __$$TagDtoImplCopyWithImpl(
+      _$TagDtoImpl _value, $Res Function(_$TagDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -85,7 +89,7 @@ class __$$TagImplCopyWithImpl<$Res> extends _$TagCopyWithImpl<$Res, _$TagImpl>
     Object? id = null,
     Object? tagName = null,
   }) {
-    return _then(_$TagImpl(
+    return _then(_$TagDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -100,11 +104,11 @@ class __$$TagImplCopyWithImpl<$Res> extends _$TagCopyWithImpl<$Res, _$TagImpl>
 
 /// @nodoc
 @JsonSerializable()
-class _$TagImpl implements _Tag {
-  const _$TagImpl({required this.id, required this.tagName});
+class _$TagDtoImpl implements _TagDto {
+  const _$TagDtoImpl({required this.id, required this.tagName});
 
-  factory _$TagImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TagImplFromJson(json);
+  factory _$TagDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TagDtoImplFromJson(json);
 
   @override
   final int id;
@@ -113,14 +117,14 @@ class _$TagImpl implements _Tag {
 
   @override
   String toString() {
-    return 'Tag(id: $id, tagName: $tagName)';
+    return 'TagDto(id: $id, tagName: $tagName)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TagImpl &&
+            other is _$TagDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.tagName, tagName) || other.tagName == tagName));
   }
@@ -132,22 +136,22 @@ class _$TagImpl implements _Tag {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$TagImplCopyWith<_$TagImpl> get copyWith =>
-      __$$TagImplCopyWithImpl<_$TagImpl>(this, _$identity);
+  _$$TagDtoImplCopyWith<_$TagDtoImpl> get copyWith =>
+      __$$TagDtoImplCopyWithImpl<_$TagDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TagImplToJson(
+    return _$$TagDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _Tag implements Tag {
-  const factory _Tag({required final int id, required final String tagName}) =
-      _$TagImpl;
+abstract class _TagDto implements TagDto {
+  const factory _TagDto(
+      {required final int id, required final String tagName}) = _$TagDtoImpl;
 
-  factory _Tag.fromJson(Map<String, dynamic> json) = _$TagImpl.fromJson;
+  factory _TagDto.fromJson(Map<String, dynamic> json) = _$TagDtoImpl.fromJson;
 
   @override
   int get id;
@@ -155,6 +159,6 @@ abstract class _Tag implements Tag {
   String get tagName;
   @override
   @JsonKey(ignore: true)
-  _$$TagImplCopyWith<_$TagImpl> get copyWith =>
+  _$$TagDtoImplCopyWith<_$TagDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

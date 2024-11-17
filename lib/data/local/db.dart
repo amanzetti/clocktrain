@@ -1,6 +1,7 @@
 import 'package:clocktrain/data/local/entity/app_settings.dart';
 import 'package:clocktrain/data/local/entity/exercise.dart';
 import 'package:clocktrain/data/local/entity/muscle_group.dart';
+import 'package:clocktrain/data/local/entity/progress.dart';
 import 'package:clocktrain/data/local/entity/tag.dart';
 import 'package:clocktrain/data/local/entity/user.dart';
 import 'package:clocktrain/data/local/entity/user_type.dart';
@@ -22,15 +23,20 @@ part 'app_database.g.dart';
   Workouts,
   WorkoutExercises,
   WorkoutSets,
-  Progress,
+  Progresses,
   AppSettings
 ])
+
+
 class AppDatabase extends _$AppDatabase {
-  AppDatabase(QueryExecutor e) : super(e);
+  AppDatabase(super.e);
 
   @override
   int get schemaVersion => 1;
 
+  Future<Users> getUser(String userId) {
+    return (select(users)..where((tbl) => tbl.id.equals(userId))).getSingle();
+  }
   // Metodi per inserire i dati predefiniti
   Future<void> insertInitialData() async {
     // Inserimento dei tipi di utenti
@@ -142,3 +148,11 @@ class AppDatabase extends _$AppDatabase {
     ));
   }
 }
+
+// LazyDatabase _openConnection() {
+//   return LazyDatabase(() async {
+//     final dbFolder = await getApplicationDocumentsDirectory();
+//     final file = File(p.join(dbFolder.path, 'app_database.sqlite'));
+//     return NativeDatabase(file);
+//   });
+// }

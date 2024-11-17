@@ -20,24 +20,15 @@ User _$UserFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$User {
-  String? get id => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get surname => throw _privateConstructorUsedError;
-  String get username => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  int get height => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
+  DateTime get dateOfBirth => throw _privateConstructorUsedError;
+  double get height => throw _privateConstructorUsedError;
   double get weight => throw _privateConstructorUsedError;
-  @TimestampSerializer()
-  DateTime get birthDate => throw _privateConstructorUsedError;
-  String get userRole => throw _privateConstructorUsedError;
-  String get goal => throw _privateConstructorUsedError;
-  String? get profileImageUrl => throw _privateConstructorUsedError;
-  List<Workout> get workouts =>
-      throw _privateConstructorUsedError; // Lista dei workout personalizzati
-  bool get darkModeEnabled =>
-      throw _privateConstructorUsedError; // Stato del tema scuro
-  @TimestampSerializer()
-  DateTime get createdAt => throw _privateConstructorUsedError;
+  String? get avatar => throw _privateConstructorUsedError;
+  int get userTypeId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -50,20 +41,15 @@ abstract class $UserCopyWith<$Res> {
       _$UserCopyWithImpl<$Res, User>;
   @useResult
   $Res call(
-      {String? id,
+      {int id,
       String name,
-      String surname,
-      String username,
       String email,
-      int height,
+      String password,
+      DateTime dateOfBirth,
+      double height,
       double weight,
-      @TimestampSerializer() DateTime birthDate,
-      String userRole,
-      String goal,
-      String? profileImageUrl,
-      List<Workout> workouts,
-      bool darkModeEnabled,
-      @TimestampSerializer() DateTime createdAt});
+      String? avatar,
+      int userTypeId});
 }
 
 /// @nodoc
@@ -79,78 +65,53 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
     Object? name = null,
-    Object? surname = null,
-    Object? username = null,
     Object? email = null,
+    Object? password = null,
+    Object? dateOfBirth = null,
     Object? height = null,
     Object? weight = null,
-    Object? birthDate = null,
-    Object? userRole = null,
-    Object? goal = null,
-    Object? profileImageUrl = freezed,
-    Object? workouts = null,
-    Object? darkModeEnabled = null,
-    Object? createdAt = null,
+    Object? avatar = freezed,
+    Object? userTypeId = null,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      surname: null == surname
-          ? _value.surname
-          : surname // ignore: cast_nullable_to_non_nullable
-              as String,
-      username: null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
               as String,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      dateOfBirth: null == dateOfBirth
+          ? _value.dateOfBirth
+          : dateOfBirth // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       height: null == height
           ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       weight: null == weight
           ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
               as double,
-      birthDate: null == birthDate
-          ? _value.birthDate
-          : birthDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      userRole: null == userRole
-          ? _value.userRole
-          : userRole // ignore: cast_nullable_to_non_nullable
-              as String,
-      goal: null == goal
-          ? _value.goal
-          : goal // ignore: cast_nullable_to_non_nullable
-              as String,
-      profileImageUrl: freezed == profileImageUrl
-          ? _value.profileImageUrl
-          : profileImageUrl // ignore: cast_nullable_to_non_nullable
+      avatar: freezed == avatar
+          ? _value.avatar
+          : avatar // ignore: cast_nullable_to_non_nullable
               as String?,
-      workouts: null == workouts
-          ? _value.workouts
-          : workouts // ignore: cast_nullable_to_non_nullable
-              as List<Workout>,
-      darkModeEnabled: null == darkModeEnabled
-          ? _value.darkModeEnabled
-          : darkModeEnabled // ignore: cast_nullable_to_non_nullable
-              as bool,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      userTypeId: null == userTypeId
+          ? _value.userTypeId
+          : userTypeId // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -163,20 +124,15 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String? id,
+      {int id,
       String name,
-      String surname,
-      String username,
       String email,
-      int height,
+      String password,
+      DateTime dateOfBirth,
+      double height,
       double weight,
-      @TimestampSerializer() DateTime birthDate,
-      String userRole,
-      String goal,
-      String? profileImageUrl,
-      List<Workout> workouts,
-      bool darkModeEnabled,
-      @TimestampSerializer() DateTime createdAt});
+      String? avatar,
+      int userTypeId});
 }
 
 /// @nodoc
@@ -189,78 +145,53 @@ class __$$UserImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
     Object? name = null,
-    Object? surname = null,
-    Object? username = null,
     Object? email = null,
+    Object? password = null,
+    Object? dateOfBirth = null,
     Object? height = null,
     Object? weight = null,
-    Object? birthDate = null,
-    Object? userRole = null,
-    Object? goal = null,
-    Object? profileImageUrl = freezed,
-    Object? workouts = null,
-    Object? darkModeEnabled = null,
-    Object? createdAt = null,
+    Object? avatar = freezed,
+    Object? userTypeId = null,
   }) {
     return _then(_$UserImpl(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      surname: null == surname
-          ? _value.surname
-          : surname // ignore: cast_nullable_to_non_nullable
-              as String,
-      username: null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
               as String,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      dateOfBirth: null == dateOfBirth
+          ? _value.dateOfBirth
+          : dateOfBirth // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       height: null == height
           ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       weight: null == weight
           ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
               as double,
-      birthDate: null == birthDate
-          ? _value.birthDate
-          : birthDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      userRole: null == userRole
-          ? _value.userRole
-          : userRole // ignore: cast_nullable_to_non_nullable
-              as String,
-      goal: null == goal
-          ? _value.goal
-          : goal // ignore: cast_nullable_to_non_nullable
-              as String,
-      profileImageUrl: freezed == profileImageUrl
-          ? _value.profileImageUrl
-          : profileImageUrl // ignore: cast_nullable_to_non_nullable
+      avatar: freezed == avatar
+          ? _value.avatar
+          : avatar // ignore: cast_nullable_to_non_nullable
               as String?,
-      workouts: null == workouts
-          ? _value._workouts
-          : workouts // ignore: cast_nullable_to_non_nullable
-              as List<Workout>,
-      darkModeEnabled: null == darkModeEnabled
-          ? _value.darkModeEnabled
-          : darkModeEnabled // ignore: cast_nullable_to_non_nullable
-              as bool,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      userTypeId: null == userTypeId
+          ? _value.userTypeId
+          : userTypeId // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -269,69 +200,41 @@ class __$$UserImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$UserImpl implements _User {
   const _$UserImpl(
-      {this.id,
+      {required this.id,
       required this.name,
-      required this.surname,
-      required this.username,
       required this.email,
+      required this.password,
+      required this.dateOfBirth,
       required this.height,
       required this.weight,
-      @TimestampSerializer() required this.birthDate,
-      required this.userRole,
-      required this.goal,
-      this.profileImageUrl,
-      final List<Workout> workouts = const [],
-      this.darkModeEnabled = false,
-      @TimestampSerializer() required this.createdAt})
-      : _workouts = workouts;
+      this.avatar,
+      required this.userTypeId});
 
   factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserImplFromJson(json);
 
   @override
-  final String? id;
+  final int id;
   @override
   final String name;
   @override
-  final String surname;
-  @override
-  final String username;
-  @override
   final String email;
   @override
-  final int height;
+  final String password;
+  @override
+  final DateTime dateOfBirth;
+  @override
+  final double height;
   @override
   final double weight;
   @override
-  @TimestampSerializer()
-  final DateTime birthDate;
+  final String? avatar;
   @override
-  final String userRole;
-  @override
-  final String goal;
-  @override
-  final String? profileImageUrl;
-  final List<Workout> _workouts;
-  @override
-  @JsonKey()
-  List<Workout> get workouts {
-    if (_workouts is EqualUnmodifiableListView) return _workouts;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_workouts);
-  }
-
-// Lista dei workout personalizzati
-  @override
-  @JsonKey()
-  final bool darkModeEnabled;
-// Stato del tema scuro
-  @override
-  @TimestampSerializer()
-  final DateTime createdAt;
+  final int userTypeId;
 
   @override
   String toString() {
-    return 'User(id: $id, name: $name, surname: $surname, username: $username, email: $email, height: $height, weight: $weight, birthDate: $birthDate, userRole: $userRole, goal: $goal, profileImageUrl: $profileImageUrl, workouts: $workouts, darkModeEnabled: $darkModeEnabled, createdAt: $createdAt)';
+    return 'User(id: $id, name: $name, email: $email, password: $password, dateOfBirth: $dateOfBirth, height: $height, weight: $weight, avatar: $avatar, userTypeId: $userTypeId)';
   }
 
   @override
@@ -341,44 +244,22 @@ class _$UserImpl implements _User {
             other is _$UserImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.surname, surname) || other.surname == surname) &&
-            (identical(other.username, username) ||
-                other.username == username) &&
             (identical(other.email, email) || other.email == email) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
+            (identical(other.dateOfBirth, dateOfBirth) ||
+                other.dateOfBirth == dateOfBirth) &&
             (identical(other.height, height) || other.height == height) &&
             (identical(other.weight, weight) || other.weight == weight) &&
-            (identical(other.birthDate, birthDate) ||
-                other.birthDate == birthDate) &&
-            (identical(other.userRole, userRole) ||
-                other.userRole == userRole) &&
-            (identical(other.goal, goal) || other.goal == goal) &&
-            (identical(other.profileImageUrl, profileImageUrl) ||
-                other.profileImageUrl == profileImageUrl) &&
-            const DeepCollectionEquality().equals(other._workouts, _workouts) &&
-            (identical(other.darkModeEnabled, darkModeEnabled) ||
-                other.darkModeEnabled == darkModeEnabled) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt));
+            (identical(other.avatar, avatar) || other.avatar == avatar) &&
+            (identical(other.userTypeId, userTypeId) ||
+                other.userTypeId == userTypeId));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      name,
-      surname,
-      username,
-      email,
-      height,
-      weight,
-      birthDate,
-      userRole,
-      goal,
-      profileImageUrl,
-      const DeepCollectionEquality().hash(_workouts),
-      darkModeEnabled,
-      createdAt);
+  int get hashCode => Object.hash(runtimeType, id, name, email, password,
+      dateOfBirth, height, weight, avatar, userTypeId);
 
   @JsonKey(ignore: true)
   @override
@@ -396,53 +277,36 @@ class _$UserImpl implements _User {
 
 abstract class _User implements User {
   const factory _User(
-      {final String? id,
+      {required final int id,
       required final String name,
-      required final String surname,
-      required final String username,
       required final String email,
-      required final int height,
+      required final String password,
+      required final DateTime dateOfBirth,
+      required final double height,
       required final double weight,
-      @TimestampSerializer() required final DateTime birthDate,
-      required final String userRole,
-      required final String goal,
-      final String? profileImageUrl,
-      final List<Workout> workouts,
-      final bool darkModeEnabled,
-      @TimestampSerializer() required final DateTime createdAt}) = _$UserImpl;
+      final String? avatar,
+      required final int userTypeId}) = _$UserImpl;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
 
   @override
-  String? get id;
+  int get id;
   @override
   String get name;
   @override
-  String get surname;
-  @override
-  String get username;
-  @override
   String get email;
   @override
-  int get height;
+  String get password;
+  @override
+  DateTime get dateOfBirth;
+  @override
+  double get height;
   @override
   double get weight;
   @override
-  @TimestampSerializer()
-  DateTime get birthDate;
+  String? get avatar;
   @override
-  String get userRole;
-  @override
-  String get goal;
-  @override
-  String? get profileImageUrl;
-  @override
-  List<Workout> get workouts;
-  @override // Lista dei workout personalizzati
-  bool get darkModeEnabled;
-  @override // Stato del tema scuro
-  @TimestampSerializer()
-  DateTime get createdAt;
+  int get userTypeId;
   @override
   @JsonKey(ignore: true)
   _$$UserImplCopyWith<_$UserImpl> get copyWith =>

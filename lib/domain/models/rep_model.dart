@@ -1,7 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'rep_model.freezed.dart';
-part 'rep_model.g.dart';
 
 @freezed
 class Rep with _$Rep {

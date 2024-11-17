@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-Progress _$ProgressFromJson(Map<String, dynamic> json) {
-  return _Progress.fromJson(json);
+ProgressDto _$ProgressDtoFromJson(Map<String, dynamic> json) {
+  return _ProgressDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Progress {
+mixin _$ProgressDto {
   int get id => throw _privateConstructorUsedError;
   int get userId => throw _privateConstructorUsedError;
   int get exerciseId => throw _privateConstructorUsedError;
@@ -30,14 +30,15 @@ mixin _$Progress {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ProgressCopyWith<Progress> get copyWith =>
+  $ProgressDtoCopyWith<ProgressDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ProgressCopyWith<$Res> {
-  factory $ProgressCopyWith(Progress value, $Res Function(Progress) then) =
-      _$ProgressCopyWithImpl<$Res, Progress>;
+abstract class $ProgressDtoCopyWith<$Res> {
+  factory $ProgressDtoCopyWith(
+          ProgressDto value, $Res Function(ProgressDto) then) =
+      _$ProgressDtoCopyWithImpl<$Res, ProgressDto>;
   @useResult
   $Res call(
       {int id,
@@ -50,9 +51,9 @@ abstract class $ProgressCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ProgressCopyWithImpl<$Res, $Val extends Progress>
-    implements $ProgressCopyWith<$Res> {
-  _$ProgressCopyWithImpl(this._value, this._then);
+class _$ProgressDtoCopyWithImpl<$Res, $Val extends ProgressDto>
+    implements $ProgressDtoCopyWith<$Res> {
+  _$ProgressDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -104,11 +105,11 @@ class _$ProgressCopyWithImpl<$Res, $Val extends Progress>
 }
 
 /// @nodoc
-abstract class _$$ProgressImplCopyWith<$Res>
-    implements $ProgressCopyWith<$Res> {
-  factory _$$ProgressImplCopyWith(
-          _$ProgressImpl value, $Res Function(_$ProgressImpl) then) =
-      __$$ProgressImplCopyWithImpl<$Res>;
+abstract class _$$ProgressDtoImplCopyWith<$Res>
+    implements $ProgressDtoCopyWith<$Res> {
+  factory _$$ProgressDtoImplCopyWith(
+          _$ProgressDtoImpl value, $Res Function(_$ProgressDtoImpl) then) =
+      __$$ProgressDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -122,11 +123,11 @@ abstract class _$$ProgressImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ProgressImplCopyWithImpl<$Res>
-    extends _$ProgressCopyWithImpl<$Res, _$ProgressImpl>
-    implements _$$ProgressImplCopyWith<$Res> {
-  __$$ProgressImplCopyWithImpl(
-      _$ProgressImpl _value, $Res Function(_$ProgressImpl) _then)
+class __$$ProgressDtoImplCopyWithImpl<$Res>
+    extends _$ProgressDtoCopyWithImpl<$Res, _$ProgressDtoImpl>
+    implements _$$ProgressDtoImplCopyWith<$Res> {
+  __$$ProgressDtoImplCopyWithImpl(
+      _$ProgressDtoImpl _value, $Res Function(_$ProgressDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -140,7 +141,7 @@ class __$$ProgressImplCopyWithImpl<$Res>
     Object? weight = freezed,
     Object? notes = freezed,
   }) {
-    return _then(_$ProgressImpl(
+    return _then(_$ProgressDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -175,8 +176,8 @@ class __$$ProgressImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ProgressImpl implements _Progress {
-  const _$ProgressImpl(
+class _$ProgressDtoImpl implements _ProgressDto {
+  const _$ProgressDtoImpl(
       {required this.id,
       required this.userId,
       required this.exerciseId,
@@ -185,8 +186,8 @@ class _$ProgressImpl implements _Progress {
       this.weight,
       this.notes});
 
-  factory _$ProgressImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ProgressImplFromJson(json);
+  factory _$ProgressDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ProgressDtoImplFromJson(json);
 
   @override
   final int id;
@@ -205,14 +206,14 @@ class _$ProgressImpl implements _Progress {
 
   @override
   String toString() {
-    return 'Progress(id: $id, userId: $userId, exerciseId: $exerciseId, progressDate: $progressDate, reps: $reps, weight: $weight, notes: $notes)';
+    return 'ProgressDto(id: $id, userId: $userId, exerciseId: $exerciseId, progressDate: $progressDate, reps: $reps, weight: $weight, notes: $notes)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ProgressImpl &&
+            other is _$ProgressDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.exerciseId, exerciseId) ||
@@ -232,29 +233,29 @@ class _$ProgressImpl implements _Progress {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ProgressImplCopyWith<_$ProgressImpl> get copyWith =>
-      __$$ProgressImplCopyWithImpl<_$ProgressImpl>(this, _$identity);
+  _$$ProgressDtoImplCopyWith<_$ProgressDtoImpl> get copyWith =>
+      __$$ProgressDtoImplCopyWithImpl<_$ProgressDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ProgressImplToJson(
+    return _$$ProgressDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _Progress implements Progress {
-  const factory _Progress(
+abstract class _ProgressDto implements ProgressDto {
+  const factory _ProgressDto(
       {required final int id,
       required final int userId,
       required final int exerciseId,
       required final DateTime progressDate,
       required final int reps,
       final double? weight,
-      final String? notes}) = _$ProgressImpl;
+      final String? notes}) = _$ProgressDtoImpl;
 
-  factory _Progress.fromJson(Map<String, dynamic> json) =
-      _$ProgressImpl.fromJson;
+  factory _ProgressDto.fromJson(Map<String, dynamic> json) =
+      _$ProgressDtoImpl.fromJson;
 
   @override
   int get id;
@@ -272,6 +273,6 @@ abstract class _Progress implements Progress {
   String? get notes;
   @override
   @JsonKey(ignore: true)
-  _$$ProgressImplCopyWith<_$ProgressImpl> get copyWith =>
+  _$$ProgressDtoImplCopyWith<_$ProgressDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

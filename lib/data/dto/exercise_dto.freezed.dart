@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-Exercise _$ExerciseFromJson(Map<String, dynamic> json) {
-  return _Exercise.fromJson(json);
+ExerciseDto _$ExerciseDtoFromJson(Map<String, dynamic> json) {
+  return _ExerciseDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Exercise {
+mixin _$ExerciseDto {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
@@ -29,14 +29,15 @@ mixin _$Exercise {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ExerciseCopyWith<Exercise> get copyWith =>
+  $ExerciseDtoCopyWith<ExerciseDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ExerciseCopyWith<$Res> {
-  factory $ExerciseCopyWith(Exercise value, $Res Function(Exercise) then) =
-      _$ExerciseCopyWithImpl<$Res, Exercise>;
+abstract class $ExerciseDtoCopyWith<$Res> {
+  factory $ExerciseDtoCopyWith(
+          ExerciseDto value, $Res Function(ExerciseDto) then) =
+      _$ExerciseDtoCopyWithImpl<$Res, ExerciseDto>;
   @useResult
   $Res call(
       {int id,
@@ -48,9 +49,9 @@ abstract class $ExerciseCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ExerciseCopyWithImpl<$Res, $Val extends Exercise>
-    implements $ExerciseCopyWith<$Res> {
-  _$ExerciseCopyWithImpl(this._value, this._then);
+class _$ExerciseDtoCopyWithImpl<$Res, $Val extends ExerciseDto>
+    implements $ExerciseDtoCopyWith<$Res> {
+  _$ExerciseDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -97,11 +98,11 @@ class _$ExerciseCopyWithImpl<$Res, $Val extends Exercise>
 }
 
 /// @nodoc
-abstract class _$$ExerciseImplCopyWith<$Res>
-    implements $ExerciseCopyWith<$Res> {
-  factory _$$ExerciseImplCopyWith(
-          _$ExerciseImpl value, $Res Function(_$ExerciseImpl) then) =
-      __$$ExerciseImplCopyWithImpl<$Res>;
+abstract class _$$ExerciseDtoImplCopyWith<$Res>
+    implements $ExerciseDtoCopyWith<$Res> {
+  factory _$$ExerciseDtoImplCopyWith(
+          _$ExerciseDtoImpl value, $Res Function(_$ExerciseDtoImpl) then) =
+      __$$ExerciseDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -114,11 +115,11 @@ abstract class _$$ExerciseImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ExerciseImplCopyWithImpl<$Res>
-    extends _$ExerciseCopyWithImpl<$Res, _$ExerciseImpl>
-    implements _$$ExerciseImplCopyWith<$Res> {
-  __$$ExerciseImplCopyWithImpl(
-      _$ExerciseImpl _value, $Res Function(_$ExerciseImpl) _then)
+class __$$ExerciseDtoImplCopyWithImpl<$Res>
+    extends _$ExerciseDtoCopyWithImpl<$Res, _$ExerciseDtoImpl>
+    implements _$$ExerciseDtoImplCopyWith<$Res> {
+  __$$ExerciseDtoImplCopyWithImpl(
+      _$ExerciseDtoImpl _value, $Res Function(_$ExerciseDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -131,7 +132,7 @@ class __$$ExerciseImplCopyWithImpl<$Res>
     Object? imageUrl = freezed,
     Object? difficultyLevel = null,
   }) {
-    return _then(_$ExerciseImpl(
+    return _then(_$ExerciseDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -162,8 +163,8 @@ class __$$ExerciseImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ExerciseImpl implements _Exercise {
-  const _$ExerciseImpl(
+class _$ExerciseDtoImpl implements _ExerciseDto {
+  const _$ExerciseDtoImpl(
       {required this.id,
       required this.name,
       required this.description,
@@ -171,8 +172,8 @@ class _$ExerciseImpl implements _Exercise {
       this.imageUrl,
       required this.difficultyLevel});
 
-  factory _$ExerciseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ExerciseImplFromJson(json);
+  factory _$ExerciseDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ExerciseDtoImplFromJson(json);
 
   @override
   final int id;
@@ -189,14 +190,14 @@ class _$ExerciseImpl implements _Exercise {
 
   @override
   String toString() {
-    return 'Exercise(id: $id, name: $name, description: $description, videoUrl: $videoUrl, imageUrl: $imageUrl, difficultyLevel: $difficultyLevel)';
+    return 'ExerciseDto(id: $id, name: $name, description: $description, videoUrl: $videoUrl, imageUrl: $imageUrl, difficultyLevel: $difficultyLevel)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ExerciseImpl &&
+            other is _$ExerciseDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
@@ -217,28 +218,28 @@ class _$ExerciseImpl implements _Exercise {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ExerciseImplCopyWith<_$ExerciseImpl> get copyWith =>
-      __$$ExerciseImplCopyWithImpl<_$ExerciseImpl>(this, _$identity);
+  _$$ExerciseDtoImplCopyWith<_$ExerciseDtoImpl> get copyWith =>
+      __$$ExerciseDtoImplCopyWithImpl<_$ExerciseDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ExerciseImplToJson(
+    return _$$ExerciseDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _Exercise implements Exercise {
-  const factory _Exercise(
+abstract class _ExerciseDto implements ExerciseDto {
+  const factory _ExerciseDto(
       {required final int id,
       required final String name,
       required final String description,
       final String? videoUrl,
       final String? imageUrl,
-      required final String difficultyLevel}) = _$ExerciseImpl;
+      required final String difficultyLevel}) = _$ExerciseDtoImpl;
 
-  factory _Exercise.fromJson(Map<String, dynamic> json) =
-      _$ExerciseImpl.fromJson;
+  factory _ExerciseDto.fromJson(Map<String, dynamic> json) =
+      _$ExerciseDtoImpl.fromJson;
 
   @override
   int get id;
@@ -254,6 +255,6 @@ abstract class _Exercise implements Exercise {
   String get difficultyLevel;
   @override
   @JsonKey(ignore: true)
-  _$$ExerciseImplCopyWith<_$ExerciseImpl> get copyWith =>
+  _$$ExerciseDtoImplCopyWith<_$ExerciseDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

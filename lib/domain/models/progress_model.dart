@@ -1,10 +1,10 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'progress_dto.freezed.dart';
+part 'progress.freezed.dart';
 
 @freezed
-class ProgressDto with _$ProgressDto {
-  const factory ProgressDto({
+class Progress with _$Progress {
+  const factory Progress({
     required int id,
     required int userId,
     required int exerciseId,
@@ -12,7 +12,7 @@ class ProgressDto with _$ProgressDto {
     required int reps,
     double? weight,
     String? notes,
-  }) = _ProgressDto;
+  }) = _Progress;
 
-  factory ProgressDto.fromJson(Map<String, dynamic> json) => _$ProgressDtoFromJson(json);
+  factory Progress.fromJson(Map<String, dynamic> json) => _$ProgressFromJson(json);
 }

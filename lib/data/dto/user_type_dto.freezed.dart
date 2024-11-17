@@ -14,33 +14,34 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-UserType _$UserTypeFromJson(Map<String, dynamic> json) {
-  return _UserType.fromJson(json);
+UserTypeDto _$UserTypeDtoFromJson(Map<String, dynamic> json) {
+  return _UserTypeDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$UserType {
+mixin _$UserTypeDto {
   int get id => throw _privateConstructorUsedError;
   String get typeName => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $UserTypeCopyWith<UserType> get copyWith =>
+  $UserTypeDtoCopyWith<UserTypeDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UserTypeCopyWith<$Res> {
-  factory $UserTypeCopyWith(UserType value, $Res Function(UserType) then) =
-      _$UserTypeCopyWithImpl<$Res, UserType>;
+abstract class $UserTypeDtoCopyWith<$Res> {
+  factory $UserTypeDtoCopyWith(
+          UserTypeDto value, $Res Function(UserTypeDto) then) =
+      _$UserTypeDtoCopyWithImpl<$Res, UserTypeDto>;
   @useResult
   $Res call({int id, String typeName});
 }
 
 /// @nodoc
-class _$UserTypeCopyWithImpl<$Res, $Val extends UserType>
-    implements $UserTypeCopyWith<$Res> {
-  _$UserTypeCopyWithImpl(this._value, this._then);
+class _$UserTypeDtoCopyWithImpl<$Res, $Val extends UserTypeDto>
+    implements $UserTypeDtoCopyWith<$Res> {
+  _$UserTypeDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -67,22 +68,22 @@ class _$UserTypeCopyWithImpl<$Res, $Val extends UserType>
 }
 
 /// @nodoc
-abstract class _$$UserTypeImplCopyWith<$Res>
-    implements $UserTypeCopyWith<$Res> {
-  factory _$$UserTypeImplCopyWith(
-          _$UserTypeImpl value, $Res Function(_$UserTypeImpl) then) =
-      __$$UserTypeImplCopyWithImpl<$Res>;
+abstract class _$$UserTypeDtoImplCopyWith<$Res>
+    implements $UserTypeDtoCopyWith<$Res> {
+  factory _$$UserTypeDtoImplCopyWith(
+          _$UserTypeDtoImpl value, $Res Function(_$UserTypeDtoImpl) then) =
+      __$$UserTypeDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id, String typeName});
 }
 
 /// @nodoc
-class __$$UserTypeImplCopyWithImpl<$Res>
-    extends _$UserTypeCopyWithImpl<$Res, _$UserTypeImpl>
-    implements _$$UserTypeImplCopyWith<$Res> {
-  __$$UserTypeImplCopyWithImpl(
-      _$UserTypeImpl _value, $Res Function(_$UserTypeImpl) _then)
+class __$$UserTypeDtoImplCopyWithImpl<$Res>
+    extends _$UserTypeDtoCopyWithImpl<$Res, _$UserTypeDtoImpl>
+    implements _$$UserTypeDtoImplCopyWith<$Res> {
+  __$$UserTypeDtoImplCopyWithImpl(
+      _$UserTypeDtoImpl _value, $Res Function(_$UserTypeDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -91,7 +92,7 @@ class __$$UserTypeImplCopyWithImpl<$Res>
     Object? id = null,
     Object? typeName = null,
   }) {
-    return _then(_$UserTypeImpl(
+    return _then(_$UserTypeDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -106,11 +107,11 @@ class __$$UserTypeImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$UserTypeImpl implements _UserType {
-  const _$UserTypeImpl({required this.id, required this.typeName});
+class _$UserTypeDtoImpl implements _UserTypeDto {
+  const _$UserTypeDtoImpl({required this.id, required this.typeName});
 
-  factory _$UserTypeImpl.fromJson(Map<String, dynamic> json) =>
-      _$$UserTypeImplFromJson(json);
+  factory _$UserTypeDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserTypeDtoImplFromJson(json);
 
   @override
   final int id;
@@ -119,14 +120,14 @@ class _$UserTypeImpl implements _UserType {
 
   @override
   String toString() {
-    return 'UserType(id: $id, typeName: $typeName)';
+    return 'UserTypeDto(id: $id, typeName: $typeName)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UserTypeImpl &&
+            other is _$UserTypeDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.typeName, typeName) ||
                 other.typeName == typeName));
@@ -139,23 +140,24 @@ class _$UserTypeImpl implements _UserType {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$UserTypeImplCopyWith<_$UserTypeImpl> get copyWith =>
-      __$$UserTypeImplCopyWithImpl<_$UserTypeImpl>(this, _$identity);
+  _$$UserTypeDtoImplCopyWith<_$UserTypeDtoImpl> get copyWith =>
+      __$$UserTypeDtoImplCopyWithImpl<_$UserTypeDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$UserTypeImplToJson(
+    return _$$UserTypeDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _UserType implements UserType {
-  const factory _UserType(
-      {required final int id, required final String typeName}) = _$UserTypeImpl;
+abstract class _UserTypeDto implements UserTypeDto {
+  const factory _UserTypeDto(
+      {required final int id,
+      required final String typeName}) = _$UserTypeDtoImpl;
 
-  factory _UserType.fromJson(Map<String, dynamic> json) =
-      _$UserTypeImpl.fromJson;
+  factory _UserTypeDto.fromJson(Map<String, dynamic> json) =
+      _$UserTypeDtoImpl.fromJson;
 
   @override
   int get id;
@@ -163,6 +165,6 @@ abstract class _UserType implements UserType {
   String get typeName;
   @override
   @JsonKey(ignore: true)
-  _$$UserTypeImplCopyWith<_$UserTypeImpl> get copyWith =>
+  _$$UserTypeDtoImplCopyWith<_$UserTypeDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

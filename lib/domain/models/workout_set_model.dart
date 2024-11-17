@@ -1,17 +1,17 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'workout_set_dto.freezed.dart';
+part 'workout_set.freezed.dart';
 
 @freezed
-class WorkoutSetDto with _$WorkoutSetDto {
-  const factory WorkoutSetDto({
+class WorkoutSet with _$WorkoutSet {
+  const factory WorkoutSet({
     required int id,
     required int workoutExerciseId,
     required int setNumber,
     required int reps,
     double? weight,
     required int restTime,
-  }) = _WorkoutSetDto;
+  }) = _WorkoutSet;
 
-  factory WorkoutSetDto.fromJson(Map<String, dynamic> json) => _$WorkoutSetDtoFromJson(json);
+  factory WorkoutSet.fromJson(Map<String, dynamic> json) => _$WorkoutSetFromJson(json);
 }

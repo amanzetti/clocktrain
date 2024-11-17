@@ -20,21 +20,12 @@ Exercise _$ExerciseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Exercise {
-  String? get id => throw _privateConstructorUsedError;
-  @override
+  int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  @override
-  String? get description =>
-      throw _privateConstructorUsedError; // Descrizione opzionale dell'esercizio
-  @override
-  String? get mediaUrl =>
-      throw _privateConstructorUsedError; // URL immagine dell'esercizio
-  String get targetMuscle => throw _privateConstructorUsedError;
-  Duration? get duration =>
-      throw _privateConstructorUsedError; // Durata opzionale dell'esercizio
-  String get videoUrl =>
-      throw _privateConstructorUsedError; // URL video dimostrativo
-  List<Set> get sets => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  String? get videoUrl => throw _privateConstructorUsedError;
+  String? get imageUrl => throw _privateConstructorUsedError;
+  String get difficultyLevel => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -48,14 +39,12 @@ abstract class $ExerciseCopyWith<$Res> {
       _$ExerciseCopyWithImpl<$Res, Exercise>;
   @useResult
   $Res call(
-      {String? id,
-      @override String name,
-      @override String? description,
-      @override String? mediaUrl,
-      String targetMuscle,
-      Duration? duration,
-      String videoUrl,
-      List<Set> sets});
+      {int id,
+      String name,
+      String description,
+      String? videoUrl,
+      String? imageUrl,
+      String difficultyLevel});
 }
 
 /// @nodoc
@@ -71,48 +60,38 @@ class _$ExerciseCopyWithImpl<$Res, $Val extends Exercise>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
     Object? name = null,
-    Object? description = freezed,
-    Object? mediaUrl = freezed,
-    Object? targetMuscle = null,
-    Object? duration = freezed,
-    Object? videoUrl = null,
-    Object? sets = null,
+    Object? description = null,
+    Object? videoUrl = freezed,
+    Object? imageUrl = freezed,
+    Object? difficultyLevel = null,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      description: freezed == description
+      description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      mediaUrl: freezed == mediaUrl
-          ? _value.mediaUrl
-          : mediaUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      targetMuscle: null == targetMuscle
-          ? _value.targetMuscle
-          : targetMuscle // ignore: cast_nullable_to_non_nullable
               as String,
-      duration: freezed == duration
-          ? _value.duration
-          : duration // ignore: cast_nullable_to_non_nullable
-              as Duration?,
-      videoUrl: null == videoUrl
+      videoUrl: freezed == videoUrl
           ? _value.videoUrl
           : videoUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      difficultyLevel: null == difficultyLevel
+          ? _value.difficultyLevel
+          : difficultyLevel // ignore: cast_nullable_to_non_nullable
               as String,
-      sets: null == sets
-          ? _value.sets
-          : sets // ignore: cast_nullable_to_non_nullable
-              as List<Set>,
     ) as $Val);
   }
 }
@@ -126,14 +105,12 @@ abstract class _$$ExerciseImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? id,
-      @override String name,
-      @override String? description,
-      @override String? mediaUrl,
-      String targetMuscle,
-      Duration? duration,
-      String videoUrl,
-      List<Set> sets});
+      {int id,
+      String name,
+      String description,
+      String? videoUrl,
+      String? imageUrl,
+      String difficultyLevel});
 }
 
 /// @nodoc
@@ -147,48 +124,38 @@ class __$$ExerciseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
     Object? name = null,
-    Object? description = freezed,
-    Object? mediaUrl = freezed,
-    Object? targetMuscle = null,
-    Object? duration = freezed,
-    Object? videoUrl = null,
-    Object? sets = null,
+    Object? description = null,
+    Object? videoUrl = freezed,
+    Object? imageUrl = freezed,
+    Object? difficultyLevel = null,
   }) {
     return _then(_$ExerciseImpl(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      description: freezed == description
+      description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      mediaUrl: freezed == mediaUrl
-          ? _value.mediaUrl
-          : mediaUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      targetMuscle: null == targetMuscle
-          ? _value.targetMuscle
-          : targetMuscle // ignore: cast_nullable_to_non_nullable
               as String,
-      duration: freezed == duration
-          ? _value.duration
-          : duration // ignore: cast_nullable_to_non_nullable
-              as Duration?,
-      videoUrl: null == videoUrl
+      videoUrl: freezed == videoUrl
           ? _value.videoUrl
           : videoUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      difficultyLevel: null == difficultyLevel
+          ? _value.difficultyLevel
+          : difficultyLevel // ignore: cast_nullable_to_non_nullable
               as String,
-      sets: null == sets
-          ? _value._sets
-          : sets // ignore: cast_nullable_to_non_nullable
-              as List<Set>,
     ));
   }
 }
@@ -197,53 +164,32 @@ class __$$ExerciseImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ExerciseImpl implements _Exercise {
   const _$ExerciseImpl(
-      {this.id,
-      @override required this.name,
-      @override this.description,
-      @override this.mediaUrl,
-      required this.targetMuscle,
-      this.duration,
-      required this.videoUrl,
-      final List<Set> sets = const []})
-      : _sets = sets;
+      {required this.id,
+      required this.name,
+      required this.description,
+      this.videoUrl,
+      this.imageUrl,
+      required this.difficultyLevel});
 
   factory _$ExerciseImpl.fromJson(Map<String, dynamic> json) =>
       _$$ExerciseImplFromJson(json);
 
   @override
-  final String? id;
-  @override
+  final int id;
   @override
   final String name;
   @override
+  final String description;
   @override
-  final String? description;
-// Descrizione opzionale dell'esercizio
+  final String? videoUrl;
   @override
+  final String? imageUrl;
   @override
-  final String? mediaUrl;
-// URL immagine dell'esercizio
-  @override
-  final String targetMuscle;
-  @override
-  final Duration? duration;
-// Durata opzionale dell'esercizio
-  @override
-  final String videoUrl;
-// URL video dimostrativo
-  final List<Set> _sets;
-// URL video dimostrativo
-  @override
-  @JsonKey()
-  List<Set> get sets {
-    if (_sets is EqualUnmodifiableListView) return _sets;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_sets);
-  }
+  final String difficultyLevel;
 
   @override
   String toString() {
-    return 'Exercise(id: $id, name: $name, description: $description, mediaUrl: $mediaUrl, targetMuscle: $targetMuscle, duration: $duration, videoUrl: $videoUrl, sets: $sets)';
+    return 'Exercise(id: $id, name: $name, description: $description, videoUrl: $videoUrl, imageUrl: $imageUrl, difficultyLevel: $difficultyLevel)';
   }
 
   @override
@@ -255,29 +201,18 @@ class _$ExerciseImpl implements _Exercise {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.mediaUrl, mediaUrl) ||
-                other.mediaUrl == mediaUrl) &&
-            (identical(other.targetMuscle, targetMuscle) ||
-                other.targetMuscle == targetMuscle) &&
-            (identical(other.duration, duration) ||
-                other.duration == duration) &&
             (identical(other.videoUrl, videoUrl) ||
                 other.videoUrl == videoUrl) &&
-            const DeepCollectionEquality().equals(other._sets, _sets));
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl) &&
+            (identical(other.difficultyLevel, difficultyLevel) ||
+                other.difficultyLevel == difficultyLevel));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      name,
-      description,
-      mediaUrl,
-      targetMuscle,
-      duration,
-      videoUrl,
-      const DeepCollectionEquality().hash(_sets));
+      runtimeType, id, name, description, videoUrl, imageUrl, difficultyLevel);
 
   @JsonKey(ignore: true)
   @override
@@ -295,37 +230,28 @@ class _$ExerciseImpl implements _Exercise {
 
 abstract class _Exercise implements Exercise {
   const factory _Exercise(
-      {final String? id,
-      @override required final String name,
-      @override final String? description,
-      @override final String? mediaUrl,
-      required final String targetMuscle,
-      final Duration? duration,
-      required final String videoUrl,
-      final List<Set> sets}) = _$ExerciseImpl;
+      {required final int id,
+      required final String name,
+      required final String description,
+      final String? videoUrl,
+      final String? imageUrl,
+      required final String difficultyLevel}) = _$ExerciseImpl;
 
   factory _Exercise.fromJson(Map<String, dynamic> json) =
       _$ExerciseImpl.fromJson;
 
   @override
-  String? get id;
-  @override
+  int get id;
   @override
   String get name;
   @override
+  String get description;
   @override
-  String? get description;
-  @override // Descrizione opzionale dell'esercizio
+  String? get videoUrl;
   @override
-  String? get mediaUrl;
-  @override // URL immagine dell'esercizio
-  String get targetMuscle;
+  String? get imageUrl;
   @override
-  Duration? get duration;
-  @override // Durata opzionale dell'esercizio
-  String get videoUrl;
-  @override // URL video dimostrativo
-  List<Set> get sets;
+  String get difficultyLevel;
   @override
   @JsonKey(ignore: true)
   _$$ExerciseImplCopyWith<_$ExerciseImpl> get copyWith =>

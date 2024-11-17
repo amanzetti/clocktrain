@@ -14,34 +14,34 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-MuscleGroup _$MuscleGroupFromJson(Map<String, dynamic> json) {
-  return _MuscleGroup.fromJson(json);
+MuscleGroupDto _$MuscleGroupDtoFromJson(Map<String, dynamic> json) {
+  return _MuscleGroupDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$MuscleGroup {
+mixin _$MuscleGroupDto {
   int get id => throw _privateConstructorUsedError;
   String get groupName => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $MuscleGroupCopyWith<MuscleGroup> get copyWith =>
+  $MuscleGroupDtoCopyWith<MuscleGroupDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MuscleGroupCopyWith<$Res> {
-  factory $MuscleGroupCopyWith(
-          MuscleGroup value, $Res Function(MuscleGroup) then) =
-      _$MuscleGroupCopyWithImpl<$Res, MuscleGroup>;
+abstract class $MuscleGroupDtoCopyWith<$Res> {
+  factory $MuscleGroupDtoCopyWith(
+          MuscleGroupDto value, $Res Function(MuscleGroupDto) then) =
+      _$MuscleGroupDtoCopyWithImpl<$Res, MuscleGroupDto>;
   @useResult
   $Res call({int id, String groupName});
 }
 
 /// @nodoc
-class _$MuscleGroupCopyWithImpl<$Res, $Val extends MuscleGroup>
-    implements $MuscleGroupCopyWith<$Res> {
-  _$MuscleGroupCopyWithImpl(this._value, this._then);
+class _$MuscleGroupDtoCopyWithImpl<$Res, $Val extends MuscleGroupDto>
+    implements $MuscleGroupDtoCopyWith<$Res> {
+  _$MuscleGroupDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -68,22 +68,22 @@ class _$MuscleGroupCopyWithImpl<$Res, $Val extends MuscleGroup>
 }
 
 /// @nodoc
-abstract class _$$MuscleGroupImplCopyWith<$Res>
-    implements $MuscleGroupCopyWith<$Res> {
-  factory _$$MuscleGroupImplCopyWith(
-          _$MuscleGroupImpl value, $Res Function(_$MuscleGroupImpl) then) =
-      __$$MuscleGroupImplCopyWithImpl<$Res>;
+abstract class _$$MuscleGroupDtoImplCopyWith<$Res>
+    implements $MuscleGroupDtoCopyWith<$Res> {
+  factory _$$MuscleGroupDtoImplCopyWith(_$MuscleGroupDtoImpl value,
+          $Res Function(_$MuscleGroupDtoImpl) then) =
+      __$$MuscleGroupDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id, String groupName});
 }
 
 /// @nodoc
-class __$$MuscleGroupImplCopyWithImpl<$Res>
-    extends _$MuscleGroupCopyWithImpl<$Res, _$MuscleGroupImpl>
-    implements _$$MuscleGroupImplCopyWith<$Res> {
-  __$$MuscleGroupImplCopyWithImpl(
-      _$MuscleGroupImpl _value, $Res Function(_$MuscleGroupImpl) _then)
+class __$$MuscleGroupDtoImplCopyWithImpl<$Res>
+    extends _$MuscleGroupDtoCopyWithImpl<$Res, _$MuscleGroupDtoImpl>
+    implements _$$MuscleGroupDtoImplCopyWith<$Res> {
+  __$$MuscleGroupDtoImplCopyWithImpl(
+      _$MuscleGroupDtoImpl _value, $Res Function(_$MuscleGroupDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +92,7 @@ class __$$MuscleGroupImplCopyWithImpl<$Res>
     Object? id = null,
     Object? groupName = null,
   }) {
-    return _then(_$MuscleGroupImpl(
+    return _then(_$MuscleGroupDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -107,11 +107,11 @@ class __$$MuscleGroupImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$MuscleGroupImpl implements _MuscleGroup {
-  const _$MuscleGroupImpl({required this.id, required this.groupName});
+class _$MuscleGroupDtoImpl implements _MuscleGroupDto {
+  const _$MuscleGroupDtoImpl({required this.id, required this.groupName});
 
-  factory _$MuscleGroupImpl.fromJson(Map<String, dynamic> json) =>
-      _$$MuscleGroupImplFromJson(json);
+  factory _$MuscleGroupDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MuscleGroupDtoImplFromJson(json);
 
   @override
   final int id;
@@ -120,14 +120,14 @@ class _$MuscleGroupImpl implements _MuscleGroup {
 
   @override
   String toString() {
-    return 'MuscleGroup(id: $id, groupName: $groupName)';
+    return 'MuscleGroupDto(id: $id, groupName: $groupName)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MuscleGroupImpl &&
+            other is _$MuscleGroupDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.groupName, groupName) ||
                 other.groupName == groupName));
@@ -140,24 +140,25 @@ class _$MuscleGroupImpl implements _MuscleGroup {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$MuscleGroupImplCopyWith<_$MuscleGroupImpl> get copyWith =>
-      __$$MuscleGroupImplCopyWithImpl<_$MuscleGroupImpl>(this, _$identity);
+  _$$MuscleGroupDtoImplCopyWith<_$MuscleGroupDtoImpl> get copyWith =>
+      __$$MuscleGroupDtoImplCopyWithImpl<_$MuscleGroupDtoImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$MuscleGroupImplToJson(
+    return _$$MuscleGroupDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _MuscleGroup implements MuscleGroup {
-  const factory _MuscleGroup(
+abstract class _MuscleGroupDto implements MuscleGroupDto {
+  const factory _MuscleGroupDto(
       {required final int id,
-      required final String groupName}) = _$MuscleGroupImpl;
+      required final String groupName}) = _$MuscleGroupDtoImpl;
 
-  factory _MuscleGroup.fromJson(Map<String, dynamic> json) =
-      _$MuscleGroupImpl.fromJson;
+  factory _MuscleGroupDto.fromJson(Map<String, dynamic> json) =
+      _$MuscleGroupDtoImpl.fromJson;
 
   @override
   int get id;
@@ -165,6 +166,6 @@ abstract class _MuscleGroup implements MuscleGroup {
   String get groupName;
   @override
   @JsonKey(ignore: true)
-  _$$MuscleGroupImplCopyWith<_$MuscleGroupImpl> get copyWith =>
+  _$$MuscleGroupDtoImplCopyWith<_$MuscleGroupDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
