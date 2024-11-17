@@ -27,8 +27,12 @@ mixin _$ExerciseDto {
   String? get imageUrl => throw _privateConstructorUsedError;
   String get difficultyLevel => throw _privateConstructorUsedError;
 
+  /// Serializes this ExerciseDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ExerciseDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ExerciseDtoCopyWith<ExerciseDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -58,6 +62,8 @@ class _$ExerciseDtoCopyWithImpl<$Res, $Val extends ExerciseDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ExerciseDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -122,6 +128,8 @@ class __$$ExerciseDtoImplCopyWithImpl<$Res>
       _$ExerciseDtoImpl _value, $Res Function(_$ExerciseDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ExerciseDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -210,12 +218,14 @@ class _$ExerciseDtoImpl implements _ExerciseDto {
                 other.difficultyLevel == difficultyLevel));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, id, name, description, videoUrl, imageUrl, difficultyLevel);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ExerciseDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ExerciseDtoImplCopyWith<_$ExerciseDtoImpl> get copyWith =>
@@ -253,8 +263,11 @@ abstract class _ExerciseDto implements ExerciseDto {
   String? get imageUrl;
   @override
   String get difficultyLevel;
+
+  /// Create a copy of ExerciseDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ExerciseDtoImplCopyWith<_$ExerciseDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

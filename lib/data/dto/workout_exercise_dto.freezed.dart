@@ -27,8 +27,12 @@ mixin _$WorkoutExerciseDto {
   int? get supersetGroup => throw _privateConstructorUsedError;
   String? get notes => throw _privateConstructorUsedError;
 
+  /// Serializes this WorkoutExerciseDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of WorkoutExerciseDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $WorkoutExerciseDtoCopyWith<WorkoutExerciseDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -58,6 +62,8 @@ class _$WorkoutExerciseDtoCopyWithImpl<$Res, $Val extends WorkoutExerciseDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of WorkoutExerciseDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -122,6 +128,8 @@ class __$$WorkoutExerciseDtoImplCopyWithImpl<$Res>
       $Res Function(_$WorkoutExerciseDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of WorkoutExerciseDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -209,12 +217,14 @@ class _$WorkoutExerciseDtoImpl implements _WorkoutExerciseDto {
             (identical(other.notes, notes) || other.notes == notes));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, id, workoutId, exerciseId, order, supersetGroup, notes);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of WorkoutExerciseDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$WorkoutExerciseDtoImplCopyWith<_$WorkoutExerciseDtoImpl> get copyWith =>
@@ -253,8 +263,11 @@ abstract class _WorkoutExerciseDto implements WorkoutExerciseDto {
   int? get supersetGroup;
   @override
   String? get notes;
+
+  /// Create a copy of WorkoutExerciseDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$WorkoutExerciseDtoImplCopyWith<_$WorkoutExerciseDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

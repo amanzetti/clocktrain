@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'workout_exercise_dto.freezed.dart';
+part 'workout_exercise_dto.g.dart';
 
 @freezed
 class WorkoutExerciseDto with _$WorkoutExerciseDto {

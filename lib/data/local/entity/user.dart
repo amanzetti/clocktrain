@@ -1,5 +1,7 @@
 import 'package:drift/drift.dart';
 
+import 'user_type.dart';
+
 @DataClassName('User')
 class Users extends Table {
   IntColumn get id => integer().autoIncrement()();
@@ -10,5 +12,10 @@ class Users extends Table {
   RealColumn get height => real()();
   RealColumn get weight => real()();
   TextColumn get avatar => text().nullable()();
-  IntColumn get userTypeId => integer().customConstraint('REFERENCES user_types(id)')();
+  IntColumn get userTypeId =>
+      integer().customConstraint('REFERENCES user_types(id) NOT NULL')();
+
+  ///Specifying which from the field above is the primary key
+  // @override
+  // Set<Column> get primaryKey => {id};
 }

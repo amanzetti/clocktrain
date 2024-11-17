@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'app_setting_dto.freezed.dart';
+part 'app_settings_dto.freezed.dart';
+part 'app_settings_dto.g.dart';
 
 @freezed
 class AppSettingDto with _$AppSettingDto {

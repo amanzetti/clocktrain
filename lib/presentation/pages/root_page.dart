@@ -3,7 +3,6 @@ import 'package:clocktrain/presentation/widgets/atoms/buttons/app_elevated_butto
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:clocktrain/domain/providers/user_proivider.dart';
 
 class RootPage extends ConsumerWidget {
   const RootPage({super.key});
@@ -14,17 +13,17 @@ class RootPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final userState = ref.watch(userProvider);
+    // final userState = ref.watch(userProvider);
 
-    if (userState.isEmpty) {
-      ref.read(userProvider.notifier).getUserByIdMock('user123');
-    }
+    // if (userState.isEmpty) {
+    //   ref.read(userProvider.notifier).getUserByIdMock('user123');
+    // }
 
-    if (userState.isEmpty) {
-      return const Scaffold(
-        body: Center(child: CircularProgressIndicator()),
-      );
-    }
+    // if (userState.isEmpty) {
+    //   return const Scaffold(
+    //     body: Center(child: CircularProgressIndicator()),
+    //   );
+    // }
 
     return Scaffold(
       body: Column(

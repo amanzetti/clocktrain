@@ -4,6 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 // Assicurati di importare la classe Rep
 
 part 'set_model.freezed.dart';
+part 'set_model.g.dart';
 
 @freezed
 class Set with _$Set {

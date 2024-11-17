@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'tag_dto.freezed.dart';
+part 'tag_dto.g.dart';
 
 @freezed
 class TagDto with _$TagDto {

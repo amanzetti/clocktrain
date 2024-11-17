@@ -1,4 +1,4 @@
-import 'package:clocktrain/domain/providers/user_proivider.dart';
+import 'package:clocktrain/presentation/pages/profile/profile_page_vm.dart';
 import 'package:clocktrain/presentation/widgets/atoms/buttons/app_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -50,12 +50,12 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
 
   void _populateFields(User user) {
     _nameController.text = user.name;
-    _surnameController.text = user.surname;
-    _usernameController.text = user.username;
+    _surnameController.text = user.name;
+    _usernameController.text = user.name;
     _emailController.text = user.email;
     _heightController.text = user.height.toString();
     _weightController.text = user.weight.toString();
-    _goalController.text = user.goal;
+    _goalController.text = user.email;
   }
 
   Future<void> _saveChanges(User user) async {
@@ -90,7 +90,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     // Otteniamo lo stato dell'utente
-    final userState = ref.watch(userProvider);
+    // final userState = ref.read(_profilePageVmProvider).readCurrentUser('userId');
 
     // // Verifica se la lista è vuota e, se sì, richiama getUserById
     // if (userState.isEmpty) {
@@ -162,3 +162,5 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
     );
   }
 }
+
+final _profilePageVmProvider = Provider((ref) => ProfilePageVm());

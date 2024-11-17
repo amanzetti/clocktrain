@@ -28,8 +28,12 @@ mixin _$ProgressDto {
   double? get weight => throw _privateConstructorUsedError;
   String? get notes => throw _privateConstructorUsedError;
 
+  /// Serializes this ProgressDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ProgressDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ProgressDtoCopyWith<ProgressDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -60,6 +64,8 @@ class _$ProgressDtoCopyWithImpl<$Res, $Val extends ProgressDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ProgressDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -130,6 +136,8 @@ class __$$ProgressDtoImplCopyWithImpl<$Res>
       _$ProgressDtoImpl _value, $Res Function(_$ProgressDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProgressDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -225,12 +233,14 @@ class _$ProgressDtoImpl implements _ProgressDto {
             (identical(other.notes, notes) || other.notes == notes));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, id, userId, exerciseId, progressDate, reps, weight, notes);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProgressDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ProgressDtoImplCopyWith<_$ProgressDtoImpl> get copyWith =>
@@ -271,8 +281,11 @@ abstract class _ProgressDto implements ProgressDto {
   double? get weight;
   @override
   String? get notes;
+
+  /// Create a copy of ProgressDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProgressDtoImplCopyWith<_$ProgressDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'muscle_group_dto.freezed.dart';
+part 'muscle_group_dto.g.dart';
 
 @freezed
 class MuscleGroupDto with _$MuscleGroupDto {

@@ -23,8 +23,12 @@ mixin _$MuscleGroupDto {
   int get id => throw _privateConstructorUsedError;
   String get groupName => throw _privateConstructorUsedError;
 
+  /// Serializes this MuscleGroupDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MuscleGroupDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MuscleGroupDtoCopyWith<MuscleGroupDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$MuscleGroupDtoCopyWithImpl<$Res, $Val extends MuscleGroupDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MuscleGroupDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class __$$MuscleGroupDtoImplCopyWithImpl<$Res>
       _$MuscleGroupDtoImpl _value, $Res Function(_$MuscleGroupDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MuscleGroupDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -133,11 +141,13 @@ class _$MuscleGroupDtoImpl implements _MuscleGroupDto {
                 other.groupName == groupName));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, groupName);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MuscleGroupDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MuscleGroupDtoImplCopyWith<_$MuscleGroupDtoImpl> get copyWith =>
@@ -164,8 +174,11 @@ abstract class _MuscleGroupDto implements MuscleGroupDto {
   int get id;
   @override
   String get groupName;
+
+  /// Create a copy of MuscleGroupDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MuscleGroupDtoImplCopyWith<_$MuscleGroupDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

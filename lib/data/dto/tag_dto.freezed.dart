@@ -23,8 +23,12 @@ mixin _$TagDto {
   int get id => throw _privateConstructorUsedError;
   String get tagName => throw _privateConstructorUsedError;
 
+  /// Serializes this TagDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TagDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TagDtoCopyWith<TagDto> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -46,6 +50,8 @@ class _$TagDtoCopyWithImpl<$Res, $Val extends TagDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TagDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -83,6 +89,8 @@ class __$$TagDtoImplCopyWithImpl<$Res>
       _$TagDtoImpl _value, $Res Function(_$TagDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TagDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -129,11 +137,13 @@ class _$TagDtoImpl implements _TagDto {
             (identical(other.tagName, tagName) || other.tagName == tagName));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, tagName);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TagDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TagDtoImplCopyWith<_$TagDtoImpl> get copyWith =>
@@ -157,8 +167,11 @@ abstract class _TagDto implements TagDto {
   int get id;
   @override
   String get tagName;
+
+  /// Create a copy of TagDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TagDtoImplCopyWith<_$TagDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

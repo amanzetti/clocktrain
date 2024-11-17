@@ -1,9 +1,10 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'workout.freezed.dart';
+part 'workout_model.freezed.dart';
+part 'workout_model.g.dart';
 
 @freezed
-class Workout with _$WorkoutDto {
+class Workout with _$Workout {
   const factory Workout({
     required int id,
     required String name,

@@ -1,42 +1,24 @@
-import 'package:clocktrain/data/api/repositories/user_api_repository.dart';
+import 'package:clocktrain/data/datasource/abtraction/local_db_datasource.dart';
 import 'package:clocktrain/domain/models/user_model.dart';
+import 'package:clocktrain/domain/repositories/user_repository.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class UserRepositoryImpl implements UserRepository {
-  @override
-  Future<void> createUser(String userId, User user) {
-    // TODO: implement createUser
-    throw UnimplementedError();
-  }
+  final Ref ref;
+  LocalDbDatasource localDbDatasource;
 
+  UserRepositoryImpl(this.ref, {required this.localDbDatasource});
+  
   @override
-  Future<void> deleteUser(String userId) {
-    // TODO: implement deleteUser
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<List<User>> getAllUsers() {
-    // TODO: implement getAllUsers
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<User?> getUserById(String userId) {
-    // TODO: implement getUserById
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<void> updateUser(String userId, User user) {
-    // TODO: implement updateUser
+  Future<User> getCurrentUser(String userId) {
+    // TODO: implement getCurrentUser
     throw UnimplementedError();
   }
 
   // @override
   // Future<User> getUser() {
-  //   final userDto = 
+  //   final userDto =
   //   // Qui va chiamata l'API per recuperare l'utente corrente
   //   // return User.fromJson(json);
   // }
-
 }

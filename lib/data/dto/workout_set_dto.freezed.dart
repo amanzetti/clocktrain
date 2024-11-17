@@ -27,8 +27,12 @@ mixin _$WorkoutSetDto {
   double? get weight => throw _privateConstructorUsedError;
   int get restTime => throw _privateConstructorUsedError;
 
+  /// Serializes this WorkoutSetDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of WorkoutSetDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $WorkoutSetDtoCopyWith<WorkoutSetDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -58,6 +62,8 @@ class _$WorkoutSetDtoCopyWithImpl<$Res, $Val extends WorkoutSetDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of WorkoutSetDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -122,6 +128,8 @@ class __$$WorkoutSetDtoImplCopyWithImpl<$Res>
       _$WorkoutSetDtoImpl _value, $Res Function(_$WorkoutSetDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of WorkoutSetDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -209,12 +217,14 @@ class _$WorkoutSetDtoImpl implements _WorkoutSetDto {
                 other.restTime == restTime));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, id, workoutExerciseId, setNumber, reps, weight, restTime);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of WorkoutSetDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$WorkoutSetDtoImplCopyWith<_$WorkoutSetDtoImpl> get copyWith =>
@@ -252,8 +262,11 @@ abstract class _WorkoutSetDto implements WorkoutSetDto {
   double? get weight;
   @override
   int get restTime;
+
+  /// Create a copy of WorkoutSetDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$WorkoutSetDtoImplCopyWith<_$WorkoutSetDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'progress_dto.freezed.dart';
+part 'progress_dto.g.dart';
 
 @freezed
 class ProgressDto with _$ProgressDto {

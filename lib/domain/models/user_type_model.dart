@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'user_type.freezed.dart';
+part 'user_type_model.freezed.dart';
+part 'user_type_model.g.dart';
 
 @freezed
 class UserType with _$UserType {

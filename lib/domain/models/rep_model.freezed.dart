@@ -27,8 +27,12 @@ mixin _$Rep {
       throw _privateConstructorUsedError; // Tempo di riposo tra le ripetizioni
   int? get weight => throw _privateConstructorUsedError;
 
+  /// Serializes this Rep to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Rep
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $RepCopyWith<Rep> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -49,6 +53,8 @@ class _$RepCopyWithImpl<$Res, $Val extends Rep> implements $RepCopyWith<$Res> {
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Rep
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -93,6 +99,8 @@ class __$$RepImplCopyWithImpl<$Res> extends _$RepCopyWithImpl<$Res, _$RepImpl>
   __$$RepImplCopyWithImpl(_$RepImpl _value, $Res Function(_$RepImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Rep
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -160,11 +168,13 @@ class _$RepImpl implements _Rep {
             (identical(other.weight, weight) || other.weight == weight));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, repNumber, restTime, weight);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Rep
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RepImplCopyWith<_$RepImpl> get copyWith =>
@@ -190,13 +200,16 @@ abstract class _Rep implements Rep {
   @override
   String? get id;
   @override
-  int get repNumber;
-  @override // Numero di ripetizioni
-  Duration get restTime;
-  @override // Tempo di riposo tra le ripetizioni
-  int? get weight;
+  int get repNumber; // Numero di ripetizioni
   @override
-  @JsonKey(ignore: true)
+  Duration get restTime; // Tempo di riposo tra le ripetizioni
+  @override
+  int? get weight;
+
+  /// Create a copy of Rep
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RepImplCopyWith<_$RepImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

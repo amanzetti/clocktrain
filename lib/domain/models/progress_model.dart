@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'progress.freezed.dart';
+part 'progress_model.freezed.dart';
+part 'progress_model.g.dart';
 
 @freezed
 class Progress with _$Progress {

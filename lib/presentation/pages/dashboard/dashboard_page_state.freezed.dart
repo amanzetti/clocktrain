@@ -18,7 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$DashboardPageState {
   User? get currentUser => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DashboardPageState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DashboardPageStateCopyWith<DashboardPageState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -44,6 +46,8 @@ class _$DashboardPageStateCopyWithImpl<$Res, $Val extends DashboardPageState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DashboardPageState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -57,6 +61,8 @@ class _$DashboardPageStateCopyWithImpl<$Res, $Val extends DashboardPageState>
     ) as $Val);
   }
 
+  /// Create a copy of DashboardPageState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $UserCopyWith<$Res>? get currentUser {
@@ -92,6 +98,8 @@ class __$$DashboardPageStateImplCopyWithImpl<$Res>
       $Res Function(_$DashboardPageStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DashboardPageState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -132,7 +140,9 @@ class _$DashboardPageStateImpl implements _DashboardPageState {
   @override
   int get hashCode => Object.hash(runtimeType, currentUser);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DashboardPageState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DashboardPageStateImplCopyWith<_$DashboardPageStateImpl> get copyWith =>
@@ -146,8 +156,11 @@ abstract class _DashboardPageState implements DashboardPageState {
 
   @override
   User? get currentUser;
+
+  /// Create a copy of DashboardPageState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DashboardPageStateImplCopyWith<_$DashboardPageStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

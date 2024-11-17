@@ -1,7 +1,7 @@
-import 'package:clocktrain/data/local/entity/user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user_dto.freezed.dart';
+part 'user_dto.g.dart';
 
 @freezed
 class UserDto with _$UserDto {
@@ -19,17 +19,17 @@ class UserDto with _$UserDto {
 
   factory UserDto.fromJson(Map<String, dynamic> json) => _$UserDtoFromJson(json);
 
-  factory UserDto.fromEntity(User user) {
-    return UserDto(
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      password: user.password,
-      dateOfBirth: user.dateOfBirth,
-      height: user.height,
-      weight: user.weight,
-      avatar: user.avatar,
-      userTypeId: user.userTypeId,
-    );
-  }
+  // factory UserDto.fromEntity(User user) {
+  //   return UserDto(
+  //     id: user.id,
+  //     name: user.name,
+  //     email: user.email,
+  //     password: user.password,
+  //     dateOfBirth: user.dateOfBirth,
+  //     height: user.height,
+  //     weight: user.weight,
+  //     avatar: user.avatar,
+  //     userTypeId: user.userTypeId,
+  //   );
+  // }
 }

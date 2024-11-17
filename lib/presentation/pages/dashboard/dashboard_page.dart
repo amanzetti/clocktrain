@@ -1,5 +1,5 @@
 import 'package:clocktrain/domain/models/user_model.dart';
-import 'package:clocktrain/domain/providers/user_proivider.dart';
+import 'package:clocktrain/presentation/pages/dashboard/dashboard_page_vm.dart';
 import 'package:clocktrain/presentation/themes/app_asset.dart';
 import 'package:clocktrain/presentation/widgets/atoms/spacer_sized_box.dart';
 import 'package:clocktrain/presentation/widgets/molecules/title_and_card.dart';
@@ -10,11 +10,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class DashboardPage extends ConsumerWidget {
   const DashboardPage({super.key});
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final userState = ref.watch(userProvider);
-    final user = userState.first;
+final user =  ref.read(_dashboardVmProvider).readCurrentUser('userId');
 
     return SingleChildScrollView(
       child: Column(
@@ -168,3 +166,7 @@ class DashboardPage extends ConsumerWidget {
     );
   }
 }
+
+final _dashboardVmProvider = Provider<DashboardPageVm>((ref) {
+  return DashboardPageVm();
+});

@@ -1,5 +1,4 @@
 import 'package:clocktrain/domain/models/workout_model.dart';
-import 'package:clocktrain/domain/providers/user_proivider.dart';
 import 'package:clocktrain/presentation/routes/path.dart';
 import 'package:clocktrain/presentation/widgets/organisms/list_tile_app.dart';
 import 'package:clocktrain/presentation/widgets/organisms/header_with_action_button.dart';
@@ -14,8 +13,8 @@ class WorkoutListPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final userState = ref.watch(userProvider);
-    final workouts = userState.first.workouts;
+    // final userState = ref.watch(userProvider);
+    // final workouts = userState.first.workouts;
 
     return Column(
       children: [
@@ -25,9 +24,9 @@ class WorkoutListPage extends ConsumerWidget {
           onTap: () =>
               context.push(AppPath.sheetListPage + AppPath.workoutEditorPage),
         ),
-        Expanded(
-          child: _buildListWorkout(context, workouts),
-        ),
+        // Expanded(
+          // child: _buildListWorkout(context, workouts),
+        // ),
       ],
     );
   }
@@ -39,18 +38,18 @@ class WorkoutListPage extends ConsumerWidget {
         //     .read(listProvider.notifier)
         //     .reorderList(oldIndex, newIndex);
       },
-      children: [
-        for (int index = 0; index < workouts.length; index++)
-          ListTileApp<Workout>(
-              listTileAppType: ListTileAppType.workout,
-              object: workouts[index],
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              rateo: StandardRateo.ratio_4_5,
-              widthImage: 100,
-              mediaUrl: '',
-              key: ValueKey(
-                workouts[index],
-              ))
+      children: const [
+        // for (int index = 0; index < workouts.length; index++)
+          // ListTileApp<Workout>(
+          //     listTileAppType: ListTileAppType.workout,
+          //     object: workouts[index],
+          //     padding: const EdgeInsets.symmetric(vertical: 8.0),
+          //     rateo: StandardRateo.ratio_4_5,
+          //     widthImage: 100,
+          //     mediaUrl: '',
+          //     key: ValueKey(
+          //       workouts[index],
+          //     ))
       ],
     );
   }

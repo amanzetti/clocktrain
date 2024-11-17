@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'muscle_group.freezed.dart';
+part 'muscle_group_model.freezed.dart';
+part 'muscle_group_model.g.dart';
 
 @freezed
 class MuscleGroup with _$MuscleGroup {

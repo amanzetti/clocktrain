@@ -1,12 +1,11 @@
-import 'package:clocktrain/domain/models/set_model.dart';
-import 'package:clocktrain/presentation/widgets/organisms/list_tile_app.dart';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'exercise_model.freezed.dart';
+part 'exercise_model.g.dart';
 
 @freezed
-class Exercise with _$Exercise implements ObjectT {
+class Exercise with _$Exercise{
   const factory Exercise({
    required int id,
     required String name,
