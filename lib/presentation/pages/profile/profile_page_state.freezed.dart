@@ -32,8 +32,6 @@ abstract class $ProfilePageStateCopyWith<$Res> {
       _$ProfilePageStateCopyWithImpl<$Res, ProfilePageState>;
   @useResult
   $Res call({User? currentUser});
-
-  $UserCopyWith<$Res>? get currentUser;
 }
 
 /// @nodoc
@@ -60,20 +58,6 @@ class _$ProfilePageStateCopyWithImpl<$Res, $Val extends ProfilePageState>
               as User?,
     ) as $Val);
   }
-
-  /// Create a copy of ProfilePageState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UserCopyWith<$Res>? get currentUser {
-    if (_value.currentUser == null) {
-      return null;
-    }
-
-    return $UserCopyWith<$Res>(_value.currentUser!, (value) {
-      return _then(_value.copyWith(currentUser: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -85,9 +69,6 @@ abstract class _$$ProfilePageStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call({User? currentUser});
-
-  @override
-  $UserCopyWith<$Res>? get currentUser;
 }
 
 /// @nodoc

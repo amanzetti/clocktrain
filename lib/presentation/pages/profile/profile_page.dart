@@ -1,8 +1,8 @@
+import 'package:clocktrain/domain/entities/user_entity.dart';
 import 'package:clocktrain/presentation/pages/profile/profile_page_vm.dart';
 import 'package:clocktrain/presentation/widgets/atoms/buttons/app_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:clocktrain/domain/models/user_model.dart';
 
 class ProfilePage extends ConsumerStatefulWidget {
   const ProfilePage({super.key});

@@ -6,27 +6,24 @@ publish_to: 'none' # Prevents accidental publishing to pub.dev.
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.4.0 <4.0.0'
+  sdk: ^3.5.4
 
 dependencies:
   flutter:
     sdk: flutter
   
   # Icons and UI elements
-  cupertino_icons: ^1.0.6
+  cupertino_icons: ^1.0.8
   google_fonts: ^4.0.4 # Custom fonts from Google Fonts
 
   # State management
-  riverpod: ^2.5.1
-  riverpod_annotation: ^2.3.5
-  flutter_riverpod: ^2.5.1 # Integration with Flutter
+  flutter_riverpod: ^2.6.1 # Integration with Flubretter
 
   # Code generation and annotations
-  freezed: ^2.5.7
   freezed_annotation: ^2.4.4
 
   # Routing and navigation
-  go_router: ^14.6.0
+  go_router: ^14.2.1
 
   # Localization and internationalization
   flutter_localizations:
@@ -34,26 +31,24 @@ dependencies:
   intl: any # Localization and date formatting support
 
   # Audio and video playback
-  audioplayers: ^1.1.1
+  audioplayers: ^6.1.0
   youtube_player_flutter: ^9.1.1 # YouTube video embedding
-
-  # Persistent storage
-  shared_preferences: ^2.3.3
-
-  # Firebase services
-  firebase_core: ^3.8.0
-  firebase_auth: ^5.3.3
-  cloud_firestore: ^5.5.0
-  firebase_storage: ^12.3.6 # Cloud storage for assets
 
   # JSON serialization
   json_annotation: ^4.9.0 # Annotations for JSON serialization
-  logger: ^2.5.0
+
+  # Logging and debugging
+  logger: ^2.4.0
+
+  # Image and file handling
   path_provider: ^2.1.5
   flutter_svg: ^2.0.9
-  path: ^1.9.0
+  # path: ^1.9.0
+
+  # Database
   drift: ^2.21.0
-  drift_flutter: ^0.1.0
+  drift_flutter: ^0.2.1
+  dartz: ^0.10.1
 
 dev_dependencies:
   flutter_test:
@@ -61,12 +56,15 @@ dev_dependencies:
 
   # Linting and code quality
   flutter_lints: ^4.0.0 # Recommended lints for Flutter
-  # analyzer: ^6.11.0
-  custom_lint: # Custom lint rules
-  riverpod_lint: ^2.3.10
-  riverpod_generator: ^2.4.0 # Generates Riverpod providers
+  # Riverpod
+  riverpod_lint: ^2.6.3
+  # Json serialization
   json_serializable: ^6.8.0
+  # Freezed
+  freezed: ^2.5.7
+  # Database
   drift_dev: ^2.21.0
+  # Code generation
   build_runner: ^2.4.13
 
 flutter:
@@ -79,3 +77,11 @@ flutter:
     - assets/sounds/ # Folder for sound files
     - assets/icon/ # Folder for app icons
     - assets/mock/ # Folder for mock data
+  
+  # Script
+scripts: 
+  br_localDb: ./build_runner.sh localDb
+  # pre-build:
+  #   - flutter pub run build_runner build --delete-conflicting-outputs
+  # post-build:
+  #   - flutter pub run build_runner build --delete-conflicting-outputs

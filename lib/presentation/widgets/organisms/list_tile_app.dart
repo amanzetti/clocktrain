@@ -1,4 +1,3 @@
-import 'package:clocktrain/domain/models/rep_model.dart';
 import 'package:clocktrain/domain/providers/ui/edit_provider.dart';
 import 'package:clocktrain/domain/providers/ui/main_page_params_provider.dart';
 import 'package:clocktrain/presentation/routes/path.dart';
@@ -40,7 +39,6 @@ class ListTileApp<T extends ObjectT> extends ConsumerStatefulWidget {
     required this.mediaUrl,
     required this.listTileAppType,
     this.rep,
-    this.reps,
     this.set,
     this.padding,
   });
@@ -51,7 +49,6 @@ class ListTileApp<T extends ObjectT> extends ConsumerStatefulWidget {
   final StandardRateo rateo;
   final String mediaUrl;
   final int? rep;
-  final List<Rep>? reps;
   final int? set;
   final ListTileAppType listTileAppType;
 
@@ -122,25 +119,25 @@ class _ListTileAppState<T extends ObjectT>
 
   List<Widget> _generateReps() {
     List<Widget> list = [];
-    if (widget.reps != null) {
-      for (var e in widget.reps!) {
-        list.add(Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Text(
-              'rep: ${e.repNumber}',
-              style: context.textTheme.displaySmall,
-            ),
-            const SizedBox(width: 8.0),
-            Text(
-              'kg: ${e.weight}',
-              style: context.textTheme.displaySmall,
-            ),
-          ],
-        ));
-      }
-      return list;
-    }
+    // if (widget.reps != null) {
+    //   for (var e in widget.reps!) {
+    //     list.add(Row(
+    //       mainAxisAlignment: MainAxisAlignment.start,
+    //       children: [
+    //         Text(
+    //           'rep: ${e.repNumber}',
+    //           style: context.textTheme.displaySmall,
+    //         ),
+    //         const SizedBox(width: 8.0),
+    //         Text(
+    //           'kg: ${e.weight}',
+    //           style: context.textTheme.displaySmall,
+    //         ),
+    //       ],
+    //     ));
+    //   }
+    //   return list;
+    // }
     return list;
   }
 

@@ -1,8 +1,6 @@
-import 'package:clocktrain/domain/models/exercise_model.dart';
+import 'package:clocktrain/domain/entities/exercise_entity.dart';
 import 'package:clocktrain/presentation/routes/path.dart';
-import 'package:clocktrain/presentation/widgets/organisms/list_tile_app.dart';
 import 'package:clocktrain/presentation/widgets/organisms/header_with_action_button.dart';
-import 'package:clocktrain/utils/enum/standard_rateo_enum.dart';
 import 'package:clocktrain/utils/ext/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

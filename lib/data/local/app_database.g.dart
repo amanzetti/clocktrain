@@ -3451,6 +3451,19 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $ExerciseTagsTable exerciseTags = $ExerciseTagsTable(this);
   late final $ExerciseMuscleGroupsTable exerciseMuscleGroups =
       $ExerciseMuscleGroupsTable(this);
+  late final UserDao userDao = UserDao(this as AppDatabase);
+  late final UserTypeDao userTypeDao = UserTypeDao(this as AppDatabase);
+  late final ExerciseDao exerciseDao = ExerciseDao(this as AppDatabase);
+  late final TagDao tagDao = TagDao(this as AppDatabase);
+  late final MuscleGroupDao muscleGroupDao =
+      MuscleGroupDao(this as AppDatabase);
+  late final WorkoutDao workoutDao = WorkoutDao(this as AppDatabase);
+  late final WorkoutExerciseDao workoutExerciseDao =
+      WorkoutExerciseDao(this as AppDatabase);
+  late final WorkoutSetDao workoutSetDao = WorkoutSetDao(this as AppDatabase);
+  late final ProgressDao progressDao = ProgressDao(this as AppDatabase);
+  late final AppSettingsDao appSettingsDao =
+      AppSettingsDao(this as AppDatabase);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();

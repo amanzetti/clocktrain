@@ -31,3 +31,9 @@ chmod +x flutterfire_config.sh
 ```console
 ./flutterfire_config.sh
 ```
+```console
+chmod +x build_runner.sh
+```
+```console
+./build_runner.sh
+```

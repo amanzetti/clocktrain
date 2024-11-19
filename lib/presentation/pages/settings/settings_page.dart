@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
 
 final themeProvider = StateProvider<bool>((ref) => false);
 
@@ -19,14 +19,14 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
   }
 
   Future<void> _loadThemePreference() async {
-    final prefs = await SharedPreferences.getInstance();
-    bool isDark = prefs.getBool('darkTheme') ?? false;
-    ref.read(themeProvider.notifier).state = isDark; // Aggiorna il provider
+    // final prefs = await SharedPreferences.getInstance();
+    // bool isDark = prefs.getBool('darkTheme') ?? false;
+    // ref.read(themeProvider.notifier).state = isDark; // Aggiorna il provider
   }
 
   Future<void> _saveThemePreference(bool isDark) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool('darkTheme', isDark);
+    // final prefs = await SharedPreferences.getInstance();
+    // await prefs.setBool('darkTheme', isDark);
   }
 
   void _toggleTheme() {

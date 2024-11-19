@@ -1,4 +1,4 @@
-import 'package:clocktrain/domain/models/user_model.dart';
+import 'package:clocktrain/domain/entities/user_entity.dart';
 import 'package:clocktrain/presentation/pages/dashboard/dashboard_page_vm.dart';
 import 'package:clocktrain/presentation/themes/app_asset.dart';
 import 'package:clocktrain/presentation/widgets/atoms/spacer_sized_box.dart';
