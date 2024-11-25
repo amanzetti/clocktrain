@@ -2,7 +2,7 @@ class Workout {
   final int id;
   final String name;
   final String? description;
-  final int userId;
+  final String userId;
   final DateTime dateCreated;
 
   Workout({

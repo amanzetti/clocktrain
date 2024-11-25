@@ -1,6 +1,6 @@
 class Progress {
   final int id;
-  final int userId;
+  final String userId;
   final int exerciseId;
   final DateTime progressDate;
   final int reps;

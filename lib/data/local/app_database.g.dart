@@ -193,13 +193,11 @@ class $UsersTable extends Users with TableInfo<$UsersTable, User> {
   $UsersTable(this.attachedDatabase, [this._alias]);
   static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
-  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'id', aliasedName, false,
-      hasAutoIncrement: true,
-      type: DriftSqlType.int,
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
-      defaultConstraints:
-          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+      clientDefault: () => const Uuid().v4());
   static const VerificationMeta _nameMeta = const VerificationMeta('name');
   @override
   late final GeneratedColumn<String> name = GeneratedColumn<String>(
@@ -339,7 +337,7 @@ class $UsersTable extends Users with TableInfo<$UsersTable, User> {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return User(
       id: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+          .read(DriftSqlType.string, data['${effectivePrefix}id'])!,
       name: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}name'])!,
       email: attachedDatabase.typeMapping
@@ -366,7 +364,7 @@ class $UsersTable extends Users with TableInfo<$UsersTable, User> {
 }
 
 class User extends DataClass implements Insertable<User> {
-  final int id;
+  final String id;
   final String name;
   final String email;
   final String password;
@@ -388,7 +386,7 @@ class User extends DataClass implements Insertable<User> {
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    map['id'] = Variable<int>(id);
+    map['id'] = Variable<String>(id);
     map['name'] = Variable<String>(name);
     map['email'] = Variable<String>(email);
     map['password'] = Variable<String>(password);
@@ -421,7 +419,7 @@ class User extends DataClass implements Insertable<User> {
       {ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return User(
-      id: serializer.fromJson<int>(json['id']),
+      id: serializer.fromJson<String>(json['id']),
       name: serializer.fromJson<String>(json['name']),
       email: serializer.fromJson<String>(json['email']),
       password: serializer.fromJson<String>(json['password']),
@@ -436,7 +434,7 @@ class User extends DataClass implements Insertable<User> {
   Map<String, dynamic> toJson({ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
-      'id': serializer.toJson<int>(id),
+      'id': serializer.toJson<String>(id),
       'name': serializer.toJson<String>(name),
       'email': serializer.toJson<String>(email),
       'password': serializer.toJson<String>(password),
@@ -449,7 +447,7 @@ class User extends DataClass implements Insertable<User> {
   }
 
   User copyWith(
-          {int? id,
+          {String? id,
           String? name,
           String? email,
           String? password,
@@ -520,7 +518,7 @@ class User extends DataClass implements Insertable<User> {
 }
 
 class UsersCompanion extends UpdateCompanion<User> {
-  final Value<int> id;
+  final Value<String> id;
   final Value<String> name;
   final Value<String> email;
   final Value<String> password;
@@ -529,6 +527,7 @@ class UsersCompanion extends UpdateCompanion<User> {
   final Value<double> weight;
   final Value<String?> avatar;
   final Value<int> userTypeId;
+  final Value<int> rowid;
   const UsersCompanion({
     this.id = const Value.absent(),
     this.name = const Value.absent(),
@@ -539,6 +538,7 @@ class UsersCompanion extends UpdateCompanion<User> {
     this.weight = const Value.absent(),
     this.avatar = const Value.absent(),
     this.userTypeId = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   UsersCompanion.insert({
     this.id = const Value.absent(),
@@ -550,6 +550,7 @@ class UsersCompanion extends UpdateCompanion<User> {
     required double weight,
     this.avatar = const Value.absent(),
     required int userTypeId,
+    this.rowid = const Value.absent(),
   })  : name = Value(name),
         email = Value(email),
         password = Value(password),
@@ -558,7 +559,7 @@ class UsersCompanion extends UpdateCompanion<User> {
         weight = Value(weight),
         userTypeId = Value(userTypeId);
   static Insertable<User> custom({
-    Expression<int>? id,
+    Expression<String>? id,
     Expression<String>? name,
     Expression<String>? email,
     Expression<String>? password,
@@ -567,6 +568,7 @@ class UsersCompanion extends UpdateCompanion<User> {
     Expression<double>? weight,
     Expression<String>? avatar,
     Expression<int>? userTypeId,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -578,11 +580,12 @@ class UsersCompanion extends UpdateCompanion<User> {
       if (weight != null) 'weight': weight,
       if (avatar != null) 'avatar': avatar,
       if (userTypeId != null) 'user_type_id': userTypeId,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
   UsersCompanion copyWith(
-      {Value<int>? id,
+      {Value<String>? id,
       Value<String>? name,
       Value<String>? email,
       Value<String>? password,
@@ -590,7 +593,8 @@ class UsersCompanion extends UpdateCompanion<User> {
       Value<double>? height,
       Value<double>? weight,
       Value<String?>? avatar,
-      Value<int>? userTypeId}) {
+      Value<int>? userTypeId,
+      Value<int>? rowid}) {
     return UsersCompanion(
       id: id ?? this.id,
       name: name ?? this.name,
@@ -601,6 +605,7 @@ class UsersCompanion extends UpdateCompanion<User> {
       weight: weight ?? this.weight,
       avatar: avatar ?? this.avatar,
       userTypeId: userTypeId ?? this.userTypeId,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -608,7 +613,7 @@ class UsersCompanion extends UpdateCompanion<User> {
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     if (id.present) {
-      map['id'] = Variable<int>(id.value);
+      map['id'] = Variable<String>(id.value);
     }
     if (name.present) {
       map['name'] = Variable<String>(name.value);
@@ -634,6 +639,9 @@ class UsersCompanion extends UpdateCompanion<User> {
     if (userTypeId.present) {
       map['user_type_id'] = Variable<int>(userTypeId.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -648,7 +656,8 @@ class UsersCompanion extends UpdateCompanion<User> {
           ..write('height: $height, ')
           ..write('weight: $weight, ')
           ..write('avatar: $avatar, ')
-          ..write('userTypeId: $userTypeId')
+          ..write('userTypeId: $userTypeId, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -1382,9 +1391,9 @@ class $WorkoutsTable extends Workouts with TableInfo<$WorkoutsTable, Workout> {
           GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
   static const VerificationMeta _userIdMeta = const VerificationMeta('userId');
   @override
-  late final GeneratedColumn<int> userId = GeneratedColumn<int>(
+  late final GeneratedColumn<String> userId = GeneratedColumn<String>(
       'user_id', aliasedName, false,
-      type: DriftSqlType.int,
+      type: DriftSqlType.string,
       requiredDuringInsert: true,
       $customConstraints: 'REFERENCES users(id) NOT NULL');
   static const VerificationMeta _nameMeta = const VerificationMeta('name');
@@ -1461,7 +1470,7 @@ class $WorkoutsTable extends Workouts with TableInfo<$WorkoutsTable, Workout> {
       id: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
       userId: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}user_id'])!,
+          .read(DriftSqlType.string, data['${effectivePrefix}user_id'])!,
       name: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}name'])!,
       description: attachedDatabase.typeMapping
@@ -1479,7 +1488,7 @@ class $WorkoutsTable extends Workouts with TableInfo<$WorkoutsTable, Workout> {
 
 class Workout extends DataClass implements Insertable<Workout> {
   final int id;
-  final int userId;
+  final String userId;
   final String name;
   final String? description;
   final DateTime dateCreated;
@@ -1493,7 +1502,7 @@ class Workout extends DataClass implements Insertable<Workout> {
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     map['id'] = Variable<int>(id);
-    map['user_id'] = Variable<int>(userId);
+    map['user_id'] = Variable<String>(userId);
     map['name'] = Variable<String>(name);
     if (!nullToAbsent || description != null) {
       map['description'] = Variable<String>(description);
@@ -1519,7 +1528,7 @@ class Workout extends DataClass implements Insertable<Workout> {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return Workout(
       id: serializer.fromJson<int>(json['id']),
-      userId: serializer.fromJson<int>(json['userId']),
+      userId: serializer.fromJson<String>(json['userId']),
       name: serializer.fromJson<String>(json['name']),
       description: serializer.fromJson<String?>(json['description']),
       dateCreated: serializer.fromJson<DateTime>(json['dateCreated']),
@@ -1530,7 +1539,7 @@ class Workout extends DataClass implements Insertable<Workout> {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
       'id': serializer.toJson<int>(id),
-      'userId': serializer.toJson<int>(userId),
+      'userId': serializer.toJson<String>(userId),
       'name': serializer.toJson<String>(name),
       'description': serializer.toJson<String?>(description),
       'dateCreated': serializer.toJson<DateTime>(dateCreated),
@@ -1539,7 +1548,7 @@ class Workout extends DataClass implements Insertable<Workout> {
 
   Workout copyWith(
           {int? id,
-          int? userId,
+          String? userId,
           String? name,
           Value<String?> description = const Value.absent(),
           DateTime? dateCreated}) =>
@@ -1589,7 +1598,7 @@ class Workout extends DataClass implements Insertable<Workout> {
 
 class WorkoutsCompanion extends UpdateCompanion<Workout> {
   final Value<int> id;
-  final Value<int> userId;
+  final Value<String> userId;
   final Value<String> name;
   final Value<String?> description;
   final Value<DateTime> dateCreated;
@@ -1602,7 +1611,7 @@ class WorkoutsCompanion extends UpdateCompanion<Workout> {
   });
   WorkoutsCompanion.insert({
     this.id = const Value.absent(),
-    required int userId,
+    required String userId,
     required String name,
     this.description = const Value.absent(),
     required DateTime dateCreated,
@@ -1611,7 +1620,7 @@ class WorkoutsCompanion extends UpdateCompanion<Workout> {
         dateCreated = Value(dateCreated);
   static Insertable<Workout> custom({
     Expression<int>? id,
-    Expression<int>? userId,
+    Expression<String>? userId,
     Expression<String>? name,
     Expression<String>? description,
     Expression<DateTime>? dateCreated,
@@ -1627,7 +1636,7 @@ class WorkoutsCompanion extends UpdateCompanion<Workout> {
 
   WorkoutsCompanion copyWith(
       {Value<int>? id,
-      Value<int>? userId,
+      Value<String>? userId,
       Value<String>? name,
       Value<String?>? description,
       Value<DateTime>? dateCreated}) {
@@ -1647,7 +1656,7 @@ class WorkoutsCompanion extends UpdateCompanion<Workout> {
       map['id'] = Variable<int>(id.value);
     }
     if (userId.present) {
-      map['user_id'] = Variable<int>(userId.value);
+      map['user_id'] = Variable<String>(userId.value);
     }
     if (name.present) {
       map['name'] = Variable<String>(name.value);
@@ -2380,9 +2389,9 @@ class $ProgressesTable extends Progresses
           GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
   static const VerificationMeta _userIdMeta = const VerificationMeta('userId');
   @override
-  late final GeneratedColumn<int> userId = GeneratedColumn<int>(
+  late final GeneratedColumn<String> userId = GeneratedColumn<String>(
       'user_id', aliasedName, false,
-      type: DriftSqlType.int,
+      type: DriftSqlType.string,
       requiredDuringInsert: true,
       $customConstraints: 'REFERENCES users(id) NOT NULL');
   static const VerificationMeta _exerciseIdMeta =
@@ -2478,7 +2487,7 @@ class $ProgressesTable extends Progresses
       id: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
       userId: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}user_id'])!,
+          .read(DriftSqlType.string, data['${effectivePrefix}user_id'])!,
       exerciseId: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}exercise_id'])!,
       progressDate: attachedDatabase.typeMapping.read(
@@ -2500,7 +2509,7 @@ class $ProgressesTable extends Progresses
 
 class Progress extends DataClass implements Insertable<Progress> {
   final int id;
-  final int userId;
+  final String userId;
   final int exerciseId;
   final DateTime progressDate;
   final int reps;
@@ -2518,7 +2527,7 @@ class Progress extends DataClass implements Insertable<Progress> {
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     map['id'] = Variable<int>(id);
-    map['user_id'] = Variable<int>(userId);
+    map['user_id'] = Variable<String>(userId);
     map['exercise_id'] = Variable<int>(exerciseId);
     map['progress_date'] = Variable<DateTime>(progressDate);
     map['reps'] = Variable<int>(reps);
@@ -2550,7 +2559,7 @@ class Progress extends DataClass implements Insertable<Progress> {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return Progress(
       id: serializer.fromJson<int>(json['id']),
-      userId: serializer.fromJson<int>(json['userId']),
+      userId: serializer.fromJson<String>(json['userId']),
       exerciseId: serializer.fromJson<int>(json['exerciseId']),
       progressDate: serializer.fromJson<DateTime>(json['progressDate']),
       reps: serializer.fromJson<int>(json['reps']),
@@ -2563,7 +2572,7 @@ class Progress extends DataClass implements Insertable<Progress> {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
       'id': serializer.toJson<int>(id),
-      'userId': serializer.toJson<int>(userId),
+      'userId': serializer.toJson<String>(userId),
       'exerciseId': serializer.toJson<int>(exerciseId),
       'progressDate': serializer.toJson<DateTime>(progressDate),
       'reps': serializer.toJson<int>(reps),
@@ -2574,7 +2583,7 @@ class Progress extends DataClass implements Insertable<Progress> {
 
   Progress copyWith(
           {int? id,
-          int? userId,
+          String? userId,
           int? exerciseId,
           DateTime? progressDate,
           int? reps,
@@ -2636,7 +2645,7 @@ class Progress extends DataClass implements Insertable<Progress> {
 
 class ProgressesCompanion extends UpdateCompanion<Progress> {
   final Value<int> id;
-  final Value<int> userId;
+  final Value<String> userId;
   final Value<int> exerciseId;
   final Value<DateTime> progressDate;
   final Value<int> reps;
@@ -2653,7 +2662,7 @@ class ProgressesCompanion extends UpdateCompanion<Progress> {
   });
   ProgressesCompanion.insert({
     this.id = const Value.absent(),
-    required int userId,
+    required String userId,
     required int exerciseId,
     required DateTime progressDate,
     required int reps,
@@ -2665,7 +2674,7 @@ class ProgressesCompanion extends UpdateCompanion<Progress> {
         reps = Value(reps);
   static Insertable<Progress> custom({
     Expression<int>? id,
-    Expression<int>? userId,
+    Expression<String>? userId,
     Expression<int>? exerciseId,
     Expression<DateTime>? progressDate,
     Expression<int>? reps,
@@ -2685,7 +2694,7 @@ class ProgressesCompanion extends UpdateCompanion<Progress> {
 
   ProgressesCompanion copyWith(
       {Value<int>? id,
-      Value<int>? userId,
+      Value<String>? userId,
       Value<int>? exerciseId,
       Value<DateTime>? progressDate,
       Value<int>? reps,
@@ -2709,7 +2718,7 @@ class ProgressesCompanion extends UpdateCompanion<Progress> {
       map['id'] = Variable<int>(id.value);
     }
     if (userId.present) {
-      map['user_id'] = Variable<int>(userId.value);
+      map['user_id'] = Variable<String>(userId.value);
     }
     if (exerciseId.present) {
       map['exercise_id'] = Variable<int>(exerciseId.value);
@@ -3685,7 +3694,7 @@ typedef $$UserTypesTableProcessedTableManager = ProcessedTableManager<
     UserType,
     PrefetchHooks Function({bool usersRefs})>;
 typedef $$UsersTableCreateCompanionBuilder = UsersCompanion Function({
-  Value<int> id,
+  Value<String> id,
   required String name,
   required String email,
   required String password,
@@ -3694,9 +3703,10 @@ typedef $$UsersTableCreateCompanionBuilder = UsersCompanion Function({
   required double weight,
   Value<String?> avatar,
   required int userTypeId,
+  Value<int> rowid,
 });
 typedef $$UsersTableUpdateCompanionBuilder = UsersCompanion Function({
-  Value<int> id,
+  Value<String> id,
   Value<String> name,
   Value<String> email,
   Value<String> password,
@@ -3705,6 +3715,7 @@ typedef $$UsersTableUpdateCompanionBuilder = UsersCompanion Function({
   Value<double> weight,
   Value<String?> avatar,
   Value<int> userTypeId,
+  Value<int> rowid,
 });
 
 final class $$UsersTableReferences
@@ -3761,7 +3772,7 @@ class $$UsersTableFilterComposer extends Composer<_$AppDatabase, $UsersTable> {
     super.$addJoinBuilderToRootComposer,
     super.$removeJoinBuilderFromRootComposer,
   });
-  ColumnFilters<int> get id => $composableBuilder(
+  ColumnFilters<String> get id => $composableBuilder(
       column: $table.id, builder: (column) => ColumnFilters(column));
 
   ColumnFilters<String> get name => $composableBuilder(
@@ -3857,7 +3868,7 @@ class $$UsersTableOrderingComposer
     super.$addJoinBuilderToRootComposer,
     super.$removeJoinBuilderFromRootComposer,
   });
-  ColumnOrderings<int> get id => $composableBuilder(
+  ColumnOrderings<String> get id => $composableBuilder(
       column: $table.id, builder: (column) => ColumnOrderings(column));
 
   ColumnOrderings<String> get name => $composableBuilder(
@@ -3911,7 +3922,7 @@ class $$UsersTableAnnotationComposer
     super.$addJoinBuilderToRootComposer,
     super.$removeJoinBuilderFromRootComposer,
   });
-  GeneratedColumn<int> get id =>
+  GeneratedColumn<String> get id =>
       $composableBuilder(column: $table.id, builder: (column) => column);
 
   GeneratedColumn<String> get name =>
@@ -4022,7 +4033,7 @@ class $$UsersTableTableManager extends RootTableManager<
           createComputedFieldComposer: () =>
               $$UsersTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback: ({
-            Value<int> id = const Value.absent(),
+            Value<String> id = const Value.absent(),
             Value<String> name = const Value.absent(),
             Value<String> email = const Value.absent(),
             Value<String> password = const Value.absent(),
@@ -4031,6 +4042,7 @@ class $$UsersTableTableManager extends RootTableManager<
             Value<double> weight = const Value.absent(),
             Value<String?> avatar = const Value.absent(),
             Value<int> userTypeId = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
           }) =>
               UsersCompanion(
             id: id,
@@ -4042,9 +4054,10 @@ class $$UsersTableTableManager extends RootTableManager<
             weight: weight,
             avatar: avatar,
             userTypeId: userTypeId,
+            rowid: rowid,
           ),
           createCompanionCallback: ({
-            Value<int> id = const Value.absent(),
+            Value<String> id = const Value.absent(),
             required String name,
             required String email,
             required String password,
@@ -4053,6 +4066,7 @@ class $$UsersTableTableManager extends RootTableManager<
             required double weight,
             Value<String?> avatar = const Value.absent(),
             required int userTypeId,
+            Value<int> rowid = const Value.absent(),
           }) =>
               UsersCompanion.insert(
             id: id,
@@ -4064,6 +4078,7 @@ class $$UsersTableTableManager extends RootTableManager<
             weight: weight,
             avatar: avatar,
             userTypeId: userTypeId,
+            rowid: rowid,
           ),
           withReferenceMapper: (p0) => p0
               .map((e) =>
@@ -5056,14 +5071,14 @@ typedef $$MuscleGroupsTableProcessedTableManager = ProcessedTableManager<
     PrefetchHooks Function({bool exerciseMuscleGroupsRefs})>;
 typedef $$WorkoutsTableCreateCompanionBuilder = WorkoutsCompanion Function({
   Value<int> id,
-  required int userId,
+  required String userId,
   required String name,
   Value<String?> description,
   required DateTime dateCreated,
 });
 typedef $$WorkoutsTableUpdateCompanionBuilder = WorkoutsCompanion Function({
   Value<int> id,
-  Value<int> userId,
+  Value<String> userId,
   Value<String> name,
   Value<String?> description,
   Value<DateTime> dateCreated,
@@ -5296,7 +5311,7 @@ class $$WorkoutsTableTableManager extends RootTableManager<
               $$WorkoutsTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback: ({
             Value<int> id = const Value.absent(),
-            Value<int> userId = const Value.absent(),
+            Value<String> userId = const Value.absent(),
             Value<String> name = const Value.absent(),
             Value<String?> description = const Value.absent(),
             Value<DateTime> dateCreated = const Value.absent(),
@@ -5310,7 +5325,7 @@ class $$WorkoutsTableTableManager extends RootTableManager<
           ),
           createCompanionCallback: ({
             Value<int> id = const Value.absent(),
-            required int userId,
+            required String userId,
             required String name,
             Value<String?> description = const Value.absent(),
             required DateTime dateCreated,
@@ -6116,7 +6131,7 @@ typedef $$WorkoutSetsTableProcessedTableManager = ProcessedTableManager<
     PrefetchHooks Function({bool workoutExerciseId})>;
 typedef $$ProgressesTableCreateCompanionBuilder = ProgressesCompanion Function({
   Value<int> id,
-  required int userId,
+  required String userId,
   required int exerciseId,
   required DateTime progressDate,
   required int reps,
@@ -6125,7 +6140,7 @@ typedef $$ProgressesTableCreateCompanionBuilder = ProgressesCompanion Function({
 });
 typedef $$ProgressesTableUpdateCompanionBuilder = ProgressesCompanion Function({
   Value<int> id,
-  Value<int> userId,
+  Value<String> userId,
   Value<int> exerciseId,
   Value<DateTime> progressDate,
   Value<int> reps,
@@ -6385,7 +6400,7 @@ class $$ProgressesTableTableManager extends RootTableManager<
               $$ProgressesTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback: ({
             Value<int> id = const Value.absent(),
-            Value<int> userId = const Value.absent(),
+            Value<String> userId = const Value.absent(),
             Value<int> exerciseId = const Value.absent(),
             Value<DateTime> progressDate = const Value.absent(),
             Value<int> reps = const Value.absent(),
@@ -6403,7 +6418,7 @@ class $$ProgressesTableTableManager extends RootTableManager<
           ),
           createCompanionCallback: ({
             Value<int> id = const Value.absent(),
-            required int userId,
+            required String userId,
             required int exerciseId,
             required DateTime progressDate,
             required int reps,

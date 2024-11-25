@@ -9,7 +9,7 @@ part 'tag_dao.g.dart';
 
 @DriftAccessor(tables: [Tags])
 class TagDao extends DatabaseAccessor<AppDatabase> with _$TagDaoMixin {
-  TagDao(AppDatabase db) : super(db);
+  TagDao(super.db);
 
   Future<Either<CommonError, List<TagDto>>> getAllTags() async {
     try {

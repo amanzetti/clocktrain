@@ -21,7 +21,7 @@ ProgressDto _$ProgressDtoFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ProgressDto {
   int get id => throw _privateConstructorUsedError;
-  int get userId => throw _privateConstructorUsedError;
+  String get userId => throw _privateConstructorUsedError;
   int get exerciseId => throw _privateConstructorUsedError;
   DateTime get progressDate => throw _privateConstructorUsedError;
   int get reps => throw _privateConstructorUsedError;
@@ -46,7 +46,7 @@ abstract class $ProgressDtoCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      int userId,
+      String userId,
       int exerciseId,
       DateTime progressDate,
       int reps,
@@ -85,7 +85,7 @@ class _$ProgressDtoCopyWithImpl<$Res, $Val extends ProgressDto>
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       exerciseId: null == exerciseId
           ? _value.exerciseId
           : exerciseId // ignore: cast_nullable_to_non_nullable
@@ -120,7 +120,7 @@ abstract class _$$ProgressDtoImplCopyWith<$Res>
   @useResult
   $Res call(
       {int id,
-      int userId,
+      String userId,
       int exerciseId,
       DateTime progressDate,
       int reps,
@@ -157,7 +157,7 @@ class __$$ProgressDtoImplCopyWithImpl<$Res>
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       exerciseId: null == exerciseId
           ? _value.exerciseId
           : exerciseId // ignore: cast_nullable_to_non_nullable
@@ -200,7 +200,7 @@ class _$ProgressDtoImpl implements _ProgressDto {
   @override
   final int id;
   @override
-  final int userId;
+  final String userId;
   @override
   final int exerciseId;
   @override
@@ -257,7 +257,7 @@ class _$ProgressDtoImpl implements _ProgressDto {
 abstract class _ProgressDto implements ProgressDto {
   const factory _ProgressDto(
       {required final int id,
-      required final int userId,
+      required final String userId,
       required final int exerciseId,
       required final DateTime progressDate,
       required final int reps,
@@ -270,7 +270,7 @@ abstract class _ProgressDto implements ProgressDto {
   @override
   int get id;
   @override
-  int get userId;
+  String get userId;
   @override
   int get exerciseId;
   @override

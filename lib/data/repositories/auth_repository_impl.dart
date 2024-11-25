@@ -1,4 +1,5 @@
 import 'package:clocktrain/data/datasource/abtraction/local_db_datasource.dart';
+import 'package:clocktrain/data/local/dto/user_dto.dart';
 import 'package:clocktrain/data/local/local_db.dart';
 import 'package:clocktrain/domain/entities/user_entity.dart';
 import 'package:clocktrain/domain/repositories/auth_repository.dart';
@@ -18,13 +19,23 @@ class AuthRepositoryImpl implements AuthRepository {
       String email, String password) async {
     try {
       ///TODO
-      // final user = await localDbDatasource.getUserByEmail(email);
-      final user = await localDbDatasource.getUserById(1);
-      print(email);
+      final user = await localDbDatasource.getUserByEmail(email);
+      // final user = await localDbDatasource.getUserById('l');
       return user.fold((error) => left(CommonError.databaseError), (userDto) {
         LocalDb().setUser(userDto);
         return right(LoginResp.success);
       });
+    } catch (e) {
+      return left(CommonError.unknown);
+    }
+  }
+
+  @override
+  Future<Either<CommonError, RegistrationResp>> register(User user) async {
+    try {
+      final user0 = UserDto.fromDomainEntity(user);
+      await localDbDatasource.insertUser(user0);
+      return right(RegistrationResp.success);
     } catch (e) {
       return left(CommonError.unknown);
     }
@@ -39,10 +50,8 @@ class AuthRepositoryImpl implements AuthRepository {
     }
   }
 
-
-
   @override
-  Either<CommonError, User?> getUser()  {
+  Either<CommonError, User?> getUser() {
     if (LocalDb().user == null) {
       return left(CommonError.userNotAuthenticated);
     } else {

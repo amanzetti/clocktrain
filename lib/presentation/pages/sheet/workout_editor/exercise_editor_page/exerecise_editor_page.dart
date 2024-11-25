@@ -1,12 +1,7 @@
 import 'package:clocktrain/domain/providers/ui/pages/sheet/workout_editor/workout_editor_provider.dart';
 import 'package:clocktrain/presentation/themes/app_asset.dart';
-import 'package:clocktrain/presentation/widgets/atoms/buttons/app_elevated_button.dart';
 import 'package:clocktrain/presentation/widgets/atoms/utils_ui/spacer_sized_box.dart';
 import 'package:clocktrain/presentation/widgets/atoms/text_fields/app_text_field.dart';
-import 'package:clocktrain/presentation/widgets/molecules/app_time_picker.dart';
-import 'package:clocktrain/presentation/widgets/molecules/dropdown.dart';
-import 'package:clocktrain/presentation/widgets/organisms/header_with_action_button.dart';
-import 'package:clocktrain/presentation/widgets/organisms/header_with_close_button.dart';
 import 'package:clocktrain/utils/ext/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -23,8 +18,8 @@ class ExereciseEditorPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Material(
       color: context.colorScheme.surface,
-      child: SafeArea(
-        minimum: const EdgeInsets.symmetric(horizontal: 16),
+      child: const SafeArea(
+        minimum: EdgeInsets.symmetric(horizontal: 16),
         child: SingleChildScrollView(
           child: Column(
              children: [

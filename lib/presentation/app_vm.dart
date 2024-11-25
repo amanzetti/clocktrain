@@ -1,12 +1,7 @@
-import 'dart:math';
 
 import 'package:clocktrain/data/di/di_repository.dart';
-import 'package:clocktrain/domain/entities/user_entity.dart';
-import 'package:clocktrain/domain/providers/ui/theme_provider.dart';
 import 'package:clocktrain/domain/repositories/user_repository.dart';
-import 'package:clocktrain/domain/use_case/get_curent_user_use_case.dart';
 import 'package:clocktrain/presentation/app_state.dart';
-import 'package:clocktrain/utils/ext/future.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class AppVm extends StateNotifier<AppState> {

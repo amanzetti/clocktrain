@@ -9,7 +9,7 @@ part 'muscle_group_dao.g.dart';
 
 @DriftAccessor(tables: [MuscleGroups])
 class MuscleGroupDao extends DatabaseAccessor<AppDatabase> with _$MuscleGroupDaoMixin {
-  MuscleGroupDao(AppDatabase db) : super(db);
+  MuscleGroupDao(super.db);
 
   Future<Either<CommonError, List<MuscleGroupDto>>> getAllMuscleGroups() async {
     try {

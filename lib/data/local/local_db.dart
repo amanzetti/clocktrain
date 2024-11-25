@@ -21,11 +21,11 @@ class LocalDb {
     _user = null;
   }
 
-  Either<CommonError, int> getUserId() {
+  Either<CommonError, String> getUserId() {
     if (_user == null) {
       return left(CommonError.userNotAuthenticated);
     } else {
-      return right(_user!.id);
+      return right(_user!.id!);
     }
   }
 }

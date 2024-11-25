@@ -19,6 +19,7 @@ mixin _$LoginPageState {
   bool get isLoading => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
   String? get password => throw _privateConstructorUsedError;
+  User? get user => throw _privateConstructorUsedError;
 
   /// Create a copy of LoginPageState
   /// with the given fields replaced by the non-null parameter values.
@@ -33,7 +34,7 @@ abstract class $LoginPageStateCopyWith<$Res> {
           LoginPageState value, $Res Function(LoginPageState) then) =
       _$LoginPageStateCopyWithImpl<$Res, LoginPageState>;
   @useResult
-  $Res call({bool isLoading, String? email, String? password});
+  $Res call({bool isLoading, String? email, String? password, User? user});
 }
 
 /// @nodoc
@@ -54,6 +55,7 @@ class _$LoginPageStateCopyWithImpl<$Res, $Val extends LoginPageState>
     Object? isLoading = null,
     Object? email = freezed,
     Object? password = freezed,
+    Object? user = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -68,6 +70,10 @@ class _$LoginPageStateCopyWithImpl<$Res, $Val extends LoginPageState>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String?,
+      user: freezed == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User?,
     ) as $Val);
   }
 }
@@ -80,7 +86,7 @@ abstract class _$$LoginPageStateeImplCopyWith<$Res>
       __$$LoginPageStateeImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isLoading, String? email, String? password});
+  $Res call({bool isLoading, String? email, String? password, User? user});
 }
 
 /// @nodoc
@@ -99,6 +105,7 @@ class __$$LoginPageStateeImplCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? email = freezed,
     Object? password = freezed,
+    Object? user = freezed,
   }) {
     return _then(_$LoginPageStateeImpl(
       isLoading: null == isLoading
@@ -113,6 +120,10 @@ class __$$LoginPageStateeImplCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String?,
+      user: freezed == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User?,
     ));
   }
 }
@@ -121,7 +132,10 @@ class __$$LoginPageStateeImplCopyWithImpl<$Res>
 
 class _$LoginPageStateeImpl implements _LoginPageStatee {
   const _$LoginPageStateeImpl(
-      {this.isLoading = false, this.email = null, this.password = null});
+      {this.isLoading = false,
+      this.email = null,
+      this.password = null,
+      this.user = null});
 
   @override
   @JsonKey()
@@ -132,10 +146,13 @@ class _$LoginPageStateeImpl implements _LoginPageStatee {
   @override
   @JsonKey()
   final String? password;
+  @override
+  @JsonKey()
+  final User? user;
 
   @override
   String toString() {
-    return 'LoginPageState(isLoading: $isLoading, email: $email, password: $password)';
+    return 'LoginPageState(isLoading: $isLoading, email: $email, password: $password, user: $user)';
   }
 
   @override
@@ -147,11 +164,13 @@ class _$LoginPageStateeImpl implements _LoginPageStatee {
                 other.isLoading == isLoading) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
-                other.password == password));
+                other.password == password) &&
+            (identical(other.user, user) || other.user == user));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, email, password);
+  int get hashCode =>
+      Object.hash(runtimeType, isLoading, email, password, user);
 
   /// Create a copy of LoginPageState
   /// with the given fields replaced by the non-null parameter values.
@@ -167,7 +186,8 @@ abstract class _LoginPageStatee implements LoginPageState {
   const factory _LoginPageStatee(
       {final bool isLoading,
       final String? email,
-      final String? password}) = _$LoginPageStateeImpl;
+      final String? password,
+      final User? user}) = _$LoginPageStateeImpl;
 
   @override
   bool get isLoading;
@@ -175,6 +195,8 @@ abstract class _LoginPageStatee implements LoginPageState {
   String? get email;
   @override
   String? get password;
+  @override
+  User? get user;
 
   /// Create a copy of LoginPageState
   /// with the given fields replaced by the non-null parameter values.

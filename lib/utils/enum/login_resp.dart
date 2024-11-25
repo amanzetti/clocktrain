@@ -3,3 +3,15 @@ enum LoginResp {
   failed,
   error,
 }
+
+enum RegistrationResp {
+  success,
+  failed,
+  error,
+}
+
+enum CommonResp {
+  success,
+  failed,
+  error,
+}

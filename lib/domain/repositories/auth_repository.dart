@@ -5,6 +5,7 @@ import 'package:dartz/dartz.dart';
 
 abstract class AuthRepository {
   Future<Either<CommonError, LoginResp>> login(String email, String password);
+  Future<Either<CommonError, RegistrationResp>> register(User user);
 
   Either<CommonError, String?> getUserId();
 

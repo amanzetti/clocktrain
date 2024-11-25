@@ -27,6 +27,14 @@ class LocalDbDatasourceImpl implements LocalDbDatasource {
     }
   }
 
+  @override
+  void addInitialData() {
+    _db.addInitialRecords();
+    // await _db.userTypeDao.putUserTypeDto(UserTypeDto(id: 1, typeName: 'Athlete'));
+    // await _db.userTypeDao.putUserTypeDto(UserTypeDto(id: 2, typeName: 'Coach'));
+    // await _db.userTypeDao.putUserTypeDto(UserTypeDto(id: 3, typeName: 'Admin'));
+  }
+
   // UserType methods
   @override
   Future<Either<CommonError, List<UserTypeDto>>> getAllUserTypeDto() async {
@@ -62,7 +70,7 @@ class LocalDbDatasourceImpl implements LocalDbDatasource {
   }
 
   @override
-  Future<Either<CommonError, UserDto>> getUserById(int id) async {
+  Future<Either<CommonError, UserDto>> getUserById(String id) async {
     return await _db.userDao.getUserById(id);
   }
 
@@ -82,7 +90,7 @@ class LocalDbDatasourceImpl implements LocalDbDatasource {
   }
 
   @override
-  Future<Either<CommonError, void>> deleteUser(int id) async {
+  Future<Either<CommonError, void>> deleteUser(String id) async {
     return await _db.userDao.deleteUser(id);
   }
 

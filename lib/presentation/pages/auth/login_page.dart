@@ -56,13 +56,14 @@ class LoginPage extends ConsumerWidget {
           AppElevatedButton(
             text: context.loc.login,
             width: double.infinity,
-            onPressed: () => vm.login(context),
+            onPressed: () => vm.login(context, formKey),
           ),
           const SpacerSizedBox(
               spacerType: SpacerType.vertical, spacerSize: SpacerSize.medium),
           AppElevatedButton(
             text: context.loc.register,
             width: double.infinity,
+            onPressed: () => vm.register(context),
           ),
         ],
       ),

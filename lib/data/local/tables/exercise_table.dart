@@ -8,8 +8,4 @@ class Exercises extends Table {
   TextColumn get videoUrl => text().nullable()();
   TextColumn get imageUrl => text().nullable()();
   IntColumn get difficultyLevel => integer()();
-
-  ///Specifying which from the field above is the primary key
-  // @override
-  // Set<Column> get primaryKey => {id};
 }

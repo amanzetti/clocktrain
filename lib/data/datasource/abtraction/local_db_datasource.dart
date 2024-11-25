@@ -14,6 +14,8 @@ import 'package:dartz/dartz.dart';
 abstract class LocalDbDatasource {
   Future<void> init();
 
+  void addInitialData();
+
   // UserType methods
   Future<Either<CommonError, List<UserTypeDto>>> getAllUserTypeDto();
   Future<Either<CommonError, UserTypeDto>> getUserTypeDtoById(int id);
@@ -23,11 +25,11 @@ abstract class LocalDbDatasource {
 
   // User methods
   Future<Either<CommonError, List<UserDto>>> getAllUsers();
-  Future<Either<CommonError, UserDto>> getUserById(int id);
+  Future<Either<CommonError, UserDto>> getUserById(String id);
   Future<Either<CommonError, UserDto>> getUserByEmail(String email);
   Future<Either<CommonError, void>> insertUser(UserDto userDto);
   Future<Either<CommonError, void>> updateUser(UserDto userDto);
-  Future<Either<CommonError, void>> deleteUser(int id);
+  Future<Either<CommonError, void>> deleteUser(String id);
 
   // Tag methods
   Future<Either<CommonError, List<TagDto>>> getAllTags();

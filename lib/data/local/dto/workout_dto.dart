@@ -10,7 +10,7 @@ class WorkoutDto with _$WorkoutDto {
     required int id,
     required String name,
     String? description,
-    required int userId,
+    required String userId,
     required DateTime dateCreated,
   }) = _WorkoutDto;
 

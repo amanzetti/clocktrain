@@ -9,7 +9,7 @@ part 'user_dao.g.dart';
 
 @DriftAccessor(tables: [Users])
 class UserDao extends DatabaseAccessor<AppDatabase> with _$UserDaoMixin {
-  UserDao(AppDatabase db) : super(db);
+  UserDao(super.db);
 
   Future<Either<CommonError, List<UserDto>>> getAllUsers() async {
     try {
@@ -33,7 +33,7 @@ class UserDao extends DatabaseAccessor<AppDatabase> with _$UserDaoMixin {
     }
   }
 
-  Future<Either<CommonError, UserDto>> getUserById(int id) async {
+  Future<Either<CommonError, UserDto>> getUserById(String id) async {
     try {
       final user = await (select(users)..where((tbl) => tbl.id.equals(id)))
           .getSingleOrNull();
@@ -85,7 +85,7 @@ class UserDao extends DatabaseAccessor<AppDatabase> with _$UserDaoMixin {
   Future<Either<CommonError, void>> insertUser(UserDto userDto) async {
     try {
       await into(users).insert(UsersCompanion.insert(
-        id: Value(userDto.id),
+        // id: Value(userDto.id),
         name: userDto.name,
         email: userDto.email,
         password: userDto.password,
@@ -103,9 +103,9 @@ class UserDao extends DatabaseAccessor<AppDatabase> with _$UserDaoMixin {
 
   Future<Either<CommonError, void>> updateUser(UserDto userDto) async {
     try {
-      await (update(users)..where((tbl) => tbl.id.equals(userDto.id)))
+      await (update(users)..where((tbl) => tbl.id.equals(userDto.id!)))
           .write(UsersCompanion.insert(
-        id: Value(userDto.id),
+        id: Value(userDto.id!),
         name: userDto.name,
         email: userDto.email,
         password: userDto.password,
@@ -121,7 +121,7 @@ class UserDao extends DatabaseAccessor<AppDatabase> with _$UserDaoMixin {
     }
   }
 
-  Future<Either<CommonError, void>> deleteUser(int id) async {
+  Future<Either<CommonError, void>> deleteUser(String id) async {
     try {
       await (delete(users)..where((tbl) => tbl.id.equals(id))).go();
       return const Right(null);

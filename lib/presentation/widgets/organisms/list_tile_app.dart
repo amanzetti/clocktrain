@@ -1,5 +1,4 @@
 import 'package:clocktrain/domain/providers/ui/edit_provider.dart';
-import 'package:clocktrain/domain/providers/ui/main_page_params_provider.dart';
 import 'package:clocktrain/presentation/routes/path.dart';
 import 'package:clocktrain/presentation/themes/app_asset.dart';
 import 'package:clocktrain/presentation/widgets/atoms/buttons/app_outlined_button.dart';

@@ -8,7 +8,7 @@ part 'progress_dto.g.dart';
 class ProgressDto with _$ProgressDto {
   const factory ProgressDto({
     required int id,
-    required int userId,
+    required String userId,
     required int exerciseId,
     required DateTime progressDate,
     required int reps,

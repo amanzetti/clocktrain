@@ -9,7 +9,7 @@ part of 'progress_dto.dart';
 _$ProgressDtoImpl _$$ProgressDtoImplFromJson(Map<String, dynamic> json) =>
     _$ProgressDtoImpl(
       id: (json['id'] as num).toInt(),
-      userId: (json['userId'] as num).toInt(),
+      userId: json['userId'] as String,
       exerciseId: (json['exerciseId'] as num).toInt(),
       progressDate: DateTime.parse(json['progressDate'] as String),
       reps: (json['reps'] as num).toInt(),

@@ -6,6 +6,6 @@ enum UserTypeEnum {
 
 extension UserTypeEnumExtension on UserTypeEnum {
   String toShortString() {
-    return this.toString().split('.').last.toUpperCase();
+    return toString().split('.').last.toUpperCase();
   }
 }

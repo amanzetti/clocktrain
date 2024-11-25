@@ -39,7 +39,7 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
 }
 
 class _DashboardPage extends ConsumerWidget {
-  const _DashboardPage({super.key});
+  const _DashboardPage();
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final user = ref.watch(_userProvider);

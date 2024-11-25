@@ -1,4 +1,5 @@
-import 'package:clocktrain/data/local/app_database.dart';
+import 'package:clocktrain/data/local/app_database.dart' as db;
+import 'package:clocktrain/domain/entities/user_entity.dart' as domain;
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user_dto.freezed.dart';
@@ -7,7 +8,7 @@ part 'user_dto.g.dart';
 @freezed
 class UserDto with _$UserDto {
   const factory UserDto({
-    required int id,
+    String? id,
     required String name,
     required String email,
     required String password,
@@ -21,7 +22,7 @@ class UserDto with _$UserDto {
   factory UserDto.fromJson(Map<String, dynamic> json) =>
       _$UserDtoFromJson(json);
 
-  factory UserDto.fromEntity(User entity) {
+  factory UserDto.fromEntity(db.User entity) {
     return UserDto(
       id: entity.id,
       name: entity.name,
@@ -34,12 +35,27 @@ class UserDto with _$UserDto {
       userTypeId: entity.userTypeId,
     );
   }
+
+  factory UserDto.fromDomainEntity(domain.User entity) {
+    return UserDto(
+      name: entity.name,
+      email: entity.email,
+      password: entity.password,
+      dateOfBirth: entity.dateOfBirth,
+      height: entity.height,
+      weight: entity.weight,
+      avatar: entity.avatar,
+      userTypeId: entity.userTypeId,
+    );
+  }
+
+
 }
 
 extension UserDtoX on UserDto {
-  User toEntity() {
-    return User(
-      id: id,
+  db.User toEntity() {
+    return db.User(
+      id: id ?? '',
       name: name,
       email: email,
       password: password,
@@ -50,4 +66,18 @@ extension UserDtoX on UserDto {
       userTypeId: userTypeId,
     );
   }
+
+  domain.User toDomainEntity(){
+    return domain.User(
+      name: name,
+      email: email,
+      password: password,
+      dateOfBirth: dateOfBirth,
+      height: height,
+      weight: weight,
+      avatar: avatar,
+      userTypeId: userTypeId,
+    );
+  }
+
 }

@@ -1,5 +1,4 @@
 import 'package:clocktrain/utils/const/app_dimensions.dart';
-import 'package:clocktrain/utils/ext/double_ext.dart';
 import 'package:flutter/material.dart';
 
 extension AppDimesnionsEdgeInsetsExt on EdgeInsets {

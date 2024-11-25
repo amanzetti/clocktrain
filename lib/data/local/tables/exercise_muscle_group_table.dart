@@ -12,8 +12,4 @@ class ExerciseMuscleGroups extends Table {
       integer().customConstraint('REFERENCES exercises(id) NOT NULL')();
   IntColumn get muscleGroupId =>
       integer().customConstraint('REFERENCES muscle_groups(id) NOT NULL')();
-
-  ///Specifying which from the field above is the primary key
-  // @override
-  // Set<Column> get primaryKey => {id};
 }

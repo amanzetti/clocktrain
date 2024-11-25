@@ -12,8 +12,4 @@ class WorkoutSets extends Table {
   IntColumn get reps => integer()();
   RealColumn get weight => real().nullable()();
   IntColumn get restTime => integer()();
-
-  ///Specifying which from the field above is the primary key
-  // @override
-  // Set<Column> get primaryKey => {id};
 }

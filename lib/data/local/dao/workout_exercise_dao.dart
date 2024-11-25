@@ -9,7 +9,7 @@ part 'workout_exercise_dao.g.dart';
 
 @DriftAccessor(tables: [WorkoutExercises])
 class WorkoutExerciseDao extends DatabaseAccessor<AppDatabase> with _$WorkoutExerciseDaoMixin {
-  WorkoutExerciseDao(AppDatabase db) : super(db);
+  WorkoutExerciseDao(super.db);
 
   Future<Either<CommonError, List<WorkoutExerciseDto>>> getAllWorkoutExercises() async {
     try {

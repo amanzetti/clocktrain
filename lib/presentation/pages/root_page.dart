@@ -1,4 +1,3 @@
-import 'package:clocktrain/data/di/di_repository.dart';
 import 'package:clocktrain/presentation/routes/path.dart';
 import 'package:clocktrain/presentation/widgets/atoms/buttons/app_elevated_button.dart';
 import 'package:flutter/material.dart';
@@ -9,11 +8,17 @@ class RootPage extends ConsumerWidget {
   const RootPage({super.key});
 
   void _onPressed(BuildContext context, WidgetRef ref) {
+    dbMethods(ref);
     context.go(AppPath.loginPage);
   }
 
   dbMethods(WidgetRef ref) async {
-    final user = await ref.read(userRepositoryProvider).getUserById(1);
+    // final db = ref.read(internalLocalDbDatasourceProvider);
+    // db.addInitialData();
+
+    // final a = await db.getAllUserTypeDto();
+    // print(a);
+    // final user = await ref.read(userRepositoryProvider).getUserById(1);
 
     // ref
     //     .read(userAppStateProvider)
@@ -47,7 +52,6 @@ class RootPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,

@@ -1,3 +1,4 @@
+import 'package:clocktrain/domain/entities/user_entity.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'login_page_state.freezed.dart';
@@ -8,5 +9,6 @@ class LoginPageState with _$LoginPageState {
     @Default(false) bool isLoading,
     @Default(null) String? email,
     @Default(null) String? password,
+    @Default(null) User ?user,
   }) = _LoginPageStatee;
 }

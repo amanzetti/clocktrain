@@ -23,6 +23,19 @@ linter:
   rules:
     # avoid_print: false  # Uncomment to disable the `avoid_print` rule
     # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
-
+analyzer: 
+  exclude: 
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - "**/*.gr.dart"
+    - "**/*.iconfig.dart"
+    - "**/*.i18n.dart"
+    - "**/*.i18n_en.dart"
+    - "**/*.i18n_ja.dart"
+    - "**/*.i18n_ko.dart"
+    - "**/*.i18n_zh.dart"
+    - "**/*.i18n_zh_Hans.dart"
+    - "**/*.i18n_zh_Hant.dart"
+    - "**/*.i18n_zh_Hant"
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options

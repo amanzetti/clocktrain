@@ -3,7 +3,7 @@ import 'package:clocktrain/utils/enum/common_error.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class UserRepository {
-  Future<Either<CommonError, User>> getUserById(int userId);
+  Future<Either<CommonError, User>> getUserById(String userId);
   Future<Either<CommonError, User>> getUserByEmail(String email);
   Future<List<User>> getAllUsers();
   Future<void> addUser(User user);

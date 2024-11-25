@@ -9,7 +9,7 @@ part 'user_type_dao.g.dart';
 
 @DriftAccessor(tables: [UserTypes])
 class UserTypeDao extends DatabaseAccessor<AppDatabase> with _$UserTypeDaoMixin {
-  UserTypeDao(AppDatabase db) : super(db);
+  UserTypeDao(super.db);
 
   Future<Either<CommonError, List<UserTypeDto>>> getAllUserTypeDto() async {
     try {

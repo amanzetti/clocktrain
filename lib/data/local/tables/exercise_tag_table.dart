@@ -12,8 +12,4 @@ class ExerciseTags extends Table {
       integer().customConstraint('REFERENCES exercises(id) NOT NULL')();
   IntColumn get tagId =>
       integer().customConstraint('REFERENCES tags(id) NOT NULL')();
-
-  ///Specifying which from the field above is the primary key
-  // @override
-  // Set<Column> get primaryKey => {id};
 }

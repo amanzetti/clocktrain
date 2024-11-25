@@ -9,7 +9,7 @@ part 'progress_dao.g.dart';
 
 @DriftAccessor(tables: [Progresses])
 class ProgressDao extends DatabaseAccessor<AppDatabase> with _$ProgressDaoMixin {
-  ProgressDao(AppDatabase db) : super(db);
+  ProgressDao(super.db);
 
   Future<Either<CommonError, List<ProgressDto>>> getAllProgresses() async {
     try {

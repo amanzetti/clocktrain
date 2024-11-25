@@ -23,7 +23,7 @@ mixin _$WorkoutDto {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  int get userId => throw _privateConstructorUsedError;
+  String get userId => throw _privateConstructorUsedError;
   DateTime get dateCreated => throw _privateConstructorUsedError;
 
   /// Serializes this WorkoutDto to a JSON map.
@@ -46,7 +46,7 @@ abstract class $WorkoutDtoCopyWith<$Res> {
       {int id,
       String name,
       String? description,
-      int userId,
+      String userId,
       DateTime dateCreated});
 }
 
@@ -87,7 +87,7 @@ class _$WorkoutDtoCopyWithImpl<$Res, $Val extends WorkoutDto>
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       dateCreated: null == dateCreated
           ? _value.dateCreated
           : dateCreated // ignore: cast_nullable_to_non_nullable
@@ -108,7 +108,7 @@ abstract class _$$WorkoutDtoImplCopyWith<$Res>
       {int id,
       String name,
       String? description,
-      int userId,
+      String userId,
       DateTime dateCreated});
 }
 
@@ -147,7 +147,7 @@ class __$$WorkoutDtoImplCopyWithImpl<$Res>
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       dateCreated: null == dateCreated
           ? _value.dateCreated
           : dateCreated // ignore: cast_nullable_to_non_nullable
@@ -176,7 +176,7 @@ class _$WorkoutDtoImpl implements _WorkoutDto {
   @override
   final String? description;
   @override
-  final int userId;
+  final String userId;
   @override
   final DateTime dateCreated;
 
@@ -225,7 +225,7 @@ abstract class _WorkoutDto implements WorkoutDto {
       {required final int id,
       required final String name,
       final String? description,
-      required final int userId,
+      required final String userId,
       required final DateTime dateCreated}) = _$WorkoutDtoImpl;
 
   factory _WorkoutDto.fromJson(Map<String, dynamic> json) =
@@ -238,7 +238,7 @@ abstract class _WorkoutDto implements WorkoutDto {
   @override
   String? get description;
   @override
-  int get userId;
+  String get userId;
   @override
   DateTime get dateCreated;
 

@@ -13,7 +13,7 @@ class UserRepositoryImpl implements UserRepository {
   UserRepositoryImpl(this.ref, {required this.localDbDatasource});
 
   @override
-  Future<Either<CommonError, User>> getUserById(int userId) async {
+  Future<Either<CommonError, User>> getUserById(String userId) async {
     final result = await localDbDatasource.getUserById(userId);
     return result.fold(
       (error) => const Left(CommonError.databaseError),
@@ -69,9 +69,7 @@ class UserRepositoryImpl implements UserRepository {
 
   @override
   Future<void> addUser(User user) async {
-    ///TODO change id to autoincrement
     final userDto = UserDto(
-      id: 1,
       name: user.name,
       email: user.email,
       password: user.password,
@@ -91,7 +89,7 @@ class UserRepositoryImpl implements UserRepository {
   @override
   Future<void> updateUser(String userId, User user) async {
     final userDto = UserDto(
-      id: int.parse(userId),
+      id: userId,
       name: user.name,
       email: user.email,
       password: user.password,
@@ -110,7 +108,7 @@ class UserRepositoryImpl implements UserRepository {
 
   @override
   Future<void> deleteUser(String userId) async {
-    final result = await localDbDatasource.deleteUser(int.parse(userId));
+    final result = await localDbDatasource.deleteUser(userId);
     result.fold(
       (error) => throw Exception('Error deleting user: $error'),
       (_) => null,

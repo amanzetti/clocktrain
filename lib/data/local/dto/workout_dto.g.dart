@@ -11,7 +11,7 @@ _$WorkoutDtoImpl _$$WorkoutDtoImplFromJson(Map<String, dynamic> json) =>
       id: (json['id'] as num).toInt(),
       name: json['name'] as String,
       description: json['description'] as String?,
-      userId: (json['userId'] as num).toInt(),
+      userId: json['userId'] as String,
       dateCreated: DateTime.parse(json['dateCreated'] as String),
     );
 
