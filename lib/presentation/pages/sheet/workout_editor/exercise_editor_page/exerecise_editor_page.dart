@@ -1,8 +1,8 @@
 import 'package:clocktrain/domain/providers/ui/pages/sheet/workout_editor/workout_editor_provider.dart';
 import 'package:clocktrain/presentation/themes/app_asset.dart';
 import 'package:clocktrain/presentation/widgets/atoms/buttons/app_elevated_button.dart';
-import 'package:clocktrain/presentation/widgets/atoms/spacer_sized_box.dart';
-import 'package:clocktrain/presentation/widgets/atoms/app_text_field.dart';
+import 'package:clocktrain/presentation/widgets/atoms/utils_ui/spacer_sized_box.dart';
+import 'package:clocktrain/presentation/widgets/atoms/text_fields/app_text_field.dart';
 import 'package:clocktrain/presentation/widgets/molecules/app_time_picker.dart';
 import 'package:clocktrain/presentation/widgets/molecules/dropdown.dart';
 import 'package:clocktrain/presentation/widgets/organisms/header_with_action_button.dart';

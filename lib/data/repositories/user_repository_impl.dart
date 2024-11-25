@@ -1,6 +1,8 @@
 import 'package:clocktrain/data/datasource/abtraction/local_db_datasource.dart';
 import 'package:clocktrain/domain/entities/user_entity.dart';
 import 'package:clocktrain/domain/repositories/user_repository.dart';
+import 'package:clocktrain/utils/enum/common_error.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:clocktrain/data/local/dto/user_dto.dart';
 
@@ -11,12 +13,11 @@ class UserRepositoryImpl implements UserRepository {
   UserRepositoryImpl(this.ref, {required this.localDbDatasource});
 
   @override
-  Future<User> getCurrentUser(String userId) async {
-    final result = await localDbDatasource.getUserById(int.parse(userId));
+  Future<Either<CommonError, User>> getUserById(int userId) async {
+    final result = await localDbDatasource.getUserById(userId);
     return result.fold(
-      (error) => throw Exception('Error fetching user: $error'),
-      (userDto) => User(
-        id: userDto.id,
+      (error) => const Left(CommonError.databaseError),
+      (userDto) => Right(User(
         name: userDto.name,
         email: userDto.email,
         password: userDto.password,
@@ -25,7 +26,24 @@ class UserRepositoryImpl implements UserRepository {
         weight: userDto.weight,
         avatar: userDto.avatar,
         userTypeId: userDto.userTypeId,
-      ),
+      ),)
+    );
+  }
+  @override
+  Future<Either<CommonError, User>> getUserByEmail(String email) async {
+    final result = await localDbDatasource.getUserByEmail(email);
+    return result.fold(
+      (error) => const Left(CommonError.databaseError),
+      (userDto) => Right(User(
+        name: userDto.name,
+        email: userDto.email,
+        password: userDto.password,
+        dateOfBirth: userDto.dateOfBirth,
+        height: userDto.height,
+        weight: userDto.weight,
+        avatar: userDto.avatar,
+        userTypeId: userDto.userTypeId,
+      ),)
     );
   }
 
@@ -34,24 +52,26 @@ class UserRepositoryImpl implements UserRepository {
     final result = await localDbDatasource.getAllUsers();
     return result.fold(
       (error) => throw Exception('Error fetching users: $error'),
-      (userDtos) => userDtos.map((userDto) => User(
-        id: userDto.id,
-        name: userDto.name,
-        email: userDto.email,
-        password: userDto.password,
-        dateOfBirth: userDto.dateOfBirth,
-        height: userDto.height,
-        weight: userDto.weight,
-        avatar: userDto.avatar,
-        userTypeId: userDto.userTypeId,
-      )).toList(),
+      (userDtos) => userDtos
+          .map((userDto) => User(
+                name: userDto.name,
+                email: userDto.email,
+                password: userDto.password,
+                dateOfBirth: userDto.dateOfBirth,
+                height: userDto.height,
+                weight: userDto.weight,
+                avatar: userDto.avatar,
+                userTypeId: userDto.userTypeId,
+              ))
+          .toList(),
     );
   }
 
   @override
   Future<void> addUser(User user) async {
+    ///TODO change id to autoincrement
     final userDto = UserDto(
-      id: user.id,
+      id: 1,
       name: user.name,
       email: user.email,
       password: user.password,
@@ -69,9 +89,9 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Future<void> updateUser(User user) async {
+  Future<void> updateUser(String userId, User user) async {
     final userDto = UserDto(
-      id: user.id,
+      id: int.parse(userId),
       name: user.name,
       email: user.email,
       password: user.password,

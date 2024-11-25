@@ -1,8 +1,4 @@
-import 'package:clocktrain/data/datasource/abtraction/local_db_datasource.dart';
-import 'package:clocktrain/data/datasource/local_db_datasource_impl.dart';
-import 'package:clocktrain/data/di/internal/di_internal_datasource_provider.dart';
-import 'package:clocktrain/data/local/app_database.dart';
-import 'package:clocktrain/data/local/dto/user_type_dto.dart';
+import 'package:clocktrain/data/di/di_repository.dart';
 import 'package:clocktrain/presentation/routes/path.dart';
 import 'package:clocktrain/presentation/widgets/atoms/buttons/app_elevated_button.dart';
 import 'package:flutter/material.dart';
@@ -12,43 +8,45 @@ import 'package:go_router/go_router.dart';
 class RootPage extends ConsumerWidget {
   const RootPage({super.key});
 
-  void _onPressed(BuildContext context, LocalDbDatasource db) {
-    dbMethods(db);
-    // context.go(AppPath.DashboardPage);
+  void _onPressed(BuildContext context, WidgetRef ref) {
+    context.go(AppPath.loginPage);
   }
 
-  dbMethods(LocalDbDatasource db) async {
-    db.init();
-    final allUserType = await db.getAllUserTypeDto();
-    print(allUserType);
-    await db.putUserTypeDto(UserTypeDto(id: 1, typeName: 'Admin'));
-    print('UserTypeDto inserted');
-    final allUserTypeAfterInsert = await db.getAllUserTypeDto();
-    print(allUserTypeAfterInsert);
+  dbMethods(WidgetRef ref) async {
+    final user = await ref.read(userRepositoryProvider).getUserById(1);
 
-    // final database = AppDatabase();
+    // ref
+    //     .read(userAppStateProvider)
+    //     .update((loggedUser) => loggedUser = user);
 
-    // final users = await database.getAllUsers();
-    // for (var user in users) {
-    //   print('User: ${user.name}, Email: ${user.email}');
+    // final db = ref.read(internalLocalDbDatasourceProvider);
+    // // db.init();
+    // final userTypeRepo = ref.read(userTypeRepositoryProvider);
+    // final userRepo = ref.read(userRepositoryProvider);
+    // // await userRepo.addUser(User(
+    // //   id: 1,
+    // //   email: 'test@test.it',
+    // //   name: 'Test provalo',
+    // //   password: '123456',
+    // //   dateOfBirth: DateTime(1990),
+    // //   height: 169,
+    // //   weight: 45,
+    // //   userTypeId: 1,
+    // // ));
+    // // final users = await userRepo.getUserById('1');
+    // final users = await userRepo.getAllUsers();
+    // print(users);
+    // final allUserType = await userTypeRepo.getAllUserTypes();
+    // for (var userType in allUserType) {
+    //   print('${userType.id}: ${userType.typeName}');
     // }
+    // await userTypeRepo.deleteUserType(1);
+
+    // userTypeRepo.addUserType(UserType(id: 1, typeName: UserTypeEnum.ATHLETE.toShortString()));
   }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final db = ref.read(internalLocalDbDatasourceProvider);
-
-    // final userState = ref.watch(userProvider);
-
-    // if (userState.isEmpty) {
-    //   ref.read(userProvider.notifier).getUserByIdMock('user123');
-    // }
-
-    // if (userState.isEmpty) {
-    //   return const Scaffold(
-    //     body: Center(child: CircularProgressIndicator()),
-    //   );
-    // }
 
     return Scaffold(
       body: Column(
@@ -58,7 +56,7 @@ class RootPage extends ConsumerWidget {
             child: Text('RootPage'),
           ),
           AppElevatedButton(
-              onPressed: () => _onPressed(context, db),
+              onPressed: () => _onPressed(context, ref),
               text: 'Go to Sheet Page'),
         ],
       ),

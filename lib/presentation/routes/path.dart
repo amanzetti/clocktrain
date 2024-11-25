@@ -7,24 +7,26 @@ class AppPath {
 
   static const String rootPage = '/';
 
-  // static const String mainPage = 'main_page';
+  // static const String mainPage = 'main';
+  ///Login
+  static const String loginPage = '/login';
 
   ///Main bottom navigation
-  static const String DashboardPage = '/home_page';
-  static const String sheetListPage = '/sheet_list_page';
-  static const String settingsPage = '/settings_page';
-  static const String workoutPage = '/workout_page';
+  static const String dashboardPage = '/dashboard';
+  static const String sheetListPage = '/sheet_list';
+  static const String settingsPage = '/settings';
+  static const String workoutPage = '/workout';
 
   ///Main appbar navigation
-  static const String profilePage = '/profile_page';
+  static const String profilePage = '/profile';
 
   ///Sub appbar navigation
-  static const String workoutEditorPage = '/workout_editor_page';
+  static const String workoutEditorPage = '/workout_editor';
 
   static String sheetPageWithId(String exerciseId) => '/sheet/$exerciseId';
 
   static const List<String> bottomNavigationPath = [
-    DashboardPage,
+    dashboardPage,
     sheetListPage,
     workoutPage,
     settingsPage

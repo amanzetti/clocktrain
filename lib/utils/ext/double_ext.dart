@@ -5,4 +5,12 @@ extension DimensionCalculations on double {
   double heightFromWidth(StandardRateo rateo) {
     return this / rateo.aspectRatio;
   }
+
+  double paddingForAccessibility() {
+    if (this < 44) {
+      return 44 - this;
+    }else{
+      return 0;
+    }
+  }
 }

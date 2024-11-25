@@ -1,5 +1,4 @@
 import 'package:clocktrain/domain/providers/ui/bottom_nav_bar_provider.dart';
-import 'package:clocktrain/presentation/routes/router_methods.dart';
 import 'package:clocktrain/presentation/themes/app_asset.dart';
 import 'package:clocktrain/utils/ext/build_context_ext.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +16,7 @@ class MainBottomNavBar extends ConsumerWidget {
     onItemTapped(int index) {
       ref.read(indexBottomNavbarProvider.notifier).update((state) => index);
       // var route = navigationShell.route.branches[index];
-      RouterMethods().setStateBottomNavigationPath(index, context, ref);
+      // RouterMethods().setStateBottomNavigationPath(index, context, ref);
       // if (route.defaultRoute != null) {
       //   context.pushReplacement(route.defaultRoute!.path);
       // }

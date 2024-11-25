@@ -1,4 +1,4 @@
-import 'package:clocktrain/presentation/widgets/atoms/app_card.dart';
+import 'package:clocktrain/presentation/widgets/atoms/cards/app_card.dart';
 import 'package:clocktrain/utils/ext/build_context_ext.dart';
 import 'package:flutter/material.dart';
 

@@ -14,17 +14,19 @@ class UserDao extends DatabaseAccessor<AppDatabase> with _$UserDaoMixin {
   Future<Either<CommonError, List<UserDto>>> getAllUsers() async {
     try {
       final users = await select(db.users).get();
-      final userDtos = users.map((user) => UserDto(
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        password: user.password,
-        dateOfBirth: user.dateOfBirth,
-        height: user.height,
-        weight: user.weight,
-        avatar: user.avatar,
-        userTypeId: user.userTypeId,
-      )).toList();
+      final userDtos = users
+          .map((user) => UserDto(
+                id: user.id,
+                name: user.name,
+                email: user.email,
+                password: user.password,
+                dateOfBirth: user.dateOfBirth,
+                height: user.height,
+                weight: user.weight,
+                avatar: user.avatar,
+                userTypeId: user.userTypeId,
+              ))
+          .toList();
       return Right(userDtos);
     } catch (e) {
       return const Left(CommonError.databaseError);
@@ -33,7 +35,33 @@ class UserDao extends DatabaseAccessor<AppDatabase> with _$UserDaoMixin {
 
   Future<Either<CommonError, UserDto>> getUserById(int id) async {
     try {
-      final user = await (select(users)..where((tbl) => tbl.id.equals(id))).getSingleOrNull();
+      final user = await (select(users)..where((tbl) => tbl.id.equals(id)))
+          .getSingleOrNull();
+      if (user != null) {
+        return Right(UserDto(
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          password: user.password,
+          dateOfBirth: user.dateOfBirth,
+          height: user.height,
+          weight: user.weight,
+          avatar: user.avatar,
+          userTypeId: user.userTypeId,
+        ));
+      } else {
+        return const Left(CommonError.notFound);
+      }
+    } catch (e) {
+      return const Left(CommonError.databaseError);
+    }
+  }
+
+  Future<Either<CommonError, UserDto>> getUserByEmail(String email) async {
+    try {
+      final user = await (select(users)
+            ..where((tbl) => tbl.email.equals(email)))
+          .getSingleOrNull();
       if (user != null) {
         return Right(UserDto(
           id: user.id,
@@ -57,6 +85,7 @@ class UserDao extends DatabaseAccessor<AppDatabase> with _$UserDaoMixin {
   Future<Either<CommonError, void>> insertUser(UserDto userDto) async {
     try {
       await into(users).insert(UsersCompanion.insert(
+        id: Value(userDto.id),
         name: userDto.name,
         email: userDto.email,
         password: userDto.password,
@@ -76,15 +105,16 @@ class UserDao extends DatabaseAccessor<AppDatabase> with _$UserDaoMixin {
     try {
       await (update(users)..where((tbl) => tbl.id.equals(userDto.id)))
           .write(UsersCompanion.insert(
-            name: userDto.name,
-            email: userDto.email,
-            password: userDto.password,
-            dateOfBirth: userDto.dateOfBirth,
-            height: userDto.height,
-            weight: userDto.weight,
-            avatar: Value(userDto.avatar),
-            userTypeId: userDto.userTypeId,
-          ));
+        id: Value(userDto.id),
+        name: userDto.name,
+        email: userDto.email,
+        password: userDto.password,
+        dateOfBirth: userDto.dateOfBirth,
+        height: userDto.height,
+        weight: userDto.weight,
+        avatar: Value(userDto.avatar),
+        userTypeId: userDto.userTypeId,
+      ));
       return const Right(null);
     } catch (e) {
       return const Left(CommonError.databaseError);

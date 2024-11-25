@@ -10,14 +10,47 @@ class AppLocalizationsIt extends AppLocalizations {
   String get helloWorld => 'Ciao Mondo';
 
   @override
-  String get mockNameExercise => 'Nome esercizio';
+  String get genericError => 'Qualcosa è andato storto';
 
   @override
-  String get mockNumberRep => '4';
+  String get email => 'Email';
 
   @override
-  String get mockNumberSet => '3';
+  String get password => 'Password';
 
   @override
-  String get mockNumberWeight => '5';
+  String get confirmPassword => 'Conferma Password';
+
+  @override
+  String get forgotPassword => 'Password dimenticata?';
+
+  @override
+  String get noAccount => 'Non hai un account?';
+
+  @override
+  String get alreadyHaveAccount => 'Hai già un account?';
+
+  @override
+  String get register => 'Registrati';
+
+  @override
+  String get login => 'Accedi';
+
+  @override
+  String get logout => 'Esci';
+
+  @override
+  String get home => 'Home';
+
+  @override
+  String get profile => 'Profilo';
+
+  @override
+  String get settings => 'Impostazioni';
+
+  @override
+  String get language => 'Lingua';
+
+  @override
+  String get theme => 'Tema';
 }

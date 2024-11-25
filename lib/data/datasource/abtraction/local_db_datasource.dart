@@ -24,6 +24,7 @@ abstract class LocalDbDatasource {
   // User methods
   Future<Either<CommonError, List<UserDto>>> getAllUsers();
   Future<Either<CommonError, UserDto>> getUserById(int id);
+  Future<Either<CommonError, UserDto>> getUserByEmail(String email);
   Future<Either<CommonError, void>> insertUser(UserDto userDto);
   Future<Either<CommonError, void>> updateUser(UserDto userDto);
   Future<Either<CommonError, void>> deleteUser(int id);

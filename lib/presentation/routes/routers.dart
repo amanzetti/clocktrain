@@ -1,3 +1,4 @@
+import 'package:clocktrain/presentation/pages/auth/login_page.dart';
 import 'package:clocktrain/presentation/pages/root_page.dart';
 import 'package:clocktrain/presentation/pages/sheet/workout_editor/workout_editor_page.dart';
 import 'package:clocktrain/presentation/pages/dashboard/dashboard_page.dart';
@@ -64,16 +65,9 @@ class AppRouteObserver extends NavigatorObserver {
 }
 
 class AppRouter {
-  // late final WidgetRef ref;
-
   static final AppRouter _instance = AppRouter._internal();
 
   AppRouter._internal();
-
-  // factory AppRouter(WidgetRef ref) {
-  //   _instance.ref = ref;
-  //   return _instance;
-  // }
 
   factory AppRouter() => _instance;
 
@@ -88,11 +82,17 @@ class AppRouter {
     initialLocation: AppPath.rootPage,
     routes: [
       GoRoute(
-          name: AppPath.rootPage,
-          path: AppPath.rootPage,
-          builder: (context, state) => const RootPage(),
-          routes: [_buildShellRoute()])
-      // _buildShellRoute(),
+        name: AppPath.rootPage,
+        path: AppPath.rootPage,
+        builder: (context, state) => const RootPage(),
+      ),
+      GoRoute(
+        name: AppPath.loginPage,
+        path: AppPath.loginPage,
+        builder: (context, state) => LoginPage(),
+        // routes: [_buildShellRoute()]
+      ),
+      _buildShellRoute()
     ],
   );
 
@@ -120,8 +120,8 @@ class AppRouter {
       // observers: [AppRouteObserver()],
       routes: [
         GoRoute(
-          name: AppPath.DashboardPage,
-          path: AppPath.DashboardPage,
+          name: AppPath.dashboardPage,
+          path: AppPath.dashboardPage,
           builder: (context, state) => const DashboardPage(),
         ),
       ],

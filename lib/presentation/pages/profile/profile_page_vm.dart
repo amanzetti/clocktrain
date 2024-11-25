@@ -8,10 +8,10 @@ class ProfilePageVm extends AutoDisposeNotifier {
     return const ProfilePageState();
   }
 
-  readCurrentUser(String userId) {
+  readCurrentUser(int userId) {
     if (state.currentUser == null) {
       // Qui va chiamata la repository per recuperare l'utente corrente
-      state = ref.userRepository.getCurrentUser(userId);
+      state = ref.userRepository.getUserById(userId);
       // state = state.copyWith(currentUser: user);
     }
   }

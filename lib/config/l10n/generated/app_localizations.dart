@@ -101,29 +101,95 @@ abstract class AppLocalizations {
   /// **'Ciao Mondo'**
   String get helloWorld;
 
-  /// No description provided for @mockNameExercise.
+  /// No description provided for @genericError.
   ///
   /// In it, this message translates to:
-  /// **'Nome esercizio'**
-  String get mockNameExercise;
+  /// **'Qualcosa è andato storto'**
+  String get genericError;
 
-  /// No description provided for @mockNumberRep.
+  /// No description provided for @email.
   ///
   /// In it, this message translates to:
-  /// **'4'**
-  String get mockNumberRep;
+  /// **'Email'**
+  String get email;
 
-  /// No description provided for @mockNumberSet.
+  /// No description provided for @password.
   ///
   /// In it, this message translates to:
-  /// **'3'**
-  String get mockNumberSet;
+  /// **'Password'**
+  String get password;
 
-  /// No description provided for @mockNumberWeight.
+  /// No description provided for @confirmPassword.
   ///
   /// In it, this message translates to:
-  /// **'5'**
-  String get mockNumberWeight;
+  /// **'Conferma Password'**
+  String get confirmPassword;
+
+  /// No description provided for @forgotPassword.
+  ///
+  /// In it, this message translates to:
+  /// **'Password dimenticata?'**
+  String get forgotPassword;
+
+  /// No description provided for @noAccount.
+  ///
+  /// In it, this message translates to:
+  /// **'Non hai un account?'**
+  String get noAccount;
+
+  /// No description provided for @alreadyHaveAccount.
+  ///
+  /// In it, this message translates to:
+  /// **'Hai già un account?'**
+  String get alreadyHaveAccount;
+
+  /// No description provided for @register.
+  ///
+  /// In it, this message translates to:
+  /// **'Registrati'**
+  String get register;
+
+  /// No description provided for @login.
+  ///
+  /// In it, this message translates to:
+  /// **'Accedi'**
+  String get login;
+
+  /// No description provided for @logout.
+  ///
+  /// In it, this message translates to:
+  /// **'Esci'**
+  String get logout;
+
+  /// No description provided for @home.
+  ///
+  /// In it, this message translates to:
+  /// **'Home'**
+  String get home;
+
+  /// No description provided for @profile.
+  ///
+  /// In it, this message translates to:
+  /// **'Profilo'**
+  String get profile;
+
+  /// No description provided for @settings.
+  ///
+  /// In it, this message translates to:
+  /// **'Impostazioni'**
+  String get settings;
+
+  /// No description provided for @language.
+  ///
+  /// In it, this message translates to:
+  /// **'Lingua'**
+  String get language;
+
+  /// No description provided for @theme.
+  ///
+  /// In it, this message translates to:
+  /// **'Tema'**
+  String get theme;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

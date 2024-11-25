@@ -1,7 +1,9 @@
 import 'package:clocktrain/data/di/internal/di_internal_datasource_provider.dart';
+import 'package:clocktrain/data/repositories/auth_repository_impl.dart';
 import 'package:clocktrain/data/repositories/muscel_group_repository_impl.dart';
 import 'package:clocktrain/data/repositories/user_repository_impl.dart';
 import 'package:clocktrain/domain/repositories/app_settings_repository.dart';
+import 'package:clocktrain/domain/repositories/auth_repository.dart';
 import 'package:clocktrain/domain/repositories/user_repository.dart';
 import 'package:clocktrain/domain/repositories/workout_exercise_repository.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -25,6 +27,13 @@ import 'package:clocktrain/domain/repositories/workout_repository.dart';
 import 'package:clocktrain/domain/repositories/workout_set_repository.dart';
 
 // Provider per i repository
+final authRepositoryProvider = Provider<AuthRepository>((ref) {
+  return AuthRepositoryImpl(
+    ref,
+    localDbDatasource: ref.read(internalLocalDbDatasourceProvider),
+  );
+});
+
 final userRepositoryProvider = Provider<UserRepository>((ref) {
   return UserRepositoryImpl(
     ref,
@@ -97,6 +106,7 @@ final workoutSetRepositoryProvider = Provider<WorkoutSetRepository>((ref) {
 
 
 extension DiRepositoryProvider on Ref {
+  AuthRepository get authRepository => read(authRepositoryProvider);
   UserRepository get userRepository => read(userRepositoryProvider);
   UserTypeRepository get userTypeRepository => read(userTypeRepositoryProvider);
   TagRepository get tagRepository => read(tagRepositoryProvider);

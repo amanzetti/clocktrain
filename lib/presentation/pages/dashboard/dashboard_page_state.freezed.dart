@@ -16,7 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$DashboardPageState {
-  User? get currentUser => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
+  User? get loggedUser => throw _privateConstructorUsedError;
 
   /// Create a copy of DashboardPageState
   /// with the given fields replaced by the non-null parameter values.
@@ -31,7 +32,7 @@ abstract class $DashboardPageStateCopyWith<$Res> {
           DashboardPageState value, $Res Function(DashboardPageState) then) =
       _$DashboardPageStateCopyWithImpl<$Res, DashboardPageState>;
   @useResult
-  $Res call({User? currentUser});
+  $Res call({bool isLoading, User? loggedUser});
 }
 
 /// @nodoc
@@ -49,12 +50,17 @@ class _$DashboardPageStateCopyWithImpl<$Res, $Val extends DashboardPageState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? currentUser = freezed,
+    Object? isLoading = null,
+    Object? loggedUser = freezed,
   }) {
     return _then(_value.copyWith(
-      currentUser: freezed == currentUser
-          ? _value.currentUser
-          : currentUser // ignore: cast_nullable_to_non_nullable
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      loggedUser: freezed == loggedUser
+          ? _value.loggedUser
+          : loggedUser // ignore: cast_nullable_to_non_nullable
               as User?,
     ) as $Val);
   }
@@ -68,7 +74,7 @@ abstract class _$$DashboardPageStateImplCopyWith<$Res>
       __$$DashboardPageStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({User? currentUser});
+  $Res call({bool isLoading, User? loggedUser});
 }
 
 /// @nodoc
@@ -84,12 +90,17 @@ class __$$DashboardPageStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? currentUser = freezed,
+    Object? isLoading = null,
+    Object? loggedUser = freezed,
   }) {
     return _then(_$DashboardPageStateImpl(
-      currentUser: freezed == currentUser
-          ? _value.currentUser
-          : currentUser // ignore: cast_nullable_to_non_nullable
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      loggedUser: freezed == loggedUser
+          ? _value.loggedUser
+          : loggedUser // ignore: cast_nullable_to_non_nullable
               as User?,
     ));
   }
@@ -98,15 +109,19 @@ class __$$DashboardPageStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$DashboardPageStateImpl implements _DashboardPageState {
-  const _$DashboardPageStateImpl({this.currentUser = null});
+  const _$DashboardPageStateImpl(
+      {this.isLoading = false, this.loggedUser = null});
 
   @override
   @JsonKey()
-  final User? currentUser;
+  final bool isLoading;
+  @override
+  @JsonKey()
+  final User? loggedUser;
 
   @override
   String toString() {
-    return 'DashboardPageState(currentUser: $currentUser)';
+    return 'DashboardPageState(isLoading: $isLoading, loggedUser: $loggedUser)';
   }
 
   @override
@@ -114,12 +129,14 @@ class _$DashboardPageStateImpl implements _DashboardPageState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DashboardPageStateImpl &&
-            (identical(other.currentUser, currentUser) ||
-                other.currentUser == currentUser));
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.loggedUser, loggedUser) ||
+                other.loggedUser == loggedUser));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, currentUser);
+  int get hashCode => Object.hash(runtimeType, isLoading, loggedUser);
 
   /// Create a copy of DashboardPageState
   /// with the given fields replaced by the non-null parameter values.
@@ -132,11 +149,14 @@ class _$DashboardPageStateImpl implements _DashboardPageState {
 }
 
 abstract class _DashboardPageState implements DashboardPageState {
-  const factory _DashboardPageState({final User? currentUser}) =
-      _$DashboardPageStateImpl;
+  const factory _DashboardPageState(
+      {final bool isLoading,
+      final User? loggedUser}) = _$DashboardPageStateImpl;
 
   @override
-  User? get currentUser;
+  bool get isLoading;
+  @override
+  User? get loggedUser;
 
   /// Create a copy of DashboardPageState
   /// with the given fields replaced by the non-null parameter values.

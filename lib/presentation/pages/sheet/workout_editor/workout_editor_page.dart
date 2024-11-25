@@ -1,6 +1,6 @@
 import 'package:clocktrain/presentation/pages/sheet/workout_editor/exercise_editor_page/exerecise_editor_page.dart';
-import 'package:clocktrain/presentation/widgets/atoms/app_text_field.dart';
-import 'package:clocktrain/presentation/widgets/atoms/spacer_sized_box.dart';
+import 'package:clocktrain/presentation/widgets/atoms/text_fields/app_text_field.dart';
+import 'package:clocktrain/presentation/widgets/atoms/utils_ui/spacer_sized_box.dart';
 import 'package:clocktrain/presentation/widgets/organisms/header_with_action_button.dart';
 import 'package:clocktrain/presentation/widgets/organisms/header_with_close_button.dart';
 import 'package:flutter/material.dart';

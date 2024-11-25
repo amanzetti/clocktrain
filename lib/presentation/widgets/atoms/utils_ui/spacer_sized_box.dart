@@ -1,3 +1,4 @@
+import 'package:clocktrain/utils/const/app_dimensions.dart';
 import 'package:flutter/material.dart';
 
 enum SpacerType { horizontal, vertical }
@@ -20,11 +21,11 @@ class SpacerSizedBox extends StatelessWidget {
   _getSpacerSize(SpacerSize spacerSize) {
     switch (spacerSize) {
       case SpacerSize.small:
-        return 8.0;
+        return AppDimensions.small;
       case SpacerSize.medium:
-        return 16.0;
+        return AppDimensions.medium;
       case SpacerSize.large:
-        return 24.0;
+        return AppDimensions.large;
     }
   }
 

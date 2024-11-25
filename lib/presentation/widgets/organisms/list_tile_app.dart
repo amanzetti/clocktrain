@@ -4,7 +4,7 @@ import 'package:clocktrain/presentation/routes/path.dart';
 import 'package:clocktrain/presentation/themes/app_asset.dart';
 import 'package:clocktrain/presentation/widgets/atoms/buttons/app_outlined_button.dart';
 import 'package:clocktrain/presentation/widgets/organisms/media_screen.dart';
-import 'package:clocktrain/presentation/widgets/atoms/app_text_field.dart';
+import 'package:clocktrain/presentation/widgets/atoms/text_fields/app_text_field.dart';
 import 'package:clocktrain/presentation/widgets/molecules/placeholder_img.dart';
 import 'package:clocktrain/utils/enum/standard_rateo_enum.dart';
 import 'package:clocktrain/utils/ext/build_context_ext.dart';
@@ -187,9 +187,9 @@ class _ListTileAppState<T extends ObjectT>
               const Spacer(),
               AppOutlinedButton(
                   onPressed: () {
-                    ref.read(appStateProvider.notifier).copyWith(
-                          mainAppBarTitle: widget.object.name,
-                        );
+                    // ref.read(appStateProvider.notifier).copyWith(
+                    //       mainAppBarTitle: widget.object.name,
+                    //     );
                     context.go(
                         '/sheet_list_page${AppPath.sheetPageWithId(widget.object.name)}');
                   },

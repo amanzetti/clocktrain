@@ -6,6 +6,7 @@ part 'dashboard_page_state.freezed.dart';
 @freezed
 class DashboardPageState with _$DashboardPageState {
   const factory DashboardPageState({
-    @Default(null) User? currentUser,
+    @Default(false) bool isLoading,
+    @Default(null) User? loggedUser,
   }) = _DashboardPageState;
 }

@@ -3,8 +3,19 @@
   "@helloWorld": {
     "description": "The conventional newborn programmer greeting"
   },
-  "mockNameExercise": "Name exercise",
-  "mockNumberRep": "4",
-  "mockNumberSet": "3",
-  "mockNumberWeight": "5"
+  "genericError": "Something went wrong",
+  "email": "Email",
+  "password": "Password",
+  "confirmPassword": "Confirm Password",
+  "forgotPassword": "Forgot Password?",
+  "noAccount": "Don't have an account?",
+  "alreadyHaveAccount": "Already have an account?",
+  "register": "Register",
+  "login": "Login",
+  "logout": "Logout",
+  "home": "Home",
+  "profile": "Profile",
+  "settings": "Settings",
+  "language": "Language",
+  "theme": "Theme"
 }
