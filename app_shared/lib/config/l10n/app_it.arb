@@ -1,0 +1,25 @@
+{
+  "@@locale": "it",
+  "helloWorld": "Ciao Mondo",
+  "@helloWorld": {
+    "description": "The conventional newborn programmer greeting"
+  },
+  "save": "Salva",
+  "genericError": "Qualcosa è andato storto",
+  "email": "Email",
+  "password": "Password",
+  "confirmPassword": "Conferma Password",
+  "forgotPassword": "Password dimenticata?",
+  "noAccount": "Non hai un account?",
+  "alreadyHaveAccount": "Hai già un account?",
+  "register": "Registrati",
+  "login": "Accedi",
+  "logout": "Esci",
+  "home": "Home",
+  "profile": "Profilo",
+  "settings": "Impostazioni",
+  "language": "Lingua",
+  "theme": "Tema",
+  "exerciseEditorTitle": "Editor Esercizi",
+  "exerciseName": "Nome Esercizio"
+}

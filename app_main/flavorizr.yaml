@@ -1,0 +1,42 @@
+flavors:
+  dev:
+    app:
+      name: "cLockTrain Dev"
+
+    android:
+      applicationId: "com.prk.clocktrain.dev"
+      # firebase:
+      #   config: ".firebase/dev/google-services.json"
+
+    ios:
+      bundleId: "com.prk.clocktrain.dev"
+      # firebase:
+      #   config: ".firebase/dev/GoogleService-Info.plist"
+
+  prod:
+    app:
+      name: "cLockTrain"
+
+    android:
+      applicationId: "com.prk.clocktrain"
+      # firebase:
+      #   config: ".firebase/prod/google-services.json"
+
+    ios:
+      bundleId: "com.prk.clocktrain"
+      # firebase:
+      #   config: ".firebase/prod/GoogleService-Info.plist"
+
+  qa:
+    app:
+      name: "cLockTrain QA"
+
+    android:
+      applicationId: "com.prk.clocktrain.qa"
+      # firebase:
+      #   config: ".firebase/qa/google-services.json"
+
+    ios:
+      bundleId: "com.prk.clocktrain.qa"
+      # firebase:
+      #   config: ".firebase/qa/GoogleService-Info.plist"
