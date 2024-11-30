@@ -1,50 +1,43 @@
-name: app_data
-description: "Madule to manage local data"
-version: 0.0.1
-publish_to: none
+name: clocktrain
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
-  flutter: ">=1.17.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  
   #Path Provider
-  path_provider: 
+  path_provider: ^2.1.5
 
   # State management
-  flutter_riverpod: 
+  flutter_riverpod: ^2.5.1 # Integration with Flubretter
   
   # Code generation and annotations
-  freezed_annotation: 
+  freezed_annotation: ^2.4.4
   
   # JSON serialization
-  json_annotation: 
+  json_annotation: ^4.9.0 # Annotations for JSON serialization
   
   #Funtional programming
-  dartz:
+  dartz: ^0.10.1
   
   # Routing and navigation
-  go_router:
-  
-  # Local Db
-  realm: ^20.0.0
-
-  app_shared:
-    path: ../app_shared
+  go_router: ^14.6.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
-
+  
+  # Melos
+  melos: ^6.0.0
+  # FVM
+  fvm: ^3.2.1
   # Riverpod
-  riverpod_lint: 
+  riverpod_lint: ^2.6.3
   # Json serialization
-  json_serializable: 
+  json_serializable: ^6.8.0
   # Freezed
-  freezed: 
+  freezed: ^2.5.7
   # Code generation
-  build_runner: 
+  build_runner: ^2.4.13

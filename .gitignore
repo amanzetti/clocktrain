@@ -1,0 +1,15 @@
+
+# FVM Version Cache
+.fvm/
+
+# Idea
+.idea
+
+# vs code
+.vscode/
+
+#Dart
+.dart_tool/
+
+#iml
+.iml

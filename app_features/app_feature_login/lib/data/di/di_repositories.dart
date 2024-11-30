@@ -1,7 +1,7 @@
 import 'package:app_feature_login/data/di/internal/di_internal.dart';
 import 'package:app_feature_login/data/repositories_impl/auth_repository_impl.dart';
 import 'package:app_feature_login/domain/repositories/auth_repository.dart';
-import 'package:app_shared/app_shared.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final authRepositoryProvider = Provider<AuthRepository>((ref) {
   return AuthRepositoryImpl(

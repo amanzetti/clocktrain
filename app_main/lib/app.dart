@@ -1,8 +1,8 @@
-import 'package:app_shared/app_shared.dart';
 import 'package:app_shared/config/l10n/generated/app_localizations.dart';
 import 'package:app_shared/routes/routers.dart';
 import 'package:app_shared/themes/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class App extends ConsumerWidget {
   const App({super.key});

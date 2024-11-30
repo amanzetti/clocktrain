@@ -3,10 +3,12 @@ import 'package:app_feature_login/domain/enities/user_entity.dart';
 import 'package:app_feature_login/domain/enities/user_type_entity.dart';
 import 'package:app_feature_login/domain/use_case/login_use_case.dart';
 import 'package:app_feature_login/domain/use_case/register_use_case.dart';
-import 'package:app_shared/app_shared.dart';
+// import 'package:app_shared/app_shared.dart';
 import 'package:app_shared/config/logger_config.dart';
 import 'package:app_shared/routes/path.dart';
 import 'package:app_shared/utils/ext/future.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'login_page_state.dart';
 import 'package:flutter/material.dart';
 

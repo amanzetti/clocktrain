@@ -1,6 +1,6 @@
 import 'package:app_feature_login/data/dto/user_dto.dart';
-import 'package:app_shared/app_shared.dart';
 import 'package:app_shared/utils/enum/common_error.dart';
+import 'package:dartz/dartz.dart';
 
 abstract class AuthLocalDbDatasource {
   Future<Either<CommonError, UserDto>> getUserByEmail(String email);

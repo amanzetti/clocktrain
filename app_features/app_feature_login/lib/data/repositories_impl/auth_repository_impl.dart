@@ -2,9 +2,11 @@ import 'package:app_feature_login/data/datasource/abstraction/auth_local_db_data
 import 'package:app_feature_login/data/dto/user_dto.dart';
 import 'package:app_feature_login/domain/enities/user_entity.dart';
 import 'package:app_feature_login/domain/repositories/auth_repository.dart';
-import 'package:app_shared/app_shared.dart';
+import 'package:app_shared/config/logger_config.dart';
 import 'package:app_shared/utils/enum/common_error.dart';
 import 'package:app_shared/utils/enum/login_resp.dart';
+import 'package:dartz/dartz.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final Ref ref;
@@ -32,6 +34,7 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<Either<CommonError, RegistrationResp>> register(User user) async {
     try {
       final user0 = UserDto.fromDomain(user);
+      LoggerConfig.logger.i('user0: $user0');
       // await localDbDatasource.insertUser(user0);
       return right(RegistrationResp.success);
     } catch (e) {

@@ -1,5 +1,5 @@
 import 'package:app_feature_login/domain/enities/user_type_entity.dart' as domain;
-import 'package:app_shared/app_shared.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user_type_dto.freezed.dart';
 part 'user_type_dto.g.dart';

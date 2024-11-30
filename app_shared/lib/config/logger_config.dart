@@ -38,7 +38,7 @@ class ConsoleOutput extends LogOutput {
   void output(OutputEvent event) {
     // Stampa i log sulla console
     final log = event.lines.join('\n'); // Event può contenere più linee
-    print(log);
+    LoggerConfig._logger.i(log);
   }
 }
 

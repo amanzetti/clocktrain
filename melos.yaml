@@ -1,0 +1,19 @@
+name: clocktrain
+
+sdkPath: .fvm/flutter_sdk
+
+packages:
+  - app_main
+  - app_shared
+  - app_data
+  - app_features/app_feature_login
+
+scripts:
+  analyze:
+    exec: dart analyze
+
+  get:
+    run: melos exec -c 1  -- "flutter pub get"
+
+  clean:
+     run: melos exec -c 1  -- "flutter clean"
