@@ -12,22 +12,22 @@ dependencies:
     sdk: flutter
 
   #Path Provider
-  path_provider: 
+  path_provider: ^2.1.5 
 
   # State management
-  flutter_riverpod: 
+  flutter_riverpod: ^2.6.1 
   
   # Code generation and annotations
-  freezed_annotation: 
+  freezed_annotation: ^2.4.4 
   
   # JSON serialization
-  json_annotation: 
+  json_annotation: ^4.9.0 
   
   #Funtional programming
-  dartz:
+  dartz: ^0.10.1
   
   # Routing and navigation
-  go_router:
+  go_router: ^14.6.1
   
   # Local Db
   realm: ^20.0.0
@@ -43,13 +43,13 @@ dev_dependencies:
   flutter_lints: ^4.0.0
 
   # Riverpod
-  riverpod_lint: 
+  riverpod_lint: ^2.6.3 
   # Json serialization
-  json_serializable: 
+  json_serializable: ^6.8.0 
   # Freezed
-  freezed: 
+  freezed: ^2.5.7 
   # Code generation
-  build_runner: 
+  build_runner: ^2.4.13 
 
   flutter_flavorizr: ^2.2.3
 

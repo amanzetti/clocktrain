@@ -4,7 +4,7 @@ version: 0.0.1
 publish_to: none
 
 environment:
-  sdk: '>=3.0.0 <4.0.0'
+  sdk: ">=3.0.0 <4.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
@@ -24,22 +24,22 @@ dependencies:
   logger: ^2.5.0
 
    #Path Provider
-  path_provider: 
+  path_provider: ^2.1.5 
 
   # State management
-  flutter_riverpod: 
+  flutter_riverpod: ^2.6.1
   
   # Code generation and annotations
-  freezed_annotation: 
+  freezed_annotation: ^2.4.4 
   
   # JSON serialization
-  json_annotation: 
+  json_annotation: ^4.9.0 
   
   #Funtional programming
-  dartz:
+  dartz: ^0.10.1
   
   # Routing and navigation
-  go_router:
+  go_router: ^14.6.1
 
   # features
   app_feature_login:
@@ -51,13 +51,13 @@ dev_dependencies:
   flutter_lints: ^4.0.0
 
   # Riverpod
-  riverpod_lint: 
+  riverpod_lint: ^2.6.3 
   # Json serialization
-  json_serializable: 
+  json_serializable: ^6.8.0 
   # Freezed
-  freezed: 
+  freezed: ^2.5.7 
   # Code generation
-  build_runner: 
+  build_runner: ^2.4.13 
 
 scripts: 
   br_login: ./build_runner.sh localDb
