@@ -4,10 +4,16 @@ import 'package:flutter/material.dart';
 
 class AppElevatedButton extends StatelessWidget {
   const AppElevatedButton(
-      {required this.text, this.onPressed, this.width, this.height, super.key});
+      {this.text,
+      this.onPressed,
+      this.width,
+      this.height,
+      super.key,
+      this.child});
 
   final void Function()? onPressed;
-  final String text;
+  final String? text;
+  final Widget? child;
   final double? width;
   final double? height;
 
@@ -25,10 +31,18 @@ class AppElevatedButton extends StatelessWidget {
             ),
           ),
           onPressed: onPressed,
-          child: Text(text,
-              style: context.textTheme.labelLarge?.copyWith(
-                color: context.colorScheme.onPrimary,
-              ))),
+          child: _buildChild(context)),
     );
+  }
+
+  Widget? _buildChild(BuildContext context) {
+    if (text != null) {
+      return Text(text!,
+          style: context.textTheme.labelLarge?.copyWith(
+            color: context.colorScheme.onPrimary,
+          ));
+    } else {
+      return child;
+    }
   }
 }

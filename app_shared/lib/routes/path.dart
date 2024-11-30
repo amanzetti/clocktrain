@@ -7,10 +7,6 @@ class AppPath {
 
   static const String rootPage = '/';
 
-  // static const String mainPage = 'main';
-  ///Login
-  static const String loginPage = '/login';
-
   ///Main bottom navigation
   static const String dashboardPage = '/dashboard';
   static const String sheetListPage = '/sheet_list';

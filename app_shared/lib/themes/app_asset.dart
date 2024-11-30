@@ -31,7 +31,7 @@ class AppAsset {
   Widget warningSvg(BuildContext context) =>
       getSvgWithColorFilter(context, 'assets/icon/alert-triangle.svg');
   Widget arrowBackSvg(BuildContext context) =>
-      getSvgWithColorFilter(context, 'assets/icon/chevron-left.svg');
+      getSvgWithColorFilter(context, 'app_shared/assets/icon/chevron-left.svg');
   Widget arrowNextSvg(BuildContext context) =>
       getSvgWithColorFilter(context, 'assets/icon/chevron-right.svg');
   Widget editSvg(BuildContext context) =>

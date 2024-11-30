@@ -47,8 +47,8 @@ class AppTextFormFiled extends StatelessWidget {
               decoration: InputDecoration(
                 contentPadding: AppDimesnionsEdgeInsetsExt.smallHorizontal,
                 fillColor: enabled
-                    ? context.colorScheme.primary
-                    : context.colorScheme.surface,
+                    ? context.colorScheme.surface
+                    : context.colorScheme.primary,
                 focusColor: context.colorScheme.primary,
                 hoverColor: context.colorScheme.primary,
                 filled: true,
@@ -62,8 +62,8 @@ class AppTextFormFiled extends StatelessWidget {
               controller: controller,
               style: context.textTheme.bodyMedium?.copyWith(
                 color: enabled
-                    ? context.colorScheme.onPrimary
-                    : context.colorScheme.onSurface,
+                    ? context.colorScheme.onSurface
+                    : context.colorScheme.onPrimary,
               ),
             ),
           ),

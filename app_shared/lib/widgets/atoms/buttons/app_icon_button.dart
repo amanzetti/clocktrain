@@ -4,17 +4,21 @@ import 'package:flutter/material.dart';
 class AppIconButton extends StatelessWidget {
   const AppIconButton(
       {super.key,
-      this.onTap,
+      this.onPressed,
       this.child,
       this.size,
       this.backgroundColor,
-      this.borderRadius});
+      this.borderRadius,
+      this.width,
+      this.height});
 
-  final void Function()? onTap;
-  final Widget? child;
+  final void Function()? onPressed;
   final Size? size;
-  final Color? backgroundColor;
   final BorderRadius? borderRadius;
+  final Color? backgroundColor;
+  final double? width;
+  final double? height;
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +26,7 @@ class AppIconButton extends StatelessWidget {
       customBorder: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(AppDimensions.borderRadius100),
       ),
-      onTap: onTap,
+      onTap: onPressed,
       child: Stack(
         alignment: Alignment.center,
         children: [

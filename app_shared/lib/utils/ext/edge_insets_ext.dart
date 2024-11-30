@@ -21,6 +21,8 @@ extension AppDimesnionsEdgeInsetsExt on EdgeInsets {
 
   static const EdgeInsets minHorizontal =
       EdgeInsets.symmetric(horizontal: AppDimensions.min);
+  static const EdgeInsets dim4Horizontal =
+      EdgeInsets.symmetric(horizontal: AppDimensions.dim4);
 
   static const EdgeInsets smallHorizontal =
       EdgeInsets.symmetric(horizontal: AppDimensions.small);

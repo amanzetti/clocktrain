@@ -1,4 +1,5 @@
 import 'package:app_shared/utils/ext/build_context_ext.dart';
+import 'package:app_shared/widgets/atoms/utils_ui/app_container.dart';
 import 'package:flutter/material.dart';
 
 class AppCard extends StatelessWidget {
@@ -11,7 +12,7 @@ class AppCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return AppContainer(
       height: height,
       width: width,
       padding: padding,

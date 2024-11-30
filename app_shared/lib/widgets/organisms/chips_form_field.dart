@@ -56,7 +56,7 @@ class ChipsFormField extends StatelessWidget {
                         ))),
           ),
           AppIconButton(
-              onTap: onAddChip,
+              onPressed: onAddChip,
               borderRadius: borderRadius ??
                   BorderRadius.circular(AppDimensions.borderRadius8),
               backgroundColor:

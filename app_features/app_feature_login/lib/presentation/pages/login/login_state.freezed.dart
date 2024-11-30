@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'login_page_state.dart';
+part of 'login_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,39 +15,39 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$LoginPageState {
+mixin _$LoginState {
   bool get isLoading => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
   String? get password => throw _privateConstructorUsedError;
   User? get user => throw _privateConstructorUsedError;
 
-  /// Create a copy of LoginPageState
+  /// Create a copy of LoginState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $LoginPageStateCopyWith<LoginPageState> get copyWith =>
+  $LoginStateCopyWith<LoginState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $LoginPageStateCopyWith<$Res> {
-  factory $LoginPageStateCopyWith(
-          LoginPageState value, $Res Function(LoginPageState) then) =
-      _$LoginPageStateCopyWithImpl<$Res, LoginPageState>;
+abstract class $LoginStateCopyWith<$Res> {
+  factory $LoginStateCopyWith(
+          LoginState value, $Res Function(LoginState) then) =
+      _$LoginStateCopyWithImpl<$Res, LoginState>;
   @useResult
   $Res call({bool isLoading, String? email, String? password, User? user});
 }
 
 /// @nodoc
-class _$LoginPageStateCopyWithImpl<$Res, $Val extends LoginPageState>
-    implements $LoginPageStateCopyWith<$Res> {
-  _$LoginPageStateCopyWithImpl(this._value, this._then);
+class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
+    implements $LoginStateCopyWith<$Res> {
+  _$LoginStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of LoginPageState
+  /// Create a copy of LoginState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -80,7 +80,7 @@ class _$LoginPageStateCopyWithImpl<$Res, $Val extends LoginPageState>
 
 /// @nodoc
 abstract class _$$LoginPageStateeImplCopyWith<$Res>
-    implements $LoginPageStateCopyWith<$Res> {
+    implements $LoginStateCopyWith<$Res> {
   factory _$$LoginPageStateeImplCopyWith(_$LoginPageStateeImpl value,
           $Res Function(_$LoginPageStateeImpl) then) =
       __$$LoginPageStateeImplCopyWithImpl<$Res>;
@@ -91,13 +91,13 @@ abstract class _$$LoginPageStateeImplCopyWith<$Res>
 
 /// @nodoc
 class __$$LoginPageStateeImplCopyWithImpl<$Res>
-    extends _$LoginPageStateCopyWithImpl<$Res, _$LoginPageStateeImpl>
+    extends _$LoginStateCopyWithImpl<$Res, _$LoginPageStateeImpl>
     implements _$$LoginPageStateeImplCopyWith<$Res> {
   __$$LoginPageStateeImplCopyWithImpl(
       _$LoginPageStateeImpl _value, $Res Function(_$LoginPageStateeImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of LoginPageState
+  /// Create a copy of LoginState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -152,7 +152,7 @@ class _$LoginPageStateeImpl implements _LoginPageStatee {
 
   @override
   String toString() {
-    return 'LoginPageState(isLoading: $isLoading, email: $email, password: $password, user: $user)';
+    return 'LoginState(isLoading: $isLoading, email: $email, password: $password, user: $user)';
   }
 
   @override
@@ -172,7 +172,7 @@ class _$LoginPageStateeImpl implements _LoginPageStatee {
   int get hashCode =>
       Object.hash(runtimeType, isLoading, email, password, user);
 
-  /// Create a copy of LoginPageState
+  /// Create a copy of LoginState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -182,7 +182,7 @@ class _$LoginPageStateeImpl implements _LoginPageStatee {
           this, _$identity);
 }
 
-abstract class _LoginPageStatee implements LoginPageState {
+abstract class _LoginPageStatee implements LoginState {
   const factory _LoginPageStatee(
       {final bool isLoading,
       final String? email,
@@ -198,7 +198,7 @@ abstract class _LoginPageStatee implements LoginPageState {
   @override
   User? get user;
 
-  /// Create a copy of LoginPageState
+  /// Create a copy of LoginState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)

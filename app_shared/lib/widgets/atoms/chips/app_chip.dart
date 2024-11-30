@@ -32,7 +32,7 @@ class AppChip extends StatelessWidget {
               style: context.textTheme.bodyLarge!
                   .copyWith(color: context.colorScheme.onSecondary)),
           AppIconButton(
-            onTap: onDeleteTap,
+            onPressed: onDeleteTap,
             child: onDeleteIcon,
           )
         ],

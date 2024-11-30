@@ -8,13 +8,17 @@ class AppContainer extends StatelessWidget {
       this.color,
       this.borderRadius,
       this.width,
-      this.height});
+      this.height,
+      this.padding,
+      this.decoration});
 
   final Widget? child;
   final Color? color;
   final BorderRadius? borderRadius;
   final double? width;
   final double? height;
+  final EdgeInsets? padding;
+  final BoxDecoration? decoration;
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +26,13 @@ class AppContainer extends StatelessWidget {
       width: width,
       height: height,
       constraints: AppDimensions.boxConstraints,
-      decoration: BoxDecoration(
-        color: color ?? Colors.transparent,
-        borderRadius:
-            borderRadius ?? BorderRadius.circular(AppDimensions.borderRadius10),
-      ),
+      padding: padding,
+      decoration: decoration ??
+          BoxDecoration(
+            color: color ?? Colors.transparent,
+            borderRadius: borderRadius ??
+                BorderRadius.circular(AppDimensions.borderRadius10),
+          ),
       child: child,
     );
   }

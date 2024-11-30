@@ -5,12 +5,12 @@ import 'package:app_shared/widgets/atoms/text_fields/app_text_form_field.dart';
 import 'package:app_shared/widgets/atoms/utils_ui/spacer_sized_box.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'login_page_state.dart';
-import 'login_page_vm.dart';
+import 'login_state.dart';
+import 'login_vm.dart';
 import 'package:flutter/material.dart';
 
-class LoginPage extends ConsumerWidget {
-  LoginPage({super.key});
+class LoginView extends ConsumerWidget {
+  LoginView({super.key});
 
   final formKey = GlobalKey<FormState>();
 
@@ -44,27 +44,24 @@ class LoginPage extends ConsumerWidget {
             onSaved: (email) => vm.saveEmail(email),
             validator: (p0) => _validator(context, p0),
           ),
-          const SpacerSizedBox(
-              spacerType: SpacerType.vertical, spacerSize: SpacerSize.medium),
+          const VerticalMediumSpacer(),
           AppTextFormFiled(
             labelText: context.loc.password,
             initialValue: password,
             onSaved: (password) => vm.savePassword(password),
             validator: (p0) => _validator(context, p0),
           ),
-          const SpacerSizedBox(
-              spacerType: SpacerType.vertical, spacerSize: SpacerSize.medium),
+          const VerticalMediumSpacer(),
           AppElevatedButton(
             text: context.loc.login,
             width: double.infinity,
             onPressed: () => vm.login(context, formKey),
           ),
-          const SpacerSizedBox(
-              spacerType: SpacerType.vertical, spacerSize: SpacerSize.medium),
+          const VerticalMediumSpacer(),
           AppElevatedButton(
             text: context.loc.register,
             width: double.infinity,
-            onPressed: () => vm.register(context),
+            onPressed: () => vm.goRegistration(context),
           ),
         ],
       ),
@@ -80,8 +77,7 @@ class LoginPage extends ConsumerWidget {
 }
 
 final _loginVmProvider =
-    NotifierProvider.autoDispose<LoginPageVm, LoginPageState>(
-        () => LoginPageVm());
+    NotifierProvider.autoDispose<LoginVm, LoginState>(() => LoginVm());
 
 final _emailProvider = StateProvider.autoDispose<String?>(
     (ref) => ref.watch(_loginVmProvider).email);
