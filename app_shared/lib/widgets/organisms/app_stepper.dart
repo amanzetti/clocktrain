@@ -5,10 +5,22 @@ import 'package:app_shared/widgets/atoms/utils_ui/spacer_sized_box.dart';
 import 'package:flutter/material.dart';
 
 class AppStepper extends StatefulWidget {
-  const AppStepper({super.key, required this.steps, this.onPageChanged});
+  const AppStepper({
+    required this.steps,
+    this.nextText = 'Next',
+    this.backText = 'Back',
+    this.doneText = 'Done',
+    super.key,
+    this.onPageChanged,
+    this.onDone,
+  });
 
   final List<Widget> steps;
   final Function(int)? onPageChanged;
+  final void Function()? onDone;
+  final String nextText;
+  final String backText;
+  final String doneText;
 
   @override
   _AppStepperState createState() => _AppStepperState();
@@ -33,6 +45,9 @@ class _AppStepperState extends State<AppStepper> {
         _pageController.jumpToPage(_currentPage);
         widget.onPageChanged?.call(_currentPage);
       });
+    } else if (_currentPage == _steps.length - 1) {
+      widget.onDone!();
+      {}
     }
   }
 
@@ -55,7 +70,7 @@ class _AppStepperState extends State<AppStepper> {
             padding: AppDimesnionsEdgeInsetsExt.mediumAll,
             child: PageView(
               controller: _pageController,
-              onPageChanged: (int page) {
+              onPageChanged: (page) {
                 setState(() {
                   _currentPage = page;
                 });
@@ -72,7 +87,7 @@ class _AppStepperState extends State<AppStepper> {
                   ? AppButton(
                       style: AppButtonStyle.outlined,
                       onPressed: _previousPage,
-                      text: 'back')
+                      text: widget.backText)
                   : const SizedBox(),
             ),
             const HorizontalMediumSpacer(),
@@ -80,7 +95,9 @@ class _AppStepperState extends State<AppStepper> {
               child: AppButton(
                   style: AppButtonStyle.elevated,
                   onPressed: _nextPage,
-                  text: _currentPage == _steps.length - 1 ? "Submit" : "Next"),
+                  text: _currentPage == _steps.length - 1
+                      ? widget.doneText
+                      : widget.nextText),
             )
           ],
         )

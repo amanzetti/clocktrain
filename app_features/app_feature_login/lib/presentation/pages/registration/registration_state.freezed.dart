@@ -28,6 +28,11 @@ mixin _$RegistrationState {
   String get errorMessage => throw _privateConstructorUsedError;
   int get currentPage => throw _privateConstructorUsedError;
 
+  ///User
+  String get name => throw _privateConstructorUsedError;
+  String get surname => throw _privateConstructorUsedError;
+  DateTime? get birthDate => throw _privateConstructorUsedError;
+
   /// Create a copy of RegistrationState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -52,7 +57,10 @@ abstract class $RegistrationStateCopyWith<$Res> {
       bool isSuccess,
       bool isFailure,
       String errorMessage,
-      int currentPage});
+      int currentPage,
+      String name,
+      String surname,
+      DateTime? birthDate});
 }
 
 /// @nodoc
@@ -81,6 +89,9 @@ class _$RegistrationStateCopyWithImpl<$Res, $Val extends RegistrationState>
     Object? isFailure = null,
     Object? errorMessage = null,
     Object? currentPage = null,
+    Object? name = null,
+    Object? surname = null,
+    Object? birthDate = freezed,
   }) {
     return _then(_value.copyWith(
       email: null == email
@@ -127,6 +138,18 @@ class _$RegistrationStateCopyWithImpl<$Res, $Val extends RegistrationState>
           ? _value.currentPage
           : currentPage // ignore: cast_nullable_to_non_nullable
               as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      surname: null == surname
+          ? _value.surname
+          : surname // ignore: cast_nullable_to_non_nullable
+              as String,
+      birthDate: freezed == birthDate
+          ? _value.birthDate
+          : birthDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -150,7 +173,10 @@ abstract class _$$RegistrationStateImplCopyWith<$Res>
       bool isSuccess,
       bool isFailure,
       String errorMessage,
-      int currentPage});
+      int currentPage,
+      String name,
+      String surname,
+      DateTime? birthDate});
 }
 
 /// @nodoc
@@ -177,6 +203,9 @@ class __$$RegistrationStateImplCopyWithImpl<$Res>
     Object? isFailure = null,
     Object? errorMessage = null,
     Object? currentPage = null,
+    Object? name = null,
+    Object? surname = null,
+    Object? birthDate = freezed,
   }) {
     return _then(_$RegistrationStateImpl(
       email: null == email
@@ -223,6 +252,18 @@ class __$$RegistrationStateImplCopyWithImpl<$Res>
           ? _value.currentPage
           : currentPage // ignore: cast_nullable_to_non_nullable
               as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      surname: null == surname
+          ? _value.surname
+          : surname // ignore: cast_nullable_to_non_nullable
+              as String,
+      birthDate: freezed == birthDate
+          ? _value.birthDate
+          : birthDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -241,7 +282,10 @@ class _$RegistrationStateImpl implements _RegistrationState {
       this.isSuccess = false,
       this.isFailure = false,
       this.errorMessage = '',
-      this.currentPage = 0});
+      this.currentPage = 0,
+      this.name = '',
+      this.surname = '',
+      this.birthDate = null});
 
   @override
   @JsonKey()
@@ -277,9 +321,20 @@ class _$RegistrationStateImpl implements _RegistrationState {
   @JsonKey()
   final int currentPage;
 
+  ///User
+  @override
+  @JsonKey()
+  final String name;
+  @override
+  @JsonKey()
+  final String surname;
+  @override
+  @JsonKey()
+  final DateTime? birthDate;
+
   @override
   String toString() {
-    return 'RegistrationState(email: $email, password: $password, confirmPassword: $confirmPassword, isEmailValid: $isEmailValid, isPasswordValid: $isPasswordValid, isConfirmPasswordValid: $isConfirmPasswordValid, isSubmitting: $isSubmitting, isSuccess: $isSuccess, isFailure: $isFailure, errorMessage: $errorMessage, currentPage: $currentPage)';
+    return 'RegistrationState(email: $email, password: $password, confirmPassword: $confirmPassword, isEmailValid: $isEmailValid, isPasswordValid: $isPasswordValid, isConfirmPasswordValid: $isConfirmPasswordValid, isSubmitting: $isSubmitting, isSuccess: $isSuccess, isFailure: $isFailure, errorMessage: $errorMessage, currentPage: $currentPage, name: $name, surname: $surname, birthDate: $birthDate)';
   }
 
   @override
@@ -307,7 +362,11 @@ class _$RegistrationStateImpl implements _RegistrationState {
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
             (identical(other.currentPage, currentPage) ||
-                other.currentPage == currentPage));
+                other.currentPage == currentPage) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.surname, surname) || other.surname == surname) &&
+            (identical(other.birthDate, birthDate) ||
+                other.birthDate == birthDate));
   }
 
   @override
@@ -323,7 +382,10 @@ class _$RegistrationStateImpl implements _RegistrationState {
       isSuccess,
       isFailure,
       errorMessage,
-      currentPage);
+      currentPage,
+      name,
+      surname,
+      birthDate);
 
   /// Create a copy of RegistrationState
   /// with the given fields replaced by the non-null parameter values.
@@ -347,7 +409,10 @@ abstract class _RegistrationState implements RegistrationState {
       final bool isSuccess,
       final bool isFailure,
       final String errorMessage,
-      final int currentPage}) = _$RegistrationStateImpl;
+      final int currentPage,
+      final String name,
+      final String surname,
+      final DateTime? birthDate}) = _$RegistrationStateImpl;
 
   @override
   String get email;
@@ -371,6 +436,14 @@ abstract class _RegistrationState implements RegistrationState {
   String get errorMessage;
   @override
   int get currentPage;
+
+  ///User
+  @override
+  String get name;
+  @override
+  String get surname;
+  @override
+  DateTime? get birthDate;
 
   /// Create a copy of RegistrationState
   /// with the given fields replaced by the non-null parameter values.

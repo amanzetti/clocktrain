@@ -1,4 +1,5 @@
 import 'package:app_shared/config/l10n/generated/app_localizations.dart';
+import 'package:app_shared/themes/app_asset.dart';
 import 'package:flutter/material.dart';
 
 extension LocalizedBuildContext on BuildContext {
@@ -12,4 +13,8 @@ extension MediaQueryExt on BuildContext {
 extension ThemeExt on BuildContext {
   TextTheme get textTheme => Theme.of(this).textTheme;
   ColorScheme get colorScheme => Theme.of(this).colorScheme;
+}
+
+extension AssetExt on BuildContext {
+  AppAsset get asset => AppAsset();
 }

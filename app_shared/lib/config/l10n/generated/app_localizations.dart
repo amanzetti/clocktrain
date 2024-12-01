@@ -113,6 +113,24 @@ abstract class AppLocalizations {
   /// **'Annulla'**
   String get cancel;
 
+  /// No description provided for @next.
+  ///
+  /// In it, this message translates to:
+  /// **'Avanti'**
+  String get next;
+
+  /// No description provided for @back.
+  ///
+  /// In it, this message translates to:
+  /// **'Indietro'**
+  String get back;
+
+  /// No description provided for @done.
+  ///
+  /// In it, this message translates to:
+  /// **'Fatto'**
+  String get done;
+
   /// No description provided for @genericError.
   ///
   /// In it, this message translates to:
@@ -142,6 +160,42 @@ abstract class AppLocalizations {
   /// In it, this message translates to:
   /// **'Password dimenticata?'**
   String get forgotPassword;
+
+  /// No description provided for @name.
+  ///
+  /// In it, this message translates to:
+  /// **'Nome'**
+  String get name;
+
+  /// No description provided for @surname.
+  ///
+  /// In it, this message translates to:
+  /// **'Cognome'**
+  String get surname;
+
+  /// No description provided for @age.
+  ///
+  /// In it, this message translates to:
+  /// **'Età'**
+  String get age;
+
+  /// No description provided for @weight.
+  ///
+  /// In it, this message translates to:
+  /// **'Peso'**
+  String get weight;
+
+  /// No description provided for @height.
+  ///
+  /// In it, this message translates to:
+  /// **'Altezza'**
+  String get height;
+
+  /// No description provided for @birthDate.
+  ///
+  /// In it, this message translates to:
+  /// **'Data di Nascita'**
+  String get birthDate;
 
   /// No description provided for @noAccount.
   ///

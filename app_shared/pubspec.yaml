@@ -60,10 +60,10 @@ dev_dependencies:
   build_runner: ^2.4.13 
 
 assets:
-  - app_shared/assets/ # General assets folder
-  - app_shared/assets/sounds/ # Folder for sound files
-  - app_shared/assets/icon/ # Folder for app icons
-  - app_shared/assets/mock/ # Folder for mock data
+  - assets/ # General assets folder
+  - assets/sounds/ # Folder for sound files
+  - assets/icon/ # Folder for app icons
+  - assets/mock/ # Folder for mock data
 
 scripts: 
   br_login: ./build_runner.sh localDb

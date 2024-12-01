@@ -16,6 +16,15 @@ class AppLocalizationsIt extends AppLocalizations {
   String get cancel => 'Annulla';
 
   @override
+  String get next => 'Avanti';
+
+  @override
+  String get back => 'Indietro';
+
+  @override
+  String get done => 'Fatto';
+
+  @override
   String get genericError => 'Qualcosa è andato storto';
 
   @override
@@ -29,6 +38,24 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get forgotPassword => 'Password dimenticata?';
+
+  @override
+  String get name => 'Nome';
+
+  @override
+  String get surname => 'Cognome';
+
+  @override
+  String get age => 'Età';
+
+  @override
+  String get weight => 'Peso';
+
+  @override
+  String get height => 'Altezza';
+
+  @override
+  String get birthDate => 'Data di Nascita';
 
   @override
   String get noAccount => 'Non hai un account?';

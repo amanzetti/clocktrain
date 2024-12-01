@@ -9,7 +9,7 @@ extension DimensionCalculations on double {
   double paddingForAccessibility() {
     if (this < 44) {
       return 44 - this;
-    }else{
+    } else {
       return 0;
     }
   }

@@ -13,6 +13,25 @@ class RegistrationVm extends AutoDisposeNotifier<RegistrationState> {
     state = state.copyWith(currentPage: page);
   }
 
+  ///USER
+  void setNames(String name) {
+    state = state.copyWith(name: name);
+  }
+
+  void setSurname(String surname) {
+    state = state.copyWith(surname: surname);
+  }
+
+  void setBirthDate(DateTime birthDate) {
+    state = state.copyWith(birthDate: birthDate);
+  }
+
+  void getUserData() {
+    print('Name: ${state.name}');
+    print('Surname: ${state.surname}');
+    print('BirthDate: ${state.birthDate}');
+  }
+
   void goBack(BuildContext context) {
     context.pop();
   }

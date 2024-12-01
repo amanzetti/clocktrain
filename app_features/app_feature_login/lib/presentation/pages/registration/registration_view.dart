@@ -1,9 +1,12 @@
 import 'package:app_feature_login/presentation/pages/registration/registration_state.dart';
 import 'package:app_feature_login/presentation/pages/registration/registration_vm.dart';
+import 'package:app_feature_login/presentation/pages/registration/steps/login_info_view.dart';
+import 'package:app_feature_login/presentation/pages/registration/steps/personal_info_view.dart';
 import 'package:app_shared/utils/ext/build_context_ext.dart';
 import 'package:app_shared/utils/ext/edge_insets_ext.dart';
 import 'package:app_shared/widgets/atoms/buttons/app_button.dart';
 import 'package:app_shared/widgets/atoms/text_fields/app_text_form_field.dart';
+import 'package:app_shared/widgets/atoms/text_fields/app_text_form_field_datetime.dart';
 import 'package:app_shared/widgets/atoms/utils_ui/app_container.dart';
 import 'package:app_shared/widgets/atoms/utils_ui/spacer_sized_box.dart';
 import 'package:app_shared/widgets/organisms/app_stepper.dart';
@@ -12,6 +15,8 @@ import 'package:app_shared/widgets/atoms/cards/app_card.dart';
 import 'package:app_shared/widgets/molecules/progression_bar/step_traker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:app_shared/utils/ext/date_time_ext.dart';
+import 'package:app_shared/utils/ext/string_ext.dart';
 
 class RegistrationView extends ConsumerWidget {
   const RegistrationView({super.key});
@@ -20,7 +25,7 @@ class RegistrationView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final vm = ref.watch(_registrationVmProvider.notifier);
     final currentPage = ref.watch(_currentPageProvider);
-    final namesSection = ['Personal info', 'Step2', 'Step3', 'Step4'];
+    final namesSection = ['Personal info', 'Biometric Data', 'Step3', 'Step4'];
 
     return Scaffold(
       body: SafeArea(
@@ -35,7 +40,9 @@ class RegistrationView extends ConsumerWidget {
                 children: [
                   ///HEADER
                   AppHeader(
-                      title: 'Registration', onTap: () => {vm.goBack(context)}),
+                      leftIcon: context.asset.arrowBackSvg(context),
+                      title: 'Registration',
+                      onTap: () => {vm.goBack(context)}),
                   Text('Create an Account',
                       style: context.textTheme.headlineMedium),
                   const VerticalSmallSpacer(),
@@ -57,9 +64,13 @@ class RegistrationView extends ConsumerWidget {
             const VerticalSmallSpacer(),
             Expanded(
               child: AppStepper(
+                backText: context.loc.back.toUpperCase(),
+                nextText: context.loc.next.toUpperCase(),
+                doneText: context.loc.done.toUpperCase(),
                 onPageChanged: (p0) => {
                   vm.setCurrentPage(p0),
                 },
+                onDone: () => {vm.getUserData()},
                 steps: _buildSteps(context, ref),
               ),
             ),
@@ -70,31 +81,7 @@ class RegistrationView extends ConsumerWidget {
   }
 
   List<Widget> _buildSteps(BuildContext context, WidgetRef ref) {
-    return [
-      _buildPersonalInfo(),
-      _buildPersonalInfo(),
-      _buildPersonalInfo(),
-    ];
-  }
-
-  Widget _buildPersonalInfo() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        // const VerticalMediumSpacer(),
-        AppTextFormFiled(
-          labelText: 'name',
-        ),
-        // const VerticalMediumSpacer(),
-        AppTextFormFiled(
-          labelText: 'surname',
-        ),
-        // const VerticalMediumSpacer(),
-        AppTextFormFiled(
-          labelText: 'birthDate',
-        ),
-      ],
-    );
+    return [const PersonalInfoView(), const LoginInfoView()];
   }
 }
 
@@ -104,58 +91,3 @@ final _registrationVmProvider =
 
 final _currentPageProvider = StateProvider.autoDispose<int>(
     (ref) => ref.watch(_registrationVmProvider).currentPage);
-
-// class RegistrationView extends ConsumerWidget {
-//   const RegistrationView({super.key});
-
-//   @override
-//   Widget build(BuildContext context, WidgetRef ref) {
-//     return Scaffold(
-//         body: SafeArea(
-//       minimum: AppDimesnionsEdgeInsetsExt.mediumHorizontal,
-//       child: Column(children: [
-//         Text('Registration'),
-//         AppTextFormFiled(
-//           labelText: 'username',
-//         ),
-//         const VerticalMediumSpacer(),
-//         AppTextFormFiled(
-//           labelText: 'email',
-//         ),
-
-//         const VerticalMediumSpacer(),
-//         AppTextFormFiled(
-//           labelText: 'wieght',
-//         ),
-//         const VerticalMediumSpacer(),
-//         AppTextFormFiled(
-//           labelText: 'height',
-//         ),
-//         const VerticalMediumSpacer(),
-//         AppTextFormFiled(
-//           labelText: 'userType',
-//         ),
-//         const Spacer(),
-//         Row(
-//           children: [
-//             Expanded(
-//               child: AppButton(
-//                 style: AppButtonStyle.elevated,
-//                 text: 'register',
-//                 onPressed: () => {},
-//               ),
-//             ),
-//             const HorizontalMediumSpacer(),
-//             Expanded(
-//               child: AppButton(
-//                 style: AppButtonStyle.outlined,
-//                 text: 'annulla',
-//                 onPressed: () => {},
-//               ),
-//             )
-//           ],
-//         )
-//       ]),
-//     ));
-//   }
-// }

@@ -4,16 +4,6 @@ import 'package:app_shared/utils/ext/edge_insets_ext.dart';
 import 'package:flutter/material.dart';
 
 class AppTextFormFiled extends StatelessWidget {
-  final TextEditingController? controller;
-  final bool enabled;
-  final EdgeInsets? padding;
-  final bool readOnly;
-  final void Function()? onTap;
-  final void Function(String?)? onSaved;
-  final String? Function(String?)? validator;
-  final String? labelText;
-  final String? initialValue;
-
   const AppTextFormFiled({
     this.controller,
     this.enabled = true,
@@ -26,6 +16,15 @@ class AppTextFormFiled extends StatelessWidget {
     this.initialValue,
     super.key,
   });
+  final TextEditingController? controller;
+  final bool enabled;
+  final EdgeInsets? padding;
+  final bool readOnly;
+  final void Function()? onTap;
+  final void Function(String?)? onSaved;
+  final String? Function(String?)? validator;
+  final String? labelText;
+  final String? initialValue;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +34,7 @@ class AppTextFormFiled extends StatelessWidget {
         alignment: Alignment.center,
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 8.0),
+            padding: const EdgeInsets.only(top: 20.0),
             child: TextFormField(
               // Controller and Data Properties
               controller: controller,
@@ -50,7 +49,7 @@ class AppTextFormFiled extends StatelessWidget {
 
               // Styling and UI Properties
               cursorColor: context.colorScheme.onPrimary,
-              style: context.textTheme.bodyMedium
+              style: context.textTheme.bodyLarge
                   ?.copyWith(color: context.colorScheme.onSurface),
               decoration: InputDecoration(
                 contentPadding: AppDimesnionsEdgeInsetsExt.smallHorizontal,
@@ -67,16 +66,11 @@ class AppTextFormFiled extends StatelessWidget {
             ),
           ),
           Positioned(
-              left: 20,
+              left: 0,
               top: 0,
-              child: Container(
-                  padding: AppDimesnionsEdgeInsetsExt.smallHorizontal,
-                  decoration: AppTheme.boxDecorationFilled(context).copyWith(
-                    color: context.colorScheme.primary,
-                  ),
-                  child: Text(labelText ?? '',
-                      style: context.textTheme.bodyMedium
-                          ?.copyWith(color: context.colorScheme.onPrimary)))),
+              child: Text(labelText ?? '',
+                  style: context.textTheme.bodyMedium
+                      ?.copyWith(color: context.colorScheme.onSurface))),
         ],
       ),
     );

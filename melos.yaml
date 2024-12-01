@@ -50,10 +50,17 @@ command:
     
     flutter:
       generate: true
+      # assets:
+      #   - assets/ # General assets folder
+      #   - assets/sounds/ # Folder for sound files
+      #   - assets/icon/ # Folder for app icons
+      #   - assets/mock/ # Folder for mock data
 
 scripts:
+  
   add-local_db-pub:
     run: melos exec --scope="app_feature_login|app_data" -- "flutter pub add realm@20.0.0"
+  
   analyze:
     exec: dart analyze
 
@@ -62,5 +69,6 @@ scripts:
 
   clean:
      run: melos exec -c 1  -- "flutter clean"
+
   br_feature_login:
     run: melos exec --scope="app_feature_login" -- "dart run build_runner build --delete-conflicting-outputs"
