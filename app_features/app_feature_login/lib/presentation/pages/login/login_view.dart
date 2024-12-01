@@ -1,6 +1,7 @@
 import 'package:app_shared/utils/ext/build_context_ext.dart';
 import 'package:app_shared/utils/ext/edge_insets_ext.dart';
-import 'package:app_shared/widgets/atoms/buttons/app_elevated_button.dart';
+import 'package:app_shared/widgets/atoms/buttons/app_button.dart';
+import 'package:app_shared/widgets/atoms/dividers/app_divider.dart';
 import 'package:app_shared/widgets/atoms/text_fields/app_text_form_field.dart';
 import 'package:app_shared/widgets/atoms/utils_ui/spacer_sized_box.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -31,41 +32,96 @@ class LoginView extends ConsumerWidget {
 
   Widget _buildLoginForm(BuildContext context, WidgetRef ref) {
     final vm = ref.watch(_loginVmProvider.notifier);
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        AppButton(
+          style: AppButtonStyle.outlined,
+          text: context.loc.google.toUpperCase(),
+          width: double.infinity,
+          onPressed: () => vm.loginWithGoogle(context),
+        ),
+        const VerticalMediumSpacer(),
+        AppButton(
+          style: AppButtonStyle.outlined,
+          text: context.loc.apple.toUpperCase(),
+          width: double.infinity,
+          onPressed: () => vm.loginWithApple(context),
+        ),
+        const VerticalMediumSpacer(),
+        AppButton(
+          style: AppButtonStyle.elevated,
+          text: context.loc.continueName('').toUpperCase(),
+          width: double.infinity,
+          onPressed: () => vm.openLoginModal(context, _builderLoginDialog(ref)),
+        ),
+        const VerticalMediumSpacer(),
+        const AppDivider(),
+        const VerticalMediumSpacer(),
+        AppButton(
+          style: AppButtonStyle.outlined,
+          text: context.loc.createAccount.toUpperCase(),
+          width: double.infinity,
+          onPressed: () => vm.goRegistration(context),
+        ),
+        const VerticalMediumSpacer(),
+        AppButton(
+          style: AppButtonStyle.text,
+          text: context.loc.forgotPassword,
+          width: double.infinity,
+          onPressed: () => vm.forgotPassword(context),
+        ),
+      ],
+    );
+  }
+
+  Widget Function(BuildContext) _builderLoginDialog(WidgetRef ref) {
+    final vm = ref.watch(_loginVmProvider.notifier);
     final email = ref.watch(_emailProvider);
     final password = ref.watch(_passowrdProvider);
-    return Form(
-      key: formKey,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          AppTextFormFiled(
-            labelText: context.loc.email,
-            initialValue: email,
-            onSaved: (email) => vm.saveEmail(email),
-            validator: (p0) => _validator(context, p0),
+    return (context) => SafeArea(
+          minimum: AppDimesnionsEdgeInsetsExt.mediumHorizontal,
+          child: Form(
+            key: formKey,
+            child: Column(
+              children: [
+                VerticalCustomSpacer(height: context.mq.size.height * 0.14),
+                Text(
+                  context.loc.login,
+                  style: context.textTheme.titleLarge,
+                ),
+                const VerticalMediumSpacer(),
+                AppTextFormFiled(
+                  labelText: context.loc.email,
+                  initialValue: email,
+                  onSaved: (email) => vm.saveEmail(email),
+                  validator: (p0) => _validator(context, p0),
+                ),
+                const VerticalMediumSpacer(),
+                AppTextFormFiled(
+                  labelText: context.loc.password,
+                  initialValue: password,
+                  onSaved: (p0) => vm.savePassword(p0),
+                  validator: (p0) => _validator(context, p0),
+                ),
+                const VerticalMediumSpacer(),
+                AppButton(
+                  style: AppButtonStyle.elevated,
+                  text: context.loc.login.toUpperCase(),
+                  width: double.infinity,
+                  onPressed: () => {vm.login(context, formKey)},
+                ),
+                const VerticalMediumSpacer(),
+                AppButton(
+                  style: AppButtonStyle.outlined,
+                  text: context.loc.cancel.toUpperCase(),
+                  width: double.infinity,
+                  onPressed: () => {vm.closeModal(context)},
+                ),
+              ],
+            ),
           ),
-          const VerticalMediumSpacer(),
-          AppTextFormFiled(
-            labelText: context.loc.password,
-            initialValue: password,
-            onSaved: (password) => vm.savePassword(password),
-            validator: (p0) => _validator(context, p0),
-          ),
-          const VerticalMediumSpacer(),
-          AppElevatedButton(
-            text: context.loc.login,
-            width: double.infinity,
-            onPressed: () => vm.login(context, formKey),
-          ),
-          const VerticalMediumSpacer(),
-          AppElevatedButton(
-            text: context.loc.register,
-            width: double.infinity,
-            onPressed: () => vm.goRegistration(context),
-          ),
-        ],
-      ),
-    );
+        );
   }
 
   _validator(BuildContext context, String? value) {

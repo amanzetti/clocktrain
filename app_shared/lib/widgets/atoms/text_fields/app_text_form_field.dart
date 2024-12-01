@@ -37,33 +37,32 @@ class AppTextFormFiled extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 8.0),
             child: TextFormField(
+              // Controller and Data Properties
+              controller: controller,
               initialValue: initialValue,
+
+              // Functional Properties
               readOnly: readOnly,
               enabled: enabled,
               onTap: onTap,
               onSaved: onSaved,
               validator: validator,
-              textAlign: TextAlign.start,
+
+              // Styling and UI Properties
+              cursorColor: context.colorScheme.onPrimary,
+              style: context.textTheme.bodyMedium
+                  ?.copyWith(color: context.colorScheme.onSurface),
               decoration: InputDecoration(
                 contentPadding: AppDimesnionsEdgeInsetsExt.smallHorizontal,
-                fillColor: enabled
-                    ? context.colorScheme.surface
-                    : context.colorScheme.primary,
-                focusColor: context.colorScheme.primary,
-                hoverColor: context.colorScheme.primary,
                 filled: true,
+                fillColor: context.colorScheme.surfaceContainerHighest,
+                focusColor: context.colorScheme.surfaceContainerHighest,
+                hoverColor: context.colorScheme.surfaceContainerHighest,
                 border: AppTheme.outlinedBorder(context),
                 enabledBorder: AppTheme.outlinedBorder(context),
                 focusedBorder: AppTheme.outlinedBorder(context),
                 errorBorder: AppTheme.outlinedBorderError(context),
                 counterText: '',
-              ),
-              cursorColor: context.colorScheme.onPrimary,
-              controller: controller,
-              style: context.textTheme.bodyMedium?.copyWith(
-                color: enabled
-                    ? context.colorScheme.onSurface
-                    : context.colorScheme.onPrimary,
               ),
             ),
           ),
@@ -73,9 +72,11 @@ class AppTextFormFiled extends StatelessWidget {
               child: Container(
                   padding: AppDimesnionsEdgeInsetsExt.smallHorizontal,
                   decoration: AppTheme.boxDecorationFilled(context).copyWith(
-                    color: context.colorScheme.secondary,
+                    color: context.colorScheme.primary,
                   ),
-                  child: Text(labelText ?? ''))),
+                  child: Text(labelText ?? '',
+                      style: context.textTheme.bodyMedium
+                          ?.copyWith(color: context.colorScheme.onPrimary)))),
         ],
       ),
     );

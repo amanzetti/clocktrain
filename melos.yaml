@@ -47,6 +47,9 @@ command:
       freezed: ^2.5.7
       # Code generation
       build_runner: ^2.4.13
+    
+    flutter:
+      generate: true
 
 scripts:
   add-local_db-pub:

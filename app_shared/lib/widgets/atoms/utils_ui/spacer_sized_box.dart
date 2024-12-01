@@ -82,7 +82,7 @@ class HorizontalLargeSpacer extends StatelessWidget {
 }
 
 class HorizontalCustomSpacer extends StatelessWidget {
-  const HorizontalCustomSpacer({super.key, required this.width});
+  const HorizontalCustomSpacer({required this.width, super.key});
 
   final double width;
 
@@ -90,7 +90,7 @@ class HorizontalCustomSpacer extends StatelessWidget {
   Widget build(BuildContext context) {
     return _SpacerSizedBox(
       spacerType: _SpacerType.horizontal,
-      spacerSize: _SpacerSize.large,
+      spacerSize: _SpacerSize.custom,
       width: width,
     );
   }
@@ -133,7 +133,7 @@ class VerticalLargeSpacer extends StatelessWidget {
 }
 
 class VerticalCustomSpacer extends StatelessWidget {
-  const VerticalCustomSpacer({super.key, required this.height});
+  const VerticalCustomSpacer({required this.height, super.key});
 
   final double height;
 
@@ -141,7 +141,7 @@ class VerticalCustomSpacer extends StatelessWidget {
   Widget build(BuildContext context) {
     return _SpacerSizedBox(
       spacerType: _SpacerType.vertical,
-      spacerSize: _SpacerSize.large,
+      spacerSize: _SpacerSize.custom,
       height: height,
     );
   }

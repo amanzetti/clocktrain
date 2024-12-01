@@ -1,3 +1,4 @@
+import 'package:app_shared/utils/const/app_dimensions.dart';
 import 'package:app_shared/utils/ext/build_context_ext.dart';
 import 'package:app_shared/widgets/atoms/utils_ui/app_container.dart';
 import 'package:flutter/material.dart';
@@ -11,9 +12,14 @@ class AppElevatedButton extends StatelessWidget {
       super.key,
       this.child});
 
-  final void Function()? onPressed;
+  ///Data Properties
   final String? text;
   final Widget? child;
+
+  ///Functional Properties
+  final void Function()? onPressed;
+
+  ///UI Properties
   final double? width;
   final double? height;
 
@@ -24,9 +30,10 @@ class AppElevatedButton extends StatelessWidget {
       height: height,
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
+            elevation: 0,
             backgroundColor: context.colorScheme.primary,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(4.0),
+              borderRadius: BorderRadius.circular(AppDimensions.borderRadius8),
               side: BorderSide(color: context.colorScheme.primary),
             ),
           ),

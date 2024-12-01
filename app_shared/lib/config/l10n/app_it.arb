@@ -5,6 +5,7 @@
     "description": "The conventional newborn programmer greeting"
   },
   "save": "Salva",
+  "cancel": "Annulla",
   "genericError": "Qualcosa è andato storto",
   "email": "Email",
   "password": "Password",
@@ -21,5 +22,17 @@
   "language": "Lingua",
   "theme": "Tema",
   "exerciseEditorTitle": "Editor Esercizi",
-  "exerciseName": "Nome Esercizio"
+  "exerciseName": "Nome Esercizio",
+  "continueName": "Continua {name}",
+  "@continueName": {
+    "description": "Continue button with name placeholder",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "createAccount": "Crea Account",
+  "apple": "apple",
+  "google": "google"
 }

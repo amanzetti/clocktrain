@@ -111,6 +111,11 @@ class AppColors {
     );
   }
 
+  static ColorScheme lightColorSchemeFromSeed() {
+    final seedColor = Color(0xFFA3D9A5);
+    return ColorScheme.fromSeed(seedColor: seedColor);
+  }
+
   // Dark Mode Color Scheme
   static ColorScheme darkColorScheme() {
     return const ColorScheme(

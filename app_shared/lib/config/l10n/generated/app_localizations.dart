@@ -107,6 +107,12 @@ abstract class AppLocalizations {
   /// **'Salva'**
   String get save;
 
+  /// No description provided for @cancel.
+  ///
+  /// In it, this message translates to:
+  /// **'Annulla'**
+  String get cancel;
+
   /// No description provided for @genericError.
   ///
   /// In it, this message translates to:
@@ -208,6 +214,30 @@ abstract class AppLocalizations {
   /// In it, this message translates to:
   /// **'Nome Esercizio'**
   String get exerciseName;
+
+  /// Continue button with name placeholder
+  ///
+  /// In it, this message translates to:
+  /// **'Continua {name}'**
+  String continueName(String name);
+
+  /// No description provided for @createAccount.
+  ///
+  /// In it, this message translates to:
+  /// **'Crea Account'**
+  String get createAccount;
+
+  /// No description provided for @apple.
+  ///
+  /// In it, this message translates to:
+  /// **'apple'**
+  String get apple;
+
+  /// No description provided for @google.
+  ///
+  /// In it, this message translates to:
+  /// **'google'**
+  String get google;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

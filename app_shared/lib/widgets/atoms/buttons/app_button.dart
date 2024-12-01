@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 enum AppButtonStyle {
   elevated,
-  outlied,
+  outlined,
   text,
   icon,
 }
@@ -20,15 +20,24 @@ class AppButton extends StatelessWidget {
       this.child,
       this.size,
       this.backgroundColor,
-      this.borderRadius});
+      this.borderRadius,
+      this.width,
+      this.height});
 
-  final AppButtonStyle? style;
-  final void Function()? onPressed;
+  ///Data Properties
   final String? text;
   final Widget? child;
-  final Size? size;
+
+  ///Functional Properties
+  final void Function()? onPressed;
+
+  ///UI Properties
+  final AppButtonStyle? style;
   final Color? backgroundColor;
   final BorderRadius? borderRadius;
+  final Size? size;
+  final double? width;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
@@ -37,16 +46,16 @@ class AppButton extends StatelessWidget {
         return AppElevatedButton(
           text: text ?? '',
           onPressed: onPressed,
-          width: size?.width,
-          height: size?.height,
+          width: width,
+          height: height,
           child: child,
         );
-      case AppButtonStyle.outlied:
+      case AppButtonStyle.outlined:
         return AppOutlinedButton(
           text: text ?? '',
           onPressed: onPressed,
-          width: size?.width,
-          height: size?.height,
+          width: width,
+          height: height,
           child: child,
         );
       case AppButtonStyle.text:

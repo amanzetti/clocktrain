@@ -18,17 +18,14 @@ class AppTheme {
   // Function to generate the theme based on the theme mode (light/dark)
   static ThemeData _getTheme(ThemeModeEnum themeMode) {
     final colorScheme = themeMode == ThemeModeEnum.light
-        ? AppColors.lightColorScheme()
+        ? AppColors.lightColorSchemeFromSeed()
+        // ? AppColors.lightColorScheme()
         : AppColors.darkColorScheme();
 
     return ThemeData(
       colorScheme: colorScheme,
       textTheme: AppTypography.textTheme,
       iconTheme: _getIconThemeData(colorScheme),
-      // scaffoldBackgroundColor: _getScaffoldBackgroundColor(colorScheme),
-      // appBarTheme: _getAppBarTheme(colorScheme),
-      // inputDecorationTheme: _getInputDecorationTheme(colorScheme),
-      // buttonTheme: _getButtonTheme(colorScheme),
     );
   }
 
@@ -58,14 +55,14 @@ class AppTheme {
 
   static InputBorder outlinedBorder(BuildContext context) {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
+      borderRadius: BorderRadius.circular(AppDimensions.borderRadius8),
       borderSide: const BorderSide(color: Colors.transparent),
     );
   }
 
   static InputBorder outlinedBorderError(BuildContext context) {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
+      borderRadius: BorderRadius.circular(AppDimensions.borderRadius8),
       borderSide: BorderSide(color: context.colorScheme.onError),
     );
   }

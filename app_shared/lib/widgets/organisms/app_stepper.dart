@@ -70,7 +70,7 @@ class _AppStepperState extends State<AppStepper> {
             Expanded(
               child: _currentPage > 0
                   ? AppButton(
-                      style: AppButtonStyle.outlied,
+                      style: AppButtonStyle.outlined,
                       onPressed: _previousPage,
                       text: 'back')
                   : const SizedBox(),

@@ -13,6 +13,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get save => 'Save';
 
   @override
+  String get cancel => 'Cancel';
+
+  @override
   String get genericError => 'Something went wrong';
 
   @override
@@ -62,4 +65,18 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get exerciseName => 'Exercise Name';
+
+  @override
+  String continueName(String name) {
+    return 'Continue $name';
+  }
+
+  @override
+  String get createAccount => 'Create Account';
+
+  @override
+  String get apple => 'apple';
+
+  @override
+  String get google => 'google';
 }

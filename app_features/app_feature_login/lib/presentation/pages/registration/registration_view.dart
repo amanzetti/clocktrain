@@ -148,7 +148,7 @@ final _currentPageProvider = StateProvider.autoDispose<int>(
 //             const HorizontalMediumSpacer(),
 //             Expanded(
 //               child: AppButton(
-//                 style: AppButtonStyle.outlied,
+//                 style: AppButtonStyle.outlined,
 //                 text: 'annulla',
 //                 onPressed: () => {},
 //               ),
