@@ -45,16 +45,17 @@ class RegistrationVm extends AutoDisposeNotifier<RegistrationState> {
     state = state.copyWith(age: age);
   }
 
-  void savePersonalInfo(GlobalKey<FormState> formKey) {
-    if (formKey.currentState!.validate()) {
-      formKey.currentState!.save();
-    }
-    print('Name: ${state.name}');
-    print('Surname: ${state.surname}');
-    print('BirthDate: ${state.birthDate}');
-    print('Weight: ${state.weight}');
-    print('Height: ${state.height}');
-    print('Age: ${state.age}');
+  ///Login
+  void setEmail(String email) {
+    state = state.copyWith(email: email);
+  }
+
+  void setPassword(String password) {
+    state = state.copyWith(password: password);
+  }
+
+  void setConfirmPassword(String confirmPassword) {
+    state = state.copyWith(confirmPassword: confirmPassword);
   }
 
   void getUserData(GlobalKey<FormState> formKey) {
@@ -69,6 +70,8 @@ class RegistrationVm extends AutoDisposeNotifier<RegistrationState> {
     print('Age: ${state.age}');
     print('email: ${state.email}');
     print('password: ${state.password}');
+
+    
   }
 
   void showWeightPicker(BuildContext context,
@@ -131,15 +134,73 @@ class RegistrationVm extends AutoDisposeNotifier<RegistrationState> {
     );
   }
 
-  void showIntervalPicker(BuildContext context) {
-    showCupertinoTimerPicker(
-      context,
-      TextEditingController(),
-      TimePickerType.interval,
-    );
-  }
-
   void goBack(BuildContext context) {
     context.pop();
   }
+
+  ///Validator
+  String? validateName(String? p0) {
+     if (p0 == null || p0.isEmpty) {
+    return 'Name cannot be empty';
+  }
+  return null;
+  }
+
+  String? validateSurname(String? p0) {
+    if (p0 == null || p0.isEmpty) {
+      return 'Surname cannot be empty';
+    }
+    return null;
+  }
+
+  String? validateBirthDate(String? p0) {
+    if (p0 == null) {
+      return 'Birth date cannot be empty';
+    }
+    return null;
+  }
+
+  String? validateWeight(String? p0) {
+    if (p0 == null) {
+      return 'Weight cannot be empty';
+    }
+    return null;
+  }
+
+  String? validateHeight(String? p0) {
+    if (p0 == null) {
+      return 'Height cannot be empty';
+    }
+    return null;
+  }
+
+  String? validateAge(String? p0) {
+    if (p0 == null) {
+      return 'Age cannot be empty';
+    }
+    return null;
+  }
+
+  String? validateEmail(String? p0) {
+    if (p0 == null || p0.isEmpty) {
+      return 'Email cannot be empty';
+    }
+    return null;
+  }
+
+  String? validatePassword(String? p0) {
+    if (p0 == null || p0.isEmpty) {
+      return 'Password cannot be empty';
+    }
+    return null;
+  }
+
+  String? validateConfirmPassword(String? p0) {
+    if (p0 == null || p0.isEmpty) {
+      return 'Confirm password cannot be empty';
+    }
+    return null;
+  }
+
+
 }

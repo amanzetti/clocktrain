@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 class AppStepper extends StatefulWidget {
   const AppStepper({
     required this.steps,
+    required this.formKey,
     this.nextText = 'Next',
     this.backText = 'Back',
     this.doneText = 'Done',
@@ -21,6 +22,7 @@ class AppStepper extends StatefulWidget {
   final String nextText;
   final String backText;
   final String doneText;
+  final GlobalKey<FormState> formKey;
 
   @override
   _AppStepperState createState() => _AppStepperState();
@@ -39,6 +41,11 @@ class _AppStepperState extends State<AppStepper> {
   }
 
   void _nextPage() {
+    final formState = widget.formKey.currentState;
+    if (formState != null && !formState.validate()) {
+      // Blocca il passaggio se la validazione fallisce
+      return;
+    }
     if (_currentPage < _steps.length - 1) {
       setState(() {
         _currentPage++;

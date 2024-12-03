@@ -1,6 +1,8 @@
 import 'package:app_feature_login/presentation/pages/login/login_view.dart';
 import 'package:app_feature_login/presentation/pages/registration/registration_view.dart';
+import 'package:app_feature_login/presentation/pages/registration/registration_vm.dart';
 import 'package:app_feature_login/presentation/routes/app_paths.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 class LoginRouteAppFeature {

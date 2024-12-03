@@ -4,10 +4,6 @@ import 'package:app_feature_login/presentation/pages/registration/steps/login_in
 import 'package:app_feature_login/presentation/pages/registration/steps/personal_info_view.dart';
 import 'package:app_shared/utils/ext/build_context_ext.dart';
 import 'package:app_shared/utils/ext/edge_insets_ext.dart';
-import 'package:app_shared/widgets/atoms/buttons/app_button.dart';
-import 'package:app_shared/widgets/atoms/text_fields/app_text_form_field.dart';
-import 'package:app_shared/widgets/atoms/text_fields/app_text_form_field_datetime.dart';
-import 'package:app_shared/widgets/atoms/utils_ui/app_container.dart';
 import 'package:app_shared/widgets/atoms/utils_ui/spacer_sized_box.dart';
 import 'package:app_shared/widgets/organisms/app_stepper.dart';
 import 'package:app_shared/widgets/organisms/app_header.dart';
@@ -15,8 +11,6 @@ import 'package:app_shared/widgets/atoms/cards/app_card.dart';
 import 'package:app_shared/widgets/molecules/progression_bar/step_traker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:app_shared/utils/ext/date_time_ext.dart';
-import 'package:app_shared/utils/ext/string_ext.dart';
 
 class RegistrationView extends ConsumerWidget {
   RegistrationView({super.key});
@@ -68,13 +62,22 @@ class RegistrationView extends ConsumerWidget {
               const VerticalSmallSpacer(),
               Expanded(
                 child: AppStepper(
+                  formKey: formKey,
                   backText: context.loc.back.toUpperCase(),
                   nextText: context.loc.next.toUpperCase(),
                   doneText: context.loc.done.toUpperCase(),
                   onPageChanged: (p0) => {
                     vm.setCurrentPage(p0),
                   },
-                  onDone: () => {vm.getUserData(formKey)},
+                  onDone: () {
+                    final formState = formKey.currentState;
+                    if (formState == null || !formState.validate()) {
+                      // Blocca la finalizzazione se la validazione fallisce
+                      return;
+                    }
+                    formState.save();
+                    vm.getUserData(formKey);
+                  },
                   steps: _buildSteps(context, ref),
                 ),
               ),
@@ -90,7 +93,9 @@ class RegistrationView extends ConsumerWidget {
   }
 }
 
-final _registrationVmProvider =
+final _registrationVmProvider = registrationVmProvider;
+
+final registrationVmProvider =
     NotifierProvider.autoDispose<RegistrationVm, RegistrationState>(
         () => RegistrationVm());
 
