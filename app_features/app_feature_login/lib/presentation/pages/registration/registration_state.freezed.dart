@@ -16,9 +16,6 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$RegistrationState {
-  String get email => throw _privateConstructorUsedError;
-  String get password => throw _privateConstructorUsedError;
-  String get confirmPassword => throw _privateConstructorUsedError;
   bool get isEmailValid => throw _privateConstructorUsedError;
   bool get isPasswordValid => throw _privateConstructorUsedError;
   bool get isConfirmPasswordValid => throw _privateConstructorUsedError;
@@ -28,10 +25,18 @@ mixin _$RegistrationState {
   String get errorMessage => throw _privateConstructorUsedError;
   int get currentPage => throw _privateConstructorUsedError;
 
+  ///Registration
+  String get email => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
+  String get confirmPassword => throw _privateConstructorUsedError;
+
   ///User
-  String get name => throw _privateConstructorUsedError;
-  String get surname => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  String? get surname => throw _privateConstructorUsedError;
   DateTime? get birthDate => throw _privateConstructorUsedError;
+  double? get weight => throw _privateConstructorUsedError;
+  int? get height => throw _privateConstructorUsedError;
+  int? get age => throw _privateConstructorUsedError;
 
   /// Create a copy of RegistrationState
   /// with the given fields replaced by the non-null parameter values.
@@ -47,10 +52,7 @@ abstract class $RegistrationStateCopyWith<$Res> {
       _$RegistrationStateCopyWithImpl<$Res, RegistrationState>;
   @useResult
   $Res call(
-      {String email,
-      String password,
-      String confirmPassword,
-      bool isEmailValid,
+      {bool isEmailValid,
       bool isPasswordValid,
       bool isConfirmPasswordValid,
       bool isSubmitting,
@@ -58,9 +60,15 @@ abstract class $RegistrationStateCopyWith<$Res> {
       bool isFailure,
       String errorMessage,
       int currentPage,
-      String name,
-      String surname,
-      DateTime? birthDate});
+      String email,
+      String password,
+      String confirmPassword,
+      String? name,
+      String? surname,
+      DateTime? birthDate,
+      double? weight,
+      int? height,
+      int? age});
 }
 
 /// @nodoc
@@ -78,9 +86,6 @@ class _$RegistrationStateCopyWithImpl<$Res, $Val extends RegistrationState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = null,
-    Object? password = null,
-    Object? confirmPassword = null,
     Object? isEmailValid = null,
     Object? isPasswordValid = null,
     Object? isConfirmPasswordValid = null,
@@ -89,23 +94,17 @@ class _$RegistrationStateCopyWithImpl<$Res, $Val extends RegistrationState>
     Object? isFailure = null,
     Object? errorMessage = null,
     Object? currentPage = null,
-    Object? name = null,
-    Object? surname = null,
+    Object? email = null,
+    Object? password = null,
+    Object? confirmPassword = null,
+    Object? name = freezed,
+    Object? surname = freezed,
     Object? birthDate = freezed,
+    Object? weight = freezed,
+    Object? height = freezed,
+    Object? age = freezed,
   }) {
     return _then(_value.copyWith(
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String,
-      confirmPassword: null == confirmPassword
-          ? _value.confirmPassword
-          : confirmPassword // ignore: cast_nullable_to_non_nullable
-              as String,
       isEmailValid: null == isEmailValid
           ? _value.isEmailValid
           : isEmailValid // ignore: cast_nullable_to_non_nullable
@@ -138,18 +137,42 @@ class _$RegistrationStateCopyWithImpl<$Res, $Val extends RegistrationState>
           ? _value.currentPage
           : currentPage // ignore: cast_nullable_to_non_nullable
               as int,
-      name: null == name
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      confirmPassword: null == confirmPassword
+          ? _value.confirmPassword
+          : confirmPassword // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      surname: null == surname
+              as String?,
+      surname: freezed == surname
           ? _value.surname
           : surname // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       birthDate: freezed == birthDate
           ? _value.birthDate
           : birthDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      weight: freezed == weight
+          ? _value.weight
+          : weight // ignore: cast_nullable_to_non_nullable
+              as double?,
+      height: freezed == height
+          ? _value.height
+          : height // ignore: cast_nullable_to_non_nullable
+              as int?,
+      age: freezed == age
+          ? _value.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -163,10 +186,7 @@ abstract class _$$RegistrationStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String email,
-      String password,
-      String confirmPassword,
-      bool isEmailValid,
+      {bool isEmailValid,
       bool isPasswordValid,
       bool isConfirmPasswordValid,
       bool isSubmitting,
@@ -174,9 +194,15 @@ abstract class _$$RegistrationStateImplCopyWith<$Res>
       bool isFailure,
       String errorMessage,
       int currentPage,
-      String name,
-      String surname,
-      DateTime? birthDate});
+      String email,
+      String password,
+      String confirmPassword,
+      String? name,
+      String? surname,
+      DateTime? birthDate,
+      double? weight,
+      int? height,
+      int? age});
 }
 
 /// @nodoc
@@ -192,9 +218,6 @@ class __$$RegistrationStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = null,
-    Object? password = null,
-    Object? confirmPassword = null,
     Object? isEmailValid = null,
     Object? isPasswordValid = null,
     Object? isConfirmPasswordValid = null,
@@ -203,23 +226,17 @@ class __$$RegistrationStateImplCopyWithImpl<$Res>
     Object? isFailure = null,
     Object? errorMessage = null,
     Object? currentPage = null,
-    Object? name = null,
-    Object? surname = null,
+    Object? email = null,
+    Object? password = null,
+    Object? confirmPassword = null,
+    Object? name = freezed,
+    Object? surname = freezed,
     Object? birthDate = freezed,
+    Object? weight = freezed,
+    Object? height = freezed,
+    Object? age = freezed,
   }) {
     return _then(_$RegistrationStateImpl(
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String,
-      confirmPassword: null == confirmPassword
-          ? _value.confirmPassword
-          : confirmPassword // ignore: cast_nullable_to_non_nullable
-              as String,
       isEmailValid: null == isEmailValid
           ? _value.isEmailValid
           : isEmailValid // ignore: cast_nullable_to_non_nullable
@@ -252,18 +269,42 @@ class __$$RegistrationStateImplCopyWithImpl<$Res>
           ? _value.currentPage
           : currentPage // ignore: cast_nullable_to_non_nullable
               as int,
-      name: null == name
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      confirmPassword: null == confirmPassword
+          ? _value.confirmPassword
+          : confirmPassword // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      surname: null == surname
+              as String?,
+      surname: freezed == surname
           ? _value.surname
           : surname // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       birthDate: freezed == birthDate
           ? _value.birthDate
           : birthDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      weight: freezed == weight
+          ? _value.weight
+          : weight // ignore: cast_nullable_to_non_nullable
+              as double?,
+      height: freezed == height
+          ? _value.height
+          : height // ignore: cast_nullable_to_non_nullable
+              as int?,
+      age: freezed == age
+          ? _value.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -272,10 +313,7 @@ class __$$RegistrationStateImplCopyWithImpl<$Res>
 
 class _$RegistrationStateImpl implements _RegistrationState {
   const _$RegistrationStateImpl(
-      {this.email = '',
-      this.password = '',
-      this.confirmPassword = '',
-      this.isEmailValid = false,
+      {this.isEmailValid = false,
       this.isPasswordValid = false,
       this.isConfirmPasswordValid = false,
       this.isSubmitting = false,
@@ -283,19 +321,16 @@ class _$RegistrationStateImpl implements _RegistrationState {
       this.isFailure = false,
       this.errorMessage = '',
       this.currentPage = 0,
-      this.name = '',
-      this.surname = '',
-      this.birthDate = null});
+      this.email = '',
+      this.password = '',
+      this.confirmPassword = '',
+      this.name = null,
+      this.surname = null,
+      this.birthDate = null,
+      this.weight = null,
+      this.height = null,
+      this.age = null});
 
-  @override
-  @JsonKey()
-  final String email;
-  @override
-  @JsonKey()
-  final String password;
-  @override
-  @JsonKey()
-  final String confirmPassword;
   @override
   @JsonKey()
   final bool isEmailValid;
@@ -321,20 +356,40 @@ class _$RegistrationStateImpl implements _RegistrationState {
   @JsonKey()
   final int currentPage;
 
+  ///Registration
+  @override
+  @JsonKey()
+  final String email;
+  @override
+  @JsonKey()
+  final String password;
+  @override
+  @JsonKey()
+  final String confirmPassword;
+
   ///User
   @override
   @JsonKey()
-  final String name;
+  final String? name;
   @override
   @JsonKey()
-  final String surname;
+  final String? surname;
   @override
   @JsonKey()
   final DateTime? birthDate;
+  @override
+  @JsonKey()
+  final double? weight;
+  @override
+  @JsonKey()
+  final int? height;
+  @override
+  @JsonKey()
+  final int? age;
 
   @override
   String toString() {
-    return 'RegistrationState(email: $email, password: $password, confirmPassword: $confirmPassword, isEmailValid: $isEmailValid, isPasswordValid: $isPasswordValid, isConfirmPasswordValid: $isConfirmPasswordValid, isSubmitting: $isSubmitting, isSuccess: $isSuccess, isFailure: $isFailure, errorMessage: $errorMessage, currentPage: $currentPage, name: $name, surname: $surname, birthDate: $birthDate)';
+    return 'RegistrationState(isEmailValid: $isEmailValid, isPasswordValid: $isPasswordValid, isConfirmPasswordValid: $isConfirmPasswordValid, isSubmitting: $isSubmitting, isSuccess: $isSuccess, isFailure: $isFailure, errorMessage: $errorMessage, currentPage: $currentPage, email: $email, password: $password, confirmPassword: $confirmPassword, name: $name, surname: $surname, birthDate: $birthDate, weight: $weight, height: $height, age: $age)';
   }
 
   @override
@@ -342,11 +397,6 @@ class _$RegistrationStateImpl implements _RegistrationState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RegistrationStateImpl &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.password, password) ||
-                other.password == password) &&
-            (identical(other.confirmPassword, confirmPassword) ||
-                other.confirmPassword == confirmPassword) &&
             (identical(other.isEmailValid, isEmailValid) ||
                 other.isEmailValid == isEmailValid) &&
             (identical(other.isPasswordValid, isPasswordValid) ||
@@ -363,18 +413,23 @@ class _$RegistrationStateImpl implements _RegistrationState {
                 other.errorMessage == errorMessage) &&
             (identical(other.currentPage, currentPage) ||
                 other.currentPage == currentPage) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
+            (identical(other.confirmPassword, confirmPassword) ||
+                other.confirmPassword == confirmPassword) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.surname, surname) || other.surname == surname) &&
             (identical(other.birthDate, birthDate) ||
-                other.birthDate == birthDate));
+                other.birthDate == birthDate) &&
+            (identical(other.weight, weight) || other.weight == weight) &&
+            (identical(other.height, height) || other.height == height) &&
+            (identical(other.age, age) || other.age == age));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      email,
-      password,
-      confirmPassword,
       isEmailValid,
       isPasswordValid,
       isConfirmPasswordValid,
@@ -383,9 +438,15 @@ class _$RegistrationStateImpl implements _RegistrationState {
       isFailure,
       errorMessage,
       currentPage,
+      email,
+      password,
+      confirmPassword,
       name,
       surname,
-      birthDate);
+      birthDate,
+      weight,
+      height,
+      age);
 
   /// Create a copy of RegistrationState
   /// with the given fields replaced by the non-null parameter values.
@@ -399,10 +460,7 @@ class _$RegistrationStateImpl implements _RegistrationState {
 
 abstract class _RegistrationState implements RegistrationState {
   const factory _RegistrationState(
-      {final String email,
-      final String password,
-      final String confirmPassword,
-      final bool isEmailValid,
+      {final bool isEmailValid,
       final bool isPasswordValid,
       final bool isConfirmPasswordValid,
       final bool isSubmitting,
@@ -410,16 +468,16 @@ abstract class _RegistrationState implements RegistrationState {
       final bool isFailure,
       final String errorMessage,
       final int currentPage,
-      final String name,
-      final String surname,
-      final DateTime? birthDate}) = _$RegistrationStateImpl;
+      final String email,
+      final String password,
+      final String confirmPassword,
+      final String? name,
+      final String? surname,
+      final DateTime? birthDate,
+      final double? weight,
+      final int? height,
+      final int? age}) = _$RegistrationStateImpl;
 
-  @override
-  String get email;
-  @override
-  String get password;
-  @override
-  String get confirmPassword;
   @override
   bool get isEmailValid;
   @override
@@ -437,13 +495,27 @@ abstract class _RegistrationState implements RegistrationState {
   @override
   int get currentPage;
 
+  ///Registration
+  @override
+  String get email;
+  @override
+  String get password;
+  @override
+  String get confirmPassword;
+
   ///User
   @override
-  String get name;
+  String? get name;
   @override
-  String get surname;
+  String? get surname;
   @override
   DateTime? get birthDate;
+  @override
+  double? get weight;
+  @override
+  int? get height;
+  @override
+  int? get age;
 
   /// Create a copy of RegistrationState
   /// with the given fields replaced by the non-null parameter values.

@@ -16,7 +16,13 @@ class PersonalInfoView extends ConsumerWidget {
     final vm = ref.watch(_registrationVmProvider.notifier);
     final name = ref.watch(_nameProvider);
     final surname = ref.watch(_surnameProvider);
-    final birthDate = ref.watch(_birthDateProvider);
+    var birthDate = ref.watch(_birthDateProvider);
+    var weight = ref.watch(_weightProvider);
+    var height = ref.watch(_heightProvider);
+    var age = ref.watch(_ageProvider);
+
+    final weightController = TextEditingController(text: weight.toString());
+    
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
@@ -39,7 +45,14 @@ class PersonalInfoView extends ConsumerWidget {
             Expanded(
               child: AppTextFormFiled(
                 labelText: context.loc.weight.capitalize(),
-                initialValue: name,
+                // initialValue: name,
+                controller: weightController,
+                onTap: () => {
+                  vm.showWeightPicker(context,
+                      doneText: context.loc.done.toUpperCase(),
+                      cancelText: context.loc.cancel.toUpperCase(),
+                      title: 'Select weight')
+                },
               ),
             ),
             const HorizontalMediumSpacer(),
@@ -68,11 +81,20 @@ final _registrationVmProvider =
     NotifierProvider.autoDispose<RegistrationVm, RegistrationState>(
         () => RegistrationVm());
 
-final _nameProvider = StateProvider.autoDispose<String>(
+final _nameProvider = StateProvider.autoDispose<String?>(
     (ref) => ref.watch(_registrationVmProvider).name);
 
-final _surnameProvider = StateProvider.autoDispose<String>(
+final _surnameProvider = StateProvider.autoDispose<String?>(
     (ref) => ref.watch(_registrationVmProvider).surname);
 
 final _birthDateProvider = StateProvider.autoDispose<DateTime?>(
     (ref) => ref.watch(_registrationVmProvider).birthDate);
+
+final _weightProvider = StateProvider.autoDispose<double?>(
+    (ref) => ref.watch(_registrationVmProvider).weight);
+
+final _heightProvider = StateProvider.autoDispose<int?>(
+    (ref) => ref.watch(_registrationVmProvider).height);
+
+final _ageProvider = StateProvider.autoDispose<int?>(
+    (ref) => ref.watch(_registrationVmProvider).age);

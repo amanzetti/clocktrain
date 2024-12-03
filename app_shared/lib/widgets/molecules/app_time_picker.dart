@@ -1,10 +1,8 @@
+import 'package:app_shared/utils/ext/build_context_ext.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-enum TimePickerType {
-  minuteSecond,
-  interval,
-}
+enum TimePickerType { minuteSecond, interval, weight }
 
 Future<void> showCupertinoTimerPicker(
   BuildContext context,
@@ -15,7 +13,7 @@ Future<void> showCupertinoTimerPicker(
     context: context,
     builder: (BuildContext context) {
       return SizedBox(
-          height: 250,
+          height: context.mq.size.height / 2,
           child: IOSMinuteSecondPickerField(
             controller: controller,
             timePickerType: timePickerType,
@@ -53,23 +51,6 @@ class _IOSMinuteSecondPickerFieldState
     _controller = widget.controller;
   }
 
-  _onTimerDurationChanged(Duration newDuration) {
-    switch (widget.timePickerType) {
-      case TimePickerType.minuteSecond:
-        return _setStateMinuteSecond(newDuration);
-      case TimePickerType.interval:
-        return _setStateInterval(newDuration);
-      default:
-    }
-  }
-
-  void _onValueChanged(int index) {
-    setState(() {
-      selectedValue = index;
-      _controller.text = selectedValue.toString().padLeft(2, '0');
-    });
-  }
-
   _getCupertinoPiker() {
     switch (widget.timePickerType) {
       case TimePickerType.minuteSecond:
@@ -77,6 +58,13 @@ class _IOSMinuteSecondPickerFieldState
             mode: CupertinoTimerPickerMode.ms,
             initialTimerDuration: selectedDuration,
             onTimerDurationChanged: _onTimerDurationChanged);
+
+      case TimePickerType.weight:
+        return CupertinoTimerPicker(
+            mode: CupertinoTimerPickerMode.ms,
+            initialTimerDuration: selectedDuration,
+            onTimerDurationChanged: _onTimerDurationChanged);
+
       case TimePickerType.interval:
         return CupertinoPicker(
           itemExtent: 32.0,
@@ -94,6 +82,18 @@ class _IOSMinuteSecondPickerFieldState
     }
   }
 
+  _onTimerDurationChanged(Duration newDuration) {
+    switch (widget.timePickerType) {
+      case TimePickerType.minuteSecond:
+        return _setStateMinuteSecond(newDuration);
+      case TimePickerType.weight:
+        return _setStateMinuteSecond(newDuration);
+      case TimePickerType.interval:
+        return _setStateInterval(newDuration);
+      default:
+    }
+  }
+
   _setStateMinuteSecond(Duration duration) {
     setState(() {
       selectedDuration = duration;
@@ -107,6 +107,13 @@ class _IOSMinuteSecondPickerFieldState
       selectedDuration = duration;
       _controller.text =
           '${selectedDuration.inMinutes.toString().padLeft(2, '0')}}';
+    });
+  }
+
+  void _onValueChanged(int index) {
+    setState(() {
+      selectedValue = index;
+      _controller.text = selectedValue.toString().padLeft(2, '0');
     });
   }
 

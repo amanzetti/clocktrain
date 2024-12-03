@@ -16,5 +16,13 @@
             "cwd": "${workspaceFolder}/app_main",
             "flutterMode": "debug"
         },
+        {
+            "name": "Flutter - Widgetbook (Debug)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "cwd": "${workspaceFolder}/app_shared/widgetbook",
+            "flutterMode": "debug"
+        },
     ]
 }

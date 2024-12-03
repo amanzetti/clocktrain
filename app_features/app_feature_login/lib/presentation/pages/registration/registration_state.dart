@@ -5,9 +5,6 @@ part 'registration_state.freezed.dart';
 @freezed
 class RegistrationState with _$RegistrationState {
   const factory RegistrationState({
-    @Default('') String email,
-    @Default('') String password,
-    @Default('') String confirmPassword,
     @Default(false) bool isEmailValid,
     @Default(false) bool isPasswordValid,
     @Default(false) bool isConfirmPasswordValid,
@@ -17,11 +14,18 @@ class RegistrationState with _$RegistrationState {
     @Default('') String errorMessage,
     @Default(0) int currentPage,
 
-    ///User
-    @Default('') String name,
-    @Default('') String surname,
-    @Default(null) DateTime? birthDate,
+    ///Registration
+    @Default('') String email,
+    @Default('') String password,
+    @Default('') String confirmPassword,
 
+    ///User
+    @Default(null) String? name,
+    @Default(null) String? surname,
+    @Default(null) DateTime? birthDate,
+    @Default(null) double? weight,
+    @Default(null) int? height,
+    @Default(null) int? age,
   }) = _RegistrationState;
 
   factory RegistrationState.initial() => const RegistrationState();

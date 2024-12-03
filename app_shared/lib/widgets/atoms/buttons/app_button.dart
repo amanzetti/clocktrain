@@ -11,6 +11,8 @@ enum AppButtonStyle {
   icon,
 }
 
+enum AppShape { rounded, circular }
+
 class AppButton extends StatelessWidget {
   const AppButton(
       {super.key,
@@ -22,7 +24,8 @@ class AppButton extends StatelessWidget {
       this.backgroundColor,
       this.borderRadius,
       this.width,
-      this.height});
+      this.height,
+      this.shape});
 
   ///Data Properties
   final String? text;
@@ -33,6 +36,7 @@ class AppButton extends StatelessWidget {
 
   ///UI Properties
   final AppButtonStyle? style;
+  final AppShape? shape;
   final Color? backgroundColor;
   final BorderRadius? borderRadius;
   final Size? size;
@@ -48,6 +52,7 @@ class AppButton extends StatelessWidget {
           onPressed: onPressed,
           width: width,
           height: height,
+          shape: shape,
           child: child,
         );
       case AppButtonStyle.outlined:
@@ -56,6 +61,7 @@ class AppButton extends StatelessWidget {
           onPressed: onPressed,
           width: width,
           height: height,
+          shape: shape,
           child: child,
         );
       case AppButtonStyle.text:

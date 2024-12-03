@@ -7,6 +7,7 @@ packages:
   - app_shared
   - app_data
   - app_features/app_feature_login
+  - app_shared/widgetbook
 
 command:
   bootstrap:
@@ -72,3 +73,6 @@ scripts:
 
   br_feature_login:
     run: melos exec --scope="app_feature_login" -- "dart run build_runner build --delete-conflicting-outputs"
+  
+  br_shared:
+    run: melos exec --scope="app_shared" -- "dart run build_runner build --delete-conflicting-outputs"
