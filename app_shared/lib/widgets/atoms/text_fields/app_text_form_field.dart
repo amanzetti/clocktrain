@@ -3,8 +3,8 @@ import 'package:app_shared/utils/ext/build_context_ext.dart';
 import 'package:app_shared/utils/ext/edge_insets_ext.dart';
 import 'package:flutter/material.dart';
 
-class AppTextFormFiled extends StatelessWidget {
-  const AppTextFormFiled({
+class AppTextFormField extends StatelessWidget {
+  const AppTextFormField({
     this.controller,
     this.enabled = true,
     this.padding,
@@ -15,6 +15,7 @@ class AppTextFormFiled extends StatelessWidget {
     this.labelText,
     this.initialValue,
     super.key,
+    this.suffixChild,
   });
   final TextEditingController? controller;
   final bool enabled;
@@ -25,6 +26,7 @@ class AppTextFormFiled extends StatelessWidget {
   final String? Function(String?)? validator;
   final String? labelText;
   final String? initialValue;
+  final Widget? suffixChild;
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +54,9 @@ class AppTextFormFiled extends StatelessWidget {
               style: context.textTheme.bodyLarge
                   ?.copyWith(color: context.colorScheme.onSurface),
               decoration: InputDecoration(
+                suffixIcon: Padding(
+                    padding: const EdgeInsets.all(2.0),
+                    child: _buildSuffixWidget(context)),
                 contentPadding: AppDimesnionsEdgeInsetsExt.smallHorizontal,
                 filled: true,
                 fillColor: context.colorScheme.surfaceContainerHighest,
@@ -74,5 +79,15 @@ class AppTextFormFiled extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Widget? _buildSuffixWidget(BuildContext context) {
+    if (suffixChild != null) {
+      return Container(
+          decoration: AppTheme.boxDecorationRounded(context)
+              .copyWith(color: context.colorScheme.surfaceContainerLow),
+          child: suffixChild);
+    }
+    return null;
   }
 }

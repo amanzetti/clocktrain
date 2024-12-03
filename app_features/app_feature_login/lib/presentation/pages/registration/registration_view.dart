@@ -19,69 +19,74 @@ import 'package:app_shared/utils/ext/date_time_ext.dart';
 import 'package:app_shared/utils/ext/string_ext.dart';
 
 class RegistrationView extends ConsumerWidget {
-  const RegistrationView({super.key});
+  RegistrationView({super.key});
+
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final vm = ref.watch(_registrationVmProvider.notifier);
     final currentPage = ref.watch(_currentPageProvider);
-    final namesSection = ['Personal info', 'Biometric Data', 'Step3', 'Step4'];
+    final namesSection = ['Personal info', 'Login Info'];
 
     return Scaffold(
-      body: SafeArea(
-        minimum: AppDimesnionsEdgeInsetsExt.smallHorizontal,
-        child: Column(
-          children: [
-            AppCard(
-              padding: AppDimesnionsEdgeInsetsExt.mediumAll,
-              width: double.infinity,
-              height: 200,
-              child: Column(
-                children: [
-                  ///HEADER
-                  AppHeader(
-                      leftIcon: context.asset.arrowBackSvg(context),
-                      title: 'Registration',
-                      onTap: () => {vm.goBack(context)}),
-                  Text('Create an Account',
-                      style: context.textTheme.headlineMedium),
-                  const VerticalSmallSpacer(),
+      body: Form(
+        key: formKey,
+        child: SafeArea(
+          minimum: AppDimesnionsEdgeInsetsExt.smallHorizontal,
+          child: Column(
+            children: [
+              AppCard(
+                padding: AppDimesnionsEdgeInsetsExt.mediumAll,
+                width: double.infinity,
+                height: 200,
+                child: Column(
+                  children: [
+                    ///HEADER
+                    AppHeader(
+                        leftIcon: context.asset.arrowBackSvg(context),
+                        title: 'Registration',
+                        onTap: () => {vm.goBack(context)}),
+                    Text('Create an Account',
+                        style: context.textTheme.headlineMedium),
+                    const VerticalSmallSpacer(),
 
-                  ///BODY
-                  Text(
-                      'Step ${currentPage + 1} of ${_buildSteps(context, ref).length}: ${namesSection[currentPage]}',
-                      style: context.textTheme.titleMedium),
-                  const Spacer(),
+                    ///BODY
+                    Text(
+                        'Step ${currentPage + 1} of ${_buildSteps(context, ref).length}: ${namesSection[currentPage]}',
+                        style: context.textTheme.titleMedium),
+                    const Spacer(),
 
-                  ///FOOTER
-                  StepTraker(
-                    currentStep: currentPage,
-                    totalSteps: _buildSteps(context, ref).length,
-                  )
-                ],
+                    ///FOOTER
+                    StepTraker(
+                      currentStep: currentPage,
+                      totalSteps: _buildSteps(context, ref).length,
+                    )
+                  ],
+                ),
               ),
-            ),
-            const VerticalSmallSpacer(),
-            Expanded(
-              child: AppStepper(
-                backText: context.loc.back.toUpperCase(),
-                nextText: context.loc.next.toUpperCase(),
-                doneText: context.loc.done.toUpperCase(),
-                onPageChanged: (p0) => {
-                  vm.setCurrentPage(p0),
-                },
-                onDone: () => {vm.getUserData()},
-                steps: _buildSteps(context, ref),
+              const VerticalSmallSpacer(),
+              Expanded(
+                child: AppStepper(
+                  backText: context.loc.back.toUpperCase(),
+                  nextText: context.loc.next.toUpperCase(),
+                  doneText: context.loc.done.toUpperCase(),
+                  onPageChanged: (p0) => {
+                    vm.setCurrentPage(p0),
+                  },
+                  onDone: () => {vm.getUserData(formKey)},
+                  steps: _buildSteps(context, ref),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
 
   List<Widget> _buildSteps(BuildContext context, WidgetRef ref) {
-    return [const PersonalInfoView(), const LoginInfoView()];
+    return [PersonalInfoView(), LoginInfoView()];
   }
 }
 

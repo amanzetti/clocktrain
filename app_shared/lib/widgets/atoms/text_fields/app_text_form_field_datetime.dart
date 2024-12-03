@@ -43,7 +43,7 @@ class _AppTextFormFieldDatetimeState extends State<AppTextFormFieldDatetime> {
 
   @override
   Widget build(BuildContext context) {
-    return AppTextFormFiled(
+    return AppTextFormField(
       controller: widget.controller,
       enabled: widget.enabled,
       padding: widget.padding,
@@ -61,7 +61,7 @@ class _AppTextFormFieldDatetimeState extends State<AppTextFormFieldDatetime> {
       onSaved: widget.onSaved,
       validator: widget.validator,
       labelText: widget.labelText,
-      initialValue: (birthDate != null) ? birthDate!.toddMMMyyyyString() : '',
+      // initialValue: (birthDate != null) ? birthDate!.toddMMMyyyyString() : '',
     );
   }
 

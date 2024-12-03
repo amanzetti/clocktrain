@@ -7,7 +7,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class LoginInfoView extends ConsumerWidget {
-  const LoginInfoView({super.key});
+  LoginInfoView({
+    super.key,
+  });
+
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -15,26 +19,29 @@ class LoginInfoView extends ConsumerWidget {
     final email = ref.watch(_emailProvider);
     final password = ref.watch(_passwordProvider);
     final confirmPassword = ref.watch(_confirmPasswordProvider);
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        // const VerticalMediumSpacer(),
-        AppTextFormFiled(
-          labelText: context.loc.email.capitalize(),
-          initialValue: email,
-        ),
-        // const VerticalMediumSpacer(),
-        AppTextFormFiled(
-          labelText: context.loc.password.capitalize(),
-          initialValue: password,
-        ),
-        // const VerticalMediumSpacer(),
-        AppTextFormFiled(
-          labelText: context.loc.confirmPassword.capitalize(),
-          initialValue: confirmPassword,
-        ),
-        // const VerticalMediumSpacer(),
-      ],
+    return Form(
+      key: formKey,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          // const VerticalMediumSpacer(),
+          AppTextFormField(
+            labelText: context.loc.email.capitalize(),
+            initialValue: email,
+          ),
+          // const VerticalMediumSpacer(),
+          AppTextFormField(
+            labelText: context.loc.password.capitalize(),
+            initialValue: password,
+          ),
+          // const VerticalMediumSpacer(),
+          AppTextFormField(
+            labelText: context.loc.confirmPassword.capitalize(),
+            initialValue: confirmPassword,
+          ),
+          // const VerticalMediumSpacer(),
+        ],
+      ),
     );
   }
 }

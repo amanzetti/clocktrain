@@ -91,14 +91,14 @@ class LoginView extends ConsumerWidget {
                   style: context.textTheme.titleLarge,
                 ),
                 const VerticalMediumSpacer(),
-                AppTextFormFiled(
+                AppTextFormField(
                   labelText: context.loc.email,
                   initialValue: email,
                   onSaved: (email) => vm.saveEmail(email),
                   validator: (p0) => _validator(context, p0),
                 ),
                 const VerticalMediumSpacer(),
-                AppTextFormFiled(
+                AppTextFormField(
                   labelText: context.loc.password,
                   initialValue: password,
                   onSaved: (p0) => vm.savePassword(p0),

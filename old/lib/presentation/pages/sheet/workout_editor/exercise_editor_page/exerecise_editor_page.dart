@@ -73,7 +73,7 @@ class _ExerciseEditorPage extends ConsumerWidget {
               const SpacerSizedBox(
                   spacerType: SpacerType.vertical,
                   spacerSize: SpacerSize.medium),
-              AppTextFormFiled(
+              AppTextFormField(
                 initialValue: name,
                 onSaved: (p0) => vm.saveExerciseName(p0),
                 validator: (p0) => _validator(context, p0),
@@ -81,7 +81,7 @@ class _ExerciseEditorPage extends ConsumerWidget {
               const SpacerSizedBox(
                   spacerType: SpacerType.vertical,
                   spacerSize: SpacerSize.medium),
-              AppTextFormFiled(
+              AppTextFormField(
                 initialValue: description,
                 onSaved: (p0) => vm.saveExerciseDescription(p0),
                 validator: (p0) => _validator(context, p0),
@@ -89,7 +89,7 @@ class _ExerciseEditorPage extends ConsumerWidget {
               const SpacerSizedBox(
                   spacerType: SpacerType.vertical,
                   spacerSize: SpacerSize.medium),
-              AppTextFormFiled(
+              AppTextFormField(
                 initialValue: difficultyLevel,
                 onSaved: (p0) => vm.saveExerciseDifficultyLevel(p0),
                 validator: (p0) => _validator(context, p0),
