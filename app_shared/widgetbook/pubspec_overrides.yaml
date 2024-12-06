@@ -1,8 +1,0 @@
-# melos_managed_dependency_overrides: app_data,app_feature_login,app_shared
-dependency_overrides:
-  app_data:
-    path: ../../app_data
-  app_feature_login:
-    path: ../../app_features/app_feature_login
-  app_shared:
-    path: ..

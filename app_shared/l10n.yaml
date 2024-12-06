@@ -1,7 +1,0 @@
-arb-dir: lib/config/l10n
-output-dir: lib/config/l10n/generated
-synthetic-package: false
-template-arb-file: app_it.arb
-output-localization-file: app_localizations.dart
-nullable-getter: false
-preferred-supported-locales: [it]

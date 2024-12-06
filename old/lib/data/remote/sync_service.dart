@@ -1,1 +1,0 @@
-///TODO: Logica di sincronizzazione locale/remoto
