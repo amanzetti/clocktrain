@@ -1,0 +1,58 @@
+name: app_main
+description: "Module to manage entrypoint of the app"
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  #Path Provider
+  path_provider: ^2.1.5 
+
+  # State management
+  flutter_riverpod: ^2.6.1 
+  
+  # Code generation and annotations
+  freezed_annotation: ^2.4.4 
+  
+  # JSON serialization
+  json_annotation: ^4.9.0 
+  
+  #Funtional programming
+  dartz: ^0.10.1
+  
+  # Routing and navigation
+  go_router: ^14.6.1
+  
+  # Local Db
+  realm: ^20.0.0
+
+  app_shared:
+    path: ../app_shared
+
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+  # Riverpod
+  riverpod_lint: ^2.6.3 
+  # Json serialization
+  json_serializable: ^6.8.0 
+  # Freezed
+  freezed: ^2.5.7 
+  # Code generation
+  build_runner: ^2.4.13 
+
+  flutter_flavorizr: ^2.2.3
+
+
+flutter:
+  uses-material-design: true

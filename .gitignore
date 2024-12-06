@@ -1,0 +1,49 @@
+# Dart specific
+.dart_tool/
+.packages
+.pub/
+
+# Generated files
+*.g.dart
+*.freezed.dart
+
+# Build outputs
+build/
+out/
+
+# iOS specific
+ios/Pods/
+ios/.symlinks/
+ios/Podfile.lock
+ios/Flutter/App.framework
+*.ipa
+
+# macOS specific
+macos/Flutter/ephemeral/
+
+# Android specific
+.android/
+*.apk
+*.aar
+/output.json
+
+# Windows specific
+windows/flutter/ephemeral/
+
+# Linux specific
+linux/flutter/ephemeral/
+
+# Logs and temporary files
+*.log
+.DS_Store
+*.swp
+
+# Editor specific files
+.idea/
+*.iml
+.vscode/
+*.sublime-workspace
+
+# FVM Version Cache
+.fvm/
+.fvmrc

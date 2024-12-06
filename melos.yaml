@@ -1,0 +1,81 @@
+name: clocktrain
+
+sdkPath: .fvm/flutter_sdk
+
+packages:
+  - app_main
+  - app_shared
+  - app_data
+  - app_features/app_feature_login
+  - app_shared/widgetbook
+
+command:
+  bootstrap:
+    environment:
+      sdk: '>=3.0.0 <4.0.0'
+
+    dependencies:
+      flutter:
+        sdk: flutter
+      #UI
+      flutter_svg: ^2.0.16
+
+      #Path Provider
+      path_provider: ^2.1.5
+
+      # State management
+      flutter_riverpod: ^2.6.1 # Integration with Flubretter
+      
+      # Code generation and annotations
+      freezed_annotation: ^2.4.4
+      
+      # JSON serialization
+      json_annotation: ^4.9.0 # Annotations for JSON serialization
+      
+      #Funtional programming
+      dartz: ^0.10.1
+      
+      # Routing and navigation
+      go_router: ^14.6.1
+
+    dev_dependencies:
+      flutter_test:
+        sdk: flutter
+      flutter_lints: ^4.0.0
+      
+      # Riverpod
+      riverpod_lint: ^2.6.3
+      # Json serialization
+      json_serializable: ^6.8.0
+      # Freezed
+      freezed: ^2.5.7
+      # Code generation
+      build_runner: ^2.4.13
+    
+    flutter:
+      generate: true
+      # assets:
+      #   - assets/ # General assets folder
+      #   - assets/sounds/ # Folder for sound files
+      #   - assets/icon/ # Folder for app icons
+      #   - assets/mock/ # Folder for mock data
+
+scripts:
+  
+  add-local_db-pub:
+    run: melos exec --scope="app_feature_login|app_data" -- "flutter pub add realm@20.0.0"
+  
+  analyze:
+    exec: dart analyze
+
+  get:
+    run: melos exec -c 1  -- "flutter pub get"
+
+  clean:
+     run: melos exec -c 1  -- "flutter clean"
+
+  br_feature_login:
+    run: melos exec --scope="app_feature_login" -- "dart run build_runner build --delete-conflicting-outputs"
+  
+  br_shared:
+    run: melos exec --scope="app_shared" -- "dart run build_runner build --delete-conflicting-outputs"
