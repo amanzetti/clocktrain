@@ -10,6 +10,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  
+  #UI
+  flutter_svg: ^2.0.16
 
   #Path Provider
   path_provider: ^2.1.5 

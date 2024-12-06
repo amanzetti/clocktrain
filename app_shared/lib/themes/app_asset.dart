@@ -12,6 +12,37 @@ class AppAsset {
   // Singleton
   static final AppAsset _instance = AppAsset._internal();
 
+  static const String errorIcon = 'assets/icon/x-octagon.svg';
+  static const String warningIcon = 'assets/icon/alert-triangle.svg';
+  static const String arrowBackIcon = 'assets/icon/chevron-left.svg';
+  static const String arrowNextIcon = 'assets/icon/chevron-right.svg';
+  static const String editIcon = 'assets/icon/edit-3.svg';
+  static const String uneditIcon = 'assets/icon/x-circle.svg';
+  static const String deleteIcon = 'assets/icon/trash-2.svg';
+  static const String favoriteIcon = 'assets/icon/heart.svg';
+  static const String unfavoriteIcon = 'assets/icon/heart.svg';
+  static const String saveIcon = 'assets/icon/save.svg';
+  static const String signInIcon = 'assets/icon/log-in.svg';
+  static const String signOutIcon = 'assets/icon/log-out.svg';
+  static const String dayIcon = 'assets/icon/sunrise.svg';
+  static const String noonIcon = 'assets/icon/sun.svg';
+  static const String eveningIcon = 'assets/icon/sunset.svg';
+  static const String nightIcon = 'assets/icon/moon.svg';
+  static const String cancelIcon = 'assets/icon/x.svg';
+  static const String accountIcon = 'assets/icon/user.svg';
+  static const String settingsIcon = 'assets/icon/settings.svg';
+  static const String toolsIcon = 'assets/icon/tool.svg';
+  static const String homeIcon = 'assets/icon/home.svg';
+  static const String sheetIcon = 'assets/icon/clipboard.svg';
+  static const String playIcon = 'assets/icon/play.svg';
+  static const String pauseIcon = 'assets/icon/pause.svg';
+  static const String clockIcon = 'assets/icon/clock.svg';
+  static const String calendarIcon = 'assets/icon/calendar.svg';
+  static const String addIcon = 'assets/icon/plus.svg';
+  static const String notificationIcon = 'assets/icon/bell.svg';
+  static const String fullscreenIcon = 'assets/icon/maximize.svg';
+  static const String reduceIcon = 'assets/icon/minimize.svg';
+
   // Funzione per ottenere l'icona SVG con il filtro del colore
   Widget getSvgWithColorFilter(BuildContext context, String assetPath,
       {Size size = const Size(24, 24), String? package}) {

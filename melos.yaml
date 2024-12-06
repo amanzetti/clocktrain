@@ -17,6 +17,9 @@ command:
     dependencies:
       flutter:
         sdk: flutter
+      #UI
+      flutter_svg: ^2.0.16
+
       #Path Provider
       path_provider: ^2.1.5
 
@@ -48,6 +51,12 @@ command:
       freezed: ^2.5.7
       # Code generation
       build_runner: ^2.4.13
+    
+    assets:
+      - app_shared/assets/ # General assets folder
+      - app_shared/assets/sounds/ # Folder for sound files
+      - app_shared/assets/icon/ # Folder for app icons
+      - app_shared/assets/mock/ # Folder for mock data
     
     flutter:
       generate: true

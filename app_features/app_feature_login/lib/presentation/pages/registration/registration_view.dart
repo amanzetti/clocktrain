@@ -1,16 +1,13 @@
+import 'package:flutter/material.dart';
+
+import 'package:app_shared/app_shared.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:app_feature_login/presentation/pages/registration/registration_state.dart';
 import 'package:app_feature_login/presentation/pages/registration/registration_vm.dart';
 import 'package:app_feature_login/presentation/pages/registration/steps/login_info_view.dart';
 import 'package:app_feature_login/presentation/pages/registration/steps/personal_info_view.dart';
-import 'package:app_shared/utils/ext/build_context_ext.dart';
-import 'package:app_shared/utils/ext/edge_insets_ext.dart';
-import 'package:app_shared/widgets/atoms/utils_ui/spacer_sized_box.dart';
-import 'package:app_shared/widgets/organisms/app_stepper.dart';
-import 'package:app_shared/widgets/organisms/app_header.dart';
-import 'package:app_shared/widgets/atoms/cards/app_card.dart';
-import 'package:app_shared/widgets/molecules/progression_bar/step_traker.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class RegistrationView extends ConsumerWidget {
   RegistrationView({super.key});
@@ -38,7 +35,10 @@ class RegistrationView extends ConsumerWidget {
                   children: [
                     ///HEADER
                     AppHeader(
-                        leftIcon: context.asset.arrowBackSvg(context),
+                        leftIcon: SvgWidget(path: AppAsset.arrowBackIcon),
+
+                        // context.asset
+                        //     .arrowBackSvg(context, package: 'app_shared'),
                         title: 'Registration',
                         onTap: () => {vm.goBack(context)}),
                     Text('Create an Account',
