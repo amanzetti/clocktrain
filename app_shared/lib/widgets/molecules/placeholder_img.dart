@@ -32,7 +32,7 @@ class PlaceholderImg extends StatelessWidget {
         ),
         child: Center(
             child: Text(
-          "IMG",
+          'IMG',
           style: context.textTheme.headlineMedium,
         )),
       ),

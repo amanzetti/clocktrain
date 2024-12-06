@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 
 class StepTraker extends StatelessWidget {
   const StepTraker(
-      {super.key,
-      required this.currentStep,
+      {required this.currentStep,
       required this.totalSteps,
+      super.key,
       this.currentStepColor,
       this.completedStepColor,
       this.uncompletedStepColor});

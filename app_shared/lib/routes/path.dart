@@ -1,9 +1,8 @@
 class AppPath {
-  static final AppPath _instance = AppPath._internal();
-
   AppPath._internal();
 
   factory AppPath() => _instance;
+  static final AppPath _instance = AppPath._internal();
 
   static const String rootPage = '/';
 

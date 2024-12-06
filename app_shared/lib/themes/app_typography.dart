@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTypography {
-  static final AppTypography _instance = AppTypography._internal();
   factory AppTypography() => _instance;
   AppTypography._internal();
+  static final AppTypography _instance = AppTypography._internal();
 
   /// Display large text style, used for large headers or titles on big screens.
   static final TextStyle displayLarge = GoogleFonts.poppins(

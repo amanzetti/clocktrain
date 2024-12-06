@@ -3,16 +3,15 @@ import 'package:app_shared/widgets/atoms/skeleton/base_skeleton.dart';
 import 'package:flutter/material.dart';
 
 class WidgetLoadingSkeleton<T> extends StatelessWidget {
+  const WidgetLoadingSkeleton({
+    required this.value,
+    required this.childBody,
+    super.key,
+    this.childSkeleton,
+  });
   final Widget? childSkeleton;
   final Widget childBody;
   final T? value;
-
-  const WidgetLoadingSkeleton({
-    super.key,
-    required this.value,
-    required this.childBody,
-    this.childSkeleton,
-  });
 
   @override
   Widget build(BuildContext context) {

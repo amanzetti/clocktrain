@@ -2,11 +2,10 @@ import 'package:app_feature_login/presentation/routes/app_routes.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRouter {
-  static final AppRouter _instance = AppRouter._internal();
-
   AppRouter._internal();
 
   factory AppRouter() => _instance;
+  static final AppRouter _instance = AppRouter._internal();
 
   // static final GlobalKey<NavigatorState> rootNavigatorKey =
   //     GlobalKey<NavigatorState>();

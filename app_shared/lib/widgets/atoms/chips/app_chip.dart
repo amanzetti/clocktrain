@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 
 class AppChip extends StatelessWidget {
   const AppChip(
-      {super.key,
-      required this.label,
+      {required this.label,
+      super.key,
       this.onDeleteIcon,
       this.onDeleteTap,
       this.padding});

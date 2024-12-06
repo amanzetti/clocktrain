@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
 class BaseSkeleton extends StatelessWidget {
-  final double width;
-  final double height;
-
   const BaseSkeleton(
       {super.key, this.width = double.infinity, this.height = double.infinity});
+  final double width;
+  final double height;
 
   @override
   Widget build(BuildContext context) {

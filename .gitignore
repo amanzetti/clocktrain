@@ -43,3 +43,6 @@ linux/flutter/ephemeral/
 *.iml
 .vscode/
 *.sublime-workspace
+
+# FVM Version Cache
+.fvm/

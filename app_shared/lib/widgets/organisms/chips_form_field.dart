@@ -7,10 +7,9 @@ import 'package:app_shared/utils/ext/edge_insets_ext.dart';
 import 'package:flutter/material.dart';
 
 class ChipData {
+  ChipData({required this.label, this.onDelete});
   final String label;
   final void Function()? onDelete;
-
-  ChipData({required this.label, this.onDelete});
 }
 
 class ChipsFormField extends StatelessWidget {

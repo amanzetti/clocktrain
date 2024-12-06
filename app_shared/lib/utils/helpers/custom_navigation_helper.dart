@@ -1,8 +1,4 @@
 class CustomNavigationHelper {
-  static final CustomNavigationHelper _instance =
-      CustomNavigationHelper._internal();
-
-  static CustomNavigationHelper get instance => _instance;
   factory CustomNavigationHelper() {
     return _instance;
   }
@@ -10,4 +6,8 @@ class CustomNavigationHelper {
   CustomNavigationHelper._internal() {
     // Router initialization happens here.
   }
+  static final CustomNavigationHelper _instance =
+      CustomNavigationHelper._internal();
+
+  static CustomNavigationHelper get instance => _instance;
 }

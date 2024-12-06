@@ -4,13 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class HeaderWithCloseButton extends StatelessWidget {
+  const HeaderWithCloseButton(
+      {super.key, this.title, this.color, this.onTap, this.height});
   final String? title;
   final Color? color;
   final void Function()? onTap;
   final double? height;
-
-  const HeaderWithCloseButton(
-      {super.key, this.title, this.color, this.onTap, this.height});
 
   @override
   Widget build(BuildContext context) {

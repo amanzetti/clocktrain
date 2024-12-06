@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 class TitleAndCard extends StatelessWidget {
   const TitleAndCard(
-      {super.key,
-      required this.title,
+      {required this.title,
+      super.key,
       this.childCard,
       this.paddingCard,
       this.heightCard,

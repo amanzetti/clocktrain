@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static final AppColors _instance = AppColors._internal();
   factory AppColors() => _instance;
   AppColors._internal();
+  static final AppColors _instance = AppColors._internal();
 
   // Light Mode Colors
   static const Color primaryLight =
@@ -112,7 +112,7 @@ class AppColors {
   }
 
   static ColorScheme lightColorSchemeFromSeed() {
-    final seedColor = Color(0xFFA3D9A5);
+    const seedColor = Color(0xFFA3D9A5);
     return ColorScheme.fromSeed(seedColor: seedColor);
   }
 

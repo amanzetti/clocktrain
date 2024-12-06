@@ -2,7 +2,7 @@ import 'package:intl/intl.dart';
 
 extension StringExt on String {
   String capitalize() {
-    return "${this[0].toUpperCase()}${this.substring(1).toLowerCase()}";
+    return "${this[0].toUpperCase()}${substring(1).toLowerCase()}";
   }
 }
 
@@ -11,7 +11,7 @@ extension StringToDateTime on String {
     try {
       return DateFormat('dd - MMM - yyyy').parse(this);
     } catch (e) {
-      return null; 
+      return null;
     }
   }
 }

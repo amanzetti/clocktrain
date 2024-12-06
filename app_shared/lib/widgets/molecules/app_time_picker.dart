@@ -11,7 +11,7 @@ Future<void> showCupertinoTimerPicker(
 ) async {
   await showModalBottomSheet(
     context: context,
-    builder: (BuildContext context) {
+    builder: (context) {
       return SizedBox(
           height: context.mq.size.height / 2,
           child: IOSMinuteSecondPickerField(
@@ -24,9 +24,9 @@ Future<void> showCupertinoTimerPicker(
 
 class IOSMinuteSecondPickerField extends StatefulWidget {
   const IOSMinuteSecondPickerField({
-    super.key,
     required this.controller,
     required this.timePickerType,
+    super.key,
   });
 
   final TextEditingController controller;
@@ -40,7 +40,7 @@ class IOSMinuteSecondPickerField extends StatefulWidget {
 
 class _IOSMinuteSecondPickerFieldState
     extends State<IOSMinuteSecondPickerField> {
-  Duration selectedDuration = const Duration(minutes: 0, seconds: 0);
+  Duration selectedDuration = const Duration();
   int selectedValue = 0;
 
   late final TextEditingController _controller;

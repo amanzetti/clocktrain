@@ -5,13 +5,12 @@ import 'package:app_shared/widgets/atoms/utils_ui/app_container.dart';
 import 'package:flutter/material.dart';
 
 class HeaderWithActionButton extends StatelessWidget {
+  const HeaderWithActionButton(
+      {super.key, this.title, this.color, this.onTap, this.height});
   final String? title;
   final Color? color;
   final void Function()? onTap;
   final double? height;
-
-  const HeaderWithActionButton(
-      {super.key, this.title, this.color, this.onTap, this.height});
 
   @override
   Widget build(BuildContext context) {
