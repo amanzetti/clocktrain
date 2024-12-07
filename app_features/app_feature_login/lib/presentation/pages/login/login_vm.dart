@@ -29,12 +29,11 @@ class LoginVm extends AutoDisposeNotifier<LoginState> {
     LoginUseCase(ref.authRepository)
         .call(state.email ?? '', state.password ?? '')
         .foldAsync((l) {
-      LoggerConfig.logger.e('login error');
       state = state.copyWith(isLoading: false);
     }, (r) {
-      LoggerConfig.logger.i('login success');
       state = state.copyWith(isLoading: false);
-      context.go(AppPath.dashboardPage);
+      print('login success');
+      // context.go(AppPath.dashboardPage);
     });
   }
 
@@ -60,7 +59,7 @@ class LoginVm extends AutoDisposeNotifier<LoginState> {
     //   state = state.copyWith(isLoading: false);
     //   context.go(AppPath.dashboardPage);
     // });
-  } 
+  }
 
   void forgotPassword(BuildContext context) {
     // ref.authRepository.forgotPassword(state.email ?? '').foldAsync((l) {
@@ -68,30 +67,6 @@ class LoginVm extends AutoDisposeNotifier<LoginState> {
     // }, (r) {
     //   LoggerConfig.logger.i('forgot password success');
     // });
-  }
-
-  register(BuildContext context) {
-    final user = User(
-      name: 'John Doe',
-      surname: 'Doe',
-      email: 'test@test.com',
-      username: 'testUsername',
-      birthDate: DateTime(1990, 1, 1),
-      height: 1800,
-      weight: 750,
-      avatar: 'https://example.com/avatar.jpg',
-      userType: UserType(id: 1, name: 'ATHLETE'),
-    );
-    state = state.copyWith(isLoading: true);
-    RegisterUseCase(ref.authRepository)
-        .call(user)
-        // .call(state.user)
-        .foldAsync((l) {
-      LoggerConfig.logger.e('register error');
-    }, (r) {
-      LoggerConfig.logger.i('register success');
-      // context.go(AppPaths.dashboardPage);
-    });
   }
 
   void openLoginModal(

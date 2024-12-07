@@ -15,7 +15,7 @@ class User extends _User with RealmEntity, RealmObjectBase, RealmObject {
     String name,
     String surname,
     DateTime birthDate,
-    int weight,
+    double weight,
     int height, {
     String? avatar,
     UserType? userType,
@@ -68,9 +68,9 @@ class User extends _User with RealmEntity, RealmObjectBase, RealmObject {
       RealmObjectBase.set(this, 'birthDate', value);
 
   @override
-  int get weight => RealmObjectBase.get<int>(this, 'weight') as int;
+  double get weight => RealmObjectBase.get<double>(this, 'weight') as double;
   @override
-  set weight(int value) => RealmObjectBase.set(this, 'weight', value);
+  set weight(double value) => RealmObjectBase.set(this, 'weight', value);
 
   @override
   int get height => RealmObjectBase.get<int>(this, 'height') as int;
@@ -155,7 +155,7 @@ class User extends _User with RealmEntity, RealmObjectBase, RealmObject {
       SchemaProperty('name', RealmPropertyType.string),
       SchemaProperty('surname', RealmPropertyType.string),
       SchemaProperty('birthDate', RealmPropertyType.timestamp),
-      SchemaProperty('weight', RealmPropertyType.int),
+      SchemaProperty('weight', RealmPropertyType.double),
       SchemaProperty('height', RealmPropertyType.int),
       SchemaProperty('avatar', RealmPropertyType.string, optional: true),
       SchemaProperty('userType', RealmPropertyType.object,

@@ -8,7 +8,7 @@ class User {
   final String email;
   final DateTime birthDate;
   final int height;
-  final int weight;
+  final double weight;
   final String? avatar;
   final UserType userType;
 

@@ -1,3 +1,4 @@
+import 'package:app_shared/utils/const/app_dimensions.dart';
 import 'package:flutter/material.dart';
 
 import 'package:app_shared/app_shared.dart';
@@ -7,7 +8,6 @@ import 'package:app_feature_login/presentation/pages/registration/registration_s
 import 'package:app_feature_login/presentation/pages/registration/registration_vm.dart';
 import 'package:app_feature_login/presentation/pages/registration/steps/login_info_view.dart';
 import 'package:app_feature_login/presentation/pages/registration/steps/personal_info_view.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class RegistrationView extends ConsumerWidget {
   RegistrationView({super.key});
@@ -27,38 +27,10 @@ class RegistrationView extends ConsumerWidget {
           minimum: AppDimesnionsEdgeInsetsExt.smallHorizontal,
           child: Column(
             children: [
-              AppCard(
-                padding: AppDimesnionsEdgeInsetsExt.mediumAll,
-                width: double.infinity,
-                height: 200,
-                child: Column(
-                  children: [
-                    ///HEADER
-                    AppHeader(
-                        leftIcon: SvgWidget(path: AppAsset.arrowBackIcon),
-
-                        // context.asset
-                        //     .arrowBackSvg(context, package: 'app_shared'),
-                        title: 'Registration',
-                        onTap: () => {vm.goBack(context)}),
-                    Text('Create an Account',
-                        style: context.textTheme.headlineMedium),
-                    const VerticalSmallSpacer(),
-
-                    ///BODY
-                    Text(
-                        'Step ${currentPage + 1} of ${_buildSteps(context, ref).length}: ${namesSection[currentPage]}',
-                        style: context.textTheme.titleMedium),
-                    const Spacer(),
-
-                    ///FOOTER
-                    StepTraker(
-                      currentStep: currentPage,
-                      totalSteps: _buildSteps(context, ref).length,
-                    )
-                  ],
-                ),
-              ),
+              _buildHeaderCard(context, ref,
+                  currentPage: currentPage,
+                  namesSection: namesSection,
+                  onTap: () => {vm.goBack(context)}),
               const VerticalSmallSpacer(),
               Expanded(
                 child: AppStepper(
@@ -84,6 +56,45 @@ class RegistrationView extends ConsumerWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildHeaderCard(BuildContext context, WidgetRef ref,
+      {required int currentPage,
+      required List<String> namesSection,
+      required void Function()? onTap}) {
+    return AppCard(
+      padding: AppDimesnionsEdgeInsetsExt.mediumAll,
+      width: double.infinity,
+      // height: 200,
+      child: Wrap(
+        alignment: WrapAlignment.center,
+        runSpacing: AppDimensions.medium,
+        children: [
+          ///HEADER
+          AppHeader(
+              leftIcon: const SvgWidget(path: AppAsset.arrowBackIcon),
+
+              // context.asset
+              //     .arrowBackSvg(context, package: 'app_shared'),
+              title: 'Registration',
+              onTap: onTap),
+          Text('Create an Account', style: context.textTheme.headlineMedium),
+          const VerticalSmallSpacer(),
+
+          ///BODY
+          Text(
+              'Step ${currentPage + 1} of ${_buildSteps(context, ref).length}: ${namesSection[currentPage]}',
+              style: context.textTheme.titleMedium),
+          const Spacer(),
+
+          ///FOOTER
+          StepTraker(
+            currentStep: currentPage,
+            totalSteps: _buildSteps(context, ref).length,
+          )
+        ],
       ),
     );
   }

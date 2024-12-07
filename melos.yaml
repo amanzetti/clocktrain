@@ -74,6 +74,9 @@ scripts:
   clean:
      run: melos exec -c 1  -- "flutter clean"
 
+  br_data:
+    run: melos exec --scope="app_data" -- "dart run build_runner build --delete-conflicting-outputs"
+  
   br_feature_login:
     run: melos exec --scope="app_feature_login" -- "dart run build_runner build --delete-conflicting-outputs"
   

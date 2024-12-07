@@ -76,6 +76,7 @@ class _AppStepperState extends State<AppStepper> {
           child: AppCard(
             padding: AppDimesnionsEdgeInsetsExt.mediumAll,
             child: PageView(
+              physics: const NeverScrollableScrollPhysics(),
               controller: _pageController,
               onPageChanged: (page) {
                 setState(() {

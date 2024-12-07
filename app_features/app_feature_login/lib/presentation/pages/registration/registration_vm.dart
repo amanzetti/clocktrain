@@ -1,5 +1,8 @@
+import 'package:app_feature_login/data/di/di_repositories.dart';
+import 'package:app_feature_login/domain/enities/user_entity.dart';
+import 'package:app_feature_login/domain/enities/user_type_entity.dart';
+import 'package:app_feature_login/domain/use_case/register_use_case.dart';
 import 'package:app_feature_login/presentation/pages/registration/registration_state.dart';
-import 'package:app_shared/widgets/molecules/app_time_picker.dart';
 import 'package:app_shared/widgets/molecules/picker/picker_wight.dart';
 import 'package:app_shared/widgets/molecules/picker/date_time_picker.dart';
 import 'package:app_shared/widgets/molecules/picker/height_picker.dart';
@@ -28,7 +31,7 @@ class RegistrationVm extends AutoDisposeNotifier<RegistrationState> {
 
   void setBirthDate(DateTime? birthDate) {
     state = state.copyWith(birthDate: birthDate);
-    if(birthDate == null) return;
+    if (birthDate == null) return;
     final int age = DateTime.now().year - birthDate.year;
     setAge(age);
   }
@@ -58,10 +61,11 @@ class RegistrationVm extends AutoDisposeNotifier<RegistrationState> {
     state = state.copyWith(confirmPassword: confirmPassword);
   }
 
-  void getUserData(GlobalKey<FormState> formKey) {
+  void getUserData(GlobalKey<FormState> formKey) async {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
     }
+
     print('Name: ${state.name}');
     print('Surname: ${state.surname}');
     print('BirthDate: ${state.birthDate}');
@@ -71,7 +75,26 @@ class RegistrationVm extends AutoDisposeNotifier<RegistrationState> {
     print('email: ${state.email}');
     print('password: ${state.password}');
 
-    
+    if (state.name == null ||
+        state.surname == null ||
+        state.birthDate == null ||
+        state.weight == null ||
+        state.height == null ||
+        state.age == null ||
+        state.email == null ||
+        state.password == null) {
+      return;
+    } else {
+      await RegisterUseCase(ref.read(authRepositoryProvider)).call(User(
+          name: state.name!,
+          surname: state.surname!,
+          username: '',
+          email: state.email,
+          birthDate: state.birthDate!,
+          height: state.height!,
+          weight: state.weight!,
+          userType: UserType(id: 1, name: 'ATHLETE')));
+    }
   }
 
   void showWeightPicker(BuildContext context,
@@ -140,10 +163,10 @@ class RegistrationVm extends AutoDisposeNotifier<RegistrationState> {
 
   ///Validator
   String? validateName(String? p0) {
-     if (p0 == null || p0.isEmpty) {
-    return 'Name cannot be empty';
-  }
-  return null;
+    if (p0 == null || p0.isEmpty) {
+      return 'Name cannot be empty';
+    }
+    return null;
   }
 
   String? validateSurname(String? p0) {
@@ -192,6 +215,9 @@ class RegistrationVm extends AutoDisposeNotifier<RegistrationState> {
     if (p0 == null || p0.isEmpty) {
       return 'Password cannot be empty';
     }
+    // else if (state.password != state.confirmPassword) {
+    //   return 'Password and confirm password must be the same';
+    // }
     return null;
   }
 
@@ -199,8 +225,9 @@ class RegistrationVm extends AutoDisposeNotifier<RegistrationState> {
     if (p0 == null || p0.isEmpty) {
       return 'Confirm password cannot be empty';
     }
+    // else if (state.password != state.confirmPassword) {
+    //   return 'Password and confirm password must be the same';
+    // }
     return null;
   }
-
-
 }

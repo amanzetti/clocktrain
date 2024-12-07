@@ -12,9 +12,9 @@ class _User {
   late String name;
   late String surname;
   late DateTime birthDate;
-  late int weight;
+  late double weight;
   late int height;
-  String? avatar;
+  late String? avatar;
   late _UserType? userType;
 }
 

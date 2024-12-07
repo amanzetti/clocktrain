@@ -1,6 +1,4 @@
-import 'package:app_feature_login/presentation/pages/registration/registration_state.dart';
 import 'package:app_feature_login/presentation/pages/registration/registration_view.dart';
-import 'package:app_feature_login/presentation/pages/registration/registration_vm.dart';
 import 'package:app_shared/utils/ext/build_context_ext.dart';
 import 'package:app_shared/utils/ext/string_ext.dart';
 import 'package:app_shared/utils/ext/date_time_ext.dart';
@@ -130,9 +128,6 @@ class PersonalInfoView extends ConsumerWidget {
 }
 
 final _registrationVmProvider = registrationVmProvider;
-// final _registrationVmProvider =
-//     NotifierProvider.autoDispose<RegistrationVm, RegistrationState>(
-//         () => RegistrationVm());
 
 final _nameProvider = StateProvider.autoDispose<String?>(
     (ref) => ref.watch(_registrationVmProvider).name);

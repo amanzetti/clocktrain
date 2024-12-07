@@ -18,11 +18,9 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<Either<CommonError, LoginResp>> login(
       String email, String password) async {
     try {
-      ///TODO
+      ///TODO add check password
       final user = await authLocalDbDatasource.getUserByEmail(email);
-      // final user = await localDbDatasource.getUserById('l');
       return user.fold((error) => left(CommonError.databaseError), (userDto) {
-        // LocalDb().setUser(userDto);
         return right(LoginResp.success);
       });
     } catch (e) {
@@ -34,8 +32,8 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<Either<CommonError, RegistrationResp>> register(User user) async {
     try {
       final user0 = UserDto.fromDomain(user);
-      LoggerConfig.logger.i('user0: $user0');
-      // await localDbDatasource.insertUser(user0);
+      await authLocalDbDatasource.insertUser(user0);
+
       return right(RegistrationResp.success);
     } catch (e) {
       return left(CommonError.unknown);
@@ -69,4 +67,3 @@ class AuthRepositoryImpl implements AuthRepository {
   //   }
   // }
 }
-

@@ -10,9 +10,8 @@ class RegisterUseCase {
 
   RegisterUseCase(this._authRepository);
 
-  Future<Either<CommonError, RegistrationResp>> call(
-      User user) async {
-    return _authRepository
+  Future<Either<CommonError, RegistrationResp>> call(User user) async {
+    return await _authRepository
         .register(user)
         .then<Either<CommonError, RegistrationResp>>(
             (registrationReps) => registrationReps.fold((l) {

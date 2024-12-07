@@ -1,3 +1,4 @@
+import 'package:app_feature_login/domain/enities/user_type_entity.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'registration_state.freezed.dart';
@@ -26,6 +27,8 @@ class RegistrationState with _$RegistrationState {
     @Default(null) double? weight,
     @Default(null) int? height,
     @Default(null) int? age,
+    @Default(null) String? avatar,
+    @Default(null) UserType? userType,
   }) = _RegistrationState;
 
   factory RegistrationState.initial() => const RegistrationState();

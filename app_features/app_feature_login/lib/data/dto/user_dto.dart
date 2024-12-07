@@ -15,13 +15,14 @@ class UserDto with _$UserDto {
     required String name,
     required String surname,
     required DateTime birthDate,
-    required int weight,
+    required double weight,
     required int height,
     String? avatar,
     UserTypeDto? userType,
   }) = _UserDto;
 
-  factory UserDto.fromJson(Map<String, dynamic> json) => _$UserDtoFromJson(json);
+  factory UserDto.fromJson(Map<String, dynamic> json) =>
+      _$UserDtoFromJson(json);
 
   factory UserDto.fromDomain(domain.User user) {
     return UserDto(
