@@ -7,7 +7,7 @@ class WorkoutsView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
-      child: Text('Workouts View'),
+      child: const Text('Workouts View'),
     );
   }
 }

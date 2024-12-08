@@ -1,4 +1,4 @@
-# melos_managed_dependency_overrides: app_data,app_shared,app_feature_workout
+# melos_managed_dependency_overrides: app_data,app_feature_workout,app_shared
 dependency_overrides:
   app_data:
     path: ../../app_data

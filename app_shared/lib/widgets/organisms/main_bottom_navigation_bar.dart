@@ -1,6 +1,4 @@
 import 'package:app_shared/app_shared.dart';
-import 'package:app_shared/themes/app_asset.dart';
-import 'package:app_shared/utils/ext/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -30,9 +28,10 @@ class _MainBottomNavBarState extends State<MainBottomNavBar> {
       unselectedItemColor: context.colorScheme.secondary,
       onTap: onItemTapped,
       items: [
-        const BottomNavigationBarItem(
+        BottomNavigationBarItem(
           // icon: AppAsset().homeSvg(context),
-          icon: SvgWidget(path: AppAsset.homeIcon, width: 24, height: 24),
+          icon: SvgWidget(
+              path: SharedAssets.icons.home.path, width: 24, height: 24),
           label: 'Home',
         ),
         BottomNavigationBarItem(

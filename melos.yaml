@@ -56,14 +56,11 @@ command:
       freezed: ^2.5.7
       # Code generation
       build_runner: ^2.4.13
+      # Flutter Gen
+      flutter_gen_runner: ^5.8.0
     
-    flutter:
-      generate: true
-      # assets:
-      #   - assets/ # General assets folder
-      #   - assets/sounds/ # Folder for sound files
-      #   - assets/icon/ # Folder for app icons
-      #   - assets/mock/ # Folder for mock data
+    # flutter:
+    #   generate: true
 
 scripts:
   

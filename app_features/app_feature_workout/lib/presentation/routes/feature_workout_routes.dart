@@ -10,7 +10,7 @@ class FeatureWorkoutRoutes {
       GoRoute(
         name: FeatureWorkoutPaths.workouts,
         path: FeatureWorkoutPaths.workouts,
-        builder: (context, state) => WorkoutsView(),
+        builder: (context, state) => const WorkoutsView(),
       ),
     ];
   }

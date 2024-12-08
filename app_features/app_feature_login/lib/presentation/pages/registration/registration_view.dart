@@ -74,8 +74,8 @@ class RegistrationView extends ConsumerWidget {
         children: [
           ///HEADER
           AppHeader(
-              leftIcon: const SvgWidget(
-                path: AppAsset.arrowBackIcon,
+              leftIcon: SvgWidget(
+                path: SharedAssets.icons.chevronLeft.path,
               ),
 
               // context.asset

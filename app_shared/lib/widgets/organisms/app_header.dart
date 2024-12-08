@@ -30,7 +30,6 @@ class AppHeader extends StatelessWidget {
               children: [
                 AppButton(
                   style: AppButtonStyle.icon,
-                  backgroundColor: Colors.green,
                   onPressed: onTap,
                   child: leftIcon,
                 ),

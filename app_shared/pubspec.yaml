@@ -60,12 +60,28 @@ dev_dependencies:
   freezed: ^2.5.7 
   # Code generation
   build_runner: ^2.4.13 
+  # Flutter Gen
+  flutter_gen_runner: ^5.8.0
 
-assets:
-  - assets/ # General assets folder
-  - assets/sounds/ # Folder for sound files
-  - assets/icon/ # Folder for app icons
-  - assets/icon/chevron-left.svg
+flutter_gen:
+  output: lib/gen/
+  line_length: 80
+
+  # Optional
+  integrations:
+    flutter_svg: true
+
+  assets:
+    enabled: true
+    outputs:
+      package_parameter_enabled: true
+      class_name: SharedAssets
+
+flutter:
+  assets:
+    - assets/ # General assets folder
+    - assets/icons/ # Folder for app icons
+    - assets/sounds/ # Folder for sound files
 
 scripts: 
   br_login: ./build_runner.sh localDb

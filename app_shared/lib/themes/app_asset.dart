@@ -1,4 +1,5 @@
 import 'package:app_shared/config/logger_config.dart';
+import 'package:app_shared/gen/assets.gen.dart';
 import 'package:app_shared/utils/ext/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -13,36 +14,36 @@ class AppAsset {
   // Singleton
   static final AppAsset _instance = AppAsset._internal();
 
-  static const String errorIcon = 'assets/icon/x-octagon.svg';
-  static const String warningIcon = 'assets/icon/alert-triangle.svg';
-  static const String arrowBackIcon = 'assets/icon/chevron-left.svg';
-  static const String arrowNextIcon = 'assets/icon/chevron-right.svg';
-  static const String editIcon = 'assets/icon/edit-3.svg';
-  static const String uneditIcon = 'assets/icon/x-circle.svg';
-  static const String deleteIcon = 'assets/icon/trash-2.svg';
-  static const String favoriteIcon = 'assets/icon/heart.svg';
-  static const String unfavoriteIcon = 'assets/icon/heart.svg';
-  static const String saveIcon = 'assets/icon/save.svg';
-  static const String signInIcon = 'assets/icon/log-in.svg';
-  static const String signOutIcon = 'assets/icon/log-out.svg';
-  static const String dayIcon = 'assets/icon/sunrise.svg';
-  static const String noonIcon = 'assets/icon/sun.svg';
-  static const String eveningIcon = 'assets/icon/sunset.svg';
-  static const String nightIcon = 'assets/icon/moon.svg';
-  static const String cancelIcon = 'assets/icon/x.svg';
-  static const String accountIcon = 'assets/icon/user.svg';
-  static const String settingsIcon = 'assets/icon/settings.svg';
-  static const String toolsIcon = 'assets/icon/tool.svg';
-  static const String homeIcon = 'assets/icon/home.svg';
-  static const String sheetIcon = 'assets/icon/clipboard.svg';
-  static const String playIcon = 'assets/icon/play.svg';
-  static const String pauseIcon = 'assets/icon/pause.svg';
-  static const String clockIcon = 'assets/icon/clock.svg';
-  static const String calendarIcon = 'assets/icon/calendar.svg';
-  static const String addIcon = 'assets/icon/plus.svg';
-  static const String notificationIcon = 'assets/icon/bell.svg';
-  static const String fullscreenIcon = 'assets/icon/maximize.svg';
-  static const String reduceIcon = 'assets/icon/minimize.svg';
+  static String errorIcon = SharedAssets.icons.xOctagon.path;
+  static String warningIcon = SharedAssets.icons.alertTriangle.path;
+  static String arrowBackIcon = SharedAssets.icons.chevronLeft.path;
+  static String arrowNextIcon = SharedAssets.icons.chevronRight.path;
+  static String editIcon = 'assets/icons/edit-3.svg';
+  static String uneditIcon = 'assets/icons/x-circle.svg';
+  static String deleteIcon = 'assets/icons/trash-2.svg';
+  static String favoriteIcon = 'assets/icons/heart.svg';
+  static String unfavoriteIcon = 'assets/icons/heart.svg';
+  static String saveIcon = 'assets/icons/save.svg';
+  static String signInIcon = 'assets/icons/log-in.svg';
+  static String signOutIcon = 'assets/icons/log-out.svg';
+  static String dayIcon = 'assets/icons/sunrise.svg';
+  static String noonIcon = 'assets/icons/sun.svg';
+  static String eveningIcon = 'assets/icons/sunset.svg';
+  static String nightIcon = 'assets/icons/moon.svg';
+  static String cancelIcon = 'assets/icons/x.svg';
+  static String accountIcon = 'assets/icons/user.svg';
+  static String settingsIcon = 'assets/icons/settings.svg';
+  static String toolsIcon = 'assets/icons/tool.svg';
+  static String homeIcon = 'assets/icons/home.svg';
+  static String sheetIcon = 'assets/icons/clipboard.svg';
+  static String playIcon = 'assets/icons/play.svg';
+  static String pauseIcon = 'assets/icons/pause.svg';
+  static String clockIcon = 'assets/icons/clock.svg';
+  static String calendarIcon = 'assets/icons/calendar.svg';
+  static String addIcon = 'assets/icons/plus.svg';
+  static String notificationIcon = 'assets/icons/bell.svg';
+  static String fullscreenIcon = 'assets/icons/maximize.svg';
+  static String reduceIcon = 'assets/icons/minimize.svg';
 
   // Funzione per ottenere l'icona SVG con il filtro del colore
   Widget getSvgWithColorFilter(BuildContext context, String assetPath,
@@ -67,124 +68,124 @@ class AppAsset {
           {Size size = const Size(24, 24), String? package}) =>
       getSvgWithColorFilter(
         context,
-        'assets/icon/x-octagon.svg',
+        'assets/icons/x-octagon.svg',
         size: size,
         package: package,
       );
   Widget warningSvg(BuildContext context,
           {Size size = const Size(24, 24), String? package}) =>
-      getSvgWithColorFilter(context, 'assets/icon/alert-triangle.svg',
+      getSvgWithColorFilter(context, 'assets/icons/alert-triangle.svg',
           size: size, package: package);
   Widget arrowBackSvg(BuildContext context,
           {Size size = const Size(24, 24), String? package}) =>
-      getSvgWithColorFilter(context, 'assets/icon/chevron-left.svg',
+      getSvgWithColorFilter(context, 'assets/icons/chevron-left.svg',
           size: size, package: package);
   Widget arrowNextSvg(BuildContext context,
           {Size size = const Size(24, 24), String? package}) =>
-      getSvgWithColorFilter(context, 'assets/icon/chevron-right.svg',
+      getSvgWithColorFilter(context, 'assets/icons/chevron-right.svg',
           size: size, package: package);
   Widget editSvg(BuildContext context,
           {Size size = const Size(24, 24), String? package}) =>
-      getSvgWithColorFilter(context, 'assets/icon/edit-3.svg',
+      getSvgWithColorFilter(context, 'assets/icons/edit-3.svg',
           size: size, package: package);
   Widget uneditSvg(BuildContext context,
           {Size size = const Size(24, 24), String? package}) =>
-      getSvgWithColorFilter(context, 'assets/icon/x-circle.svg',
+      getSvgWithColorFilter(context, 'assets/icons/x-circle.svg',
           size: size, package: package);
   Widget deleteSvg(BuildContext context,
           {Size size = const Size(24, 24), String? package}) =>
-      getSvgWithColorFilter(context, 'assets/icon/trash-2.svg',
+      getSvgWithColorFilter(context, 'assets/icons/trash-2.svg',
           size: size, package: package);
   Widget favoriteSvg(BuildContext context,
           {Size size = const Size(24, 24), String? package}) =>
-      getSvgWithColorFilter(context, 'assets/icon/heart.svg',
+      getSvgWithColorFilter(context, 'assets/icons/heart.svg',
           size: size, package: package);
   Widget unfavoriteSvg(BuildContext context,
           {Size size = const Size(24, 24), String? package}) =>
-      getSvgWithColorFilter(context, 'assets/icon/heart.svg',
+      getSvgWithColorFilter(context, 'assets/icons/heart.svg',
           size: size, package: package);
   Widget saveSvg(BuildContext context,
           {Size size = const Size(24, 24), String? package}) =>
-      getSvgWithColorFilter(context, 'assets/icon/save.svg',
+      getSvgWithColorFilter(context, 'assets/icons/save.svg',
           size: size, package: package);
   Widget signInSvg(BuildContext context,
           {Size size = const Size(24, 24), String? package}) =>
-      getSvgWithColorFilter(context, 'assets/icon/log-in.svg',
+      getSvgWithColorFilter(context, 'assets/icons/log-in.svg',
           size: size, package: package);
   Widget signOutSvg(BuildContext context,
           {Size size = const Size(24, 24), String? package}) =>
-      getSvgWithColorFilter(context, 'assets/icon/log-out.svg',
+      getSvgWithColorFilter(context, 'assets/icons/log-out.svg',
           size: size, package: package);
   Widget daySvg(BuildContext context,
           {Size size = const Size(24, 24), String? package}) =>
-      getSvgWithColorFilter(context, 'assets/icon/sunrise.svg',
+      getSvgWithColorFilter(context, 'assets/icons/sunrise.svg',
           size: size, package: package);
   Widget noonSvg(BuildContext context,
           {Size size = const Size(24, 24), String? package}) =>
-      getSvgWithColorFilter(context, 'assets/icon/sun.svg',
+      getSvgWithColorFilter(context, 'assets/icons/sun.svg',
           size: size, package: package);
   Widget eveningSvg(BuildContext context,
           {Size size = const Size(24, 24), String? package}) =>
-      getSvgWithColorFilter(context, 'assets/icon/sunset.svg',
+      getSvgWithColorFilter(context, 'assets/icons/sunset.svg',
           size: size, package: package);
   Widget nightSvg(BuildContext context,
           {Size size = const Size(24, 24), String? package}) =>
-      getSvgWithColorFilter(context, 'assets/icon/moon.svg',
+      getSvgWithColorFilter(context, 'assets/icons/moon.svg',
           size: size, package: package);
   Widget cancelSvg(BuildContext context,
           {Size size = const Size(24, 24), String? package}) =>
-      getSvgWithColorFilter(context, 'assets/icon/x.svg',
+      getSvgWithColorFilter(context, 'assets/icons/x.svg',
           size: size, package: package);
   Widget accountSvg(BuildContext context,
           {Size size = const Size(24, 24), String? package}) =>
-      getSvgWithColorFilter(context, 'assets/icon/user.svg',
+      getSvgWithColorFilter(context, 'assets/icons/user.svg',
           size: size, package: package);
   Widget settingsSvg(BuildContext context,
           {Size size = const Size(24, 24), String? package}) =>
-      getSvgWithColorFilter(context, 'assets/icon/settings.svg',
+      getSvgWithColorFilter(context, 'assets/icons/settings.svg',
           size: size, package: package);
   Widget toolsSvg(BuildContext context,
           {Size size = const Size(24, 24), String? package}) =>
-      getSvgWithColorFilter(context, 'assets/icon/tool.svg',
+      getSvgWithColorFilter(context, 'assets/icons/tool.svg',
           size: size, package: package);
   Widget homeSvg(BuildContext context,
           {Size size = const Size(24, 24), String? package}) =>
-      getSvgWithColorFilter(context, 'assets/icon/home.svg',
+      getSvgWithColorFilter(context, 'assets/icons/home.svg',
           size: size, package: package);
   Widget sheetSvg(BuildContext context,
           {Size size = const Size(24, 24), String? package}) =>
-      getSvgWithColorFilter(context, 'assets/icon/clipboard.svg',
+      getSvgWithColorFilter(context, 'assets/icons/clipboard.svg',
           size: size, package: package);
   Widget playSvg(BuildContext context,
           {Size size = const Size(24, 24), String? package}) =>
-      getSvgWithColorFilter(context, 'assets/icon/play.svg',
+      getSvgWithColorFilter(context, 'assets/icons/play.svg',
           size: size, package: package);
   Widget pauseSvg(BuildContext context,
           {Size size = const Size(24, 24), String? package}) =>
-      getSvgWithColorFilter(context, 'assets/icon/pause.svg',
+      getSvgWithColorFilter(context, 'assets/icons/pause.svg',
           size: size, package: package);
   Widget clockSvg(BuildContext context,
           {Size size = const Size(24, 24), String? package}) =>
-      getSvgWithColorFilter(context, 'assets/icon/clock.svg',
+      getSvgWithColorFilter(context, 'assets/icons/clock.svg',
           size: size, package: package);
   Widget calendarSvg(BuildContext context,
           {Size size = const Size(24, 24), String? package}) =>
-      getSvgWithColorFilter(context, 'assets/icon/calendar.svg',
+      getSvgWithColorFilter(context, 'assets/icons/calendar.svg',
           size: size, package: package);
   Widget addSvg(BuildContext context,
           {Size size = const Size(24, 24), String? package}) =>
-      getSvgWithColorFilter(context, 'assets/icon/plus.svg',
+      getSvgWithColorFilter(context, 'assets/icons/plus.svg',
           size: size, package: package);
   Widget notificationSvg(BuildContext context,
           {Size size = const Size(24, 24), String? package}) =>
-      getSvgWithColorFilter(context, 'assets/icon/bell.svg',
+      getSvgWithColorFilter(context, 'assets/icons/bell.svg',
           size: size, package: package);
   Widget fullscreenSvg(BuildContext context,
           {Size size = const Size(24, 24), String? package}) =>
-      getSvgWithColorFilter(context, 'assets/icon/maximize.svg',
+      getSvgWithColorFilter(context, 'assets/icons/maximize.svg',
           size: size, package: package);
   Widget reduceSvg(BuildContext context,
           {Size size = const Size(24, 24), String? package}) =>
-      getSvgWithColorFilter(context, 'assets/icon/minimize.svg',
+      getSvgWithColorFilter(context, 'assets/icons/minimize.svg',
           size: size, package: package);
 }

@@ -30,7 +30,7 @@ packages:
     source: path
     version: "0.0.1"
   app_feature_login:
-    dependency: "direct main"
+    dependency: "direct overridden"
     description:
       path: "../../app_features/app_feature_login"
       relative: true
@@ -44,7 +44,7 @@ packages:
     source: path
     version: "0.0.1"
   app_shared:
-    dependency: "direct overridden"
+    dependency: "direct main"
     description:
       path: ".."
       relative: true
