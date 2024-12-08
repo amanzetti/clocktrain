@@ -79,6 +79,8 @@ class LoginView extends ConsumerWidget {
     final vm = ref.watch(_loginVmProvider.notifier);
     final email = ref.watch(_emailProvider);
     final password = ref.watch(_passowrdProvider);
+    final _emailController = TextEditingController(text: email);
+    final _passwordController = TextEditingController(text: password);
     return (context) => SafeArea(
           minimum: AppDimesnionsEdgeInsetsExt.mediumHorizontal,
           child: Form(
@@ -93,14 +95,14 @@ class LoginView extends ConsumerWidget {
                 const VerticalMediumSpacer(),
                 AppTextFormField(
                   labelText: context.loc.email,
-                  initialValue: email,
+                  controller: _emailController,
                   onSaved: (email) => vm.saveEmail(email),
                   validator: (p0) => _validator(context, p0),
                 ),
                 const VerticalMediumSpacer(),
                 AppTextFormField(
                   labelText: context.loc.password,
-                  initialValue: password,
+                  controller: _passwordController,
                   onSaved: (p0) => vm.savePassword(p0),
                   validator: (p0) => _validator(context, p0),
                 ),

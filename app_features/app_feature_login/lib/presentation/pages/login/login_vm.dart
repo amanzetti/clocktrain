@@ -27,7 +27,7 @@ class LoginVm extends AutoDisposeNotifier<LoginState> {
     formKey.currentState!.save();
     state = state.copyWith(isLoading: true);
     LoginUseCase(ref.authRepository)
-        .call(state.email ?? '', state.password ?? '')
+        .call(state.email!, state.password!)
         .foldAsync((l) {
       state = state.copyWith(isLoading: false);
     }, (r) {
