@@ -37,6 +37,13 @@ packages:
       relative: true
     source: path
     version: "0.0.1"
+  app_feature_workout:
+    dependency: "direct overridden"
+    description:
+      path: "../app_features/app_feature_workout"
+      relative: true
+    source: path
+    version: "0.0.1"
   app_shared:
     dependency: "direct main"
     description:

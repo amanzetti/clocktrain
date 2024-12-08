@@ -1,6 +1,7 @@
 import 'package:app_feature_login/data/di/di_repositories.dart';
 import 'package:app_feature_login/domain/use_case/login_use_case.dart';
 import 'package:app_feature_login/presentation/routes/app_paths.dart';
+import 'package:app_feature_workout/presentation/routes/feature_workout_paths.dart';
 import 'package:app_shared/config/logger_config.dart';
 import 'package:app_shared/utils/ext/build_context_ext.dart';
 import 'package:app_shared/utils/ext/future.dart';
@@ -30,7 +31,7 @@ class LoginVm extends AutoDisposeNotifier<LoginState> {
     }, (r) {
       state = state.copyWith(isLoading: false);
       log.i('login success');
-      // context.go(AppPath.dashboardPage);
+      context.go(FeatureWorkoutPaths.workouts);
     });
   }
 

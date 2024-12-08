@@ -65,7 +65,7 @@ assets:
   - assets/ # General assets folder
   - assets/sounds/ # Folder for sound files
   - assets/icon/ # Folder for app icons
-  - assets/mock/ # Folder for mock data
+  - assets/icon/chevron-left.svg
 
 scripts: 
   br_login: ./build_runner.sh localDb

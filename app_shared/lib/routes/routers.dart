@@ -1,4 +1,6 @@
 import 'package:app_feature_login/presentation/routes/app_routes.dart';
+import 'package:app_feature_workout/presentation/routes/feature_workout_routes.dart';
+import 'package:app_shared/widgets/templates/main_page.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRouter {
@@ -24,34 +26,28 @@ class AppRouter {
       //   path: AppPath.rootPage,
       //   builder: (context, state) => const RootPage(),
       // ),
-      ...LoginRouteAppFeature.getLoginRoutes()
-      // GoRoute(
-      //   name: AppPath.loginPage,
-      //   path: AppPath.loginPage,
-      //   builder: (context, state) => LoginView(),
-      //   // routes: [_buildShellRoute()]
-      // ),
-      // _buildShellRoute()
+      ...LoginRouteAppFeature.getLoginRoutes(),
+      _buildShellRoute()
     ],
   );
 
-  // static StatefulShellRoute _buildShellRoute() {
-  //   return StatefulShellRoute.indexedStack(
-  //     builder: (context, state, navigationShell) =>
-  //         MainPage(navigationShell: navigationShell),
-  //     branches: _buildBranches(),
-  //   );
-  // }
+  static StatefulShellRoute _buildShellRoute() {
+    return StatefulShellRoute.indexedStack(
+      builder: (context, state, navigationShell) =>
+          MainPage(navigationShell: navigationShell),
+      branches: _buildBranches(),
+    );
+  }
 
-  // static List<StatefulShellBranch> _buildBranches() {
-  //   return [
-  //     _homeBranch(),
-  //     _sheetBranch(),
-  //     _workoutBranch(),
-  //     _settingsBranch(),
-  //     _profileBranch()
-  //   ];
-  // }
+  static List<StatefulShellBranch> _buildBranches() {
+    return [
+      // _homeBranch(),
+      // _sheetBranch(),
+      _workoutBranch(),
+      // _settingsBranch(),
+      // _profileBranch()
+    ];
+  }
 
   // static StatefulShellBranch _homeBranch() {
   //   return StatefulShellBranch(
@@ -95,18 +91,11 @@ class AppRouter {
   //   );
   // }
 
-  // static StatefulShellBranch _workoutBranch() {
-  //   return StatefulShellBranch(
-  //     // observers: [AppRouteObserver()],
-  //     routes: [
-  //       GoRoute(
-  //         name: AppPath.workoutPage,
-  //         path: AppPath.workoutPage,
-  //         builder: (context, state) => const ToolsPage(),
-  //       ),
-  //     ],
-  //   );
-  // }
+  static StatefulShellBranch _workoutBranch() {
+    return StatefulShellBranch(
+      routes: FeatureWorkoutRoutes.getWorkoutRoutes(),
+    );
+  }
 
   // static StatefulShellBranch _settingsBranch() {
   //   return StatefulShellBranch(

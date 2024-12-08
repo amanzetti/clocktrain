@@ -16,13 +16,16 @@ dependencies:
   realm: ^20.0.0
 
   # features
-  app_feature_login:
+  app_shared:
     path: ../../app_shared
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
+
+asset:
+  - packages/app_shared/assets/icon/
 
 flutter:
   uses-material-design: true
