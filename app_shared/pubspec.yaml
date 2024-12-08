@@ -44,6 +44,8 @@ dependencies:
   # features
   app_feature_login:
     path: ../app_features/app_feature_login
+  app_feature_workout:
+    path: ../app_features/app_feature_workout
 
 dev_dependencies:
   flutter_test:

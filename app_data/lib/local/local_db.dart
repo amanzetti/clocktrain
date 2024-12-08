@@ -7,6 +7,10 @@ import 'package:realm/realm.dart';
 
 class LocalDb {
   static final LocalDb _instance = LocalDb._internal();
+
+  ///Log
+  final log = LoggerConfig.logger;
+
   late Realm realm;
   bool isInitialized = false;
 
@@ -33,13 +37,13 @@ class LocalDb {
 
   // Inizializzazione di Realm
   void initLocalDb() {
-    print('initLocalDb');
+    log.i('initLocalDb');
     if (!isInitialized) {
       realm = Realm(config);
       isInitialized = true;
-      print('LocalDb initialized');
+      log.d('LocalDb initialized');
     } else {
-      print('LocalDb already initialized');
+      log.d('LocalDb already initialized');
     }
   }
 
@@ -53,25 +57,25 @@ class LocalDb {
 
     if (await realmFile.exists()) {
       await realmFile.delete();
-      print('Realm database deleted: $realmPath');
+      log.i('Realm database deleted: $realmPath');
     }
 
     if (await lockFile.exists()) {
       await lockFile.delete();
-      print('Realm lock file deleted: $realmLockPath');
+      log.i('Realm lock file deleted: $realmLockPath');
     }
   }
 
   // Esegui un'operazione di scrittura su Realm
   void write(void Function(Realm realm) callback) {
-    print('write');
+    log.i('write');
     try {
       realm.write(() {
         callback(realm);
       });
     } catch (e) {
       // Gestisci l'errore, puoi loggarlo o rilanciarlo
-      print('Error during write: $e');
+      log.i('Error during write: $e');
       // Puoi anche lanciare un'eccezione personalizzata se necessario
       throw Exception('Error during write operation: $e');
     }

@@ -1,9 +1,6 @@
-import 'package:app_shared/themes/app_asset.dart';
 import 'package:app_shared/widgets/atoms/buttons/app_button.dart';
-import 'package:app_shared/widgets/atoms/buttons/notch_rounded_button.dart';
 import 'package:app_shared/utils/ext/build_context_ext.dart';
 import 'package:app_shared/widgets/atoms/utils_ui/app_container.dart';
-import 'package:app_shared/widgets/atoms/utils_ui/spacer_sized_box.dart';
 import 'package:flutter/material.dart';
 
 class AppHeader extends StatelessWidget {

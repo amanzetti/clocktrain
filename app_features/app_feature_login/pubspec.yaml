@@ -33,10 +33,15 @@ dependencies:
   # Routing and navigation
   go_router: ^14.6.1
 
+  #DATA
+  uuid: ^4.5.1
+
   app_shared:
     path: ../../app_shared
   app_data:
     path: ../../app_data
+  app_feature_workout:
+    path: ../../app_features/app_feature_workout
 
 dev_dependencies:
   flutter_test:

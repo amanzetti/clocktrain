@@ -12,13 +12,14 @@ class AuthRepositoryImpl implements AuthRepository {
   final Ref ref;
   final AuthLocalDbDatasource authLocalDbDatasource;
 
+  final log = LoggerConfig.logger;
+
   AuthRepositoryImpl(this.ref, {required this.authLocalDbDatasource});
 
   @override
   Future<Either<CommonError, LoginResp>> login(
       String email, String password) async {
     try {
-      ///TODO add check password
       final user = await authLocalDbDatasource.getUserByEmail(email);
       return user.fold((error) => left(CommonError.databaseError), (userDto) {
         return right(LoginResp.success);

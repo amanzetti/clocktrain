@@ -7,6 +7,7 @@ packages:
   - app_shared
   - app_data
   - app_features/app_feature_login
+  - app_features/app_feature_workout
   - app_shared/widgetbook
 
 command:
@@ -37,6 +38,10 @@ command:
       
       # Routing and navigation
       go_router: ^14.6.1
+
+      #DATA
+      uuid: ^4.5.1
+      realm: ^20.0.0
 
     dev_dependencies:
       flutter_test:

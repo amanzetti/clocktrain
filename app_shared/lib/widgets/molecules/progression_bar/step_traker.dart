@@ -1,6 +1,5 @@
 import 'package:app_shared/utils/ext/build_context_ext.dart';
 import 'package:app_shared/utils/ext/edge_insets_ext.dart';
-import 'package:app_shared/widgets/atoms/buttons/app_elevated_button.dart';
 import 'package:flutter/material.dart';
 
 class StepTraker extends StatelessWidget {

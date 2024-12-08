@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:app_shared/widgets/molecules/picker/picker_wight.dart';
-import 'package:app_shared/themes/app_theme.dart';
+// ignore: depend_on_referenced_packages
+import 'package:app_shared/app_shared.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,14 +28,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,13 +38,14 @@ class _MyHomePageState extends State<MyHomePage> {
       body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[WeightPicker(
-            title: 'Select weight',
-            primaryTextButton: 'Done',
-            secondaryTextButton: 'Cancel',
-           
-            initialWeight: 70.0,
-          )],
+          children: <Widget>[
+            WeightPicker(
+              title: 'Select weight',
+              primaryTextButton: 'Done',
+              secondaryTextButton: 'Cancel',
+              initialWeight: 70.0,
+            )
+          ],
         ),
       ),
     );

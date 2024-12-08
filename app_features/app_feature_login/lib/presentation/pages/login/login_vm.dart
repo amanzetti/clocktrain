@@ -1,12 +1,7 @@
 import 'package:app_feature_login/data/di/di_repositories.dart';
-import 'package:app_feature_login/domain/enities/user_entity.dart';
-import 'package:app_feature_login/domain/enities/user_type_entity.dart';
 import 'package:app_feature_login/domain/use_case/login_use_case.dart';
-import 'package:app_feature_login/domain/use_case/register_use_case.dart';
-import 'package:app_feature_login/presentation/pages/registration/registration_view.dart';
 import 'package:app_feature_login/presentation/routes/app_paths.dart';
 import 'package:app_shared/config/logger_config.dart';
-import 'package:app_shared/routes/path.dart';
 import 'package:app_shared/utils/ext/build_context_ext.dart';
 import 'package:app_shared/utils/ext/future.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -20,6 +15,8 @@ class LoginVm extends AutoDisposeNotifier<LoginState> {
     return const LoginState();
   }
 
+  final log = LoggerConfig.logger;
+
   login(BuildContext context, GlobalKey<FormState> formKey) {
     if (!formKey.currentState!.validate()) {
       return;
@@ -32,7 +29,7 @@ class LoginVm extends AutoDisposeNotifier<LoginState> {
       state = state.copyWith(isLoading: false);
     }, (r) {
       state = state.copyWith(isLoading: false);
-      print('login success');
+      log.i('login success');
       // context.go(AppPath.dashboardPage);
     });
   }

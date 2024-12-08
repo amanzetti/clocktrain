@@ -3,6 +3,7 @@ import 'package:app_feature_login/domain/enities/user_entity.dart';
 import 'package:app_feature_login/domain/enities/user_type_entity.dart';
 import 'package:app_feature_login/domain/use_case/register_use_case.dart';
 import 'package:app_feature_login/presentation/pages/registration/registration_state.dart';
+import 'package:app_shared/config/logger_config.dart';
 import 'package:app_shared/widgets/molecules/picker/picker_wight.dart';
 import 'package:app_shared/widgets/molecules/picker/date_time_picker.dart';
 import 'package:app_shared/widgets/molecules/picker/height_picker.dart';
@@ -15,6 +16,8 @@ class RegistrationVm extends AutoDisposeNotifier<RegistrationState> {
   RegistrationState build() {
     return const RegistrationState();
   }
+
+  final log = LoggerConfig.logger;
 
   void setCurrentPage(int page) {
     state = state.copyWith(currentPage: page);
@@ -66,23 +69,21 @@ class RegistrationVm extends AutoDisposeNotifier<RegistrationState> {
       formKey.currentState!.save();
     }
 
-    print('Name: ${state.name}');
-    print('Surname: ${state.surname}');
-    print('BirthDate: ${state.birthDate}');
-    print('Weight: ${state.weight}');
-    print('Height: ${state.height}');
-    print('Age: ${state.age}');
-    print('email: ${state.email}');
-    print('password: ${state.password}');
+    log.d('Name: ${state.name}');
+    log.d('Surname: ${state.surname}');
+    log.d('BirthDate: ${state.birthDate}');
+    log.d('Weight: ${state.weight}');
+    log.d('Height: ${state.height}');
+    log.d('Age: ${state.age}');
+    log.d('email: ${state.email}');
+    log.d('password: ${state.password}');
 
     if (state.name == null ||
         state.surname == null ||
         state.birthDate == null ||
         state.weight == null ||
         state.height == null ||
-        state.age == null ||
-        state.email == null ||
-        state.password == null) {
+        state.age == null) {
       return;
     } else {
       await RegisterUseCase(ref.read(authRepositoryProvider)).call(User(

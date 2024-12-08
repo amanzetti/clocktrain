@@ -1,3 +1,4 @@
+import 'package:app_shared/config/logger_config.dart';
 import 'package:app_shared/utils/ext/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -46,8 +47,9 @@ class AppAsset {
   // Funzione per ottenere l'icona SVG con il filtro del colore
   Widget getSvgWithColorFilter(BuildContext context, String assetPath,
       {Size size = const Size(24, 24), String? package}) {
-    print('package: $package');
-    print('asset_path: $assetPath');
+    final log = LoggerConfig.logger;
+    log.d('package: $package');
+    log.d('asset_path: $assetPath');
     return SvgPicture.asset(
       assetPath,
       width: size.width,

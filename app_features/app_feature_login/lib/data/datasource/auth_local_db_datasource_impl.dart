@@ -4,6 +4,7 @@ import 'package:app_feature_login/data/dto/user_dto.dart';
 import 'package:app_shared/utils/enum/common_error.dart';
 import 'package:dartz/dartz.dart';
 import 'package:app_data/app_data.dart';
+import 'package:uuid/uuid.dart';
 
 class AuthLocalDbDatasourceImpl implements AuthLocalDbDatasource {
   @override
@@ -53,9 +54,14 @@ class AuthLocalDbDatasourceImpl implements AuthLocalDbDatasource {
 
       final realm = LocalDb().getRealm();
 
-      final userType = UserType(1, "ATHLETE");
+      const uuid = Uuid();
+      final userType = realm.all<UserType>().firstWhere(
+            (type) => type.id == 1,
+            orElse: () =>
+                UserType(1, "ATHLETE"), // Crea un nuovo oggetto se non trovato
+          );
       final user = User(
-        userDto.id ?? '',
+        uuid.v4(),
         userDto.username,
         userDto.email,
         userDto.name,
