@@ -22,6 +22,7 @@ class ChipsFormField extends StatelessWidget {
     this.actionButtonbackgroundColor,
     this.chips = const [],
     this.borderRadius,
+    this.showChipIcon = true,
   });
 
   final void Function()? onRemoveChip;
@@ -31,13 +32,14 @@ class ChipsFormField extends StatelessWidget {
   final Color? actionButtonbackgroundColor;
   final BorderRadius? borderRadius;
   final List<ChipData> chips;
+  final showChipIcon;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: AppDimesnionsEdgeInsetsExt.all4,
       decoration: BoxDecoration(
-          color: backgroundColor ?? context.colorScheme.primary,
+          color: backgroundColor ?? context.colorScheme.surfaceContainerLow,
           borderRadius: BorderRadius.circular(AppDimensions.borderRadius10)),
       child: Row(
         children: [
@@ -52,6 +54,7 @@ class ChipsFormField extends StatelessWidget {
                           label: chips.elementAt(index).label,
                           onDeleteTap: chips.elementAt(index).onDelete,
                           onDeleteIcon: AppAsset().cancelSvg(context),
+                          showIcon: showChipIcon,
                         ))),
           ),
           AppIconButton(

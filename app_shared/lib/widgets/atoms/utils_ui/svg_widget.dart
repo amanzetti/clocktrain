@@ -12,11 +12,11 @@ enum SvgWidgetType {
 /// Creates a widget that displays an SVG asset.
 class SvgWidget extends StatelessWidget {
   /// Creates a widget that displays an SVG asset.
-  const SvgWidget({
-    required this.path,
+  const SvgWidget(
+    this.path, {
     super.key,
-    this.width,
-    this.height,
+    this.width = 24,
+    this.height = 24,
     this.alignment = Alignment.center,
     this.colorFilter,
     this.fit = BoxFit.contain,

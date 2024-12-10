@@ -25,6 +25,9 @@ class AppLocalizationsIt extends AppLocalizations {
   String get done => 'Fatto';
 
   @override
+  String get addShort => 'Ins';
+
+  @override
   String get genericError => 'Qualcosa è andato storto';
 
   @override

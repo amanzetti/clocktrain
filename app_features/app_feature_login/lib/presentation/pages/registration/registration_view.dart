@@ -74,14 +74,12 @@ class RegistrationView extends ConsumerWidget {
         children: [
           ///HEADER
           AppHeader(
-              leftIcon: SvgWidget(
-                path: SharedAssets.icons.chevronLeft.path,
-              ),
-
-              // context.asset
-              //     .arrowBackSvg(context, package: 'app_shared'),
-              title: 'Registration',
-              onTap: onTap),
+            leftButton: AppHeaderButtonState(
+              type: AppButtonStyle.elevated,
+              onPressed: onTap,
+            ),
+            title: 'Registration',
+          ),
           Text('Create an Account', style: context.textTheme.headlineMedium),
           const VerticalSmallSpacer(),
 

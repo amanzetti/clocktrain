@@ -3,12 +3,23 @@ import 'package:app_shared/widgets/atoms/utils_ui/app_container.dart';
 import 'package:flutter/material.dart';
 
 class AppCard extends StatelessWidget {
-  const AppCard({super.key, this.child, this.padding, this.height, this.width});
+  const AppCard(
+      {super.key,
+      this.child,
+      this.padding,
+      this.height,
+      this.width,
+      this.color,
+      this.borderRadius,
+      this.border});
 
   final Widget? child;
   final EdgeInsets? padding;
   final double? height;
   final double? width;
+  final Color? color;
+  final BorderRadius? borderRadius;
+  final BoxBorder? border;
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +28,9 @@ class AppCard extends StatelessWidget {
       width: width,
       padding: padding,
       decoration: BoxDecoration(
-        color: context.colorScheme.surfaceContainerLow,
-        borderRadius: BorderRadius.circular(10),
+        color: color ?? context.colorScheme.surfaceContainerLow,
+        borderRadius: borderRadius ?? BorderRadius.circular(10),
+        border: border,
       ),
       child: child,
     );

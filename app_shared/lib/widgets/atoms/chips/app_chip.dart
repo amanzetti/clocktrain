@@ -11,18 +11,20 @@ class AppChip extends StatelessWidget {
       super.key,
       this.onDeleteIcon,
       this.onDeleteTap,
-      this.padding});
+      this.padding,
+      this.showIcon = true});
 
   final String label;
   final Widget? onDeleteIcon;
   final void Function()? onDeleteTap;
   final EdgeInsets? padding;
+  final bool showIcon;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: AppTheme.boxDecorationFilled(context)
-          .copyWith(color: context.colorScheme.secondary),
+          .copyWith(color: context.colorScheme.primary),
       constraints: AppDimensions.boxConstraints,
       padding: padding ?? AppDimesnionsEdgeInsetsExt.mediumOnlyLeft,
       child: Row(
@@ -30,13 +32,22 @@ class AppChip extends StatelessWidget {
         children: [
           Text(label,
               style: context.textTheme.bodyLarge!
-                  .copyWith(color: context.colorScheme.onSecondary)),
-          AppIconButton(
-            onPressed: onDeleteTap,
-            child: onDeleteIcon,
-          )
+                  .copyWith(color: context.colorScheme.onPrimary)),
+          _buildIconButton(context),
         ],
       ),
+    );
+  }
+
+  Widget _buildIconButton(BuildContext context) {
+    if (!showIcon) {
+      return const SizedBox(
+        width: AppDimensions.medium,
+      );
+    }
+    return AppIconButton(
+      onPressed: onDeleteTap,
+      child: onDeleteIcon,
     );
   }
 }

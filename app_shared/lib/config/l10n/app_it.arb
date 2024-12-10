@@ -9,6 +9,7 @@
   "next": "Avanti",
   "back": "Indietro",
   "done": "Fatto",
+  "addShort": "Ins", 
   "genericError": "Qualcosa è andato storto",
   "email": "Email",
   "password": "Password",

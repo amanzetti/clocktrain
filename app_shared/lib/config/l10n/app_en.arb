@@ -9,6 +9,7 @@
   "next": "Next",
   "back": "Back",
   "done": "Done",
+  "addShort": "Add", 
   "genericError": "Something went wrong",
   "email": "Email",
   "password": "Password",

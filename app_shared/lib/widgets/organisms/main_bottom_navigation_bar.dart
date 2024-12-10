@@ -29,21 +29,27 @@ class _MainBottomNavBarState extends State<MainBottomNavBar> {
       onTap: onItemTapped,
       items: [
         BottomNavigationBarItem(
-          // icon: AppAsset().homeSvg(context),
           icon: SvgWidget(
-              path: SharedAssets.icons.home.path, width: 24, height: 24),
+            AppAsset.homeIcon,
+          ),
           label: 'Home',
         ),
         BottomNavigationBarItem(
-          icon: AppAsset().sheetSvg(context),
+          icon: SvgWidget(
+            AppAsset.sheetIcon,
+          ),
           label: 'Sheet',
         ),
         BottomNavigationBarItem(
-          icon: AppAsset().toolsSvg(context),
+          icon: SvgWidget(
+            AppAsset.toolsIcon,
+          ),
           label: 'Tools',
         ),
         BottomNavigationBarItem(
-          icon: AppAsset().settingsSvg(context),
+          icon: SvgWidget(
+            AppAsset.settingsIcon,
+          ),
           label: 'Settings',
         ),
       ],

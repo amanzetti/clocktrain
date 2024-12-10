@@ -59,8 +59,8 @@ command:
       # Flutter Gen
       flutter_gen_runner: ^5.8.0
     
-    # flutter:
-    #   generate: true
+    flutter:
+      generate: true
 
 scripts:
   

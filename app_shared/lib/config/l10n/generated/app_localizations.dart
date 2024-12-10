@@ -131,6 +131,12 @@ abstract class AppLocalizations {
   /// **'Fatto'**
   String get done;
 
+  /// No description provided for @addShort.
+  ///
+  /// In it, this message translates to:
+  /// **'Ins'**
+  String get addShort;
+
   /// No description provided for @genericError.
   ///
   /// In it, this message translates to:
