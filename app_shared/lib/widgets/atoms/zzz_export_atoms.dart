@@ -1,6 +1,7 @@
 export 'package:app_shared/widgets/atoms/buttons/app_button.dart';
 export 'package:app_shared/widgets/atoms/cards/app_card.dart';
 export 'package:app_shared/widgets/atoms/chips/app_chip.dart';
+export 'package:app_shared/widgets/atoms/chips/app_tag.dart';
 export 'package:app_shared/widgets/atoms/dividers/app_divider.dart';
 export 'package:app_shared/widgets/atoms/error/base_error.dart';
 export 'package:app_shared/widgets/atoms/skeleton/base_skeleton.dart';

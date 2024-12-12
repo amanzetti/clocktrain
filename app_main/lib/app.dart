@@ -22,8 +22,8 @@ class App extends ConsumerWidget {
     ///App
     return MaterialApp.router(
       title: 'Your App Title',
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
+      // theme: AppTheme.lightTheme,
+      // darkTheme: AppTheme.darkTheme,
       // themeMode: themeMode,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,

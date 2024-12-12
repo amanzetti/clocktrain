@@ -1,3 +1,4 @@
+import 'package:app_shared/utils/const/app_dimensions.dart';
 import 'package:app_shared/utils/ext/build_context_ext.dart';
 import 'package:app_shared/widgets/atoms/utils_ui/app_container.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,8 @@ class AppCard extends StatelessWidget {
       padding: padding,
       decoration: BoxDecoration(
         color: color ?? context.colorScheme.surfaceContainerLow,
-        borderRadius: borderRadius ?? BorderRadius.circular(10),
+        borderRadius:
+            borderRadius ?? BorderRadius.circular(AppDimensions.borderRadius24),
         border: border,
       ),
       child: child,

@@ -17,6 +17,7 @@ class AppDimensions {
   //RADIUS
   static const borderRadius8 = 8.0;
   static const borderRadius10 = 10.0;
+  static const borderRadius24 = 24.0;
   static const borderRadius100 = 100.0;
 
   ///

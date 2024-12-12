@@ -50,112 +50,13 @@ class WorkoutsView extends ConsumerWidget {
             numExercise: 10));
 
     return Expanded(
-      child: ListView.builder(
-        itemCount: list.length,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: AppDimesnionsEdgeInsetsExt.smallAll,
-            child: AppCard(
-                color: context.colorScheme.secondary,
-                border: Border(left: BorderSide(color: Colors.red, width: 8)),
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: AppDimesnionsEdgeInsetsExt.smallHorizontal,
-                      child: Column(
-                        children: [
-                          Text(list[index].duration.toMMssString(),
-                              style: context.textTheme.labelLarge!.copyWith(
-                                  color: context.colorScheme.onSecondary)),
-                          Text('-',
-                              style: context.textTheme.labelMedium!.copyWith(
-                                  color: context.colorScheme.onSecondary)),
-                          Text('.',
-                              style: context.textTheme.labelMedium!.copyWith(
-                                  color: context.colorScheme.onSecondary)),
-                          Text('-',
-                              style: context.textTheme.labelMedium!.copyWith(
-                                  color: context.colorScheme.onSecondary)),
-                          Text(list[index].numExercise.toString(),
-                              style: context.textTheme.labelLarge!.copyWith(
-                                  color: context.colorScheme.onSecondary)),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: AppDimesnionsEdgeInsetsExt.mediumAll,
-                      child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(list[index].name,
-                                style: context.textTheme.headlineMedium!
-                                    .copyWith(
-                                        color:
-                                            context.colorScheme.onSecondary)),
-                            const VerticalMediumSpacer(),
-                            Flexible(child: _buildTags()),
-                            // Text(list[index].difficulty.toString()),
-                          ]),
-                    ),
-                    Column(
-                      children: [
-                        AppButton(
-                          style: AppButtonStyle.icon,
-                          child: SvgWidget(
-                            AppAsset.arrowNextIcon,
-                            colorFilter: ColorFilter.mode(
-                              context.colorScheme.onSecondary,
-                              BlendMode.srcIn,
-                            ),
-                          ),
-                        )
-                      ],
-                    )
-                  ],
-                )),
-          );
-        },
-      ),
-    );
+        child: ListView.builder(
+            itemCount: list.length,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: AppDimesnionsEdgeInsetsExt.dim4Vertical,
+                child: AppListCard(list: list[index]),
+              );
+            }));
   }
-
-  Widget _buildTags() {
-    // var list = List.generate(30, (int i) => 'Tag $i');
-
-    return Wrap(
-      spacing: AppDimensions.small,
-      runSpacing: AppDimensions.small,
-      children: [
-        Chip(
-            label: Text('Tag 1'),
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(100))),
-        Chip(
-            label: Text('Tag 1'),
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(100))),
-        Chip(
-            label: Text('Tag 1'),
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(100))),
-      ],
-    );
-  }
-}
-
-class WorkoutDataState {
-  final String name;
-  final DateTime duration;
-  final List<String> tags;
-  final int difficulty;
-  final int numExercise;
-  WorkoutDataState({
-    required this.name,
-    required this.duration,
-    required this.tags,
-    required this.difficulty,
-    required this.numExercise,
-  });
 }

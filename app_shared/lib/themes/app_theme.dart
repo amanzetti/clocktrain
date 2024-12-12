@@ -37,7 +37,13 @@ class AppTheme {
 
   static BoxDecoration boxDecorationRounded(BuildContext context) {
     return BoxDecoration(
-      borderRadius: BorderRadius.circular(AppDimensions.borderRadius8),
+      borderRadius: BorderRadius.circular(AppDimensions.borderRadius24),
+    );
+  }
+
+  static BoxDecoration boxDecorationCircle(BuildContext context) {
+    return BoxDecoration(
+      borderRadius: BorderRadius.circular(AppDimensions.borderRadius100),
     );
   }
 

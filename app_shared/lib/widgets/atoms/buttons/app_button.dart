@@ -1,11 +1,12 @@
 import 'package:app_shared/widgets/atoms/buttons/app_elevated_button.dart';
+import 'package:app_shared/widgets/atoms/buttons/app_icon_bottom_text.dart';
 import 'package:app_shared/widgets/atoms/buttons/app_icon_button.dart';
 import 'package:app_shared/widgets/atoms/buttons/app_outlined_button.dart';
 import 'package:app_shared/widgets/atoms/buttons/app_text_button.dart';
 import 'package:app_shared/widgets/atoms/buttons/notch_rounded_button.dart';
 import 'package:flutter/material.dart';
 
-enum AppButtonStyle { elevated, outlined, text, icon, notch }
+enum AppButtonStyle { elevated, outlined, text, icon, notch, iconBottomText }
 
 enum AppShape { rounded, circular }
 
@@ -73,11 +74,21 @@ class AppButton extends StatelessWidget {
       case AppButtonStyle.icon:
         return AppIconButton(
           onPressed: onPressed,
-          // width: size?.width,
-          // height: size?.height,
+          width: width,
+          height: height,
           backgroundColor: backgroundColor,
           size: size,
           child: child,
+        );
+      case AppButtonStyle.iconBottomText:
+        return AppIconBottomTextButton(
+          onPressed: onPressed,
+          width: width,
+          height: height,
+          backgroundColor: backgroundColor,
+          size: size,
+          icon: child ?? const SizedBox(),
+          text: text ?? '',
         );
       case AppButtonStyle.notch:
         return NotchRoundedButton(

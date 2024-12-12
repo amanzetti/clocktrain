@@ -15,8 +15,8 @@ class SvgWidget extends StatelessWidget {
   const SvgWidget(
     this.path, {
     super.key,
-    this.width = 24,
-    this.height = 24,
+    this.width,
+    this.height,
     this.alignment = Alignment.center,
     this.colorFilter,
     this.fit = BoxFit.contain,
