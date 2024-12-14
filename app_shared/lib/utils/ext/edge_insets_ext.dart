@@ -47,6 +47,7 @@ extension AppDimesnionsEdgeInsetsExt on EdgeInsets {
   static const EdgeInsets largeOnlyBottom =
       EdgeInsets.only(bottom: AppDimensions.large);
 
+  static const EdgeInsets onlyLeft4 = EdgeInsets.only(left: AppDimensions.dim4);
   static const EdgeInsets smallOnlyLeft =
       EdgeInsets.only(left: AppDimensions.small);
   static const EdgeInsets mediumOnlyLeft =

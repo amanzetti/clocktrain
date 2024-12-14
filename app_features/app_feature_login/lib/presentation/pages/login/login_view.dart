@@ -35,22 +35,19 @@ class LoginView extends ConsumerWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        AppButton(
-          style: AppButtonStyle.outlined,
+        AppButton.outlined(
           text: context.loc.google.toUpperCase(),
           width: double.infinity,
           onPressed: () => vm.loginWithGoogle(context),
         ),
         const VerticalMediumSpacer(),
-        AppButton(
-          style: AppButtonStyle.outlined,
+        AppButton.outlined(
           text: context.loc.apple.toUpperCase(),
           width: double.infinity,
           onPressed: () => vm.loginWithApple(context),
         ),
         const VerticalMediumSpacer(),
-        AppButton(
-          style: AppButtonStyle.elevated,
+        AppButton.elevated(
           text: context.loc.continueName('').toUpperCase(),
           width: double.infinity,
           onPressed: () => vm.openLoginModal(context, _builderLoginDialog(ref)),
@@ -58,15 +55,13 @@ class LoginView extends ConsumerWidget {
         const VerticalMediumSpacer(),
         const AppDivider(),
         const VerticalMediumSpacer(),
-        AppButton(
-          style: AppButtonStyle.outlined,
+        AppButton.outlined(
           text: context.loc.createAccount.toUpperCase(),
           width: double.infinity,
           onPressed: () => vm.goRegistration(context),
         ),
         const VerticalMediumSpacer(),
-        AppButton(
-          style: AppButtonStyle.text,
+        AppButton.text(
           text: context.loc.forgotPassword,
           width: double.infinity,
           onPressed: () => vm.forgotPassword(context),
@@ -107,15 +102,13 @@ class LoginView extends ConsumerWidget {
                   validator: (p0) => _validator(context, p0),
                 ),
                 const VerticalMediumSpacer(),
-                AppButton(
-                  style: AppButtonStyle.elevated,
+                AppButton.elevated(
                   text: context.loc.login.toUpperCase(),
                   width: double.infinity,
                   onPressed: () => {vm.login(context, formKey)},
                 ),
                 const VerticalMediumSpacer(),
-                AppButton(
-                  style: AppButtonStyle.outlined,
+                AppButton.outlined(
                   text: context.loc.cancel.toUpperCase(),
                   width: double.infinity,
                   onPressed: () => {vm.closeModal(context)},

@@ -49,7 +49,7 @@ class AppTheme {
 
   static BoxDecoration boxDecorationOutlined(BuildContext context) {
     return boxDecorationRounded(context).copyWith(
-      border: Border.all(color: context.colorScheme.onPrimary),
+      border: Border.all(color: context.colorScheme.onSurface),
     );
   }
 

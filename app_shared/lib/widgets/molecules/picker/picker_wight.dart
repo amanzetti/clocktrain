@@ -98,8 +98,7 @@ class _WeightPickerState extends State<WeightPicker> {
           Row(
             children: [
               Expanded(
-                child: AppButton(
-                  style: AppButtonStyle.outlined,
+                child: AppButton.outlined(
                   text: widget.secondaryTextButton ?? 'cancel',
                   onPressed: () {
                     widget.onCancel?.call();
@@ -109,8 +108,7 @@ class _WeightPickerState extends State<WeightPicker> {
               ),
               const HorizontalSmallSpacer(),
               Expanded(
-                child: AppButton(
-                  style: AppButtonStyle.elevated,
+                child: AppButton.elevated(
                   text: widget.primaryTextButton ?? 'done',
                   onPressed: () {
                     widget.onDone?.call(double.parse('$selectedKg.$selectedG'));

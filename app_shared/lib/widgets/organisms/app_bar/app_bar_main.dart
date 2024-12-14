@@ -30,8 +30,7 @@ class AppBarMain extends StatelessWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              AppButton(
-                style: AppButtonStyle.icon,
+              AppButton.icon(
                 child: SvgWidget(AppAsset.notificationIcon),
                 onPressed: () {},
               ),

@@ -7,6 +7,7 @@ class AppCard extends StatelessWidget {
   const AppCard(
       {super.key,
       this.child,
+      this.margin,
       this.padding,
       this.height,
       this.width,
@@ -21,10 +22,12 @@ class AppCard extends StatelessWidget {
   final Color? color;
   final BorderRadius? borderRadius;
   final BoxBorder? border;
+  final EdgeInsetsGeometry? margin;
 
   @override
   Widget build(BuildContext context) {
     return AppContainer(
+      margin: margin,
       height: height,
       width: width,
       padding: padding,

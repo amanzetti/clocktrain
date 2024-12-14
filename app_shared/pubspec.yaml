@@ -19,6 +19,7 @@ dependencies:
   # UI
   flutter_svg: ^2.0.16
   google_fonts: ^6.2.1
+  video_player: ^2.9.2
 
   # Logging
   logger: ^2.5.0

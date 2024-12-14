@@ -1,4 +1,4 @@
-import 'package:app_shared/utils/ext/build_context_ext.dart';
+import 'package:app_shared/app_shared.dart';
 import 'package:app_shared/widgets/organisms/bottom_bar/main_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -13,8 +13,8 @@ class MainPage extends StatelessWidget {
       body: Stack(
         children: [
           SafeArea(
+              minimum: AppDimesnionsEdgeInsetsExt.smallHorizontal,
               bottom: false,
-              minimum: const EdgeInsets.symmetric(horizontal: 16),
               child: ColoredBox(
                   color: context.colorScheme.surface, child: navigationShell)),
           Positioned(
@@ -25,9 +25,6 @@ class MainPage extends StatelessWidget {
           )
         ],
       ),
-
-      // bottomNavigationBar:
-      //     MainBottomNavBar(navigationShell: navigationShell)
     );
   }
 }

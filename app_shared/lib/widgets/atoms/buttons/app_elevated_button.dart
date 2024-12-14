@@ -24,7 +24,7 @@ class AppElevatedButton extends StatelessWidget {
   ///UI Properties
   final double? width;
   final double? height;
-  final AppShape? shape;
+  final AppButtonShape? shape;
 
   @override
   Widget build(BuildContext context) {
@@ -44,9 +44,9 @@ class AppElevatedButton extends StatelessWidget {
 
   OutlinedBorder? _getShape(BuildContext context) {
     switch (shape) {
-      case AppShape.circular:
+      case AppButtonShape.circular:
         return const CircleBorder();
-      case AppShape.rounded:
+      case AppButtonShape.rounded:
         return RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppDimensions.borderRadius8),
           side: BorderSide(color: context.colorScheme.primary),

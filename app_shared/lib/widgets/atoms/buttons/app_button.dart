@@ -1,110 +1,144 @@
+import 'package:flutter/material.dart';
 import 'package:app_shared/widgets/atoms/buttons/app_elevated_button.dart';
-import 'package:app_shared/widgets/atoms/buttons/app_icon_bottom_text.dart';
-import 'package:app_shared/widgets/atoms/buttons/app_icon_button.dart';
 import 'package:app_shared/widgets/atoms/buttons/app_outlined_button.dart';
 import 'package:app_shared/widgets/atoms/buttons/app_text_button.dart';
+import 'package:app_shared/widgets/atoms/buttons/app_icon_button.dart';
 import 'package:app_shared/widgets/atoms/buttons/notch_rounded_button.dart';
-import 'package:flutter/material.dart';
 
-enum AppButtonStyle { elevated, outlined, text, icon, notch, iconBottomText }
-
-enum AppShape { rounded, circular }
+enum AppButtonShape {
+  circular,
+  rounded,
+}
 
 class AppButton extends StatelessWidget {
-  const AppButton(
-      {super.key,
-      this.style,
-      this.onPressed,
-      this.text,
-      this.child,
-      this.size,
-      this.backgroundColor,
-      this.borderRadius,
-      this.width,
-      this.height,
-      this.shape,
-      this.semanticLabel});
+  /// Costruttore privato che riceve direttamente il widget
+  const AppButton._(this.buttonWidget, {super.key});
 
-  ///Data Properties
-  final String? text;
-  final String? semanticLabel;
-  final Widget? child;
+  /// Factory per Notch Button
+  factory AppButton.notch({
+    required String text,
+    void Function()? onPressed,
+  }) {
+    return AppButton._(
+      NotchRoundedButton(
+        text: text,
+        onTap: onPressed,
+      ),
+    );
+  }
 
-  ///Functional Properties
-  final void Function()? onPressed;
+  /// Factory per Elevated Button
+  factory AppButton.elevated({
+    required String text,
+    void Function()? onPressed,
+    double? width,
+    double? height,
+    Widget? child,
+    AppButtonShape? shape,
+    Key? key,
+  }) {
+    return AppButton._(
+      AppElevatedButton(
+        text: text,
+        onPressed: onPressed,
+        width: width,
+        height: height,
+        key: key,
+        shape: shape,
+        child: child,
+      ),
+    );
+  }
 
-  ///UI Properties
-  final AppButtonStyle? style;
-  final AppShape? shape;
-  final Color? backgroundColor;
-  final BorderRadius? borderRadius;
-  final Size? size;
-  final double? width;
-  final double? height;
+  /// Factory per Outlined Button
+  factory AppButton.outlined({
+    required String text,
+    void Function()? onPressed,
+    double? width,
+    double? height,
+    Key? key,
+    Widget? child,
+  }) {
+    return AppButton._(
+      AppOutlinedButton(
+        text: text,
+        onPressed: onPressed,
+        width: width,
+        height: height,
+        key: key,
+        child: child,
+      ),
+    );
+  }
+
+  /// Factory per Text Button
+  factory AppButton.text({
+    required String text,
+    void Function()? onPressed,
+    double? width,
+    double? height,
+    Key? key,
+    Widget? child,
+  }) {
+    return AppButton._(
+      AppTextButton(
+        text: text,
+        onPressed: onPressed,
+        width: width,
+        height: height,
+        key: key,
+        child: child,
+      ),
+    );
+  }
+
+  /// Factory per Icon Button
+  factory AppButton.icon({
+    required Widget child,
+    void Function()? onPressed,
+    double? width,
+    double? height,
+    Key? key,
+    Color? backgroundColor,
+  }) {
+    return AppButton._(
+      AppIconButton.icon(
+        onPressed: onPressed,
+        width: width,
+        height: height,
+        key: key,
+        child: child,
+      ),
+    );
+  }
+
+  factory AppButton.iconCircleBox({
+    required Widget child,
+    void Function()? onPressed,
+    double? width,
+    double? height,
+    Key? key,
+    Color? backgroundColor,
+    Color? borderColor,
+  }) {
+    return AppButton._(
+      AppIconButton.iconCircleBox(
+        onPressed: onPressed,
+        width: width,
+        height: height,
+        backgroundColor: backgroundColor,
+        borderColor: borderColor,
+        key: key,
+        child: child,
+      ),
+    );
+  }
+
+  /// Proprietà comuni a tutti i bottoni
+  final Widget buttonWidget;
 
   @override
   Widget build(BuildContext context) {
-    switch (style) {
-      case AppButtonStyle.elevated:
-        return AppElevatedButton(
-          text: text ?? '',
-          onPressed: onPressed,
-          width: width,
-          height: height,
-          shape: shape,
-          child: child,
-        );
-      case AppButtonStyle.outlined:
-        return AppOutlinedButton(
-          text: text ?? '',
-          onPressed: onPressed,
-          width: width,
-          height: height,
-          shape: shape,
-          child: child,
-        );
-      case AppButtonStyle.text:
-        return AppTextButton(
-          text: text ?? '',
-          onPressed: onPressed,
-          width: size?.width,
-          height: size?.height,
-          child: child,
-        );
-      case AppButtonStyle.icon:
-        return AppIconButton(
-          onPressed: onPressed,
-          width: width,
-          height: height,
-          backgroundColor: backgroundColor,
-          size: size,
-          child: child,
-        );
-      case AppButtonStyle.iconBottomText:
-        return AppIconBottomTextButton(
-          onPressed: onPressed,
-          width: width,
-          height: height,
-          backgroundColor: backgroundColor,
-          size: size,
-          icon: child ?? const SizedBox(),
-          text: text ?? '',
-        );
-      case AppButtonStyle.notch:
-        return NotchRoundedButton(
-          text: text ?? '',
-          // onPressed: onPressed,
-          // width: width,
-          // height: height,
-          // shape: shape,
-          // child: child,
-        );
-      default:
-        return AppIconButton(
-          onPressed: onPressed,
-          width: size?.width,
-          height: size?.height,
-        );
-    }
+    return buttonWidget;
   }
 }

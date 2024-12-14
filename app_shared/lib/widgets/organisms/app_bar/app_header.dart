@@ -1,24 +1,15 @@
-import 'package:app_shared/themes/app_asset.dart';
 import 'package:app_shared/widgets/atoms/buttons/app_button.dart';
-import 'package:app_shared/utils/ext/build_context_ext.dart';
-import 'package:app_shared/widgets/atoms/utils_ui/app_container.dart';
-import 'package:app_shared/widgets/atoms/utils_ui/svg_widget.dart';
 import 'package:app_shared/widgets/organisms/app_bar/app_bar_main.dart';
 import 'package:app_shared/widgets/organisms/app_bar/app_bar_secondary.dart';
 import 'package:flutter/material.dart';
 
 class AppHeaderButtonState {
   AppHeaderButtonState(
-      {required this.type,
-      this.text,
-      this.onPressed,
-      this.semanticLabel,
-      this.icon});
+      {this.text, this.onPressed, this.semanticLabel, this.icon});
   final String? text;
   final void Function()? onPressed;
   final String? semanticLabel;
   final Widget? icon;
-  final AppButtonStyle type;
 }
 
 enum AppBarType { main, secondary }
@@ -64,7 +55,7 @@ class AppHeader extends StatelessWidget {
 
   ///MAIN
   Widget _buildAppBarMain(BuildContext context) {
-    return AppBarMain();
+    return const AppBarMain();
   }
 
   ///SECONDARY

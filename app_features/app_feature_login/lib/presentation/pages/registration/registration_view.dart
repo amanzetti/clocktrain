@@ -75,7 +75,6 @@ class RegistrationView extends ConsumerWidget {
           ///HEADER
           AppHeader(
             leftButton: AppHeaderButtonState(
-              type: AppButtonStyle.elevated,
               onPressed: onTap,
             ),
             title: 'Registration',

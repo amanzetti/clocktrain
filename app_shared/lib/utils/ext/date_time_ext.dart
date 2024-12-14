@@ -8,6 +8,10 @@ extension DateTimeFormatting on DateTime {
   String toMMssString() {
     return DateFormat('mm : ss').format(this);
   }
+
+  String toSecStirng() {
+    return DateFormat('ss').format(this);
+  }
 }
 
 enum DatePartOfDay { morning, afternoon, evening, night, error }

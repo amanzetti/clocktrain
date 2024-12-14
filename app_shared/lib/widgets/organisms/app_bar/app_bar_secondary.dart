@@ -41,8 +41,9 @@ class AppBarSecondary extends StatelessWidget {
   }
 
   Widget _buildTitle(BuildContext context) {
-    return Align(
-        alignment: Alignment.centerLeft,
+    return Positioned(
+        // alignment: Alignment.centerLeft,
+        left: leftButton == null ? 0 : 50,
         child: Text(title ?? '', style: context.textTheme.headlineSmall));
   }
 
@@ -54,8 +55,7 @@ class AppBarSecondary extends StatelessWidget {
       alignment: Alignment.centerLeft,
       child: Row(
         children: [
-          AppButton(
-            style: leftButton!.type,
+          AppButton.icon(
             onPressed: leftButton!.onPressed,
             child: SvgWidget(AppAsset.arrowBackIcon),
           ),
@@ -69,12 +69,9 @@ class AppBarSecondary extends StatelessWidget {
       return const SizedBox();
     }
     final list = rightButton!.map((e) {
-      return AppButton(
-        style: e.type,
+      return AppButton.notch(
         onPressed: e.onPressed,
-        text: e.text,
-        semanticLabel: e.semanticLabel,
-        child: e.icon,
+        text: e.text ?? '',
       );
     }).toList();
 

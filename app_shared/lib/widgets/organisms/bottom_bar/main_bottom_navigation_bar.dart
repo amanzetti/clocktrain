@@ -71,20 +71,16 @@ class _MainBottomNavBarState extends State<MainBottomNavBar> {
     required String iconPath,
     required bool isSelected,
   }) {
-    return Container(
+    return AppButton.iconCircleBox(
       height: 60,
       width: 60,
-      decoration: AppTheme.boxDecorationCircle(context).copyWith(
-          color: _getButtonColor(context, isSelected).withOpacity(0.8),
-          border: Border.all(color: color, width: 2)),
-      child: AppButton(
-        style: AppButtonStyle.icon,
-        onPressed: onPressed,
-        child: SvgWidget(
-          iconPath,
-          colorFilter: ColorFilter.mode(
-              _getIconColor(context, isSelected), BlendMode.srcIn),
-        ),
+      onPressed: onPressed,
+      backgroundColor: _getButtonColor(context, isSelected),
+      borderColor: context.colorScheme.primary,
+      child: SvgWidget(
+        iconPath,
+        colorFilter: ColorFilter.mode(
+            _getIconColor(context, isSelected), BlendMode.srcIn),
       ),
     );
   }

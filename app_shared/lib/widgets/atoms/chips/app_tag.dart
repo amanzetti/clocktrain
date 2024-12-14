@@ -1,10 +1,8 @@
 import 'package:app_shared/app_shared.dart';
-import 'package:app_shared/themes/app_theme.dart';
-import 'package:app_shared/utils/ext/edge_insets_ext.dart';
 import 'package:flutter/material.dart';
 
 class AppTag extends StatelessWidget {
-  const AppTag({super.key, required this.label});
+  const AppTag({required this.label, super.key});
 
   final String label;
 
@@ -18,7 +16,7 @@ class AppTag extends StatelessWidget {
           padding: AppDimesnionsEdgeInsetsExt.smallHorizontal,
           child: Text(label,
               style: context.textTheme.labelSmall!
-                  .copyWith(color: context.colorScheme.onPrimary)),
+                  .copyWith(color: context.colorScheme.onSurface)),
         ));
   }
 }

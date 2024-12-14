@@ -18,10 +18,11 @@ class AppAsset {
   static String warningIcon = SharedAssets.icons.alertTriangle.path;
   static String arrowBackIcon = SharedAssets.icons.chevronLeft.path;
   static String arrowNextIcon = SharedAssets.icons.chevronRight.path;
-  static String editIcon = 'assets/icons/edit-3.svg';
-  static String uneditIcon = 'assets/icons/x-circle.svg';
+  static String editIcon = SharedAssets.icons.edit3.path;
+  static String uneditIcon = SharedAssets.icons.xCircle.path;
   static String deleteIcon = 'assets/icons/trash-2.svg';
-  static String favoriteIcon = 'assets/icons/heart.svg';
+  static String favoriteIcon = SharedAssets.icons.heart.path;
+  static String favoriteIconFilled = SharedAssets.icons.heartFill.path;
   static String unfavoriteIcon = 'assets/icons/heart.svg';
   static String saveIcon = 'assets/icons/save.svg';
   static String signInIcon = 'assets/icons/log-in.svg';
@@ -36,7 +37,7 @@ class AppAsset {
   static String toolsIcon = 'assets/icons/tool.svg';
   static String homeIcon = 'assets/icons/home.svg';
   static String sheetIcon = 'assets/icons/clipboard.svg';
-  static String playIcon = 'assets/icons/play.svg';
+  static String playIcon = SharedAssets.icons.play.path;
   static String pauseIcon = 'assets/icons/pause.svg';
   static String clockIcon = 'assets/icons/clock.svg';
   static String calendarIcon = 'assets/icons/calendar.svg';

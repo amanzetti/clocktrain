@@ -88,16 +88,14 @@ class _AppWheelPickerState extends State<AppWheelPicker> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        AppButton(
-          style: AppButtonStyle.elevated,
-          shape: AppShape.circular,
+        AppButton.elevated(
+          shape: AppButtonShape.circular,
           onPressed: () => _updateSelectedValue(10 ~/ _step),
           text: '+10',
         ),
         const VerticalLargeSpacer(),
-        AppButton(
-          style: AppButtonStyle.elevated,
-          shape: AppShape.circular,
+        AppButton.elevated(
+          shape: AppButtonShape.circular,
           onPressed: () => _updateSelectedValue(-10 ~/ _step),
           text: '-10',
         ),

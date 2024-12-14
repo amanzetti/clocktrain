@@ -1,5 +1,6 @@
 import 'package:app_shared/themes/app_theme.dart';
 import 'package:app_shared/utils/ext/edge_insets_ext.dart';
+import 'package:app_shared/widgets/atoms/buttons/app_button.dart';
 import 'package:app_shared/widgets/atoms/buttons/app_icon_button.dart';
 import 'package:app_shared/utils/const/app_dimensions.dart';
 import 'package:app_shared/utils/ext/build_context_ext.dart';
@@ -45,9 +46,9 @@ class AppChip extends StatelessWidget {
         width: AppDimensions.medium,
       );
     }
-    return AppIconButton(
+    return AppButton.icon(
       onPressed: onDeleteTap,
-      child: onDeleteIcon,
+      child: onDeleteIcon ?? const SizedBox(),
     );
   }
 }

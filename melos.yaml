@@ -20,6 +20,7 @@ command:
         sdk: flutter
       #UI
       flutter_svg: ^2.0.16
+      video_player: ^2.9.2
 
       #Path Provider
       path_provider: ^2.1.5
@@ -81,6 +82,9 @@ scripts:
   
   br_feature_login:
     run: melos exec --scope="app_feature_login" -- "dart run build_runner build --delete-conflicting-outputs"
+  
+  br_feature_workout:
+    run: melos exec --scope="app_feature_workout" -- "dart run build_runner build --delete-conflicting-outputs"
   
   br_shared:
     run: melos exec --scope="app_shared" -- "dart run build_runner build --delete-conflicting-outputs"

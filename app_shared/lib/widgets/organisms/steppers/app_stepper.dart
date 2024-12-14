@@ -92,16 +92,13 @@ class _AppStepperState extends State<AppStepper> {
           children: [
             Expanded(
               child: _currentPage > 0
-                  ? AppButton(
-                      style: AppButtonStyle.outlined,
-                      onPressed: _previousPage,
-                      text: widget.backText)
+                  ? AppButton.outlined(
+                      onPressed: _previousPage, text: widget.backText)
                   : const SizedBox(),
             ),
             const HorizontalMediumSpacer(),
             Expanded(
-              child: AppButton(
-                  style: AppButtonStyle.elevated,
+              child: AppButton.elevated(
                   onPressed: _nextPage,
                   text: _currentPage == _steps.length - 1
                       ? widget.doneText

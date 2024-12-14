@@ -5,6 +5,7 @@ class AppContainer extends StatelessWidget {
   const AppContainer(
       {super.key,
       this.child,
+      this.margin,
       this.color,
       this.borderRadius,
       this.width,
@@ -19,6 +20,7 @@ class AppContainer extends StatelessWidget {
   final double? height;
   final EdgeInsets? padding;
   final BoxDecoration? decoration;
+  final EdgeInsetsGeometry? margin;
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +28,7 @@ class AppContainer extends StatelessWidget {
       width: width,
       height: height,
       constraints: AppDimensions.boxConstraints,
+      margin: margin,
       padding: padding,
       decoration: decoration ??
           BoxDecoration(

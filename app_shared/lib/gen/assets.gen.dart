@@ -52,6 +52,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/heart.svg
   SvgGenImage get heart => const SvgGenImage('assets/icons/heart.svg');
 
+  /// File path: assets/icons/heart_fill.svg
+  SvgGenImage get heartFill => const SvgGenImage('assets/icons/heart_fill.svg');
+
   /// File path: assets/icons/home.svg
   SvgGenImage get home => const SvgGenImage('assets/icons/home.svg');
 
@@ -125,6 +128,7 @@ class $AssetsIconsGen {
         clock,
         edit3,
         heart,
+        heartFill,
         home,
         logIn,
         logOut,

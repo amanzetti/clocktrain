@@ -22,7 +22,7 @@ class App extends ConsumerWidget {
     ///App
     return MaterialApp.router(
       title: 'Your App Title',
-      // theme: AppTheme.lightTheme,
+      theme: AppTheme.lightTheme,
       // darkTheme: AppTheme.darkTheme,
       // themeMode: themeMode,
       localizationsDelegates: AppLocalizations.localizationsDelegates,

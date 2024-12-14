@@ -1,6 +1,6 @@
 import 'package:app_shared/themes/app_asset.dart';
+import 'package:app_shared/widgets/atoms/buttons/app_button.dart';
 import 'package:app_shared/widgets/atoms/chips/app_chip.dart';
-import 'package:app_shared/widgets/atoms/buttons/app_icon_button.dart';
 import 'package:app_shared/utils/const/app_dimensions.dart';
 import 'package:app_shared/utils/ext/build_context_ext.dart';
 import 'package:app_shared/utils/ext/edge_insets_ext.dart';
@@ -32,7 +32,7 @@ class ChipsFormField extends StatelessWidget {
   final Color? actionButtonbackgroundColor;
   final BorderRadius? borderRadius;
   final List<ChipData> chips;
-  final showChipIcon;
+  final bool showChipIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -57,10 +57,8 @@ class ChipsFormField extends StatelessWidget {
                           showIcon: showChipIcon,
                         ))),
           ),
-          AppIconButton(
+          AppButton.icon(
               onPressed: onAddChip,
-              borderRadius: borderRadius ??
-                  BorderRadius.circular(AppDimensions.borderRadius8),
               backgroundColor:
                   actionButtonbackgroundColor ?? Colors.transparent,
               child: AppAsset().addSvg(context))

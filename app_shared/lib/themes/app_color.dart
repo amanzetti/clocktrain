@@ -5,6 +5,9 @@ class AppColors {
   AppColors._internal();
   static final AppColors _instance = AppColors._internal();
 
+  /// Defaukt color
+  static const Color red = Color(0xFFFF2800);
+
   // Light Mode Colors
   static const Color primaryLight =
       Color(0xFFDCE4C9); // Primary color for Light Mode
@@ -112,7 +115,8 @@ class AppColors {
   }
 
   static ColorScheme lightColorSchemeFromSeed() {
-    const seedColor = Color(0xFFA3D9A5);
+    // const seedColor = Color(0xFFA3D9A5);
+    const seedColor = Color(0xFFE5E5E5);
     return ColorScheme.fromSeed(seedColor: seedColor);
   }
 
