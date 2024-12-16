@@ -1,4 +1,3 @@
-import 'package:app_shared/widgets/atoms/buttons/app_button.dart';
 import 'package:app_shared/widgets/organisms/app_bar/app_bar_main.dart';
 import 'package:app_shared/widgets/organisms/app_bar/app_bar_secondary.dart';
 import 'package:flutter/material.dart';

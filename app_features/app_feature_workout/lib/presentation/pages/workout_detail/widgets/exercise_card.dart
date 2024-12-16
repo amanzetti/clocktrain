@@ -1,13 +1,12 @@
 import 'package:app_feature_workout/domain/enities/exercise.dart';
 import 'package:app_shared/app_shared.dart';
-import 'package:app_shared/utils/ext/theme_ext.dart';
-import 'package:app_shared/widgets/atoms/buttons/app_icon_button.dart';
 import 'package:flutter/material.dart';
 
 class ExerciseCard extends StatelessWidget {
-  const ExerciseCard({super.key, required this.exercise});
+  const ExerciseCard({super.key, required this.exercise, this.onPressed});
 
   final Exercise exercise;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -44,17 +43,18 @@ class ExerciseCard extends StatelessWidget {
             AppButton.iconCircleBox(
               height: 70,
               width: 70,
+              onPressed: onPressed,
               child: Padding(
                 padding: AppDimesnionsEdgeInsetsExt.onlyLeft4,
                 child: SvgWidget(
                   AppAsset.playIcon,
+                  height: 30,
                   colorFilter: ColorFilter.mode(
                     context.colorScheme.primary,
                     BlendMode.srcIn,
                   ),
                 ),
               ),
-              onPressed: () {},
             ),
           ],
         ));

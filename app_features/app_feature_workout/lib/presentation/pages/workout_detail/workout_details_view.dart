@@ -17,36 +17,13 @@ class WorkoutDetailsView extends ConsumerWidget {
     return Column(
       children: [
         _buildAppBar(context, onBack: () => vm.pop(context)),
+        // _buildSubappBar(context, onBack: () => vm.pop(context)),
         Expanded(child: _buildStepper()),
-        // Column(
-        //   children: [const Text('WorkoutView'), _buildStepper()],
-        // ),
       ],
     );
   }
 
   Widget _buildStepper() {
-    // final steps = [
-    //   WorkoutStep(
-    //     exerciseName: 'Push Up',
-    //     videoUrl:
-    //         'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-    //     durationSeconds: 2,
-    //   ),
-    //   WorkoutStep(
-    //     exerciseName: 'Squat',
-    //     videoUrl:
-    //         'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-    //     durationSeconds: 2,
-    //   ),
-    //   WorkoutStep(
-    //     exerciseName: 'Plank',
-    //     videoUrl:
-    //         'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-    //     durationSeconds: 2,
-    //   ),
-    // ];
-
     final exercises = [
       Exercise(
         id: 1,
@@ -95,6 +72,36 @@ class WorkoutDetailsView extends ConsumerWidget {
   }
 
   Widget _buildAppBar(BuildContext context, {void Function()? onBack}) {
+    return Container(
+      child: Row(
+        children: [
+          AppButton.icon(
+              onPressed: onBack,
+              child: SvgWidget(
+                AppAsset.arrowBackIcon,
+                colorFilter: ColorFilter.mode(
+                    context.colorScheme.primary, BlendMode.srcIn),
+              )),
+          Text('Workout Name', style: context.textTheme.headlineSmall),
+          const Spacer(),
+          Padding(
+            padding: AppDimesnionsEdgeInsetsExt.onlyLeft4,
+            child: AppButton.iconCircleBox(
+                child: Padding(
+              padding: AppDimesnionsEdgeInsetsExt.onlyLeft4,
+              child: SvgWidget(
+                AppAsset.playIcon,
+                colorFilter: ColorFilter.mode(
+                    context.colorScheme.primary, BlendMode.srcIn),
+              ),
+            )),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSubappBar(BuildContext context, {void Function()? onBack}) {
     return AppHeader(
       type: AppBarType.secondary,
       title: 'Workout Name',
