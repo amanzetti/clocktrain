@@ -16,6 +16,12 @@ class ContainerTimer extends StatefulWidget {
 
 class _ContainerTimerState extends State<ContainerTimer> {
   @override
+  void initState() {
+    super.initState();
+    widget.vm.initialize();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       child: _buildExerciseSessionDetails(context,
@@ -34,15 +40,14 @@ class _ContainerTimerState extends State<ContainerTimer> {
 
   Widget _buildTimer(WorkoutSessionVm vm, WorkoutSessionState state) {
     return CircularTimerWidget(
-      initCallback: vm.initialize,
-      updateProgressOnDrag: vm.updateProgressOnDrag,
-      setDragging: vm.setDragging,
-      duration: state.duration,
-      progress: state.progress,
-      resumeTimer: vm.resumeTimer,
-      resetTimer: vm.resetTimer,
-      pauseTimer: vm.pauseTimer,
-      isPaused: state.isPaused,
-    );
+        updateProgressOnDrag: vm.updateProgressOnDrag,
+        setDragging: vm.setDragging,
+        duration: state.duration,
+        progress: state.progress,
+        resumeTimer: vm.resumeTimer,
+        resetTimer: vm.resetTimer,
+        pauseTimer: vm.pauseTimer,
+        isPaused: state.isPaused,
+        size: Size(300, 300));
   }
 }

@@ -1,25 +1,23 @@
 import 'dart:math';
-
 import 'package:app_shared/app_shared.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CircularTimerWidget extends ConsumerStatefulWidget {
-  const CircularTimerWidget(
-      {required this.initCallback,
-      required this.updateProgressOnDrag,
-      required this.setDragging,
-      required this.duration,
-      required this.progress,
-      required this.resumeTimer,
-      required this.resetTimer,
-      required this.pauseTimer,
-      required this.isPaused,
-      this.size = const Size(200, 200),
-      super.key});
+class CircularTimerWidget extends ConsumerWidget {
+  const CircularTimerWidget({
+    required this.updateProgressOnDrag,
+    required this.setDragging,
+    required this.duration,
+    required this.progress,
+    required this.resumeTimer,
+    required this.resetTimer,
+    required this.pauseTimer,
+    required this.isPaused,
+    this.size = const Size(200, 200),
+    super.key,
+  });
 
   final Size size;
-  final void Function() initCallback;
   final void Function() resumeTimer;
   final void Function() resetTimer;
   final void Function() pauseTimer;
@@ -30,19 +28,7 @@ class CircularTimerWidget extends ConsumerStatefulWidget {
   final bool isPaused;
 
   @override
-  ConsumerState<CircularTimerWidget> createState() =>
-      _CircularTimerWidgetState();
-}
-
-class _CircularTimerWidgetState extends ConsumerState<CircularTimerWidget> {
-  @override
-  void initState() {
-    super.initState();
-    widget.initCallback.call();
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -53,54 +39,58 @@ class _CircularTimerWidgetState extends ConsumerState<CircularTimerWidget> {
             children: [
               IconButton(
                 icon: const Icon(Icons.refresh),
-                onPressed: widget.resetTimer,
+                onPressed: resetTimer,
               ),
               SizedBox(
-                width: widget.size.width,
-                height: widget.size.height,
+                width: size.width,
+                height: size.height,
                 child: Stack(
                   alignment: AlignmentDirectional.center,
                   children: [
                     GestureDetector(
                       onPanUpdate: (details) {
-                        final center = Offset(
-                            widget.size.width / 2, widget.size.height / 2);
+                        final center = Offset(size.width / 2, size.height / 2);
                         final dx = details.localPosition.dx - center.dx;
                         final dy = details.localPosition.dy - center.dy;
                         final angle = (atan2(dy, dx) + pi / 2) % (2 * pi);
-                        final progress = (angle / (2 * pi)) % 1.0;
+                        final newProgress = (angle / (2 * pi)) % 1.0;
 
-                        widget.updateProgressOnDrag.call(progress);
+                        updateProgressOnDrag(newProgress);
                       },
-                      onPanStart: (_) => widget.setDragging.call(true),
-                      onPanEnd: (_) => widget.setDragging.call(false),
+                      onPanStart: (_) => setDragging(true),
+                      onPanEnd: (_) => setDragging(false),
                       child: CustomPaint(
-                        size: widget.size,
+                        size: size,
+                        foregroundPainter: CircularTimerLabelsPainter(
+                          duration: duration.inSeconds,
+                          textStyle: Theme.of(context).textTheme.displayMedium,
+                        ),
                         painter: CircularTimerPainter(
-                            textStyleTimer: context.textTheme.displayMedium,
-                            progress: widget.progress,
-                            duration: widget.duration.inSeconds),
+                          textStyleTimer:
+                              Theme.of(context).textTheme.displayMedium,
+                          progress: progress,
+                          duration: duration.inSeconds,
+                        ),
                       ),
                     ),
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          (widget.duration.inSeconds * (1 - widget.progress))
-                              .toInt()
-                              .toString(),
-                          style: context.textTheme.displayMedium,
-                        ),
-                        Text('sec')
-                      ],
-                    ),
+                    // Column(
+                    //   mainAxisSize: MainAxisSize.min,
+                    //   children: [
+                    //     Text(
+                    //       (duration.inSeconds * (1 - progress))
+                    //           .toInt()
+                    //           .toString(),
+                    //       style: Theme.of(context).textTheme.displayMedium,
+                    //     ),
+                    //     const Text('sec'),
+                    //   ],
+                    // ),
                   ],
                 ),
               ),
               IconButton(
-                icon: Icon(widget.isPaused ? Icons.play_arrow : Icons.pause),
-                onPressed:
-                    widget.isPaused ? widget.resumeTimer : widget.pauseTimer,
+                icon: Icon(isPaused ? Icons.play_arrow : Icons.pause),
+                onPressed: isPaused ? resumeTimer : pauseTimer,
               ),
             ],
           ),
