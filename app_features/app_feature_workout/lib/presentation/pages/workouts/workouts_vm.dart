@@ -14,8 +14,7 @@ class WorkoutsVm extends AutoDisposeNotifier<WorkoutsState> {
   final log = LoggerConfig.logger;
 
   void goToDetail(BuildContext context) {
-    final workoutId = '1';
+    const workoutId = '1';
     context.push('${FeatureWorkoutPaths.workouts}/$workoutId');
-    log.i('goToDetail');
   }
 }

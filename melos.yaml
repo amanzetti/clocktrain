@@ -21,6 +21,7 @@ command:
       #UI
       flutter_svg: ^2.0.16
       video_player: ^2.9.2
+      youtube_player_flutter: ^9.1.1
 
       #Path Provider
       path_provider: ^2.1.5

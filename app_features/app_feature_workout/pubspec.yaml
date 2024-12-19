@@ -13,12 +13,12 @@ dependencies:
   
   #UI
   flutter_svg: ^2.0.16
+  youtube_player_flutter: ^9.1.1
 
   #Path Provider
   path_provider: ^2.1.5 
 
   # State management
-  
   flutter_riverpod: ^2.6.1
   
   # Code generation and annotations

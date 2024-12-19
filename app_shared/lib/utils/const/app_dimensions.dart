@@ -19,6 +19,10 @@ class AppDimensions {
   static const borderRadius10 = 10.0;
   static const borderRadius24 = 24.0;
   static const borderRadius100 = 100.0;
+  static const Radius radius8 = Radius.circular(8.0);
+  static const Radius radius10 = Radius.circular(10.0);
+  static const Radius radius24 = Radius.circular(24.0);
+  static const Radius radius100 = Radius.circular(100.0);
 
   ///
   static const boxConstraints = BoxConstraints(

@@ -16,7 +16,8 @@ class WorkoutDetailsView extends ConsumerWidget {
     final vm = ref.watch(_workoutDetailsVmProvider.notifier);
     return Column(
       children: [
-        _buildAppBar(context, onBack: () => vm.pop(context)),
+        _buildAppBar(context,
+            onBack: () => vm.pop(context), onPlay: () => vm.goSession(context)),
         // _buildSubappBar(context, onBack: () => vm.pop(context)),
         Expanded(child: _buildStepper()),
       ],
@@ -71,7 +72,8 @@ class WorkoutDetailsView extends ConsumerWidget {
     // );
   }
 
-  Widget _buildAppBar(BuildContext context, {void Function()? onBack}) {
+  Widget _buildAppBar(BuildContext context,
+      {void Function()? onBack, void Function()? onPlay}) {
     return Container(
       child: Row(
         children: [
@@ -87,14 +89,15 @@ class WorkoutDetailsView extends ConsumerWidget {
           Padding(
             padding: AppDimesnionsEdgeInsetsExt.onlyLeft4,
             child: AppButton.iconCircleBox(
+                onPressed: onPlay,
                 child: Padding(
-              padding: AppDimesnionsEdgeInsetsExt.onlyLeft4,
-              child: SvgWidget(
-                AppAsset.playIcon,
-                colorFilter: ColorFilter.mode(
-                    context.colorScheme.primary, BlendMode.srcIn),
-              ),
-            )),
+                  padding: AppDimesnionsEdgeInsetsExt.onlyLeft4,
+                  child: SvgWidget(
+                    AppAsset.playIcon,
+                    colorFilter: ColorFilter.mode(
+                        context.colorScheme.primary, BlendMode.srcIn),
+                  ),
+                )),
           )
         ],
       ),

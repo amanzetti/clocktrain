@@ -1,6 +1,7 @@
 import 'package:app_feature_login/presentation/routes/app_routes.dart';
 import 'package:app_feature_workout/presentation/routes/feature_workout_routes.dart';
 import 'package:app_shared/widgets/templates/main_page.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRouter {
@@ -9,13 +10,13 @@ class AppRouter {
   factory AppRouter() => _instance;
   static final AppRouter _instance = AppRouter._internal();
 
-  // static final GlobalKey<NavigatorState> rootNavigatorKey =
-  //     GlobalKey<NavigatorState>();
+  static final GlobalKey<NavigatorState> rootNavigatorKey =
+      GlobalKey<NavigatorState>();
   // static final GlobalKey<NavigatorState> sectionNavigatorKey =
   //     GlobalKey<NavigatorState>();
 
   final GoRouter routers = GoRouter(
-    // navigatorKey: rootNavigatorKey,
+    navigatorKey: rootNavigatorKey,
     // observers: [AppRouteObserver()],
     // initialLocation: AppPath.rootPage,
     // initialLocation: AppPath.loginPage,
@@ -93,7 +94,7 @@ class AppRouter {
 
   static StatefulShellBranch _workoutBranch() {
     return StatefulShellBranch(
-      routes: FeatureWorkoutRoutes.getWorkoutRoutes(),
+      routes: FeatureWorkoutRoutes.getWorkoutRoutes(rootNavigatorKey),
     );
   }
 
