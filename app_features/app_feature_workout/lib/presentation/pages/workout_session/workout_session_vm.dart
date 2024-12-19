@@ -6,12 +6,18 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 class WorkoutSessionVm extends AutoDisposeNotifier<WorkoutSessionState> {
-  late Timer _timer;
+  late Timer? _timer;
+  Duration _accumulatedElapsed = Duration.zero;
+  DateTime? _lastStartTime;
 
   @override
   build() {
     return const WorkoutSessionState(
       duration: Duration(minutes: 2),
+      elapsedTime: Duration.zero,
+      progress: 0.0,
+      isPaused: false,
+      isDragging: false,
     );
   }
 
@@ -20,8 +26,7 @@ class WorkoutSessionVm extends AutoDisposeNotifier<WorkoutSessionState> {
   }
 
   void dispose() {
-    _timer.cancel();
-    state = const WorkoutSessionState(duration: Duration(minutes: 2));
+    _timer?.cancel();
   }
 
   void setDuration(Duration duration) {
@@ -33,19 +38,24 @@ class WorkoutSessionVm extends AutoDisposeNotifier<WorkoutSessionState> {
   }
 
   void startTimer() {
-    final startTime = DateTime.now();
+    _lastStartTime = DateTime.now();
     _timer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
       if (!state.isPaused && !state.isDragging) {
-        final elapsed = DateTime.now().difference(startTime).inMilliseconds;
-        final newProgress =
-            (elapsed / state.duration.inMilliseconds).clamp(0.0, 1.0);
+        final currentTime = DateTime.now();
+        final elapsedSinceLastStart = currentTime.difference(_lastStartTime!);
+        final totalElapsed = _accumulatedElapsed + elapsedSinceLastStart;
 
-        if (newProgress == 1.0) {
-          _timer.cancel();
+        final newProgress =
+            (totalElapsed.inMilliseconds / state.duration.inMilliseconds)
+                .clamp(0.0, 1.0);
+
+        if (newProgress >= 1.0) {
+          _timer?.cancel();
+          // Azioni da eseguire al termine del timer
         }
 
         state = state.copyWith(
-          elapsedTime: elapsed,
+          elapsedTime: totalElapsed,
           progress: newProgress,
         );
       }
@@ -53,37 +63,44 @@ class WorkoutSessionVm extends AutoDisposeNotifier<WorkoutSessionState> {
   }
 
   void pauseTimer() {
-    state = state.copyWith(isPaused: true);
+    if (!state.isPaused) {
+      _accumulatedElapsed += DateTime.now().difference(_lastStartTime!);
+      _timer?.cancel();
+      state = state.copyWith(isPaused: true);
+    }
   }
 
   void resumeTimer() {
-    state = state.copyWith(isPaused: false);
+    if (state.isPaused) {
+      _lastStartTime = DateTime.now();
+      state = state.copyWith(isPaused: false);
+      startTimer();
+    }
   }
 
   void resetTimer() {
-    _timer.cancel();
-    state = const WorkoutSessionState(duration: Duration(minutes: 2));
+    _timer?.cancel();
+    _accumulatedElapsed = Duration.zero;
+    state = state.copyWith(
+      elapsedTime: Duration.zero,
+      progress: 0.0,
+      isPaused: false,
+    );
     startTimer();
   }
 
   void updateProgressOnDrag(double progress) {
+    final newElapsedTime = Duration(
+        milliseconds: (state.duration.inMilliseconds * progress).toInt());
+    _accumulatedElapsed = newElapsedTime;
+    _lastStartTime = DateTime.now();
     state = state.copyWith(
       progress: progress,
-      elapsedTime: (progress * 50000).toInt(),
+      elapsedTime: newElapsedTime,
     );
   }
 
   void setDragging(bool isDragging) {
     state = state.copyWith(isDragging: isDragging);
   }
-
-  // @override
-  // void dispose() {
-  //   _timer.cancel();
-  //   super.dispose();
-  // }
 }
-
-final workoutSessionVmProvider =
-    NotifierProvider.autoDispose<WorkoutSessionVm, WorkoutSessionState>(
-        () => WorkoutSessionVm());

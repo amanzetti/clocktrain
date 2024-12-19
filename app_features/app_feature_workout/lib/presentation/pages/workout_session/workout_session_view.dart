@@ -1,5 +1,6 @@
 import 'package:app_feature_workout/presentation/pages/workout_session/widgets/app_video_player.dart';
 import 'package:app_feature_workout/presentation/pages/workout_session/widgets/container_timer.dart';
+import 'package:app_feature_workout/presentation/pages/workout_session/workout_session_state.dart';
 import 'package:app_feature_workout/presentation/pages/workout_session/workout_session_vm.dart';
 import 'package:app_shared/app_shared.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,8 @@ class WorkoutSessionView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final vm = ref.read(workoutSessionVmProvider.notifier);
+    final vm = ref.read(_workoutSessionVmProvider.notifier);
+    final state = ref.watch(_workoutSessionVmProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Workout session'),
@@ -24,24 +26,23 @@ class WorkoutSessionView extends ConsumerWidget {
       ),
       body: Stack(
         children: [
-          Positioned(
-            top: 60,
-            child: AppVideoPlayer(
-              autoPlay: false,
-            ),
+          const AppVideoPlayer(
+            autoPlay: false,
           ),
-          Align(alignment: Alignment.bottomCenter, child: ContainerTimer()),
+          Align(
+              alignment: Alignment.bottomCenter,
+              child: ContainerTimer(
+                vm: vm,
+                state: state,
+              )),
           // _buildTimer(),
           // _buildNextExercise(),
         ],
       ),
     );
   }
-
-  Widget _buildNextExercise() {
-    return Placeholder(
-      fallbackHeight: 80,
-      fallbackWidth: 150,
-    );
-  }
 }
+
+final _workoutSessionVmProvider =
+    NotifierProvider.autoDispose<WorkoutSessionVm, WorkoutSessionState>(
+        () => WorkoutSessionVm());

@@ -1,14 +1,33 @@
 import 'dart:math';
 
-import 'package:app_feature_workout/presentation/pages/workout_session/workout_session_vm.dart';
 import 'package:app_shared/app_shared.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CircularTimerWidget extends ConsumerStatefulWidget {
-  const CircularTimerWidget({this.size = const Size(200, 200), super.key});
+  const CircularTimerWidget(
+      {required this.initCallback,
+      required this.updateProgressOnDrag,
+      required this.setDragging,
+      required this.duration,
+      required this.progress,
+      required this.resumeTimer,
+      required this.resetTimer,
+      required this.pauseTimer,
+      required this.isPaused,
+      this.size = const Size(200, 200),
+      super.key});
 
   final Size size;
+  final void Function() initCallback;
+  final void Function() resumeTimer;
+  final void Function() resetTimer;
+  final void Function() pauseTimer;
+  final void Function(double) updateProgressOnDrag;
+  final void Function(bool) setDragging;
+  final Duration duration;
+  final double progress;
+  final bool isPaused;
 
   @override
   ConsumerState<CircularTimerWidget> createState() =>
@@ -16,21 +35,14 @@ class CircularTimerWidget extends ConsumerStatefulWidget {
 }
 
 class _CircularTimerWidgetState extends ConsumerState<CircularTimerWidget> {
-  late final WorkoutSessionVm vm;
-
   @override
   void initState() {
     super.initState();
-    vm = ref.read(workoutSessionVmProvider.notifier);
-    vm.initialize();
+    widget.initCallback.call();
   }
 
   @override
   Widget build(BuildContext context) {
-    final state = ref.watch(workoutSessionVmProvider);
-    final duration = ref.watch(_durationProvider);
-    final progress = ref.watch(_progressProvider);
-
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -41,7 +53,7 @@ class _CircularTimerWidgetState extends ConsumerState<CircularTimerWidget> {
             children: [
               IconButton(
                 icon: const Icon(Icons.refresh),
-                onPressed: vm.resetTimer,
+                onPressed: widget.resetTimer,
               ),
               SizedBox(
                 width: widget.size.width,
@@ -58,23 +70,23 @@ class _CircularTimerWidgetState extends ConsumerState<CircularTimerWidget> {
                         final angle = (atan2(dy, dx) + pi / 2) % (2 * pi);
                         final progress = (angle / (2 * pi)) % 1.0;
 
-                        vm.updateProgressOnDrag(progress);
+                        widget.updateProgressOnDrag.call(progress);
                       },
-                      onPanStart: (_) => vm.setDragging(true),
-                      onPanEnd: (_) => vm.setDragging(false),
+                      onPanStart: (_) => widget.setDragging.call(true),
+                      onPanEnd: (_) => widget.setDragging.call(false),
                       child: CustomPaint(
                         size: widget.size,
                         painter: CircularTimerPainter(
                             textStyleTimer: context.textTheme.displayMedium,
-                            progress: state.progress,
-                            duration: duration.inSeconds),
+                            progress: widget.progress,
+                            duration: widget.duration.inSeconds),
                       ),
                     ),
                     Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          (duration.inSeconds * (1 - progress))
+                          (widget.duration.inSeconds * (1 - widget.progress))
                               .toInt()
                               .toString(),
                           style: context.textTheme.displayMedium,
@@ -86,8 +98,9 @@ class _CircularTimerWidgetState extends ConsumerState<CircularTimerWidget> {
                 ),
               ),
               IconButton(
-                icon: Icon(state.isPaused ? Icons.play_arrow : Icons.pause),
-                onPressed: state.isPaused ? vm.resumeTimer : vm.pauseTimer,
+                icon: Icon(widget.isPaused ? Icons.play_arrow : Icons.pause),
+                onPressed:
+                    widget.isPaused ? widget.resumeTimer : widget.pauseTimer,
               ),
             ],
           ),
@@ -96,9 +109,3 @@ class _CircularTimerWidgetState extends ConsumerState<CircularTimerWidget> {
     );
   }
 }
-
-final _durationProvider = StateProvider.autoDispose<Duration>(
-    (ref) => ref.watch(workoutSessionVmProvider).duration);
-
-final _progressProvider = StateProvider.autoDispose<double>(
-    (ref) => ref.watch(workoutSessionVmProvider).progress);

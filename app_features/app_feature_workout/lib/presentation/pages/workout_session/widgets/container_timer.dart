@@ -1,24 +1,25 @@
 import 'package:app_feature_workout/presentation/pages/workout_session/widgets/circular_timer_widget.dart';
+import 'package:app_feature_workout/presentation/pages/workout_session/workout_session_state.dart';
 import 'package:app_feature_workout/presentation/pages/workout_session/workout_session_vm.dart';
 import 'package:app_shared/widgets/organisms/container/resizable_container.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ContainerTimer extends ConsumerStatefulWidget {
-  const ContainerTimer({super.key});
+class ContainerTimer extends StatefulWidget {
+  const ContainerTimer({required this.vm, required this.state, super.key});
+
+  final WorkoutSessionVm vm;
+  final WorkoutSessionState state;
 
   @override
-  ConsumerState<ContainerTimer> createState() => _ContainerTimerState();
+  State<ContainerTimer> createState() => _ContainerTimerState();
 }
 
-class _ContainerTimerState extends ConsumerState<ContainerTimer> {
+class _ContainerTimerState extends State<ContainerTimer> {
   @override
   Widget build(BuildContext context) {
-    final duration = ref.watch(_progressDuration);
-    final progress = ref.watch(_progressProgress);
     return Container(
       child: _buildExerciseSessionDetails(context,
-          duration: duration, progress: progress),
+          duration: widget.state.duration, progress: widget.state.progress),
     );
   }
 
@@ -28,20 +29,20 @@ class _ContainerTimerState extends ConsumerState<ContainerTimer> {
     return ResizableContainer(
         hintText: 'Exercise session details',
         title: 'Exercise session title ${remainTime.inSeconds} s',
-        childExpands: Column(children: [_buildTimer()]));
+        childExpands: Column(children: [_buildTimer(widget.vm, widget.state)]));
   }
 
-  Widget _buildTimer() {
-    return const CircularTimerWidget();
+  Widget _buildTimer(WorkoutSessionVm vm, WorkoutSessionState state) {
+    return CircularTimerWidget(
+      initCallback: vm.initialize,
+      updateProgressOnDrag: vm.updateProgressOnDrag,
+      setDragging: vm.setDragging,
+      duration: state.duration,
+      progress: state.progress,
+      resumeTimer: vm.resumeTimer,
+      resetTimer: vm.resetTimer,
+      pauseTimer: vm.pauseTimer,
+      isPaused: state.isPaused,
+    );
   }
 }
-
-// final _workoutSessionVmProvider =
-//     NotifierProvider.autoDispose<WorkoutSessionVm, WorkoutSessionState>(
-//         () => WorkoutSessionVm());
-
-final _progressDuration = StateProvider.autoDispose<Duration>(
-    (ref) => ref.watch(workoutSessionVmProvider).duration);
-
-final _progressProgress = StateProvider.autoDispose<double>(
-    (ref) => ref.watch(workoutSessionVmProvider).progress);

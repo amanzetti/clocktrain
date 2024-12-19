@@ -12,6 +12,6 @@ class WorkoutSessionState with _$WorkoutSessionState {
     @Default(Duration()) Duration duration,
     @Default(false) bool isPaused,
     @Default(false) bool isDragging,
-    @Default(0) int elapsedTime, // In millisecondi
+    @Default(Duration()) Duration elapsedTime, // In millisecondi
   }) = _WorkoutSessionState;
 }
