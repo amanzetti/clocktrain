@@ -17,7 +17,8 @@ class WorkoutDetailsView extends ConsumerWidget {
     return Column(
       children: [
         _buildAppBar(context,
-            onBack: () => vm.pop(context), onPlay: () => vm.goSession(context)),
+            onBack: () => vm.pop(context),
+            onPlay: () => vm.pushSession(context)),
         // _buildSubappBar(context, onBack: () => vm.pop(context)),
         Expanded(child: _buildStepper()),
       ],
